@@ -19,7 +19,7 @@ const Blog = () => {
   };
 
   return (
-    <div className="min-h-screen section-bg">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-blue-50">
       {/* Hero Section */}
       <section className="py-16 md:py-20">
         <div className="container mx-auto px-4 md:px-6 lg:px-8 xl:px-12">
@@ -90,7 +90,7 @@ const Blog = () => {
                 {posts.map((post, index) => (
                   <article 
                     key={post.id} 
-                    className="card-modern overflow-hidden group"
+                    className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 overflow-hidden group"
                     data-aos="fade-up"
                     data-aos-delay={index * 100}
                   >
@@ -126,7 +126,7 @@ const Blog = () => {
                       </div>
                       <Link 
                         to={`/blog/${post.slug}`}
-                        className="w-full btn-primary text-center block"
+                        className="w-full px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl font-semibold hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow-lg text-center block"
                       >
                         Ler Mais
                       </Link>
@@ -141,7 +141,7 @@ const Blog = () => {
                   <button 
                     onClick={loadMorePosts}
                     disabled={loadingMore}
-                    className="btn-secondary"
+                    className="px-6 py-3 border-2 border-blue-600 text-blue-600 rounded-xl font-semibold hover:bg-blue-50 transition-all duration-300 transform hover:scale-105"
                   >
                     {loadingMore ? 'Carregando...' : 'Carregar Mais Posts'}
                   </button>
@@ -156,7 +156,7 @@ const Blog = () => {
       <section className="py-16 md:py-20 bg-white">
         <div className="container mx-auto px-4 md:px-6 lg:px-8 xl:px-12">
           <div 
-            className="gradient-cta rounded-3xl p-12 md:p-16 text-center text-white"
+            className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-3xl p-12 md:p-16 text-center text-white shadow-2xl"
             data-aos="zoom-in"
           >
             <h3 className="text-3xl md:text-4xl font-bold mb-6">

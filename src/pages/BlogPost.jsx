@@ -32,7 +32,7 @@ const BlogPost = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen section-bg flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-blue-50 flex items-center justify-center">
         <LoadingSpinner size="large" text="Carregando post..." />
       </div>
     );
@@ -47,7 +47,7 @@ const BlogPost = () => {
   }
 
   return (
-    <div className="min-h-screen section-bg">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-blue-50">
       {/* Hero Section */}
       <section className="py-16 md:py-20">
         <div className="container mx-auto px-4 md:px-6 lg:px-8 xl:px-12">
@@ -142,7 +142,7 @@ const BlogPost = () => {
                 
                 <Link 
                   to="/blog"
-                  className="btn-primary"
+                  className="px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl font-semibold hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow-lg"
                 >
                   Ver Mais Posts
                 </Link>
@@ -156,7 +156,7 @@ const BlogPost = () => {
       <section className="py-16 md:py-20 bg-white">
         <div className="container mx-auto px-4 md:px-6 lg:px-8 xl:px-12">
           <div 
-            className="gradient-cta rounded-3xl p-12 md:p-16 text-center text-white"
+            className="bg-gradient-to-r from-blue-600 to-purple-600 shadow-2xl rounded-3xl p-12 md:p-16 text-center text-white"
             data-aos="zoom-in"
           >
             <h2 className="text-3xl md:text-4xl font-bold mb-6">

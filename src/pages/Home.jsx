@@ -2,7 +2,7 @@ import React from 'react';
 
 const Home = () => {
   return (
-    <div className="min-h-screen section-bg">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-blue-50">
       {/* Hero Section */}
       <section className="py-16 md:py-20">
         <div className="container mx-auto px-4 md:px-6 lg:px-8 xl:px-12">
@@ -26,10 +26,10 @@ const Home = () => {
               data-aos="fade-up"
               data-aos-delay="400"
             >
-              <button className="btn-primary text-lg px-10 py-5">
+              <button className="px-10 py-5 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl font-semibold hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow-lg text-lg">
                 Conheça Nossos Produtos
               </button>
-              <button className="btn-secondary text-lg px-10 py-5">
+              <button className="px-10 py-5 border-2 border-blue-600 text-blue-600 rounded-xl font-semibold hover:bg-blue-50 transition-all duration-300 transform hover:scale-105 text-lg">
                 Agende uma Consulta
               </button>
             </div>
@@ -58,11 +58,11 @@ const Home = () => {
           
           <div className="grid md:grid-cols-3 gap-12">
             <div 
-              className="card-modern p-8 text-center group"
+              className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 p-8 text-center group"
               data-aos="fade-up"
               data-aos-delay="100"
             >
-              <div className="w-20 h-20 gradient-primary rounded-2xl flex items-center justify-center mb-6 mx-auto group-hover:scale-110 transition-transform duration-300">
+              <div className="w-20 h-20 bg-gradient-to-br from-blue-600 to-purple-600 rounded-2xl flex items-center justify-center mb-6 mx-auto group-hover:scale-110 transition-transform duration-300">
                 <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 5v2m0 4v2m0 4v2M5 5a2 2 0 00-2 2v3a2 2 0 110 4v3a2 2 0 002 2h14a2 2 0 002-2v-3a2 2 0 110-4V7a2 2 0 00-2-2H5z" />
                 </svg>
@@ -72,11 +72,11 @@ const Home = () => {
             </div>
             
             <div 
-              className="card-modern p-8 text-center group"
+              className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 p-8 text-center group"
               data-aos="fade-up"
               data-aos-delay="200"
             >
-              <div className="w-20 h-20 gradient-accent rounded-2xl flex items-center justify-center mb-6 mx-auto group-hover:scale-110 transition-transform duration-300">
+              <div className="w-20 h-20 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-2xl flex items-center justify-center mb-6 mx-auto group-hover:scale-110 transition-transform duration-300">
                 <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
@@ -86,11 +86,11 @@ const Home = () => {
             </div>
             
             <div 
-              className="card-modern p-8 text-center group"
+              className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 p-8 text-center group"
               data-aos="fade-up"
               data-aos-delay="300"
             >
-              <div className="w-20 h-20 gradient-secondary rounded-2xl flex items-center justify-center mb-6 mx-auto group-hover:scale-110 transition-transform duration-300">
+              <div className="w-20 h-20 bg-gradient-to-br from-pink-400 to-red-500 rounded-2xl flex items-center justify-center mb-6 mx-auto group-hover:scale-110 transition-transform duration-300">
                 <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4" />
                 </svg>
@@ -106,7 +106,7 @@ const Home = () => {
       <section className="py-16 md:py-20">
         <div className="container mx-auto px-4 md:px-6 lg:px-8 xl:px-12">
           <div 
-            className="gradient-cta rounded-3xl p-12 md:p-16 text-center text-white"
+            className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-3xl p-12 md:p-16 text-center text-white shadow-2xl"
             data-aos="zoom-in"
           >
             <h2 className="text-4xl md:text-5xl font-bold mb-6">

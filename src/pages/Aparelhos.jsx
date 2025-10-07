@@ -37,7 +37,7 @@ const Aparelhos = () => {
   ];
 
   return (
-    <div className="min-h-screen section-bg">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-blue-50">
       {/* Hero Section */}
       <section className="py-16 md:py-20">
         <div className="container mx-auto px-4 md:px-6 lg:px-8 xl:px-12">
@@ -67,7 +67,7 @@ const Aparelhos = () => {
             {aparelhos.map((aparelho, index) => (
               <div 
                 key={aparelho.id} 
-                className="card-modern p-8 group"
+                className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 p-8 group"
                 data-aos="fade-up"
                 data-aos-delay={index * 100}
               >
@@ -99,7 +99,7 @@ const Aparelhos = () => {
                   <span className="text-2xl font-bold text-gradient">
                     {aparelho.preco}
                   </span>
-                  <button className="btn-primary">
+                  <button className="px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl font-semibold hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow-lg">
                     Saiba Mais
                   </button>
                 </div>
@@ -134,7 +134,7 @@ const Aparelhos = () => {
               data-aos="fade-up"
               data-aos-delay="100"
             >
-              <div className="w-24 h-24 gradient-primary rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+              <div className="w-24 h-24 bg-gradient-to-br from-blue-600 to-purple-600 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
                 <svg className="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
@@ -148,7 +148,7 @@ const Aparelhos = () => {
               data-aos="fade-up"
               data-aos-delay="200"
             >
-              <div className="w-24 h-24 gradient-accent rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+              <div className="w-24 h-24 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
                 <svg className="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192L5.636 18.364M12 2.25a9.75 9.75 0 100 19.5 9.75 9.75 0 000-19.5z" />
                 </svg>
@@ -162,7 +162,7 @@ const Aparelhos = () => {
               data-aos="fade-up"
               data-aos-delay="300"
             >
-              <div className="w-24 h-24 gradient-secondary rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+              <div className="w-24 h-24 bg-gradient-to-br from-pink-400 to-red-500 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
                 <svg className="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                 </svg>
@@ -178,7 +178,7 @@ const Aparelhos = () => {
       <section className="py-16 md:py-20 bg-white">
         <div className="container mx-auto px-4 md:px-6 lg:px-8 xl:px-12">
           <div 
-            className="gradient-cta rounded-3xl p-12 md:p-16 text-center text-white"
+            className="bg-gradient-to-r from-blue-600 to-purple-600 shadow-2xl rounded-3xl p-12 md:p-16 text-center text-white"
             data-aos="zoom-in"
           >
             <h2 className="text-4xl md:text-5xl font-bold mb-6">

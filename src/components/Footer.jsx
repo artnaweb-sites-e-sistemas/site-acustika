@@ -9,10 +9,10 @@ const Footer = () => {
           {/* Logo e Descrição */}
           <div className="lg:col-span-1">
             <Link to="/" className="flex items-center space-x-3 mb-6 group" data-aos="fade-up">
-              <div className="w-12 h-12 gradient-primary rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+              <div className="w-12 h-12 bg-gradient-to-br from-blue-600 to-purple-600 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                 <span className="text-white font-bold text-xl">A</span>
               </div>
-              <span className="text-3xl font-bold text-gradient">Acústika</span>
+              <span className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Acústika</span>
             </Link>
             <p className="text-gray-300 mb-6 leading-relaxed" data-aos="fade-up" data-aos-delay="100">
               Sua solução completa em aparelhos auditivos, acessórios e serviços especializados. 

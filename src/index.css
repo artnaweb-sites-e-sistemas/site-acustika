@@ -16,36 +16,6 @@
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 3;
   }
-
-  .gradient-primary {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  }
-
-  .gradient-secondary {
-    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-  }
-
-  .gradient-accent {
-    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-  }
-
-  .gradient-cta {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
-  }
-
-  .gradient-cta:hover {
-    background: linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%);
-    box-shadow: 0 15px 40px rgba(102, 126, 234, 0.4);
-    transform: translateY(-2px);
-  }
-
-  .text-gradient {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
 }
 
 @layer base {
@@ -63,56 +33,5 @@
     font-weight: 600;
     letter-spacing: -0.02em;
     line-height: 1.2;
-  }
-}
-
-@layer components {
-  .btn-primary {
-    padding: 1rem 2rem;
-    border-radius: 0.75rem;
-    font-weight: 600;
-    color: white;
-    transition: all 0.3s;
-    transform: scale(1);
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
-  }
-
-  .btn-primary:hover {
-    background: linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%);
-    box-shadow: 0 15px 40px rgba(102, 126, 234, 0.4);
-    transform: translateY(-2px);
-  }
-
-  .btn-secondary {
-    padding: 1rem 2rem;
-    border-radius: 0.75rem;
-    font-weight: 600;
-    border: 2px solid #2563eb;
-    color: #2563eb;
-    transition: all 0.3s;
-    transform: scale(1);
-  }
-
-  .btn-secondary:hover {
-    background-color: #eff6ff;
-    transform: scale(1.05);
-  }
-
-  .card-modern {
-    background-color: white;
-    border-radius: 1rem;
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-    transition: all 0.5s;
-    transform: translateY(0);
-  }
-
-  .card-modern:hover {
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-    transform: translateY(-8px);
-  }
-
-  .section-bg {
-    background: linear-gradient(to bottom right, #f9fafb, #ffffff, #eff6ff);
   }
 }
