@@ -13,7 +13,8 @@
 #### **Secret 1: FTP_SERVER**
 1. Clique em **"New repository secret"**
 2. **Name**: `FTP_SERVER`
-3. **Secret**: `ftp.seudominio.com` (substitua pelo seu servidor FTP)
+3. **Secret**: `162.241.73.198` (use o IP direto enquanto o domínio não está apontado)
+   - **Alternativa**: `ftp.acustikaauditiva.com.br` (após apontar o domínio)
 4. Clique em **"Add secret"**
 
 #### **Secret 2: FTP_USERNAME**
@@ -97,7 +98,31 @@ FTP_PASSWORD = SuaSenha123
 
 ---
 
+## 🎯 **Configuração Específica - Acústika**
+
+### **Para seu caso atual:**
+```
+FTP_SERVER = 162.241.73.198
+FTP_USERNAME = acustikaauditiva (ou seu usuário cPanel)
+FTP_PASSWORD = sua_senha_cpanel
+```
+
+### **Após apontar o domínio:**
+```
+FTP_SERVER = ftp.acustikaauditiva.com.br
+FTP_USERNAME = acustikaauditiva (ou seu usuário cPanel)
+FTP_PASSWORD = sua_senha_cpanel
+```
+
+---
+
 ## 🚨 **Troubleshooting**
+
+### **Erro: "FTPError: 530 Authentication failed"**
+**Causa**: Domínio não apontado para a hospedagem
+**Solução**: 
+- Use o **IP direto** no `FTP_SERVER`: `162.241.73.198`
+- Ou aguarde o DNS propagar (24-48h) e use `ftp.acustikaauditiva.com.br`
 
 ### **Erro: "FTP connection failed"**
 **Solução**: 
