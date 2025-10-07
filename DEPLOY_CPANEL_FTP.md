@@ -1,6 +1,6 @@
 # 🚀 Deploy para cPanel via FTP - Site Acústika
 
-## ✅ **Build de Produção Criado!**
+## ✅ **Build de Produção Criado!** 
 
 O build foi gerado com sucesso na pasta `dist/` com os seguintes arquivos:
 - **index.html** (0.50 kB)
