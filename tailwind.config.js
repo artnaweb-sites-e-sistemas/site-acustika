@@ -6,6 +6,16 @@ export default {
   ],
   theme: {
     extend: {
+      colors: {
+        'acustika': {
+          'purple': '#7a4478',
+          'teal': '#64a0a0',
+          'purple-light': '#8a5a88',
+          'purple-dark': '#6a3a68',
+          'teal-light': '#74b0b0',
+          'teal-dark': '#549090',
+        },
+      },
       fontFamily: {
         'sans': ['Inter', 'system-ui', 'sans-serif'],
       },

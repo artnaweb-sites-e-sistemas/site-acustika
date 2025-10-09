@@ -16,6 +16,300 @@
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 3;
   }
+
+  /* Logo Carousel Animation */
+  .animate-scroll {
+    animation: scroll 30s linear infinite;
+  }
+  
+  .animate-scroll:hover {
+    animation-play-state: paused;
+  }
+  
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+
+  /* Animated Button Styles */
+  .animated-button {
+    position: relative;
+    transition: 0.5s all;
+    overflow: hidden;
+  }
+
+  .animated-button::before {
+    content: "";
+    border-radius: inherit;
+    transition: all .3s;
+    background: linear-gradient(45deg, #7247ff, transparent, #7247ff, #7247ff, transparent, #7247ff);
+    background-size: 1800%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 0;
+    width: calc(100% + 5px);
+    height: calc(100% + 5px);
+    animation: btn 5s linear infinite;
+  }
+
+  .animated-button::after {
+    box-shadow: 0 0px 70px -2px #b6abff50;
+    content: "";
+    border-radius: inherit;
+    transition: 0.5s all;
+    background: linear-gradient(to left, #210471, #4c0de2);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    transition: 5s all;
+  }
+
+  .animated-button:hover {
+    scale: 1.05;
+  }
+
+  .animated-button * {
+    z-index: 3 !important;
+  }
+
+  .animated-button:hover::after {
+    background: linear-gradient(20deg, #0095fe, transparent, #01bfec, #a5eeff, transparent, #0095fe);
+    background-size: 1200%;
+    transition: 0.5s all;
+    box-shadow: 0 0px 100px -2px #61a2ff70;
+  }
+
+  @keyframes btn {
+    0% {
+      background-position: 0%;
+    }
+    50% {
+      background-position: 50%;
+    }
+    100% {
+      background-position: 100%;
+    }
+  }
+
+  /* Novo Estilo de Botões */
+  .bth .elementor-button {
+    padding: 0.4rem 0.4rem 0.4rem 2rem !important;
+    border-radius: 55px !important;
+    background: linear-gradient(92deg, #7a4478 -3.01%, #64a0a0 95.31%) !important;
+    color: white !important;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    transition: all ease 0.5s;
+  }
+
+  .bth .elementor-button-text {
+    align-self: center;
+  }
+
+  .bth .elementor-button-icon {
+    font-size: 19px !important;
+    padding: 10px;
+    margin-left: 10px;
+    background: white;
+    border-radius: 200px;
+    color: black !important;
+    vertical-align: middle;
+    rotate: -45deg;
+    transition: 0.5s ease all;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 40px;
+    min-height: 40px;
+  }
+
+  .bth .elementor-button-icon i {
+    font-size: 16px !important;
+    color: black !important;
+    display: block !important;
+  }
+
+  .bth .elementor-button-icon svg {
+    width: 16px !important;
+    height: 16px !important;
+    display: block !important;
+    visibility: visible !important;
+    fill: black !important;
+    color: black !important;
+  }
+
+  /* Carrossel de Galeria */
+  .gallery-carousel {
+    display: flex;
+    animation: scroll-gallery 30s linear infinite;
+    gap: 24px;
+  }
+
+  .gallery-carousel:hover {
+    animation-play-state: paused;
+  }
+
+  .gallery-item {
+    flex-shrink: 0;
+    width: 300px;
+    height: 225px;
+  }
+
+  .gallery-container {
+    position: relative;
+  }
+
+  .gallery-container::before,
+  .gallery-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100px;
+    z-index: 10;
+    pointer-events: none;
+  }
+
+  .gallery-container::before {
+    left: 0;
+    background: linear-gradient(to right, white 0%, rgba(255, 255, 255, 0.8) 30%, rgba(255, 255, 255, 0.4) 60%, transparent 100%);
+  }
+
+  .gallery-container::after {
+    right: 0;
+    background: linear-gradient(to left, white 0%, rgba(255, 255, 255, 0.8) 30%, rgba(255, 255, 255, 0.4) 60%, transparent 100%);
+  }
+
+  @keyframes scroll-gallery {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+
+  .pt-80 {
+    padding-top: 8rem;
+  }
+
+  /* Botões White para CTA */
+  .bth-white .elementor-button-white {
+    padding: 0.4rem 0.4rem 0.4rem 2rem !important;
+    border-radius: 55px !important;
+    background: white !important;
+    color: #374151 !important;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    transition: all ease 0.5s;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  }
+
+  .bth-white .elementor-button-white:hover {
+    background: #f8fafc !important;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  }
+
+  .bth-white .elementor-button-text {
+    align-self: center;
+    color: #374151 !important;
+  }
+
+  .bth-white .elementor-button-icon {
+    font-size: 19px !important;
+    padding: 10px;
+    margin-left: 10px;
+    background: #374151;
+    border-radius: 200px;
+    color: white !important;
+    vertical-align: middle;
+    rotate: -45deg;
+    transition: 0.5s ease all;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 40px;
+    min-height: 40px;
+  }
+
+  .bth-white .elementor-button-icon i {
+    font-size: 16px !important;
+    color: white !important;
+    display: block !important;
+  }
+
+.bth-white:hover .elementor-button-icon {
+  rotate: 0deg;
+  background: #1f2937;
+}
+
+/* Bordas animadas para cards */
+.card {
+  isolation: isolate;
+}
+
+.media-object {
+  --border-width: 2px; /* Variável para largura da borda */
+  --radius: 24px; /* Variável para raio da borda */
+  position: relative;
+  border-radius: var(--radius); 
+  border: var(--border-width) solid transparent; 
+}
+
+.media-object::before {
+  content: " ";
+  position: absolute; 
+  inset: calc(var(--border-width) * -1);
+  border: inherit; 
+  border-radius: inherit;
+  background-image: conic-gradient(from var(--angle), #DC267F 80%, #64a0a0 88%, #64a0a0 92%, #DC267F 100%); /* Gradiente cônico com cores da Acústika */
+  background-origin: border-box; 
+  -webkit-mask:
+    linear-gradient(black, black) content-box,
+    linear-gradient(black, black);
+  mask: linear-gradient(black, black),
+        linear-gradient(black, black);  
+  -webkit-mask-clip: content-box, border-box;
+  mask-clip: content-box, border-box;
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: spin 3s linear infinite; /* Animação giratória */
+}
+
+.media-object:hover::before {
+  animation-play-state: paused; /* Pausa a animação ao passar o mouse */
+}
+
+@property --angle {
+  syntax: "<angle>"; 
+  inherits: true;
+  initial-value: 0turn; 
+}
+
+@keyframes spin {
+  to {
+    --angle: 1turn; /* Animação para girar o gradiente */
+  }
+}
 }
 
 @layer base {
