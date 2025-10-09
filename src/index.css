@@ -114,6 +114,45 @@
     justify-content: center;
     border: none;
     transition: all ease 0.5s;
+    position: relative;
+    overflow: hidden;
+    transform: translateY(0);
+    box-shadow: 0 4px 15px rgba(122, 68, 120, 0.3);
+  }
+
+  .bth .elementor-button:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 8px 30px rgba(122, 68, 120, 0.4), 0 0 20px rgba(100, 160, 160, 0.3);
+    background: linear-gradient(92deg, #8a5488 -3.01%, #74b0b0 95.31%) !important;
+  }
+
+  .bth .elementor-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.6s ease;
+  }
+
+  .bth .elementor-button:hover::before {
+    left: 100%;
+  }
+
+  /* Animação pulsante sutil */
+  .bth .elementor-button {
+    animation: subtle-pulse 3s ease-in-out infinite;
+  }
+
+  @keyframes subtle-pulse {
+    0%, 100% {
+      box-shadow: 0 4px 15px rgba(122, 68, 120, 0.3);
+    }
+    50% {
+      box-shadow: 0 4px 20px rgba(122, 68, 120, 0.4), 0 0 10px rgba(100, 160, 160, 0.2);
+    }
   }
 
   .bth .elementor-button-text {
@@ -129,18 +168,34 @@
     color: black !important;
     vertical-align: middle;
     rotate: -45deg;
-    transition: 0.5s ease all;
+    transition: all 0.5s ease;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     min-width: 40px;
     min-height: 40px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .bth .elementor-button:hover .elementor-button-icon {
+    rotate: 0deg;
+    transform: scale(1.1);
+    background: #f0f9ff;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   }
 
   .bth .elementor-button-icon i {
     font-size: 16px !important;
     color: black !important;
     display: block !important;
+  }
+
+  .bth .elementor-button-icon img {
+    width: 16px !important;
+    height: 16px !important;
+    display: block !important;
+    object-fit: contain;
   }
 
   .bth .elementor-button-icon svg {
@@ -281,7 +336,7 @@
   inset: calc(var(--border-width) * -1);
   border: inherit; 
   border-radius: inherit;
-  background-image: conic-gradient(from var(--angle), #DC267F 80%, #64a0a0 88%, #64a0a0 92%, #DC267F 100%); /* Gradiente cônico com cores da Acústika */
+  background-image: conic-gradient(from var(--angle), #DC267F 80%, #64a0a0 88%, #64a0a0 92%, #DC267F 100%); /* Gradiente cônico com cores da Acustika */
   background-origin: border-box; 
   -webkit-mask:
     linear-gradient(black, black) content-box,
@@ -328,4 +383,156 @@
     letter-spacing: -0.02em;
     line-height: 1.2;
   }
+}
+
+/* Hero Image Background Elements */
+.hero-image-container::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 800px;
+  height: 800px;
+  transform: translate(-50%, -50%);
+  background: rgba(122, 68, 120, 0.3); /* acustika-purple com transparência */
+  border-radius: 100%;
+  filter: blur(180px);
+  pointer-events: none !important;
+  z-index: 0;
+}
+
+.hero-image-container::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: inherit;
+  right: 0;
+  width: 600px;
+  height: 600px;
+  background: rgba(100, 160, 160, 0.2); /* acustika-teal com transparência */
+  border-radius: 100%;
+  filter: blur(180px);
+  opacity: 0.2;
+  pointer-events: none !important;
+  z-index: 0;
+}
+
+/* Ensure the image stays above the background elements */
+.hero-image-container img {
+  position: relative;
+  z-index: 1;
+}
+
+/* Elegant service card hover animation */
+.service-card {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+
+.service-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, 
+    rgba(122, 68, 120, 0.8), 
+    rgba(100, 160, 160, 0.8), 
+    rgba(122, 68, 120, 0.8)
+  );
+  background-size: 300% 300%;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  z-index: -1;
+  border-radius: inherit;
+}
+
+.service-card::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  right: 2px;
+  bottom: 2px;
+  background: white;
+  border-radius: inherit;
+  z-index: -1;
+  transition: all 0.2s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(122, 68, 120, 0.15);
+}
+
+.service-card:hover::before {
+  opacity: 1;
+  animation: gradient-border 2s ease-in-out infinite;
+}
+
+.service-card:hover::after {
+  background: inherit;
+}
+
+@keyframes gradient-border {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Moving gradient animation */
+@keyframes gradient-move {
+  0% {
+    background-position: 0% 50%;
+  }
+  12.5% {
+    background-position: 20% 30%;
+  }
+  25% {
+    background-position: 40% 20%;
+  }
+  37.5% {
+    background-position: 60% 40%;
+  }
+  50% {
+    background-position: 80% 60%;
+  }
+  62.5% {
+    background-position: 60% 80%;
+  }
+  75% {
+    background-position: 40% 70%;
+  }
+  87.5% {
+    background-position: 20% 60%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.moving-gradient {
+  background: linear-gradient(-45deg, 
+    rgba(122, 68, 120, 0.9), 
+    rgba(122, 68, 120, 0.8), 
+    rgba(122, 68, 120, 0.7), 
+    rgba(122, 68, 120, 0.6),
+    rgba(122, 68, 120, 0.5),
+    rgba(122, 68, 120, 0.4),
+    rgba(122, 68, 120, 0.5),
+    rgba(122, 68, 120, 0.6),
+    rgba(122, 68, 120, 0.7),
+    rgba(122, 68, 120, 0.8)
+  );
+  background-size: 400% 400%;
+  animation: gradient-move 15s ease-in-out infinite;
 }

@@ -24,7 +24,7 @@ const Footer = () => {
             <Link to="/" className="flex items-center space-x-3 mb-6 group" data-aos="fade-up">
               <img 
                 src={logoPb} 
-                alt="Acústika Logo" 
+                alt="Acustika Logo" 
                 className="h-16 w-auto group-hover:scale-110 transition-transform duration-300"
               />
             </Link>
@@ -118,7 +118,7 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="border-t border-gray-700 mt-16 pt-8 flex flex-col md:flex-row justify-between items-center" data-aos="fade-up">
           <p className="text-gray-300 text-sm">
-            © 2024 Acústika. Todos os direitos reservados.
+            © 2024 Acustika. Todos os direitos reservados.
           </p>
           <div className="flex space-x-8 mt-4 md:mt-0">
             <a href="#" className="text-gray-300 hover:text-pink-400 text-sm transition-colors hover:underline">

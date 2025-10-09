@@ -1,6 +1,6 @@
-# Estrutura de Imagens - Acústika
+# Estrutura de Imagens - Acustika
 
-Esta pasta contém todas as imagens utilizadas no site da Acústika, organizadas por seção para facilitar a manutenção e desenvolvimento.
+Esta pasta contém todas as imagens utilizadas no site da Acustika, organizadas por seção para facilitar a manutenção e desenvolvimento.
 
 ## 📁 Estrutura de Pastas
 

@@ -53,7 +53,7 @@ const ExemploUsoImagens = () => {
             alt="Dona Rita" 
             className="w-12 h-12 rounded-full object-cover"
           />
-          <blockquote>"Os aparelhos comprados na Acústika..."</blockquote>
+          <blockquote>"Os aparelhos comprados na Acustika..."</blockquote>
           <cite>Dona Rita</cite>
         </div>
         {/* Repetir para outros depoimentos */}

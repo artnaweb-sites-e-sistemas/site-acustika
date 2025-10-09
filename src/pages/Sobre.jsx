@@ -6,12 +6,12 @@ const Sobre = () => {
       <div className="container mx-auto px-4 py-16">
         <div className="max-w-4xl mx-auto">
           <h1 className="text-4xl font-bold text-gray-800 mb-8 text-center">
-            Sobre a Acústika
+            Sobre a Acustika
           </h1>
           
           <div className="prose prose-lg mx-auto">
             <p className="text-gray-600 mb-6">
-              A Acústika é uma empresa especializada em soluções auditivas, dedicada a melhorar 
+              A Acustika é uma empresa especializada em soluções auditivas, dedicada a melhorar 
               a qualidade de vida das pessoas através de tecnologia avançada e atendimento 
               personalizado.
             </p>

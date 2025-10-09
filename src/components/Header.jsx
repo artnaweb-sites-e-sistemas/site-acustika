@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import logoNormal from '../assets/images/normal.png';
+import faviconIcon from '../assets/images/favicon.png';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -29,7 +30,7 @@ const Header = () => {
           <Link to="/" className="flex items-center group" data-aos="fade-right">
             <img 
               src={logoNormal} 
-              alt="Acústika Aparelhos Auditivos" 
+              alt="Acustika Aparelhos Auditivos" 
               className="h-12 w-auto group-hover:scale-105 transition-transform duration-300"
             />
           </Link>
@@ -67,28 +68,16 @@ const Header = () => {
             ))}
           </nav>
 
-          {/* CTA Button - Estilo Acústika */}
+          {/* CTA Button - Estilo Acustika */}
           <div className="hidden lg:flex items-center" data-aos="fade-left">
-            <button 
-              className="px-6 py-3 rounded-lg font-semibold hover:shadow-lg transition-all duration-300 flex items-center space-x-2 text-white"
-              style={{ 
-                backgroundColor: '#7a4478',
-                fontFamily: 'system-ui, -apple-system, sans-serif'
-              }}
-              onMouseEnter={(e) => {
-                e.target.style.backgroundColor = '#6a3a68';
-                e.target.style.transform = 'translateY(-1px)';
-              }}
-              onMouseLeave={(e) => {
-                e.target.style.backgroundColor = '#7a4478';
-                e.target.style.transform = 'translateY(0)';
-              }}
-            >
-              <span>Agendar Consulta</span>
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
-            </button>
+            <div className="bth">
+              <button className="elementor-button group">
+                <span className="elementor-button-text">Agendar Consulta</span>
+                <span className="elementor-button-icon group-hover:rotate-0 transition-transform duration-300" style={{ transform: 'rotate(45deg)' }}>
+                  <img src={faviconIcon} alt="Acustika" className="w-4 h-4" />
+                </span>
+              </button>
+            </div>
           </div>
 
           {/* Mobile menu button */}
@@ -156,18 +145,14 @@ const Header = () => {
                 </Link>
               ))}
               <div className="pt-4" data-aos="fade-up" data-aos-delay={navigation.length * 100}>
-                <button 
-                  className="w-full px-6 py-3 rounded-lg font-semibold transition-all duration-300 flex items-center justify-center space-x-2 text-white"
-                  style={{ 
-                    backgroundColor: '#7a4478',
-                    fontFamily: 'system-ui, -apple-system, sans-serif'
-                  }}
-                >
-                  <span>Agendar Consulta</span>
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                  </svg>
-                </button>
+                <div className="bth">
+                  <button className="elementor-button group">
+                    <span className="elementor-button-text">Agendar Consulta</span>
+                    <span className="elementor-button-icon group-hover:rotate-0 transition-transform duration-300" style={{ transform: 'rotate(45deg)' }}>
+                      <img src={faviconIcon} alt="Acustika" className="w-4 h-4" />
+                    </span>
+                  </button>
+                </div>
               </div>
             </nav>
           </div>

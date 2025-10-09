@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import heroImage from '../assets/images/hero/paciente-aparelho-auditivo.png';
-import heroMainImage from '../assets/images/hero-main-image.png';
+import heroMainImage from '../assets/images/hero/paciente-aparelho-auditivo.png';
 import clinicMapImage from '../assets/images/clinic-map-image.png';
 import partnerLogos from '../assets/images/partner-logos.svg';
 import testimonialPhoto from '../assets/images/testimonial-photo.png';
@@ -17,13 +17,14 @@ import visitUsGallery1 from '../assets/images/visit-us-gallery-1.png';
 import visitUsGallery2 from '../assets/images/visit-us-gallery-2.png';
 import visitUsGallery3 from '../assets/images/visit-us-gallery-3.png';
 import visitUsGallery4 from '../assets/images/visit-us-gallery-4.png';
-import visitUsGallery5 from '../assets/images/visit-us-gallery-5.png';
+import faviconIcon from '../assets/images/favicon.png';
 import '../styles/liquid-glass-buttons.css';
 
 const Home = () => {
   // Estado para controlar o carrossel de endereços
   const [currentCardIndex, setCurrentCardIndex] = useState(0);
   const [currentTestimonialCardIndex, setCurrentTestimonialCardIndex] = useState(0);
+  const [showBackToTop, setShowBackToTop] = useState(false);
 
   // Dados dos endereços das unidades
   const locations = [
@@ -74,28 +75,28 @@ const Home = () => {
       id: 1,
       name: "Maria S.",
       role: "Professora aposentada",
-      text: "Voltei a ouvir a voz dos meus netos com clareza. A equipe da Acústika me acompanhou em cada etapa, com paciência e carinho. Recomendo de olhos fechados.",
+      text: "Voltei a ouvir a voz dos meus netos com clareza. A equipe da Acustika me acompanhou em cada etapa, com paciência e carinho. Recomendo de olhos fechados.",
       photo: testimonialPhoto
     },
     {
       id: 2,
       name: "Dona Rita",
       role: "Paciente",
-      text: "Os aparelhos comprados na Acústika sempre foram muito bons, nunca tive nenhum problema com eles. O atendimento é ótimo, sempre gosto muito e fico até com saudades da fonoaudióloga.",
+      text: "Os aparelhos comprados na Acustika sempre foram muito bons, nunca tive nenhum problema com eles. O atendimento é ótimo, sempre gosto muito e fico até com saudades da fonoaudióloga.",
       photo: visitUsGallery1
     },
     {
       id: 3,
       name: "Marlon",
       role: "Paciente",
-      text: "Tenho 38 anos e desde a infância convivi com a falta de audição do ouvido esquerdo, sempre com muita dificuldade para compreender as comunicações, principalmente porque participo de uma banda de música. Faz 6 meses que estou usando o aparelho da Acústika e a minha vida social e a autoestima melhoraram muito.",
+      text: "Tenho 38 anos e desde a infância convivi com a falta de audição do ouvido esquerdo, sempre com muita dificuldade para compreender as comunicações, principalmente porque participo de uma banda de música. Faz 6 meses que estou usando o aparelho da Acustika e a minha vida social e a autoestima melhoraram muito.",
       photo: visitUsGallery2
     },
     {
       id: 4,
       name: "Dona Odete",
       role: "Paciente",
-      text: "Desde que comecei a usar os aparelhos da Acústika a minha vida mudou completamente. Eu participo das coisas, não me sinto mais solitária. Então eu agradeço bastante à Acústika pela forma de vida que está me proporcionando atualmente.",
+      text: "Desde que comecei a usar os aparelhos da Acustika a minha vida mudou completamente. Eu participo das coisas, não me sinto mais solitária. Então eu agradeço bastante à Acustika pela forma de vida que está me proporcionando atualmente.",
       photo: visitUsGallery3
     }
   ];
@@ -110,10 +111,29 @@ const Home = () => {
     setCurrentTestimonialCardIndex((prev) => (prev === testimonialCards.length - 1 ? 0 : prev + 1));
   };
 
+  // Função para voltar ao topo
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
+
+  // Effect para controlar a visibilidade do botão back to top
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.pageYOffset;
+      setShowBackToTop(scrollTop > 300);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section - Background Animado Inspirado */}
-      <section className="relative overflow-hidden" style={{ height: '465px' }}>
+      <section className="relative overflow-hidden" style={{ height: '600px' }}>
         {/* Background com gradiente moderno inspirado no 21st.dev */}
         <div 
           className="absolute inset-0"
@@ -190,10 +210,10 @@ const Home = () => {
                     if (particle.y < 0) particle.y = canvas.height;
                     if (particle.y > canvas.height) particle.y = 0;
                     
-                    // Desenhar partícula com cores que combinam com o gradiente da Acústika
+                    // Desenhar partícula com cores que combinam com o gradiente da Acustika
                     const colors = [
-                      `rgba(122, 68, 120, ${opacity})`, // Roxo Acústika
-                      `rgba(100, 160, 160, ${opacity})`, // Turquesa Acústika
+                      `rgba(122, 68, 120, ${opacity})`, // Roxo Acustika
+                      `rgba(100, 160, 160, ${opacity})`, // Turquesa Acustika
                       `rgba(106, 58, 104, ${opacity})`, // Roxo escuro
                       `rgba(84, 144, 144, ${opacity})`  // Turquesa escuro
                     ];
@@ -225,25 +245,25 @@ const Home = () => {
           />
         </div>
         
-        {/* Elementos decorativos com cores harmoniosas da Acústika */}
-        <div className="absolute top-20 right-20 w-32 h-32 bg-gradient-to-br from-acustika-purple/20 to-acustika-teal/20 rounded-full blur-3xl animate-pulse" style={{ zIndex: 2 }}></div>
-        <div className="absolute bottom-20 left-20 w-40 h-40 bg-gradient-to-br from-acustika-teal/15 to-acustika-purple/15 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s', zIndex: 2 }}></div>
-        <div className="absolute top-1/2 right-1/3 w-24 h-24 bg-gradient-to-br from-acustika-purple/20 to-acustika-teal/20 rounded-full blur-2xl animate-pulse" style={{ animationDelay: '2s', zIndex: 2 }}></div>
+        {/* Elementos decorativos com cores harmoniosas da Acustika */}
+        <div className="absolute top-20 right-20 w-40 h-40 bg-gradient-to-br from-acustika-purple/35 to-acustika-teal/35 rounded-full blur-3xl animate-pulse" style={{ zIndex: 2 }}></div>
+        <div className="absolute bottom-20 left-20 w-48 h-48 bg-gradient-to-br from-acustika-teal/30 to-acustika-purple/30 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s', zIndex: 2 }}></div>
+        <div className="absolute top-1/2 right-1/3 w-32 h-32 bg-gradient-to-br from-acustika-purple/35 to-acustika-teal/35 rounded-full blur-2xl animate-pulse" style={{ animationDelay: '2s', zIndex: 2 }}></div>
         
-        {/* Radial accent com cores harmoniosas da Acústika */}
-        <div className="absolute left-1/2 top-[calc(100%-90px)] h-[300px] w-[400px] md:h-[400px] md:w-[600px] -translate-x-1/2 rounded-full bg-gradient-to-r from-acustika-purple/8 via-acustika-teal/8 to-acustika-purple/8 blur-3xl animate-pulse" style={{ animationDelay: '3s', zIndex: 2 }}></div>
+        {/* Radial accent com cores harmoniosas da Acustika */}
+        <div className="absolute left-1/2 top-[calc(100%-90px)] h-[300px] w-[400px] md:h-[400px] md:w-[600px] -translate-x-1/2 rounded-full bg-gradient-to-r from-acustika-purple/15 via-acustika-teal/15 to-acustika-purple/15 blur-3xl animate-pulse" style={{ animationDelay: '3s', zIndex: 2 }}></div>
         
         {/* Overlay sutil para profundidade */}
         <div className="absolute inset-0 bg-gradient-to-t from-white/10 via-transparent to-white/5" style={{ zIndex: 3 }}></div>
                
-        <div className="relative container mx-auto px-4 md:px-6 lg:px-8 xl:px-12 pt-8 pb-8" style={{ zIndex: 10 }}>
+        <div className="relative container mx-auto px-4 md:px-6 lg:px-8 xl:px-12 pt-8 pb-0 h-full" style={{ zIndex: 10 }}>
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center h-full">
             
             {/* Coluna Esquerda: Conteúdo */}
-            <div className="text-center lg:text-left space-y-6">
+            <div className="text-center lg:text-left space-y-6 flex flex-col justify-center h-full order-1 lg:order-first">
               {/* Badge moderno */}
               <div 
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 backdrop-blur-sm border border-gray-200/50 shadow-sm"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 backdrop-blur-sm border border-gray-200/50 shadow-sm w-fit mx-auto lg:mx-0"
                  data-aos="fade-up"
                 data-aos-delay="100"
               >
@@ -301,9 +321,9 @@ const Home = () => {
                   opacity: '0.8'
                 }}
               >
-                <div className="flex text-yellow-400">
+                <div className="flex text-gray-900">
                   {[...Array(5)].map((_, i) => (
-                    <i key={i} className="fas fa-star text-yellow-400"></i>
+                    <i key={i} className="fas fa-star text-gray-900"></i>
                   ))}
                 </div>
                 <span className="text-gray-600">5,0 no Google Reviews</span>
@@ -322,14 +342,14 @@ const Home = () => {
                   <span className="text-gray-700 font-medium" style={{ fontFamily: 'Karla, sans-serif', fontSize: '14px' }}>Exames</span>
                 </div>
                 <div className="flex items-center gap-3 px-3 py-2 rounded-lg bg-white/50 backdrop-blur-sm border border-gray-200/30">
-                  <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-purple-500/10 to-purple-600/20 flex items-center justify-center">
-                    <i className="fas fa-cog text-purple-600"></i>
+                  <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ backgroundColor: '#7e4078' }}>
+                    <i className="fas fa-cog text-white"></i>
                   </div>
                   <span className="text-gray-700 font-medium" style={{ fontFamily: 'Karla, sans-serif', fontSize: '14px' }}>Ajustes</span>
                 </div>
                 <div className="flex items-center gap-3 px-3 py-2 rounded-lg bg-white/50 backdrop-blur-sm border border-gray-200/30">
-                  <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-teal-500/10 to-teal-600/20 flex items-center justify-center">
-                    <i className="fas fa-comments text-teal-600"></i>
+                  <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ backgroundColor: '#64a0a0' }}>
+                    <i className="fas fa-comments text-white"></i>
                   </div>
                   <span className="text-gray-700 font-medium" style={{ fontFamily: 'Karla, sans-serif', fontSize: '14px' }}>Atendimento humanizado</span>
                 </div>
@@ -344,8 +364,8 @@ const Home = () => {
                 <div className="bth">
                   <button className="elementor-button group">
                     <span className="elementor-button-text">Agende sua consulta gratuita</span>
-                    <span className="elementor-button-icon group-hover:rotate-45 transition-transform duration-300">
-                      <i className="fab fa-whatsapp"></i>
+                    <span className="elementor-button-icon group-hover:rotate-0 transition-transform duration-300" style={{ transform: 'rotate(45deg)' }}>
+                      <img src={faviconIcon} alt="Acustika" className="w-4 h-4" />
                     </span>
                   </button>
                 </div>
@@ -354,22 +374,18 @@ const Home = () => {
               
             {/* Coluna Direita: Imagem Principal */}
             <div 
-              className="relative order-first lg:order-last"
+              className="relative order-2 lg:order-last h-full flex items-end justify-center hidden lg:flex"
               data-aos="fade-left"
               data-aos-delay="400"
             >
-              <div className="flex justify-center">
-                <div className="relative">
-                  {/* Imagem principal com efeito moderno */}
-                  <div className="relative">
-                    <img 
-                      src={heroMainImage} 
-                      alt="Paciente usando aparelho auditivo" 
-                      className="w-[350px] h-[350px] rounded-full object-cover shadow-2xl ring-4 ring-white/20"
-                    />
-                    {/* Gradiente overlay sutil */}
-                    <div className="absolute inset-0 rounded-full bg-gradient-to-br from-blue-500/5 via-transparent to-purple-500/5"></div>
-                  </div>
+              <div className="relative">
+                {/* Imagem principal com efeito moderno */}
+                <div className="relative hero-image-container">
+                  <img 
+                    src={heroMainImage} 
+                    alt="Paciente usando aparelho auditivo" 
+                    className="w-[250px] h-[250px] lg:w-[550px] lg:h-[550px] object-cover"
+                  />
                 </div>
               </div>
             </div>
@@ -394,7 +410,7 @@ const Home = () => {
                   lineHeight: '1.2'
                 }}
               >
-                Somos uma clínica de aparelhos auditivos dedicada a melhorar sua qualidade de vida.
+                Somos uma clínica de aparelhos auditivos dedicada a <span style={{ color: '#794376' }}>melhorar sua qualidade de vida</span>.
               </h2>
               
               {/* Description */}
@@ -412,7 +428,7 @@ const Home = () => {
                     lineHeight: '1.4'
                   }}
                 >
-                  A Acústika Aparelhos Auditivos se dedica a fornecer serviços de reabilitação auditiva acessíveis e de qualidade para a comunidade, com foco no cuidado preventivo e humanizado.
+                  A Acustika Aparelhos Auditivos se dedica a fornecer serviços de reabilitação auditiva acessíveis e de qualidade para a comunidade, com foco no cuidado preventivo e humanizado.
                 </p>
                 
                 <p 
@@ -451,7 +467,7 @@ const Home = () => {
               {/* Botões de Navegação */}
               <button
                 onClick={prevCard}
-                className="absolute -left-6 top-1/2 transform -translate-y-1/2 z-20 bg-white/90 hover:bg-white rounded-full p-3 shadow-lg transition-all duration-300 hover:scale-110"
+                className="absolute left-2 lg:-left-6 top-1/2 transform -translate-y-1/2 z-20 bg-white/90 hover:bg-white rounded-full p-3 shadow-lg transition-all duration-300 hover:scale-110"
                 aria-label="Card anterior"
               >
                 <i className="fas fa-chevron-left text-gray-600"></i>
@@ -459,7 +475,7 @@ const Home = () => {
               
               <button
                 onClick={nextCard}
-                className="absolute -right-6 top-1/2 transform -translate-y-1/2 z-20 bg-white/90 hover:bg-white rounded-full p-3 shadow-lg transition-all duration-300 hover:scale-110"
+                className="absolute right-2 lg:-right-6 top-1/2 transform -translate-y-1/2 z-20 bg-white/90 hover:bg-white rounded-full p-3 shadow-lg transition-all duration-300 hover:scale-110"
                 aria-label="Próximo card"
               >
                 <i className="fas fa-chevron-right text-gray-600"></i>
@@ -503,9 +519,11 @@ const Home = () => {
                       >
                         5,0
                       </span>
-                      <svg className="w-5 h-5 text-yellow-400 fill-current" viewBox="0 0 20 20">
-                        <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
-                   </svg>
+                      <div className="flex text-yellow-400">
+                        {[...Array(5)].map((_, i) => (
+                          <i key={i} className="fas fa-star text-yellow-400"></i>
+                        ))}
+                      </div>
                       <span 
                         className="text-gray-900"
                         style={{ 
@@ -595,7 +613,7 @@ const Home = () => {
                 <div className="flex-shrink-0 mr-24 opacity-75 hover:opacity-100 transition-opacity duration-300">
                   <img 
                     src={partnerLogos} 
-                    alt="Parceiros e marcas da Acústika" 
+                    alt="Parceiros e marcas da Acustika" 
                     className="h-16 md:h-20 w-auto"
                   />
             </div>
@@ -603,7 +621,7 @@ const Home = () => {
                 <div className="flex-shrink-0 mr-24 opacity-75 hover:opacity-100 transition-opacity duration-300">
                   <img 
                     src={partnerLogos} 
-                    alt="Parceiros e marcas da Acústika" 
+                    alt="Parceiros e marcas da Acustika" 
                     className="h-16 md:h-20 w-auto"
                   />
           </div>
@@ -611,7 +629,7 @@ const Home = () => {
                 <div className="flex-shrink-0 mr-24 opacity-75 hover:opacity-100 transition-opacity duration-300">
                   <img 
                     src={partnerLogos} 
-                    alt="Parceiros e marcas da Acústika" 
+                    alt="Parceiros e marcas da Acustika" 
                     className="h-16 md:h-20 w-auto"
                   />
         </div>
@@ -627,24 +645,22 @@ const Home = () => {
               {/* Botões de Navegação */}
               <button
                 onClick={prevTestimonialCard}
-                className="absolute -left-6 top-1/2 transform -translate-y-1/2 z-20 bg-white/90 hover:bg-white rounded-full p-3 shadow-lg transition-all duration-300 hover:scale-110"
+                className="absolute left-2 lg:-left-6 top-1/2 transform -translate-y-1/2 z-20 bg-white/90 hover:bg-white rounded-full p-3 shadow-lg transition-all duration-300 hover:scale-110"
                 aria-label="Depoimento anterior"
               >
-                <svg className="w-6 h-6 text-gray-600" fill="currentColor" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                </svg>
+                <i className="fas fa-chevron-left text-gray-600 text-lg"></i>
               </button>
               
               <button
                 onClick={nextTestimonialCard}
-                className="absolute -right-6 top-1/2 transform -translate-y-1/2 z-20 bg-white/90 hover:bg-white rounded-full p-3 shadow-lg transition-all duration-300 hover:scale-110"
+                className="absolute right-2 lg:-right-6 top-1/2 transform -translate-y-1/2 z-20 bg-white/90 hover:bg-white rounded-full p-3 shadow-lg transition-all duration-300 hover:scale-110"
                 aria-label="Próximo depoimento"
               >
-                <i className="fas fa-chevron-right text-gray-600"></i>
+                <i className="fas fa-chevron-right text-gray-600 text-lg"></i>
               </button>
 
               <div className="bg-gradient-to-b from-white to-white/30 border border-white/20 rounded-xl overflow-hidden shadow-lg">
-                <div className="flex flex-col lg:flex-row items-center gap-20 p-16 transition-all duration-500 ease-in-out">
+                <div className="flex flex-col lg:flex-row items-center gap-20 p-8 lg:p-16 transition-all duration-500 ease-in-out">
                   {/* Testimonial Photo */}
                   <div className="flex-shrink-0 w-full lg:w-[410px] h-[348px] lg:h-auto">
                     <img 
@@ -751,6 +767,16 @@ const Home = () => {
               >
                 Tecnologia que se adapta ao seu estilo de vida.
             </h2>
+            
+            {/* Divisor com ícone da logo */}
+            <div className="flex justify-center mb-8" data-aos="fade-up" data-aos-delay="100">
+              <div className="flex items-center space-x-4">
+                <div className="h-px bg-gray-300 w-16"></div>
+                <img src={faviconIcon} alt="Acustika" className="w-6 h-6 opacity-60" />
+                <div className="h-px bg-gray-300 w-16"></div>
+              </div>
+            </div>
+            
             <div 
               className="max-w-4xl mx-auto"
               data-aos="fade-up"
@@ -765,7 +791,7 @@ const Home = () => {
                     lineHeight: '1.4'
                   }}
                 >
-                  Na Acústika, você encontra aparelhos auditivos modernos, discretos e confortáveis. Oferecemos desde modelos quase invisíveis até soluções recarregáveis de última geração, sempre com adaptação personalizada e acompanhamento contínuo.
+                  Na Acustika, você encontra aparelhos auditivos modernos, discretos e confortáveis. Oferecemos desde modelos quase invisíveis até soluções recarregáveis de última geração, sempre com adaptação personalizada e acompanhamento contínuo.
                 </p>
               </div>
           </div>
@@ -774,9 +800,10 @@ const Home = () => {
             <div className="grid md:grid-cols-3 gap-10 mb-16">
               {/* Card 1 - Geral e Preventivo */}
             <div 
-                className="bg-gradient-to-b from-white to-white/30 border border-white/20 rounded-xl overflow-hidden shadow-lg"
+                className="service-card bg-gradient-to-b from-white to-white/30 border border-white/20 rounded-xl overflow-hidden shadow-lg"
               data-aos="fade-up"
               data-aos-delay="100"
+              onClick={() => window.open('/servicos', '_self')}
             >
                 {/* Imagem */}
                 <div className="h-48 overflow-hidden">
@@ -816,9 +843,10 @@ const Home = () => {
             
               {/* Card 2 - Restaurador */}
             <div 
-                className="bg-gradient-to-b from-white to-white/30 border border-white/20 rounded-xl overflow-hidden shadow-lg"
+                className="service-card bg-gradient-to-b from-white to-white/30 border border-white/20 rounded-xl overflow-hidden shadow-lg"
               data-aos="fade-up"
               data-aos-delay="200"
+              onClick={() => window.open('/servicos', '_self')}
             >
                 {/* Imagem */}
                 <div className="h-48 overflow-hidden">
@@ -858,10 +886,11 @@ const Home = () => {
             
               {/* Card 3 - Cosmético */}
             <div 
-                className="bg-gradient-to-b from-white to-white/30 border border-white/20 rounded-xl overflow-hidden shadow-lg"
+                className="service-card bg-gradient-to-b from-white to-white/30 border border-white/20 rounded-xl overflow-hidden shadow-lg"
               data-aos="fade-up"
-                data-aos-delay="300"
-              >
+              data-aos-delay="300"
+              onClick={() => window.open('/servicos', '_self')}
+            >
                 {/* Imagem */}
                 <div className="h-48 overflow-hidden">
                   <img 
@@ -914,8 +943,8 @@ const Home = () => {
         </div>
       </section>
 
-       {/* Por que Escolher a Acústika Section */}
-       <section className="py-16 md:py-20 bg-white">
+       {/* Por que Escolher a Acustika Section */}
+       <section className="pt-16 md:pt-20 bg-white">
         <div className="container mx-auto px-4 md:px-6 lg:px-8 xl:px-12">
           <div className="max-w-7xl mx-auto">
             {/* Título Principal */}
@@ -930,31 +959,39 @@ const Home = () => {
                   lineHeight: '1.2'
                 }}
               >
-                Há uma razão pela qual os pacientes nos escolhem como sua clínica auditiva preferida.
+                Por que escolhem a Acustika?
             </h2>
-          </div>
+            
+            {/* Divisor com ícone da logo */}
+            <div className="flex justify-center mb-12" data-aos="fade-up" data-aos-delay="100">
+              <div className="flex items-center space-x-4">
+                <div className="h-px bg-gray-300 w-16"></div>
+                <img src={faviconIcon} alt="Acustika" className="w-6 h-6 opacity-60" />
+                <div className="h-px bg-gray-300 w-16"></div>
+              </div>
+            </div>
           
              {/* Cards de Motivos */}
              <div className="bg-gradient-to-br from-gray-50 to-white rounded-2xl p-12 shadow-sm border border-gray-100">
               <div className="grid lg:grid-cols-2 gap-20">
                 {/* Coluna Esquerda */}
-                <div className="space-y-20">
+                <div className="space-y-12 lg:space-y-20">
                 {/* Card 1 - Família */}
                 <div 
-                  className="flex gap-6"
+                  className="flex flex-col lg:flex-row gap-6 items-center lg:items-start text-center lg:text-left"
               data-aos="fade-up"
               data-aos-delay="100"
             >
                   {/* Ícone */}
                   <div className="flex-shrink-0 relative">
                     <div 
-                      className="w-32 h-32 rounded-xl flex items-center justify-center"
+                      className="w-20 h-20 lg:w-32 lg:h-32 rounded-xl flex items-center justify-center"
                        style={{
                          background: 'linear-gradient(135deg, rgba(122, 68, 120, 0.1) 0%, rgba(100, 160, 160, 0.3) 100%)',
                          border: '1px solid rgba(122, 68, 120, 0.2)'
                        }}
                     >
-                       <i className="fas fa-users text-acustika-purple text-6xl"></i>
+                       <i className="fas fa-users text-acustika-purple text-4xl lg:text-6xl"></i>
                 </div>
                      {/* Badge de check */}
                      <div className="absolute -top-2 -right-2 w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-sm border border-gray-200">
@@ -991,20 +1028,20 @@ const Home = () => {
             
                 {/* Card 2 - Tecnologia */}
             <div 
-                  className="flex gap-6"
+                  className="flex flex-col lg:flex-row gap-6 items-center lg:items-start text-center lg:text-left"
               data-aos="fade-up"
               data-aos-delay="200"
             >
                   {/* Ícone */}
                   <div className="flex-shrink-0 relative">
                     <div 
-                      className="w-32 h-32 rounded-xl flex items-center justify-center"
+                      className="w-20 h-20 lg:w-32 lg:h-32 rounded-xl flex items-center justify-center"
                        style={{
                          background: 'linear-gradient(135deg, rgba(122, 68, 120, 0.1) 0%, rgba(100, 160, 160, 0.3) 100%)',
                          border: '1px solid rgba(122, 68, 120, 0.2)'
                        }}
                     >
-                       <i className="fas fa-stethoscope text-acustika-purple text-6xl"></i>
+                       <i className="fas fa-stethoscope text-acustika-purple text-4xl lg:text-6xl"></i>
                 </div>
                      {/* Badge de check */}
                      <div className="absolute -top-2 -right-2 w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-sm border border-gray-200">
@@ -1041,23 +1078,23 @@ const Home = () => {
             </div>
             
               {/* Coluna Direita */}
-              <div className="space-y-20">
+              <div className="space-y-12 lg:space-y-20">
                 {/* Card 3 - Conforto */}
             <div 
-                  className="flex gap-6"
+                  className="flex flex-col lg:flex-row gap-6 items-center lg:items-start text-center lg:text-left"
               data-aos="fade-up"
               data-aos-delay="300"
             >
                   {/* Ícone */}
                   <div className="flex-shrink-0 relative">
                     <div 
-                      className="w-32 h-32 rounded-xl flex items-center justify-center"
+                      className="w-20 h-20 lg:w-32 lg:h-32 rounded-xl flex items-center justify-center"
                        style={{
                          background: 'linear-gradient(135deg, rgba(122, 68, 120, 0.1) 0%, rgba(100, 160, 160, 0.3) 100%)',
                          border: '1px solid rgba(122, 68, 120, 0.2)'
                        }}
                     >
-                       <i className="fas fa-star text-acustika-purple text-6xl"></i>
+                       <i className="fas fa-star text-acustika-purple text-4xl lg:text-6xl"></i>
                 </div>
                      {/* Badge de check */}
                      <div className="absolute -top-2 -right-2 w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-sm border border-gray-200">
@@ -1094,20 +1131,20 @@ const Home = () => {
           
                 {/* Card 4 - Idiomas */}
                 <div 
-                  className="flex gap-6"
+                  className="flex flex-col lg:flex-row gap-6 items-center lg:items-start text-center lg:text-left"
               data-aos="fade-up"
               data-aos-delay="400"
             >
                   {/* Ícone */}
                   <div className="flex-shrink-0 relative">
                     <div 
-                      className="w-32 h-32 rounded-xl flex items-center justify-center"
+                      className="w-20 h-20 lg:w-32 lg:h-32 rounded-xl flex items-center justify-center"
                        style={{
                          background: 'linear-gradient(135deg, rgba(122, 68, 120, 0.1) 0%, rgba(100, 160, 160, 0.3) 100%)',
                          border: '1px solid rgba(122, 68, 120, 0.2)'
                        }}
                     >
-                       <svg className="w-16 h-16 text-acustika-purple" fill="currentColor" viewBox="0 0 24 24">
+                       <svg className="w-12 h-12 lg:w-16 lg:h-16 text-acustika-purple" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M12.87 15.07l-2.54-2.51.03-.03c1.74-1.94 2.98-4.17 3.71-6.53H17V4h-7V2H8v2H1v1.99h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z"/>
                       </svg>
                     </div>
@@ -1141,14 +1178,14 @@ const Home = () => {
                     >
                       Somos capazes de nos comunicar fluentemente com pacientes que falam português, inglês, espanhol e italiano.
                     </p>
-                      </div>
-                    </div>
-                    </div>
-                  </div>
                   </div>
                 </div>
+              </div>
+            </div>
+          </div>
         </div>
-      </section>
+      </div>
+      </div>
       
       {/* Somos Amigáveis com Crianças Section */}
       <section className="relative py-0 overflow-hidden">
@@ -1201,6 +1238,15 @@ const Home = () => {
                   >
                     Somos Amigáveis com Crianças!
             </h2>
+            
+            {/* Divisor com ícone da logo */}
+            <div className="flex justify-center mb-8" data-aos="fade-up" data-aos-delay="100">
+              <div className="flex items-center space-x-4">
+                <div className="h-px bg-gray-300 w-16"></div>
+                <img src={faviconIcon} alt="Acustika" className="w-6 h-6 opacity-60" />
+                <div className="h-px bg-gray-300 w-16"></div>
+              </div>
+            </div>
                   
                   {/* Descrição */}
                   <p 
@@ -1248,87 +1294,6 @@ const Home = () => {
           }}
         />
         
-        {/* Canvas para partículas sutis */}
-        <canvas 
-          className="absolute inset-0 w-full h-full opacity-30"
-          style={{ zIndex: 1 }}
-          ref={(canvas) => {
-            if (canvas) {
-              const ctx = canvas.getContext('2d');
-              if (ctx) {
-                const resizeCanvas = () => {
-                  canvas.width = canvas.offsetWidth;
-                  canvas.height = canvas.offsetHeight;
-                };
-                
-                resizeCanvas();
-                window.addEventListener('resize', resizeCanvas);
-                
-                // Configurações das partículas mais sutis
-                const particles = [];
-                const particleCount = 80;
-                
-                // Criar partículas
-                for (let i = 0; i < particleCount; i++) {
-                  particles.push({
-                    x: Math.random() * canvas.width,
-                    y: Math.random() * canvas.height,
-                    size: Math.random() * 2 + 0.5,
-                    speedX: (Math.random() - 0.5) * 0.3,
-                    speedY: (Math.random() - 0.5) * 0.3,
-                    opacity: Math.random() * 0.2 + 0.1,
-                    life: Math.random() * 100,
-                    maxLife: 100 + Math.random() * 50
-                  });
-                }
-                
-                // Função de animação
-                const animate = () => {
-                  ctx.clearRect(0, 0, canvas.width, canvas.height);
-                  
-                  particles.forEach(particle => {
-                    // Atualizar vida da partícula
-                    particle.life += 0.3;
-                    if (particle.life > particle.maxLife) {
-                      particle.life = 0;
-                      particle.x = Math.random() * canvas.width;
-                      particle.y = Math.random() * canvas.height;
-                    }
-                    
-                    // Calcular opacidade baseada na vida
-                    const lifeRatio = particle.life / particle.maxLife;
-                    const opacity = Math.sin(lifeRatio * Math.PI) * particle.opacity;
-                    
-                    // Movimento suave
-                    const time = Date.now() * 0.00005;
-                    particle.x += particle.speedX + Math.sin(time + particle.y * 0.005) * 0.05;
-                    particle.y += particle.speedY + Math.cos(time + particle.x * 0.005) * 0.05;
-                    
-                    // Wrap around edges
-                    if (particle.x < 0) particle.x = canvas.width;
-                    if (particle.x > canvas.width) particle.x = 0;
-                    if (particle.y < 0) particle.y = canvas.height;
-                    if (particle.y > canvas.height) particle.y = 0;
-                    
-                    // Desenhar partícula com cores suaves da Acústika
-                    const colors = [
-                      `rgba(122, 68, 120, ${opacity * 0.6})`, // Roxo Acústika mais suave
-                      `rgba(100, 160, 160, ${opacity * 0.6})`, // Turquesa Acústika mais suave
-                    ];
-                    ctx.fillStyle = colors[Math.floor(Math.random() * colors.length)];
-                    ctx.beginPath();
-                    ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
-                    ctx.fill();
-                  });
-                  
-                  requestAnimationFrame(animate);
-                };
-                
-                animate();
-              }
-            }
-          }}
-        />
         
         {/* Elementos decorativos sutis */}
         <div className="absolute top-10 right-10 w-20 h-20 bg-gradient-to-br from-acustika-purple/10 to-acustika-teal/10 rounded-full blur-2xl animate-pulse" style={{ zIndex: 2 }}></div>
@@ -1339,7 +1304,7 @@ const Home = () => {
           <div className="max-w-7xl mx-auto">
             {/* Card Glassmorphism */}
             <div 
-              className="rounded-tl-[40px] rounded-br-[40px] p-20 backdrop-blur-md"
+              className="rounded-tl-[40px] rounded-br-[40px] p-8 lg:p-20 backdrop-blur-md"
               style={{
                 background: 'linear-gradient(135deg, rgba(122, 68, 120, 0.15) 0%, rgba(100, 160, 160, 0.15) 100%)',
                 border: '1px solid rgba(122, 68, 120, 0.2)',
@@ -1374,7 +1339,7 @@ const Home = () => {
                       lineHeight: '1.4'
                     }}
                   >
-                    A Acústika é referência em saúde auditiva no Brasil. Nossa missão é devolver a clareza dos sons e a qualidade de vida aos nossos pacientes. Com mais de duas décadas de experiência, oferecemos atendimento próximo, personalizado e soluções auditivas das melhores marcas do mercado. Estamos presentes em São Paulo, Florianópolis, São José e cidades vizinhas, sempre com fácil acesso e estrutura acolhedora.
+                    A Acustika é referência em saúde auditiva no Brasil. Nossa missão é devolver a clareza dos sons e a qualidade de vida aos nossos pacientes. Com mais de duas décadas de experiência, oferecemos atendimento próximo, personalizado e soluções auditivas das melhores marcas do mercado. Estamos presentes em São Paulo, Florianópolis, São José e cidades vizinhas, sempre com fácil acesso e estrutura acolhedora.
                   </p>
                   
                   {/* Lista de Benefícios */}
@@ -1568,6 +1533,16 @@ const Home = () => {
               >
                 Cuidado completo para sua audição.
             </h2>
+            
+            {/* Divisor com ícone da logo */}
+            <div className="flex justify-center mb-8" data-aos="fade-up" data-aos-delay="100">
+              <div className="flex items-center space-x-4">
+                <div className="h-px bg-gray-300 w-16"></div>
+                <img src={faviconIcon} alt="Acustika" className="w-6 h-6 opacity-60" />
+                <div className="h-px bg-gray-300 w-16"></div>
+              </div>
+            </div>
+            
               <p 
                 className="text-gray-600 text-lg max-w-3xl mx-auto"
                 data-aos="fade-up"
@@ -1589,9 +1564,9 @@ const Home = () => {
               <div 
                 className="card media-object p-8 shadow-lg"
                 style={{
-                  background: 'linear-gradient(135deg, rgba(220, 38, 127, 0.1) 0%, rgba(220, 38, 127, 0.05) 100%)',
+                  background: 'linear-gradient(135deg, rgba(126, 64, 120, 0.1) 0%, rgba(100, 160, 160, 0.05) 100%)',
                   backdropFilter: 'blur(10px)',
-                  border: '1px solid rgba(220, 38, 127, 0.2)'
+                  border: '1px solid rgba(126, 64, 120, 0.2)'
                 }}
                 data-aos="fade-up"
                 data-aos-delay="300"
@@ -1614,7 +1589,7 @@ const Home = () => {
                       fontWeight: '700',
                       fontSize: '24px',
                       lineHeight: '1.2',
-                      color: '#DC267F'
+                      color: '#7e4078'
                     }}
                   >
                     Serviços
@@ -1623,7 +1598,7 @@ const Home = () => {
                   {/* Lista de Serviços */}
                   <ul className="space-y-3">
                     <li className="flex items-start gap-3">
-                      <div className="flex-shrink-0 w-2 h-2 rounded-full mt-2" style={{ backgroundColor: '#DC267F' }}></div>
+                      <div className="flex-shrink-0 w-2 h-2 rounded-full mt-2" style={{ backgroundColor: '#7e4078' }}></div>
                       <span 
                         className="text-gray-700"
                         style={{ 
@@ -1637,7 +1612,7 @@ const Home = () => {
                       </span>
                     </li>
                     <li className="flex items-start gap-3">
-                      <div className="flex-shrink-0 w-2 h-2 rounded-full mt-2" style={{ backgroundColor: '#64a0a0' }}></div>
+                      <div className="flex-shrink-0 w-2 h-2 rounded-full mt-2" style={{ backgroundColor: '#7e4078' }}></div>
                       <span 
                         className="text-gray-700"
                         style={{ 
@@ -1651,7 +1626,7 @@ const Home = () => {
                       </span>
                     </li>
                     <li className="flex items-start gap-3">
-                      <div className="flex-shrink-0 w-2 h-2 rounded-full mt-2" style={{ backgroundColor: '#64a0a0' }}></div>
+                      <div className="flex-shrink-0 w-2 h-2 rounded-full mt-2" style={{ backgroundColor: '#7e4078' }}></div>
                       <span 
                         className="text-gray-700"
                         style={{ 
@@ -1665,7 +1640,7 @@ const Home = () => {
                       </span>
                     </li>
                     <li className="flex items-start gap-3">
-                      <div className="flex-shrink-0 w-2 h-2 rounded-full mt-2" style={{ backgroundColor: '#64a0a0' }}></div>
+                      <div className="flex-shrink-0 w-2 h-2 rounded-full mt-2" style={{ backgroundColor: '#7e4078' }}></div>
                       <span 
                         className="text-gray-700"
                         style={{ 
@@ -1679,7 +1654,7 @@ const Home = () => {
                       </span>
                     </li>
                     <li className="flex items-start gap-3">
-                      <div className="flex-shrink-0 w-2 h-2 rounded-full mt-2" style={{ backgroundColor: '#64a0a0' }}></div>
+                      <div className="flex-shrink-0 w-2 h-2 rounded-full mt-2" style={{ backgroundColor: '#7e4078' }}></div>
                       <span 
                         className="text-gray-700"
                         style={{ 
@@ -1693,7 +1668,7 @@ const Home = () => {
                       </span>
                     </li>
                     <li className="flex items-start gap-3">
-                      <div className="flex-shrink-0 w-2 h-2 rounded-full mt-2" style={{ backgroundColor: '#64a0a0' }}></div>
+                      <div className="flex-shrink-0 w-2 h-2 rounded-full mt-2" style={{ backgroundColor: '#7e4078' }}></div>
                       <span 
                         className="text-gray-700"
                         style={{ 
@@ -1707,7 +1682,7 @@ const Home = () => {
                       </span>
                     </li>
                     <li className="flex items-start gap-3">
-                      <div className="flex-shrink-0 w-2 h-2 rounded-full mt-2" style={{ backgroundColor: '#64a0a0' }}></div>
+                      <div className="flex-shrink-0 w-2 h-2 rounded-full mt-2" style={{ backgroundColor: '#7e4078' }}></div>
                       <span 
                         className="text-gray-700"
                         style={{ 
@@ -1721,7 +1696,7 @@ const Home = () => {
                       </span>
                     </li>
                     <li className="flex items-start gap-3">
-                      <div className="flex-shrink-0 w-2 h-2 rounded-full mt-2" style={{ backgroundColor: '#64a0a0' }}></div>
+                      <div className="flex-shrink-0 w-2 h-2 rounded-full mt-2" style={{ backgroundColor: '#7e4078' }}></div>
                       <span 
                         className="text-gray-700"
                         style={{ 
@@ -1742,9 +1717,9 @@ const Home = () => {
               <div 
                 className="card media-object p-8 shadow-lg"
                 style={{
-                  background: 'linear-gradient(135deg, rgba(100, 160, 160, 0.15) 0%, rgba(100, 160, 160, 0.08) 100%)',
+                  background: 'linear-gradient(135deg, rgba(100, 160, 160, 0.1) 0%, rgba(126, 64, 120, 0.05) 100%)',
                   backdropFilter: 'blur(10px)',
-                  border: '1px solid rgba(100, 160, 160, 0.3)'
+                  border: '1px solid rgba(100, 160, 160, 0.2)'
                 }}
                 data-aos="fade-up"
                 data-aos-delay="400"
@@ -1776,7 +1751,7 @@ const Home = () => {
                   {/* Lista de Exames */}
                   <ul className="space-y-3">
                     <li className="flex items-start gap-3">
-                      <div className="flex-shrink-0 w-2 h-2 rounded-full mt-2" style={{ backgroundColor: '#64a0a0' }}></div>
+                      <div className="flex-shrink-0 w-2 h-2 rounded-full mt-2" style={{ backgroundColor: '#7e4078' }}></div>
                       <span 
                         className="text-gray-700"
                         style={{ 
@@ -1790,7 +1765,7 @@ const Home = () => {
                       </span>
                     </li>
                     <li className="flex items-start gap-3">
-                      <div className="flex-shrink-0 w-2 h-2 rounded-full mt-2" style={{ backgroundColor: '#64a0a0' }}></div>
+                      <div className="flex-shrink-0 w-2 h-2 rounded-full mt-2" style={{ backgroundColor: '#7e4078' }}></div>
                       <span 
                         className="text-gray-700"
                         style={{ 
@@ -1804,7 +1779,7 @@ const Home = () => {
                       </span>
                     </li>
                     <li className="flex items-start gap-3">
-                      <div className="flex-shrink-0 w-2 h-2 rounded-full mt-2" style={{ backgroundColor: '#64a0a0' }}></div>
+                      <div className="flex-shrink-0 w-2 h-2 rounded-full mt-2" style={{ backgroundColor: '#7e4078' }}></div>
                       <span 
                         className="text-gray-700"
                         style={{ 
@@ -1818,7 +1793,7 @@ const Home = () => {
                       </span>
                     </li>
                     <li className="flex items-start gap-3">
-                      <div className="flex-shrink-0 w-2 h-2 rounded-full mt-2" style={{ backgroundColor: '#64a0a0' }}></div>
+                      <div className="flex-shrink-0 w-2 h-2 rounded-full mt-2" style={{ backgroundColor: '#7e4078' }}></div>
                       <span 
                         className="text-gray-700"
                         style={{ 
@@ -1832,7 +1807,7 @@ const Home = () => {
                       </span>
                     </li>
                     <li className="flex items-start gap-3">
-                      <div className="flex-shrink-0 w-2 h-2 rounded-full mt-2" style={{ backgroundColor: '#64a0a0' }}></div>
+                      <div className="flex-shrink-0 w-2 h-2 rounded-full mt-2" style={{ backgroundColor: '#7e4078' }}></div>
                       <span 
                         className="text-gray-700"
                         style={{ 
@@ -1846,7 +1821,7 @@ const Home = () => {
                       </span>
                     </li>
                     <li className="flex items-start gap-3">
-                      <div className="flex-shrink-0 w-2 h-2 rounded-full mt-2" style={{ backgroundColor: '#64a0a0' }}></div>
+                      <div className="flex-shrink-0 w-2 h-2 rounded-full mt-2" style={{ backgroundColor: '#7e4078' }}></div>
                       <span 
                         className="text-gray-700"
                         style={{ 
@@ -1860,7 +1835,7 @@ const Home = () => {
                       </span>
                     </li>
                     <li className="flex items-start gap-3">
-                      <div className="flex-shrink-0 w-2 h-2 rounded-full mt-2" style={{ backgroundColor: '#64a0a0' }}></div>
+                      <div className="flex-shrink-0 w-2 h-2 rounded-full mt-2" style={{ backgroundColor: '#7e4078' }}></div>
                       <span 
                         className="text-gray-700"
                         style={{ 
@@ -1874,7 +1849,7 @@ const Home = () => {
                       </span>
                     </li>
                     <li className="flex items-start gap-3">
-                      <div className="flex-shrink-0 w-2 h-2 rounded-full mt-2" style={{ backgroundColor: '#64a0a0' }}></div>
+                      <div className="flex-shrink-0 w-2 h-2 rounded-full mt-2" style={{ backgroundColor: '#7e4078' }}></div>
                       <span 
                         className="text-gray-700"
                         style={{ 
@@ -1888,7 +1863,7 @@ const Home = () => {
                       </span>
                     </li>
                     <li className="flex items-start gap-3">
-                      <div className="flex-shrink-0 w-2 h-2 rounded-full mt-2" style={{ backgroundColor: '#64a0a0' }}></div>
+                      <div className="flex-shrink-0 w-2 h-2 rounded-full mt-2" style={{ backgroundColor: '#7e4078' }}></div>
                       <span 
                         className="text-gray-700"
                         style={{ 
@@ -1904,14 +1879,15 @@ const Home = () => {
                   </ul>
                   
                   {/* Nota sobre Santa Catarina */}
-                  <div className="mt-6 p-4 bg-red-50 rounded-lg border-l-4 border-red-500">
+                  <div className="mt-6 p-4 rounded-lg border-l-4" style={{ backgroundColor: 'rgba(97, 158, 157, 0.1)', borderColor: '#619e9d' }}>
                     <p 
-                      className="text-red-600 font-medium"
+                      className="font-medium"
                       style={{ 
                         fontFamily: 'Karla, sans-serif',
                         fontWeight: '500',
                         fontSize: '14px',
-                        lineHeight: '1.4'
+                        lineHeight: '1.4',
+                        color: '#619e9d'
                       }}
                     >
                       * Apenas nas unidades de Santa Catarina
@@ -2006,10 +1982,10 @@ const Home = () => {
                     if (particle.y < 0) particle.y = canvas.height;
                     if (particle.y > canvas.height) particle.y = 0;
                     
-                    // Desenhar partícula com cores que combinam com o gradiente da Acústika
+                    // Desenhar partícula com cores que combinam com o gradiente da Acustika
                     const colors = [
-                      `rgba(122, 68, 120, ${opacity})`, // Roxo Acústika
-                      `rgba(100, 160, 160, ${opacity})`, // Turquesa Acústika
+                      `rgba(122, 68, 120, ${opacity})`, // Roxo Acustika
+                      `rgba(100, 160, 160, ${opacity})`, // Turquesa Acustika
                       `rgba(106, 58, 104, ${opacity})`, // Roxo escuro
                       `rgba(84, 144, 144, ${opacity})`  // Turquesa escuro
                     ];
@@ -2041,23 +2017,28 @@ const Home = () => {
           />
         </div>
         
-        {/* Elementos decorativos com cores harmoniosas da Acústika */}
-        <div className="absolute top-20 right-20 w-32 h-32 bg-gradient-to-br from-acustika-purple/20 to-acustika-teal/20 rounded-full blur-3xl animate-pulse" style={{ zIndex: 2 }}></div>
-        <div className="absolute bottom-20 left-20 w-40 h-40 bg-gradient-to-br from-acustika-teal/15 to-acustika-purple/15 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s', zIndex: 2 }}></div>
-        <div className="absolute top-1/2 right-1/3 w-24 h-24 bg-gradient-to-br from-acustika-purple/20 to-acustika-teal/20 rounded-full blur-2xl animate-pulse" style={{ animationDelay: '2s', zIndex: 2 }}></div>
+        {/* Elementos decorativos com cores harmoniosas da Acustika */}
+        <div className="absolute top-20 right-20 w-40 h-40 bg-gradient-to-br from-acustika-purple/35 to-acustika-teal/35 rounded-full blur-3xl animate-pulse" style={{ zIndex: 2 }}></div>
+        <div className="absolute bottom-20 left-20 w-48 h-48 bg-gradient-to-br from-acustika-teal/30 to-acustika-purple/30 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s', zIndex: 2 }}></div>
+        <div className="absolute top-1/2 right-1/3 w-32 h-32 bg-gradient-to-br from-acustika-purple/35 to-acustika-teal/35 rounded-full blur-2xl animate-pulse" style={{ animationDelay: '2s', zIndex: 2 }}></div>
         
-        {/* Radial accent com cores harmoniosas da Acústika */}
-        <div className="absolute left-1/2 top-[calc(100%-90px)] h-[300px] w-[400px] md:h-[400px] md:w-[600px] -translate-x-1/2 rounded-full bg-gradient-to-r from-acustika-purple/8 via-acustika-teal/8 to-acustika-purple/8 blur-3xl animate-pulse" style={{ animationDelay: '3s', zIndex: 2 }}></div>
+        {/* Radial accent com cores harmoniosas da Acustika */}
+        <div className="absolute left-1/2 top-[calc(100%-90px)] h-[300px] w-[400px] md:h-[400px] md:w-[600px] -translate-x-1/2 rounded-full bg-gradient-to-r from-acustika-purple/15 via-acustika-teal/15 to-acustika-purple/15 blur-3xl animate-pulse" style={{ animationDelay: '3s', zIndex: 2 }}></div>
         
         {/* Overlay sutil para profundidade */}
         <div className="absolute inset-0 bg-gradient-to-t from-white/10 via-transparent to-white/5" style={{ zIndex: 3 }}></div>
         
         <div className="container mx-auto px-4 md:px-6 lg:px-8 xl:px-12 relative" style={{ zIndex: 10 }}>
+          {/* Elementos de luz pulsante */}
+          <div className="absolute top-1/2 left-1/2 w-96 h-96 bg-gradient-to-r from-white/20 to-white/10 rounded-full blur-3xl animate-pulse" style={{ transform: 'translate(-50%, -50%)', animationDuration: '3s', zIndex: 1 }}></div>
+          <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-gradient-to-r from-acustika-purple/30 to-transparent rounded-full blur-2xl animate-pulse" style={{ animationDuration: '4s', animationDelay: '1s', zIndex: 1 }}></div>
+          <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-r from-acustika-teal/25 to-transparent rounded-full blur-3xl animate-pulse" style={{ animationDuration: '5s', animationDelay: '2s', zIndex: 1 }}></div>
+          
           <div 
-             className="rounded-3xl p-12 md:p-16 text-center text-white shadow-2xl backdrop-blur-sm"
+             className="rounded-3xl p-12 md:p-16 text-center text-white shadow-2xl backdrop-blur-sm relative moving-gradient"
              style={{ 
-               background: 'linear-gradient(135deg, rgba(122, 68, 120, 0.8) 0%, rgba(100, 160, 160, 0.8) 100%)',
-               border: '1px solid rgba(255, 255, 255, 0.2)'
+               border: '1px solid rgba(255, 255, 255, 0.2)',
+               zIndex: 2
              }}
             data-aos="zoom-in"
           >
@@ -2087,17 +2068,29 @@ const Home = () => {
               <div className="bth-white">
                 <button className="elementor-button-white">
                   <span className="elementor-button-text">Agendar consulta gratuita</span>
-                  <span className="elementor-button-icon">
+                  <span className="elementor-button-icon group-hover:rotate-0 transition-transform duration-300" style={{ transform: 'rotate(45deg)' }}>
                     <i className="fab fa-whatsapp"></i>
                   </span>
-              </button>
+                </button>
               </div>
             </div>
           </div>
         </div>
       </section>
-    </div>
-  );
+
+      {/* Back to Top Button */}
+      {showBackToTop && (
+        <button
+          onClick={scrollToTop}
+          className="fixed bottom-6 right-6 z-50 w-12 h-12 bg-white/90 backdrop-blur-md border border-white/20 rounded-full shadow-xl hover:shadow-2xl transition-all duration-500 hover:scale-105 active:scale-95 flex items-center justify-center group hover:bg-white"
+          aria-label="Voltar ao topo"
+        >
+          <i className="fas fa-arrow-up text-acustika-purple text-xs group-hover:translate-y-[-1px] transition-all duration-300"></i>
+        </button>
+      )}
+    </section>
+  </div>
+);
 };
 
 export default Home;

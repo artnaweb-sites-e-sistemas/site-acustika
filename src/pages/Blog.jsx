@@ -28,7 +28,7 @@ const Blog = () => {
               className="font-bold text-gray-800 mb-8"
               data-aos="fade-up"
             >
-              Blog <span className="text-gradient">Acústika</span>
+              Blog <span className="text-gradient">Acustika</span>
             </h1>
             <p 
               className="text-xl md:text-2xl text-gray-600 mb-12 leading-relaxed"
