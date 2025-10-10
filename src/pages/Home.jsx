@@ -1,23 +1,39 @@
 import React, { useState, useEffect } from 'react';
-import heroImage from '../assets/images/hero/paciente-aparelho-auditivo.png';
-import heroMainImage from '../assets/images/hero/paciente-aparelho-auditivo.png';
-import clinicMapImage from '../assets/images/clinic-map-image.png';
-import partnerLogos from '../assets/images/partner-logos.svg';
-import testimonialPhoto from '../assets/images/testimonial-photo.png';
-import serviceGeneral from '../assets/images/service-general.png';
-import serviceRestorative from '../assets/images/service-restorative.png';
-import serviceCosmetic from '../assets/images/service-cosmetic.png';
-import kidsFriendlyBg from '../assets/images/kids-friendly-bg.png';
-import dentistryDoneRightBg from '../assets/images/dentistry-done-right-bg.png';
-import dentistryDoneRightMain from '../assets/images/dentistry-done-right-main.png';
-import dentistryDoneRightFloating from '../assets/images/dentistry-done-right-floating.png';
-import video1 from '../assets/images/video_1.mp4';
-import visitUsLocationBg from '../assets/images/visit-us-location-bg.png';
-import visitUsGallery1 from '../assets/images/visit-us-gallery-1.png';
-import visitUsGallery2 from '../assets/images/visit-us-gallery-2.png';
-import visitUsGallery3 from '../assets/images/visit-us-gallery-3.png';
-import visitUsGallery4 from '../assets/images/visit-us-gallery-4.png';
+import heroImage from '../assets/images/hero/hero-main.png';
+import heroMainImage from '../assets/images/hero/hero-main.png';
+import clinicMapImage from '../assets/images/clinic-map.jpg';
+import partnerLogos from '../assets/images/partners.webp';
+import testimonialPhoto from '../assets/images/testimonial-photo.jpg';
+import serviceGeneral from '../assets/images/service-general.jpg';
+import serviceRestorative from '../assets/images/service-restorative.jpg';
+import serviceCosmetic from '../assets/images/service-cosmetic.jpg';
+import kidsFriendlyBg from '../assets/images/fotobg5_optimized.jpg';
+import dentistryDoneRightBg from '../assets/images/dentistry-bg.jpg';
+import dentistryDoneRightMain from '../assets/images/dentistry-main.jpg';
+import dentistryDoneRightFloating from '../assets/images/dentistry-floating.png';
+import video1 from '../assets/images/video.mp4';
+import visitUsLocationBg from '../assets/images/location-bg.jpg';
+import visitUsGallery1 from '../assets/images/_MG_2087_optimized.jpg';
+import visitUsGallery2 from '../assets/images/_MG_2105_optimized.jpg';
+import visitUsGallery3 from '../assets/images/gallery-3.jpg';
+import visitUsGallery4 from '../assets/images/gallery-4.jpg';
+import unidadesMulti4 from '../assets/images/unidades.jpg';
+import hashtagOucabemVivamelhor from '../assets/images/hashtag.png';
 import faviconIcon from '../assets/images/favicon.png';
+import favicon2Icon from '../assets/images/favicon2.png';
+import testimonialImage from '../assets/images/testimonial.jpg';
+// Imports das imagens das unidades
+import kobrasol1 from '../assets/images/units/kobrasol-1.jpg';
+import kobrasol2 from '../assets/images/units/kobrasol-2.jpg';
+import kobrasol3 from '../assets/images/units/kobrasol-3.jpg';
+import kobrasol4 from '../assets/images/units/kobrasol-4.jpg';
+import ipiranga1 from '../assets/images/units/ipiranga-1.jpg';
+import ipiranga2 from '../assets/images/units/ipiranga-2.jpg';
+import ipiranga3 from '../assets/images/units/ipiranga-3.jpg';
+// Imports das imagens dos aparelhos auditivos
+import argosyVistaV from '../assets/images/hearing-aids/argosy-vista-v.jpg';
+import oticonXceed from '../assets/images/hearing-aids/oticon-xceed.png';
+import rextonMCoreR from '../assets/images/hearing-aids/rexton-m-core-r.jpg';
 import '../styles/liquid-glass-buttons.css';
 
 const Home = () => {
@@ -25,6 +41,11 @@ const Home = () => {
   const [currentCardIndex, setCurrentCardIndex] = useState(0);
   const [currentTestimonialCardIndex, setCurrentTestimonialCardIndex] = useState(0);
   const [showBackToTop, setShowBackToTop] = useState(false);
+  const [showWhatsAppTooltip, setShowWhatsAppTooltip] = useState(false);
+  const [showWhatsAppChat, setShowWhatsAppChat] = useState(false);
+  const [chatMessage, setChatMessage] = useState('');
+  // Estado para controlar o carrossel automático de imagens de cada unidade
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   // Dados dos endereços das unidades
   const locations = [
@@ -34,7 +55,8 @@ const Home = () => {
       address: "Av. Nazaré, 1139 – Loja 2 – Térreo Ed. Cardeal Hummes",
       phone: "(11) 3895-3000",
       cellphone: "(11) 99770-4014",
-      mapsUrl: "https://www.google.com/maps/search/Av.+Nazaré,+1139+-+Ipiranga,+São+Paulo+-+SP"
+      mapsUrl: "https://www.google.com/maps/search/Av.+Nazaré,+1139+-+Ipiranga,+São+Paulo+-+SP",
+      images: [ipiranga1, ipiranga2, ipiranga3]
     },
     {
       id: 2,
@@ -42,7 +64,8 @@ const Home = () => {
       address: "Multi Open Shopping – Rodovia Dr. Antônio Luiz Moura Gonzaga, 3339, Sala 115C",
       phone: "(48) 3247-9000",
       cellphone: "(48) 99128-7927",
-      mapsUrl: "https://www.google.com/maps/search/Multi+Open+Shopping+Rodovia+Dr.+Antônio+Luiz+Moura+Gonzaga+3339+Florianópolis"
+      mapsUrl: "https://www.google.com/maps/search/Multi+Open+Shopping+Rodovia+Dr.+Antônio+Luiz+Moura+Gonzaga+3339+Florianópolis",
+      images: [clinicMapImage] // Placeholder até ter as fotos
     },
     {
       id: 3,
@@ -50,7 +73,8 @@ const Home = () => {
       address: "Av. Lédio João Martins, 301 – Loja 5 – Ed. Kobrasol Center",
       phone: "(48) 3247-9000",
       cellphone: "(48) 99128-7927",
-      mapsUrl: "https://www.google.com/maps/search/Av.+Lédio+João+Martins,+301+-+Kobrasol+São+José+SC"
+      mapsUrl: "https://www.google.com/maps/search/Av.+Lédio+João+Martins,+301+-+Kobrasol+São+José+SC",
+      images: [kobrasol1, kobrasol2, kobrasol3, kobrasol4]
     }
   ];
 
@@ -67,37 +91,49 @@ const Home = () => {
     );
   };
 
+  // Carrossel automático de imagens
+  useEffect(() => {
+    const currentLocation = locations[currentCardIndex];
+    if (currentLocation.images.length > 1) {
+      const interval = setInterval(() => {
+        setCurrentImageIndex((prevIndex) => 
+          prevIndex === currentLocation.images.length - 1 ? 0 : prevIndex + 1
+        );
+      }, 3000); // Muda a cada 3 segundos
+
+      return () => clearInterval(interval);
+    }
+  }, [currentCardIndex]);
+
+  // Reset do índice de imagem quando muda de unidade
+  useEffect(() => {
+    setCurrentImageIndex(0);
+  }, [currentCardIndex]);
+
   // Dados dos depoimentos
 
   // Dados dos depoimentos com fotos
   const testimonialCards = [
     {
-      id: 1,
-      name: "Maria S.",
-      role: "Professora aposentada",
-      text: "Voltei a ouvir a voz dos meus netos com clareza. A equipe da Acustika me acompanhou em cada etapa, com paciência e carinho. Recomendo de olhos fechados.",
-      photo: testimonialPhoto
-    },
-    {
       id: 2,
       name: "Dona Rita",
       role: "Paciente",
       text: "Os aparelhos comprados na Acustika sempre foram muito bons, nunca tive nenhum problema com eles. O atendimento é ótimo, sempre gosto muito e fico até com saudades da fonoaudióloga.",
-      photo: visitUsGallery1
+      photo: testimonialImage
     },
     {
       id: 3,
       name: "Marlon",
       role: "Paciente",
       text: "Tenho 38 anos e desde a infância convivi com a falta de audição do ouvido esquerdo, sempre com muita dificuldade para compreender as comunicações, principalmente porque participo de uma banda de música. Faz 6 meses que estou usando o aparelho da Acustika e a minha vida social e a autoestima melhoraram muito.",
-      photo: visitUsGallery2
+      photo: testimonialImage
     },
     {
       id: 4,
       name: "Dona Odete",
       role: "Paciente",
       text: "Desde que comecei a usar os aparelhos da Acustika a minha vida mudou completamente. Eu participo das coisas, não me sinto mais solitária. Então eu agradeço bastante à Acustika pela forma de vida que está me proporcionando atualmente.",
-      photo: visitUsGallery3
+      photo: testimonialImage
     }
   ];
 
@@ -119,6 +155,33 @@ const Home = () => {
     });
   };
 
+  // Funções para controlar o chat do WhatsApp
+  const openWhatsAppChat = () => {
+    setShowWhatsAppChat(true);
+    setShowWhatsAppTooltip(false); // Esconde o tooltip quando abre o chat
+  };
+
+  const closeWhatsAppChat = () => {
+    setShowWhatsAppChat(false);
+    setChatMessage('');
+  };
+
+  const sendWhatsAppMessage = () => {
+    if (chatMessage.trim()) {
+      const encodedMessage = encodeURIComponent(chatMessage.trim());
+      const whatsappUrl = `https://wa.me/5548991287927?text=${encodedMessage}`;
+      window.open(whatsappUrl, '_blank');
+      closeWhatsAppChat();
+    }
+  };
+
+  const handleKeyPress = (e) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      sendWhatsAppMessage();
+    }
+  };
+
   // Effect para controlar a visibilidade do botão back to top
   useEffect(() => {
     const handleScroll = () => {
@@ -130,8 +193,17 @@ const Home = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Effect para mostrar o tooltip do WhatsApp após 10 segundos
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowWhatsAppTooltip(true);
+    }, 10000); // 10 segundos
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white overflow-x-hidden">
       {/* Hero Section - Background Animado Inspirado */}
       <section className="relative overflow-hidden" style={{ height: '600px' }}>
         {/* Background com gradiente moderno inspirado no 21st.dev */}
@@ -362,12 +434,17 @@ const Home = () => {
                  data-aos-delay="500"
                >
                 <div className="bth">
-                  <button className="elementor-button group">
+                  <a href="https://wa.me/5548991287927" target="_blank" rel="noopener noreferrer" className="elementor-button group">
                     <span className="elementor-button-text">Agende sua consulta gratuita</span>
-                    <span className="elementor-button-icon group-hover:rotate-0 transition-transform duration-300" style={{ transform: 'rotate(45deg)' }}>
-                      <img src={faviconIcon} alt="Acustika" className="w-4 h-4" />
+                    <span className="elementor-button-icon group-hover:rotate-0 transition-all duration-500" style={{ transform: 'rotate(45deg)' }}>
+                      <img 
+                        src={faviconIcon} 
+                        alt="Acustika" 
+                        className="w-4 h-4 transition-all duration-500 group-hover:opacity-0 group-hover:scale-0" 
+                      />
+                      <i className="fab fa-whatsapp text-base absolute top-1/2 left-1/2 transition-all duration-500 opacity-0 scale-0 group-hover:opacity-100 group-hover:scale-100 whatsapp-icon-white" style={{ transform: 'translate(-50%, -50%) rotate(-45deg)', color: '#ffffff !important' }}></i>
                     </span>
-                  </button>
+                  </a>
                 </div>
                  </div>
                </div>
@@ -379,8 +456,42 @@ const Home = () => {
               data-aos-delay="400"
             >
               <div className="relative">
+                {/* Círculo estilizado animado no fundo */}
+                <div className="absolute inset-0 flex items-end justify-center">
+                  <div className="relative">
+                    {/* Círculo principal com gradiente */}
+                    <div 
+                      className="w-[300px] h-[300px] lg:w-[600px] lg:h-[600px] rounded-full opacity-25"
+                      style={{
+                        background: 'linear-gradient(135deg, rgba(122, 68, 120, 0.4) 0%, rgba(100, 160, 160, 0.4) 50%, rgba(122, 68, 120, 0.4) 100%)',
+                        animation: 'float 4s ease-in-out infinite, glow 3s ease-in-out infinite alternate'
+                      }}
+                    />
+                    
+                    {/* Círculo secundário com movimento */}
+                    <div 
+                      className="absolute top-1/2 left-1/2 w-[200px] h-[200px] lg:w-[400px] lg:h-[400px] rounded-full opacity-20"
+                      style={{
+                        background: 'radial-gradient(circle, rgba(100, 160, 160, 0.5) 0%, transparent 70%)',
+                        transform: 'translate(-50%, -50%)',
+                        animation: 'rotate 6s linear infinite, breathe 2s ease-in-out infinite'
+                      }}
+                    />
+                    
+                    {/* Círculo terciário com pulso */}
+                    <div 
+                      className="absolute top-1/2 left-1/2 w-[150px] h-[150px] lg:w-[300px] lg:h-[300px] rounded-full opacity-15"
+                      style={{
+                        background: 'conic-gradient(from 0deg, rgba(122, 68, 120, 0.4), rgba(100, 160, 160, 0.4), rgba(122, 68, 120, 0.4))',
+                        transform: 'translate(-50%, -50%)',
+                        animation: 'pulse 2s ease-in-out infinite, shimmer 5s linear infinite'
+                      }}
+                    />
+                  </div>
+                </div>
+
                 {/* Imagem principal com efeito moderno */}
-                <div className="relative hero-image-container">
+                <div className="relative hero-image-container z-10">
                   <img 
                     src={heroMainImage} 
                     alt="Paciente usando aparelho auditivo" 
@@ -484,13 +595,32 @@ const Home = () => {
               {/* Card Container */}
               <div className="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden h-full transition-all duration-500 ease-in-out">
                 {/* Map Image */}
-                <div className="relative h-64 bg-gray-100">
+                <div className="relative h-64 bg-gray-100 overflow-hidden">
                   <img 
-                    src={clinicMapImage} 
+                    src={locations[currentCardIndex].images[currentImageIndex]} 
                     alt={`Localização da clínica ${locations[currentCardIndex].title}`} 
-                    className="w-full h-full object-cover"
-                   />
-                 </div>
+                    className="w-full h-full object-cover transition-opacity duration-500"
+                    style={{
+                      imageRendering: 'auto',
+                      backfaceVisibility: 'hidden',
+                      transform: 'translateZ(0)'
+                    }}
+                  />
+                  
+                  {/* Indicadores de imagem */}
+                  {locations[currentCardIndex].images.length > 1 && (
+                    <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 flex space-x-1">
+                      {locations[currentCardIndex].images.map((_, index) => (
+                        <div
+                          key={index}
+                          className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                            index === currentImageIndex ? 'bg-white' : 'bg-white/50'
+                          }`}
+                        />
+                      ))}
+                    </div>
+                  )}
+                </div>
                  
                 {/* Card Content */}
                 <div className="p-6 space-y-4">
@@ -750,9 +880,27 @@ const Home = () => {
       </section>
       
       {/* Serviços Completos Section */}
-      <section className="py-16 md:py-20 bg-gray-50">
+      <section className="pt-0 pb-16 md:pb-20 bg-gray-50">
         <div className="container mx-auto px-4 md:px-6 lg:px-8 xl:px-12">
           <div className="max-w-7xl mx-auto">
+            {/* Imagens acima e abaixo do título */}
+            <div className="flex flex-col items-center gap-6 mb-12" data-aos="fade-up">
+              {/* Imagem das unidades acima */}
+              <img 
+                src={unidadesMulti4} 
+                alt="Unidades múltiplas" 
+                className="h-72 w-auto object-contain"
+                style={{ mixBlendMode: 'multiply' }}
+              />
+              
+              {/* Imagem da hashtag abaixo */}
+              <img 
+                src={hashtagOucabemVivamelhor} 
+                alt="#OucabemVivamelhor" 
+                className="h-12 md:h-16 w-auto object-contain"
+              />
+            </div>
+            
             {/* Título e Descrição */}
           <div className="text-center mb-20">
             <h2 
@@ -800,7 +948,7 @@ const Home = () => {
             <div className="grid md:grid-cols-3 gap-10 mb-16">
               {/* Card 1 - Geral e Preventivo */}
             <div 
-                className="service-card bg-gradient-to-b from-white to-white/30 border border-white/20 rounded-xl overflow-hidden shadow-lg"
+                className="service-card bg-gradient-to-b from-white to-white/30 border border-white/20 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl hover:border-gray-300 hover:from-white hover:to-white/90 transition-all duration-300 cursor-pointer transform hover:scale-105"
               data-aos="fade-up"
               data-aos-delay="100"
               onClick={() => window.open('/servicos', '_self')}
@@ -808,9 +956,9 @@ const Home = () => {
                 {/* Imagem */}
                 <div className="h-48 overflow-hidden">
                   <img 
-                    src={serviceGeneral} 
-                    alt="Serviços gerais e preventivos" 
-                    className="w-full h-full object-cover"
+                    src={argosyVistaV} 
+                    alt="Argosy Vista V" 
+                    className="w-full h-full object-contain bg-gray-50"
                   />
               </div>
                 
@@ -825,7 +973,7 @@ const Home = () => {
                       lineHeight: '1.2'
                     }}
                   >
-                    Geral e Preventivo
+                    Argosy Vista V
                   </h3>
                   <p 
                     className="text-gray-600 leading-relaxed"
@@ -836,14 +984,14 @@ const Home = () => {
                       lineHeight: '1.4'
                     }}
                   >
-                    Limpezas, exames, ajustes e tratamentos de ouvido. Coloque seu melhor sorriso com a ajuda da nossa equipe de primeira linha. Somos seu parceiro auditivo de confiança e manteremos sua audição saudável por toda a vida.
+                    Fácil manuseio, carregamento rápido para uma audição de qualidade.
                   </p>
                </div>
             </div>
             
               {/* Card 2 - Restaurador */}
             <div 
-                className="service-card bg-gradient-to-b from-white to-white/30 border border-white/20 rounded-xl overflow-hidden shadow-lg"
+                className="service-card bg-gradient-to-b from-white to-white/30 border border-white/20 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl hover:border-gray-300 hover:from-white hover:to-white/90 transition-all duration-300 cursor-pointer transform hover:scale-105"
               data-aos="fade-up"
               data-aos-delay="200"
               onClick={() => window.open('/servicos', '_self')}
@@ -851,9 +999,9 @@ const Home = () => {
                 {/* Imagem */}
                 <div className="h-48 overflow-hidden">
                   <img 
-                    src={serviceRestorative} 
-                    alt="Serviços restauradores" 
-                    className="w-full h-full object-cover"
+                    src={oticonXceed} 
+                    alt="Oticon Xceed" 
+                    className="w-full h-full object-contain bg-gray-50"
                   />
             </div>
             
@@ -868,7 +1016,7 @@ const Home = () => {
                       lineHeight: '1.2'
                     }}
                   >
-                    Restaurador
+                    Oticon Xceed
                   </h3>
                   <p 
                     className="text-gray-600 leading-relaxed"
@@ -879,14 +1027,15 @@ const Home = () => {
                       lineHeight: '1.4'
                     }}
                   >
-                    Momentos difíceis acontecem. Restauramos aparelhos danificados, infecções auditivas e perdas auditivas, e tratamos outras preocupações. Um diagnóstico detalhado e plano de tratamento personalizado ajudam os pacientes a se sentirem confiantes em seu cuidado.
+                    Aparelho mais potente do mundo.<br/>
+                    Perda auditiva severa a profunda.
                   </p>
               </div>
             </div>
             
               {/* Card 3 - Cosmético */}
             <div 
-                className="service-card bg-gradient-to-b from-white to-white/30 border border-white/20 rounded-xl overflow-hidden shadow-lg"
+                className="service-card bg-gradient-to-b from-white to-white/30 border border-white/20 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl hover:border-gray-300 hover:from-white hover:to-white/90 transition-all duration-300 cursor-pointer transform hover:scale-105"
               data-aos="fade-up"
               data-aos-delay="300"
               onClick={() => window.open('/servicos', '_self')}
@@ -894,9 +1043,9 @@ const Home = () => {
                 {/* Imagem */}
                 <div className="h-48 overflow-hidden">
                   <img 
-                    src={serviceCosmetic} 
-                    alt="Serviços cosméticos" 
-                    className="w-full h-full object-cover"
+                    src={rextonMCoreR} 
+                    alt="Rexton M-Core R" 
+                    className="w-full h-full object-contain bg-gray-50"
                   />
             </div>
             
@@ -911,7 +1060,7 @@ const Home = () => {
                       lineHeight: '1.2'
                     }}
                   >
-                    Cosmético
+                    Rexton M-Core R
                   </h3>
                   <p 
                     className="text-gray-600 leading-relaxed"
@@ -922,7 +1071,8 @@ const Home = () => {
                       lineHeight: '1.4'
                     }}
                   >
-                    Experimente a alegria de uma audição completamente nova através de cuidados cosméticos de última geração. De aparelhos discretos a soluções invisíveis, temos um olho para estética e somos conhecidos por nossas transformações incríveis.
+                    Aparelho recarregável<br/>
+                    durável, prático e fácil de usar
                   </p>
               </div>
               </div>
@@ -930,7 +1080,7 @@ const Home = () => {
             
             {/* Botão CTA */}
                    <div className="text-center">
-              <div className="bth inline-block" data-aos="fade-up" data-aos-delay="400">
+              <div className="bth bth-white-icon inline-block" data-aos="fade-up" data-aos-delay="400">
                 <a href="/aparelhos" className="elementor-button">
                   <span className="elementor-button-text">Ver todos os aparelhos</span>
                   <span className="elementor-button-icon">
@@ -1188,22 +1338,27 @@ const Home = () => {
       </div>
       
       {/* Somos Amigáveis com Crianças Section */}
-      <section className="relative py-0 overflow-hidden">
-        {/* Imagem de Fundo */}
-        <div 
-          className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat"
-          style={{
-            backgroundImage: `url(${kidsFriendlyBg})`,
-            height: '919px'
-          }}
-        />
+      <section 
+        className="relative py-0 w-full"
+        style={{
+          backgroundImage: `url(${kidsFriendlyBg})`,
+          backgroundSize: '100% auto',
+          backgroundPosition: 'center center',
+          backgroundRepeat: 'no-repeat',
+          backgroundColor: '#f8f9fa',
+          minHeight: '600px',
+          width: '100vw',
+          marginLeft: 'calc(-50vw + 50%)',
+          marginRight: 'calc(-50vw + 50%)'
+        }}
+      >
         
         {/* Overlay Gradiente */}
           <div 
             className="absolute inset-0 w-full"
             style={{
               background: 'linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(241, 242, 242, 0) 100%)',
-              height: '300px'
+              height: '600px'
             }}
           />
         
@@ -1236,17 +1391,9 @@ const Home = () => {
                       lineHeight: '1.2'
                     }}
                   >
-                    Somos Amigáveis com Crianças!
+                    Acessórios Essenciais
             </h2>
             
-            {/* Divisor com ícone da logo */}
-            <div className="flex justify-center mb-8" data-aos="fade-up" data-aos-delay="100">
-              <div className="flex items-center space-x-4">
-                <div className="h-px bg-gray-300 w-16"></div>
-                <img src={faviconIcon} alt="Acustika" className="w-6 h-6 opacity-60" />
-                <div className="h-px bg-gray-300 w-16"></div>
-              </div>
-            </div>
                   
                   {/* Descrição */}
                   <p 
@@ -1258,18 +1405,18 @@ const Home = () => {
                       lineHeight: '1.4'
                     }}
                   >
-                    Toda a família é bem-vinda aqui. Oferecemos tratamento clinicamente excelente para todas as idades. As crianças adoram nossa equipe entusiasmada, abordagem gentil e clínica relaxante!
+                    Pilhas, carregadores, produtos de limpeza e muito mais. Tudo que você precisa para manter seu aparelho auditivo funcionando perfeitamente, com qualidade garantida e preços competitivos.
                   </p>
                   
                   {/* Botão */}
                   <div className="pt-4">
-                    <div className="bth">
-                      <button className="elementor-button">
-                        <span className="elementor-button-text">Visite-nos</span>
+                    <div className="bth bth-white-icon">
+                      <a href="/acessorios" className="elementor-button">
+                        <span className="elementor-button-text">Comprar Acessórios</span>
                   <span className="elementor-button-icon">
                     <i className="fas fa-arrow-right"></i>
                   </span>
-                      </button>
+                      </a>
                       </div>
                       </div>
                     </div>
@@ -1457,8 +1604,6 @@ const Home = () => {
                         muted
                         playsInline
                         preload="metadata"
-                        data-aos="fade-left"
-                        data-aos-delay="400"
                         style={{
                           maxWidth: '100%',
                           height: 'auto',
@@ -2066,27 +2211,128 @@ const Home = () => {
             </p>
             <div className="flex justify-center">
               <div className="bth-white">
-                <button className="elementor-button-white">
+                <a href="https://wa.me/5548991287927" target="_blank" rel="noopener noreferrer" className="elementor-button-white">
                   <span className="elementor-button-text">Agendar consulta gratuita</span>
-                  <span className="elementor-button-icon group-hover:rotate-0 transition-transform duration-300" style={{ transform: 'rotate(45deg)' }}>
-                    <i className="fab fa-whatsapp"></i>
+                  <span className="elementor-button-icon group-hover:rotate-0 transition-all duration-500" style={{ transform: 'rotate(45deg)' }}>
+                    <img 
+                      src={favicon2Icon} 
+                      alt="Acustika" 
+                      className="w-4 h-4 transition-all duration-500 group-hover:opacity-0 group-hover:scale-0" 
+                    />
+                    <i className="fab fa-whatsapp text-base absolute top-1/2 left-1/2 transition-all duration-500 opacity-0 scale-0 group-hover:opacity-100 group-hover:scale-100 whatsapp-icon-white" style={{ transform: 'translate(-50%, -50%) rotate(-45deg)', color: '#ffffff !important' }}></i>
                   </span>
-                </button>
+                </a>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Back to Top Button */}
-      {showBackToTop && (
-        <button
-          onClick={scrollToTop}
-          className="fixed bottom-6 right-6 z-50 w-12 h-12 bg-white/90 backdrop-blur-md border border-white/20 rounded-full shadow-xl hover:shadow-2xl transition-all duration-500 hover:scale-105 active:scale-95 flex items-center justify-center group hover:bg-white"
-          aria-label="Voltar ao topo"
-        >
-          <i className="fas fa-arrow-up text-acustika-purple text-xs group-hover:translate-y-[-1px] transition-all duration-300"></i>
-        </button>
+      {/* Floating Buttons */}
+      <div className="fixed bottom-6 right-6 z-50 flex flex-col gap-3">
+        {/* WhatsApp Button */}
+        <div className="relative">
+          <button
+            onClick={openWhatsAppChat}
+            className="w-12 h-12 bg-green-500 hover:bg-green-600 rounded-full shadow-xl hover:shadow-2xl transition-all duration-500 hover:scale-105 active:scale-95 flex items-center justify-center group"
+            aria-label="Falar no WhatsApp"
+          >
+            <i className="fab fa-whatsapp text-white text-lg group-hover:scale-110 transition-all duration-300"></i>
+          </button>
+          
+          {/* Tooltip */}
+          {showWhatsAppTooltip && (
+            <div 
+              className="absolute right-16 top-1/2 transform -translate-y-1/2 text-white text-sm px-3 py-2 rounded-lg shadow-lg whitespace-nowrap whatsapp-tooltip"
+              style={{ 
+                backgroundColor: '#25D366',
+                opacity: '0.9',
+                zIndex: '9999',
+                animation: 'tooltipPulse 2s ease-in-out infinite'
+              }}
+            >
+              Posso ajudar?
+              <div 
+                className="absolute right-[-6px] top-1/2 transform -translate-y-1/2 w-0 h-0 border-t-4 border-t-transparent border-b-4 border-b-transparent whatsapp-tooltip-arrow"
+                style={{ 
+                  borderLeft: '8px solid #25D366',
+                  opacity: '0.9'
+                }}
+              ></div>
+            </div>
+          )}
+        </div>
+
+        {/* Back to Top Button */}
+        {showBackToTop && (
+          <button
+            onClick={scrollToTop}
+            className="w-12 h-12 bg-white/90 backdrop-blur-md border border-white/20 rounded-full shadow-xl hover:shadow-2xl transition-all duration-500 hover:scale-105 active:scale-95 flex items-center justify-center group hover:bg-white"
+            aria-label="Voltar ao topo"
+          >
+            <i className="fas fa-arrow-up text-acustika-purple text-xs group-hover:translate-y-[-1px] transition-all duration-300"></i>
+          </button>
+        )}
+      </div>
+
+      {/* Mini Chat do WhatsApp */}
+      {showWhatsAppChat && (
+        <div className="fixed bottom-6 right-20 z-50 w-80 bg-white rounded-lg shadow-2xl border border-gray-200 overflow-hidden">
+          {/* Header do Chat */}
+          <div className="bg-green-500 text-white p-4 flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center">
+                <i className="fab fa-whatsapp text-white text-sm"></i>
+              </div>
+              <div>
+                <h3 className="font-semibold text-sm">Acustika</h3>
+                <p className="text-xs text-green-100">online</p>
+              </div>
+            </div>
+            <button
+              onClick={closeWhatsAppChat}
+              className="text-white/80 hover:text-white transition-colors"
+            >
+              <i className="fas fa-times"></i>
+            </button>
+          </div>
+
+          {/* Mensagem Padrão */}
+          <div className="p-4 bg-gray-50">
+            <div className="bg-white p-3 rounded-lg shadow-sm border border-gray-100">
+              <p className="text-sm text-gray-700">
+                Olá! 👋<br/>
+                Como posso ajudá-lo hoje?<br/>
+                Estou aqui para esclarecer suas dúvidas sobre aparelhos auditivos, agendar consultas ou fornecer informações sobre nossos serviços.
+              </p>
+            </div>
+          </div>
+
+          {/* Campo de Texto */}
+          <div className="p-4 border-t border-gray-200">
+            <div className="flex gap-2">
+              <textarea
+                value={chatMessage}
+                onChange={(e) => setChatMessage(e.target.value)}
+                onKeyPress={handleKeyPress}
+                placeholder="Digite sua mensagem..."
+                className="flex-1 resize-none border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                rows="2"
+                maxLength="500"
+              />
+              <button
+                onClick={sendWhatsAppMessage}
+                disabled={!chatMessage.trim()}
+                className="bg-green-500 hover:bg-green-600 disabled:bg-gray-300 disabled:cursor-not-allowed text-white px-4 py-2 rounded-lg transition-colors flex items-center justify-center"
+              >
+                <i className="fas fa-paper-plane"></i>
+              </button>
+            </div>
+            <p className="text-xs text-gray-500 mt-2 text-center">
+              Sua mensagem será enviada para o WhatsApp
+            </p>
+          </div>
+        </div>
       )}
     </section>
   </div>

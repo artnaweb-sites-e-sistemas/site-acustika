@@ -1,0 +1,67 @@
+# 🎯 Cursor Rules - Site Acustika
+
+## 🖼️ Otimização Automática de Imagens
+
+### Regra Principal
+**SEMPRE** otimizar imagens pesadas (>1MB) automaticamente usando o seguinte processo:
+
+1. **Copiar imagem para assets:**
+   ```bash
+   copy "origem\imagem.jpg" "src\assets\images\imagem.jpg"
+   ```
+
+2. **Otimizar com sharp-cli:**
+   ```bash
+   npx sharp-cli resize 800 600 --input "C:\Users\biras\Desktop\site-acustika\src\assets\images\imagem.jpg" --output "C:\Users\biras\Desktop\site-acustika\src\assets\images\imagem_optimized.jpg" --format jpeg --quality 85
+   ```
+
+3. **Atualizar import no código:**
+   ```jsx
+   import imagem from '../assets/images/imagem_optimized.jpg';
+   ```
+
+### ⚠️ Regras Importantes
+- **Caminhos absolutos** são obrigatórios para sharp-cli
+- **PNGs com transparência** devem manter formato PNG (não converter para JPEG)
+- **Sempre testar** o build após otimização
+- **Verificar tamanho** antes e depois da otimização
+
+### 📊 Resultados Esperados
+- Redução de 90%+ no tamanho
+- Qualidade mantida (85%)
+- Dimensões otimizadas (800x600)
+- Melhor performance do site
+
+## 🎨 Padrões de Código
+
+### Imports de Imagens
+- Sempre usar versões `_optimized` quando disponível
+- Manter imports organizados alfabeticamente
+- Usar nomes descritivos para variáveis
+
+### CSS/Tailwind
+- Preferir classes Tailwind sobre CSS customizado
+- Usar `object-contain` para imagens responsivas
+- Aplicar `mix-blend-mode` quando necessário para harmonização
+
+### Estrutura de Componentes
+- Manter componentes funcionais com hooks
+- Usar `useState` para estados locais
+- Implementar animações com AOS quando apropriado
+
+## 🚀 Performance
+- Otimizar todas as imagens pesadas automaticamente
+- Usar lazy loading quando apropriado
+- Manter bundle size otimizado
+- Testar build após mudanças
+
+## 📁 Estrutura do Projeto
+- Imagens em `src/assets/images/`
+- Componentes em `src/components/`
+- Páginas em `src/pages/`
+- Estilos em `src/styles/`
+
+---
+**Projeto**: site-acustika  
+**Última atualização**: 09/10/2025
+

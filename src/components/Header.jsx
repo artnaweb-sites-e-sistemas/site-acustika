@@ -71,12 +71,17 @@ const Header = () => {
           {/* CTA Button - Estilo Acustika */}
           <div className="hidden lg:flex items-center" data-aos="fade-left">
             <div className="bth">
-              <button className="elementor-button group">
+              <a href="https://wa.me/5548991287927" target="_blank" rel="noopener noreferrer" className="elementor-button group">
                 <span className="elementor-button-text">Agendar Consulta</span>
-                <span className="elementor-button-icon group-hover:rotate-0 transition-transform duration-300" style={{ transform: 'rotate(45deg)' }}>
-                  <img src={faviconIcon} alt="Acustika" className="w-4 h-4" />
+                <span className="elementor-button-icon group-hover:rotate-0 transition-all duration-500" style={{ transform: 'rotate(45deg)' }}>
+                  <img 
+                    src={faviconIcon} 
+                    alt="Acustika" 
+                    className="w-4 h-4 transition-all duration-500 group-hover:opacity-0 group-hover:scale-0" 
+                  />
+                  <i className="fab fa-whatsapp text-base absolute top-1/2 left-1/2 transition-all duration-500 opacity-0 scale-0 group-hover:opacity-100 group-hover:scale-100 whatsapp-icon-white" style={{ transform: 'translate(-50%, -50%) rotate(-45deg)', color: '#ffffff !important' }}></i>
                 </span>
-              </button>
+              </a>
             </div>
           </div>
 
@@ -146,12 +151,17 @@ const Header = () => {
               ))}
               <div className="pt-4" data-aos="fade-up" data-aos-delay={navigation.length * 100}>
                 <div className="bth">
-                  <button className="elementor-button group">
+                  <a href="https://wa.me/5548991287927" target="_blank" rel="noopener noreferrer" className="elementor-button group">
                     <span className="elementor-button-text">Agendar Consulta</span>
-                    <span className="elementor-button-icon group-hover:rotate-0 transition-transform duration-300" style={{ transform: 'rotate(45deg)' }}>
-                      <img src={faviconIcon} alt="Acustika" className="w-4 h-4" />
+                    <span className="elementor-button-icon group-hover:rotate-0 transition-all duration-500" style={{ transform: 'rotate(45deg)' }}>
+                      <img 
+                        src={faviconIcon} 
+                        alt="Acustika" 
+                        className="w-4 h-4 transition-all duration-500 group-hover:opacity-0 group-hover:scale-0" 
+                      />
+                      <i className="fab fa-whatsapp text-base absolute top-1/2 left-1/2 transition-all duration-500 opacity-0 scale-0 group-hover:opacity-100 group-hover:scale-100 whatsapp-icon-white" style={{ transform: 'translate(-50%, -50%) rotate(-45deg)', color: '#ffffff !important' }}></i>
                     </span>
-                  </button>
+                  </a>
                 </div>
               </div>
             </nav>

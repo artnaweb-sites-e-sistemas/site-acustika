@@ -52,3 +52,5 @@ Se não conseguir instalar FFmpeg, use ferramentas online como:
 - https://compress-video-online.com/
 - https://www.veed.io/tools/video-compressor
 
+
+

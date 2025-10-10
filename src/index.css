@@ -93,6 +93,102 @@
     0% {
       background-position: 0%;
     }
+    100% {
+      background-position: 100%;
+    }
+  }
+
+  /* Animações para círculos da hero section */
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px) scale(1);
+    }
+    50% {
+      transform: translateY(-20px) scale(1.05);
+    }
+  }
+
+  @keyframes rotate {
+    0% {
+      transform: translate(-50%, -50%) rotate(0deg);
+    }
+    100% {
+      transform: translate(-50%, -50%) rotate(360deg);
+    }
+  }
+
+  @keyframes pulse {
+    0%, 100% {
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 0.1;
+    }
+    50% {
+      transform: translate(-50%, -50%) scale(1.1);
+      opacity: 0.2;
+    }
+  }
+
+  @keyframes glow {
+    0% {
+      box-shadow: 0 0 20px rgba(122, 68, 120, 0.3);
+    }
+    100% {
+      box-shadow: 0 0 40px rgba(100, 160, 160, 0.4), 0 0 60px rgba(122, 68, 120, 0.2);
+    }
+  }
+
+  @keyframes breathe {
+    0%, 100% {
+      transform: translate(-50%, -50%) scale(1);
+    }
+    50% {
+      transform: translate(-50%, -50%) scale(1.05);
+    }
+  }
+
+  @keyframes shimmer {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  @keyframes tooltipPulse {
+    0%, 100% {
+      opacity: 0.9 !important;
+      transform: translateY(-50%) scale(1);
+    }
+    50% {
+      opacity: 0.7 !important;
+      transform: translateY(-50%) scale(1.02);
+    }
+  }
+
+  /* Tooltip do WhatsApp */
+  .whatsapp-tooltip {
+    background-color: #25D366 !important;
+    opacity: 0.9 !important;
+  }
+
+  /* Ícone WhatsApp no botão hero - Fundo verde e ícone branco no hover */
+  .elementor-button-icon .fab.fa-whatsapp.whatsapp-icon-white {
+    color: #ffffff !important;
+    fill: #ffffff !important;
+  }
+  
+  .elementor-button:hover .elementor-button-icon {
+    background-color: #20b957 !important;
+  }
+  
+  .elementor-button:hover .elementor-button-icon .fab.fa-whatsapp.whatsapp-icon-white {
+    color: #ffffff !important;
+    fill: #ffffff !important;
+  }
     50% {
       background-position: 50%;
     }
@@ -176,6 +272,14 @@
     min-height: 40px;
     position: relative;
     z-index: 2;
+  }
+
+  /* Botões específicos que mantêm círculo branco no hover */
+  .bth-white-icon .elementor-button:hover .elementor-button-icon {
+    rotate: 0deg;
+    transform: scale(1.1);
+    background: #ffffff !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   }
 
   .bth .elementor-button:hover .elementor-button-icon {
@@ -310,11 +414,31 @@
     font-size: 16px !important;
     color: white !important;
     display: block !important;
+    transition: all 0.5s ease !important;
+  }
+
+  .bth-white .elementor-button-icon img {
+    transition: all 0.5s ease !important;
   }
 
 .bth-white:hover .elementor-button-icon {
   rotate: 0deg;
-  background: #1f2937;
+  background: #20b957 !important;
+}
+
+.bth-white .elementor-button-icon .whatsapp-icon-white {
+  color: #ffffff !important;
+  fill: #ffffff !important;
+}
+
+.bth-white:hover .elementor-button-icon .whatsapp-icon-white {
+  opacity: 1 !important;
+  transform: translate(-50%, -50%) rotate(-45deg) !important;
+}
+
+.bth-white:hover .elementor-button-icon img {
+  opacity: 0 !important;
+  transform: scale(0) !important;
 }
 
 /* Bordas animadas para cards */
@@ -365,17 +489,18 @@
     --angle: 1turn; /* Animação para girar o gradiente */
   }
 }
-}
 
 @layer base {
   html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
   }
   
   body {
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
     line-height: 1.7;
     letter-spacing: -0.01em;
+    overflow-x: hidden;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -535,4 +660,28 @@
   );
   background-size: 400% 400%;
   animation: gradient-move 15s ease-in-out infinite;
+}
+
+/* Animação do coração no rodapé - mais intensa */
+@keyframes heartbeat {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  25% {
+    opacity: 0.6;
+    transform: scale(0.9);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+  75% {
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+}
+
+.animate-heartbeat {
+  animation: heartbeat 1.5s ease-in-out infinite;
 }
