@@ -1,11 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import logoNormal from '../assets/images/normal.png';
 import faviconIcon from '../assets/images/favicon.png';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
+
+  // Detectar scroll para mudar aparência do header
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      setIsScrolled(scrollTop > 50);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const navigation = [
     { name: 'Home', href: '/' },
@@ -20,18 +32,22 @@ const Header = () => {
   const isActive = (path) => location.pathname === path;
 
   return (
-    <header className="backdrop-blur-md shadow-sm sticky top-0 z-50 border-b" style={{ 
-      background: 'linear-gradient(to right, rgba(100, 160, 160, 0.1), rgba(255, 255, 255, 1), rgba(122, 68, 120, 0.1))',
-      borderColor: 'rgba(100, 160, 160, 0.2)'
+    <header className={`backdrop-blur-md shadow-sm fixed top-0 left-0 right-0 z-[9999] border-b transition-all duration-300 ${isScrolled ? 'shadow-lg' : 'shadow-sm'}`} style={{ 
+      background: isScrolled 
+        ? 'linear-gradient(to right, rgba(100, 160, 160, 0.15), rgba(255, 255, 255, 0.98), rgba(122, 68, 120, 0.15))'
+        : 'linear-gradient(to right, rgba(100, 160, 160, 0.1), rgba(255, 255, 255, 0.95), rgba(122, 68, 120, 0.1))',
+      borderColor: 'rgba(100, 160, 160, 0.2)',
+      backdropFilter: 'blur(10px)',
+      WebkitBackdropFilter: 'blur(10px)'
     }}>
       <div className="container mx-auto px-4 md:px-6 lg:px-8 xl:px-12">
-        <div className="flex justify-between items-center py-5">
+        <div className={`flex justify-between items-center transition-all duration-300 ${isScrolled ? 'py-3' : 'py-5'}`}>
           {/* Logo */}
           <Link to="/" className="flex items-center group" data-aos="fade-right">
             <img 
               src={logoNormal} 
               alt="Acustika Aparelhos Auditivos" 
-              className="h-12 w-auto group-hover:scale-105 transition-transform duration-300"
+              className={`w-auto group-hover:scale-105 transition-all duration-300 ${isScrolled ? 'h-10' : 'h-12'}`}
             />
           </Link>
 
@@ -70,7 +86,7 @@ const Header = () => {
 
           {/* CTA Button - Estilo Acustika */}
           <div className="hidden lg:flex items-center" data-aos="fade-left">
-            <div className="bth">
+            <div className={`bth transition-all duration-300 ${isScrolled ? 'scale-90' : 'scale-100'}`}>
               <a href="https://wa.me/5548991287927" target="_blank" rel="noopener noreferrer" className="elementor-button group">
                 <span className="elementor-button-text">Agendar Consulta</span>
                 <span className="elementor-button-icon group-hover:rotate-0 transition-all duration-500" style={{ transform: 'rotate(45deg)' }}>
@@ -150,7 +166,7 @@ const Header = () => {
                 </Link>
               ))}
               <div className="pt-4" data-aos="fade-up" data-aos-delay={navigation.length * 100}>
-                <div className="bth">
+                <div className={`bth transition-all duration-300 ${isScrolled ? 'scale-90' : 'scale-100'}`}>
                   <a href="https://wa.me/5548991287927" target="_blank" rel="noopener noreferrer" className="elementor-button group">
                     <span className="elementor-button-text">Agendar Consulta</span>
                     <span className="elementor-button-icon group-hover:rotate-0 transition-all duration-500" style={{ transform: 'rotate(45deg)' }}>

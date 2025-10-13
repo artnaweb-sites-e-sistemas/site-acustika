@@ -40,10 +40,6 @@ const Home = () => {
   // Estado para controlar o carrossel de endereços
   const [currentCardIndex, setCurrentCardIndex] = useState(0);
   const [currentTestimonialCardIndex, setCurrentTestimonialCardIndex] = useState(0);
-  const [showBackToTop, setShowBackToTop] = useState(false);
-  const [showWhatsAppTooltip, setShowWhatsAppTooltip] = useState(false);
-  const [showWhatsAppChat, setShowWhatsAppChat] = useState(false);
-  const [chatMessage, setChatMessage] = useState('');
   // Estado para controlar o carrossel automático de imagens de cada unidade
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
@@ -147,63 +143,8 @@ const Home = () => {
     setCurrentTestimonialCardIndex((prev) => (prev === testimonialCards.length - 1 ? 0 : prev + 1));
   };
 
-  // Função para voltar ao topo
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
-  };
-
-  // Funções para controlar o chat do WhatsApp
-  const openWhatsAppChat = () => {
-    setShowWhatsAppChat(true);
-    setShowWhatsAppTooltip(false); // Esconde o tooltip quando abre o chat
-  };
-
-  const closeWhatsAppChat = () => {
-    setShowWhatsAppChat(false);
-    setChatMessage('');
-  };
-
-  const sendWhatsAppMessage = () => {
-    if (chatMessage.trim()) {
-      const encodedMessage = encodeURIComponent(chatMessage.trim());
-      const whatsappUrl = `https://wa.me/5548991287927?text=${encodedMessage}`;
-      window.open(whatsappUrl, '_blank');
-      closeWhatsAppChat();
-    }
-  };
-
-  const handleKeyPress = (e) => {
-    if (e.key === 'Enter' && !e.shiftKey) {
-      e.preventDefault();
-      sendWhatsAppMessage();
-    }
-  };
-
-  // Effect para controlar a visibilidade do botão back to top
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollTop = window.pageYOffset;
-      setShowBackToTop(scrollTop > 300);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  // Effect para mostrar o tooltip do WhatsApp após 10 segundos
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowWhatsAppTooltip(true);
-    }, 10000); // 10 segundos
-
-    return () => clearTimeout(timer);
-  }, []);
-
   return (
-    <div className="min-h-screen bg-white overflow-x-hidden">
+    <div className="min-h-screen bg-white">
       {/* Hero Section - Background Animado Inspirado */}
       <section className="relative overflow-hidden" style={{ height: '600px' }}>
         {/* Background com gradiente moderno inspirado no 21st.dev */}
@@ -2228,112 +2169,6 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Floating Buttons */}
-      <div className="fixed bottom-6 right-6 z-50 flex flex-col gap-3">
-        {/* WhatsApp Button */}
-        <div className="relative">
-          <button
-            onClick={openWhatsAppChat}
-            className="w-12 h-12 bg-green-500 hover:bg-green-600 rounded-full shadow-xl hover:shadow-2xl transition-all duration-500 hover:scale-105 active:scale-95 flex items-center justify-center group"
-            aria-label="Falar no WhatsApp"
-          >
-            <i className="fab fa-whatsapp text-white text-lg group-hover:scale-110 transition-all duration-300"></i>
-          </button>
-          
-          {/* Tooltip */}
-          {showWhatsAppTooltip && (
-            <div 
-              className="absolute right-16 top-1/2 transform -translate-y-1/2 text-white text-sm px-3 py-2 rounded-lg shadow-lg whitespace-nowrap whatsapp-tooltip"
-              style={{ 
-                backgroundColor: '#25D366',
-                opacity: '0.9',
-                zIndex: '9999',
-                animation: 'tooltipPulse 2s ease-in-out infinite'
-              }}
-            >
-              Posso ajudar?
-              <div 
-                className="absolute right-[-6px] top-1/2 transform -translate-y-1/2 w-0 h-0 border-t-4 border-t-transparent border-b-4 border-b-transparent whatsapp-tooltip-arrow"
-                style={{ 
-                  borderLeft: '8px solid #25D366',
-                  opacity: '0.9'
-                }}
-              ></div>
-            </div>
-          )}
-        </div>
-
-        {/* Back to Top Button */}
-        {showBackToTop && (
-          <button
-            onClick={scrollToTop}
-            className="w-12 h-12 bg-white/90 backdrop-blur-md border border-white/20 rounded-full shadow-xl hover:shadow-2xl transition-all duration-500 hover:scale-105 active:scale-95 flex items-center justify-center group hover:bg-white"
-            aria-label="Voltar ao topo"
-          >
-            <i className="fas fa-arrow-up text-acustika-purple text-xs group-hover:translate-y-[-1px] transition-all duration-300"></i>
-          </button>
-        )}
-      </div>
-
-      {/* Mini Chat do WhatsApp */}
-      {showWhatsAppChat && (
-        <div className="fixed bottom-6 right-20 z-50 w-80 bg-white rounded-lg shadow-2xl border border-gray-200 overflow-hidden">
-          {/* Header do Chat */}
-          <div className="bg-green-500 text-white p-4 flex items-center justify-between">
-            <div className="flex items-center gap-3">
-              <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center">
-                <i className="fab fa-whatsapp text-white text-sm"></i>
-              </div>
-              <div>
-                <h3 className="font-semibold text-sm">Acustika</h3>
-                <p className="text-xs text-green-100">online</p>
-              </div>
-            </div>
-            <button
-              onClick={closeWhatsAppChat}
-              className="text-white/80 hover:text-white transition-colors"
-            >
-              <i className="fas fa-times"></i>
-            </button>
-          </div>
-
-          {/* Mensagem Padrão */}
-          <div className="p-4 bg-gray-50">
-            <div className="bg-white p-3 rounded-lg shadow-sm border border-gray-100">
-              <p className="text-sm text-gray-700">
-                Olá! 👋<br/>
-                Como posso ajudá-lo hoje?<br/>
-                Estou aqui para esclarecer suas dúvidas sobre aparelhos auditivos, agendar consultas ou fornecer informações sobre nossos serviços.
-              </p>
-            </div>
-          </div>
-
-          {/* Campo de Texto */}
-          <div className="p-4 border-t border-gray-200">
-            <div className="flex gap-2">
-              <textarea
-                value={chatMessage}
-                onChange={(e) => setChatMessage(e.target.value)}
-                onKeyPress={handleKeyPress}
-                placeholder="Digite sua mensagem..."
-                className="flex-1 resize-none border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
-                rows="2"
-                maxLength="500"
-              />
-              <button
-                onClick={sendWhatsAppMessage}
-                disabled={!chatMessage.trim()}
-                className="bg-green-500 hover:bg-green-600 disabled:bg-gray-300 disabled:cursor-not-allowed text-white px-4 py-2 rounded-lg transition-colors flex items-center justify-center"
-              >
-                <i className="fas fa-paper-plane"></i>
-              </button>
-            </div>
-            <p className="text-xs text-gray-500 mt-2 text-center">
-              Sua mensagem será enviada para o WhatsApp
-            </p>
-          </div>
-        </div>
-      )}
     </section>
   </div>
 );
