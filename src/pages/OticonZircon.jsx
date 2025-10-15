@@ -416,8 +416,7 @@ const OticonZircon = () => {
 
             {/* Botão Ver Todos */}
             <div className="text-center mt-12">
-              <a 
-                href="/~acustikaauditiva/aparelhos"
+              <Link to="/aparelhos"
                 className="inline-flex items-center gap-2 px-6 py-3 bg-gray-100 text-gray-700 font-semibold rounded-xl hover:bg-gray-200 transition-all duration-300"
                 style={{ fontFamily: 'Karla, sans-serif' }}
                 data-aos="fade-up"
@@ -425,7 +424,7 @@ const OticonZircon = () => {
               >
                 <i className="fas fa-arrow-left"></i>
                 Ver Todos os Aparelhos
-              </a>
+              </Link>
             </div>
           </div>
         </div>

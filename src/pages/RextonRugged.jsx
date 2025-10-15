@@ -481,13 +481,12 @@ const RextonRugged = () => {
                       
                       {/* Botão Saiba Mais - sempre no footer */}
                       <div className="mt-4">
-                        <a 
-                          href={`/~acustikaauditiva/aparelho/${outroAparelho.nome.toLowerCase().replace(/\s+/g, '-')}`}
+                        <Link to={`/aparelho/${outroAparelho.nome.toLowerCase().replace(/\s+/g, '-')}`}
                           className="w-full px-4 py-2 bg-gradient-to-r from-acustika-purple to-acustika-teal text-white font-medium rounded-lg hover:from-acustika-purple/90 hover:to-acustika-teal/90 transition-all duration-300 text-center block"
                           style={{ fontFamily: 'Karla, sans-serif' }}
                         >
                           Saiba Mais
-                        </a>
+                        </Link>
                       </div>
                     </div>
                   </div>
@@ -496,8 +495,7 @@ const RextonRugged = () => {
 
             {/* Botão Ver Todos */}
             <div className="text-center mt-12">
-              <a 
-                href="/~acustikaauditiva/aparelhos"
+              <Link to="/aparelhos"
                 className="inline-flex items-center gap-2 px-6 py-3 bg-gray-100 text-gray-700 font-semibold rounded-xl hover:bg-gray-200 transition-all duration-300"
                 style={{ fontFamily: 'Karla, sans-serif' }}
                 data-aos="fade-up"
@@ -505,7 +503,7 @@ const RextonRugged = () => {
               >
                 <i className="fas fa-arrow-left"></i>
                 Ver Todos os Aparelhos
-              </a>
+              </Link>
             </div>
           </div>
         </div>

@@ -322,8 +322,7 @@ const OticonOwn = () => {
                     Aparelho auditivo discreto com tecnologia avançada de processamento de som e conectividade Bluetooth.
                   </p>
                   <div className="mt-auto">
-                    <a 
-                      href="/~acustikaauditiva/aparelho/argosy-vista-v"
+                    <Link to="/aparelho/argosy-vista-v"
                       className="w-full px-6 py-3 text-white font-semibold rounded-xl shadow-lg hover:bg-gray-800 transition-all duration-300 block text-center"
                       style={{
                         backgroundColor: '#7e4078',
@@ -337,7 +336,7 @@ const OticonOwn = () => {
                       }}
                     >
                       Saiba Mais
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -357,8 +356,7 @@ const OticonOwn = () => {
                     Aparelho auditivo premium com tecnologia BrainHearing™ e conectividade wireless avançada.
                   </p>
                   <div className="mt-auto">
-                    <a 
-                      href="/~acustikaauditiva/aparelho/oticon-xceed"
+                    <Link to="/aparelho/oticon-xceed"
                       className="w-full px-6 py-3 text-white font-semibold rounded-xl shadow-lg hover:bg-gray-800 transition-all duration-300 block text-center"
                       style={{
                         backgroundColor: '#7e4078',
@@ -372,7 +370,7 @@ const OticonOwn = () => {
                       }}
                     >
                       Saiba Mais
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -392,8 +390,7 @@ const OticonOwn = () => {
                     Nosso modelo mais popular com tecnologia Motion Core que se adapta automaticamente ao ambiente.
                   </p>
                   <div className="mt-auto">
-                    <a 
-                      href="/~acustikaauditiva/aparelho/rexton-m-core-r"
+                    <Link to="/aparelho/rexton-m-core-r"
                       className="w-full px-6 py-3 text-white font-semibold rounded-xl shadow-lg hover:bg-gray-800 transition-all duration-300 block text-center"
                       style={{
                         backgroundColor: '#7e4078',
@@ -407,7 +404,7 @@ const OticonOwn = () => {
                       }}
                     >
                       Saiba Mais
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -415,8 +412,7 @@ const OticonOwn = () => {
 
             {/* Botão Ver Todos */}
             <div className="text-center mt-12">
-              <a 
-                href="/~acustikaauditiva/aparelhos"
+              <Link to="/aparelhos"
                 className="inline-flex items-center gap-2 px-6 py-3 bg-gray-100 text-gray-700 font-semibold rounded-xl hover:bg-gray-200 transition-all duration-300"
                 style={{ fontFamily: 'Karla, sans-serif' }}
                 data-aos="fade-up"
@@ -424,7 +420,7 @@ const OticonOwn = () => {
               >
                 <i className="fas fa-arrow-left"></i>
                 Ver Todos os Aparelhos
-              </a>
+              </Link>
             </div>
           </div>
         </div>

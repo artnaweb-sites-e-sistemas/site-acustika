@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import aparelhosHeroImage from '../assets/images/hero/aparelhos-hero.png';
 // Imports das imagens dos aparelhos auditivos
 import argosyVistaV from '../assets/images/hearing-aids/argosyvista-V.png';
@@ -408,13 +409,13 @@ const Aparelhos = () => {
                     {/* Botão Saiba Mais - sempre no footer */}
                     <div className="pt-4">
                       <div className="bth bth-white-icon w-full">
-                        <a 
-                          href={`/~acustikaauditiva/aparelho/${aparelho.nome.toLowerCase().replace(/\s+/g, '-')}`}
+                        <Link 
+                          to={`/aparelho/${aparelho.nome.toLowerCase().replace(/\s+/g, '-')}`}
                           className="elementor-button w-full text-center py-8"
                           style={{ paddingTop: '52px', paddingBottom: '52px' }}
                         >
                           <span className="elementor-button-text">Saiba Mais</span>
-                        </a>
+                        </Link>
               </div>
             </div>
           </div>
