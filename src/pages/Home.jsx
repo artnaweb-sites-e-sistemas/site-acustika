@@ -349,19 +349,19 @@ const Home = () => {
                 data-aos-delay="400"
               >
                 <div className="flex items-center gap-3 px-3 py-2 rounded-lg bg-white/50 backdrop-blur-sm border border-gray-200/30">
-                  <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ backgroundColor: '#7e4078' }}>
+                  <div className="w-8 h-8 rounded-full flex items-center justify-center" style={{ backgroundColor: '#7e4078' }}>
                     <i className="fas fa-stethoscope text-white"></i>
                   </div>
                   <span className="text-gray-700 font-medium" style={{ fontFamily: 'Karla, sans-serif', fontSize: '14px' }}>Exames</span>
                 </div>
                 <div className="flex items-center gap-3 px-3 py-2 rounded-lg bg-white/50 backdrop-blur-sm border border-gray-200/30">
-                  <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ backgroundColor: '#7e4078' }}>
+                  <div className="w-8 h-8 rounded-full flex items-center justify-center" style={{ backgroundColor: '#7e4078' }}>
                     <i className="fas fa-cog text-white"></i>
                   </div>
                   <span className="text-gray-700 font-medium" style={{ fontFamily: 'Karla, sans-serif', fontSize: '14px' }}>Ajustes</span>
                 </div>
                 <div className="flex items-center gap-3 px-3 py-2 rounded-lg bg-white/50 backdrop-blur-sm border border-gray-200/30">
-                  <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ backgroundColor: '#64a0a0' }}>
+                  <div className="w-8 h-8 rounded-full flex items-center justify-center" style={{ backgroundColor: '#64a0a0' }}>
                     <i className="fas fa-comments text-white"></i>
                   </div>
                   <span className="text-gray-700 font-medium" style={{ fontFamily: 'Karla, sans-serif', fontSize: '14px' }}>Atendimento humanizado</span>
@@ -892,7 +892,12 @@ const Home = () => {
                 className="service-card bg-gradient-to-b from-white to-white/30 border border-white/20 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl hover:border-gray-300 hover:from-white hover:to-white/90 transition-all duration-300 cursor-pointer transform hover:scale-105"
               data-aos="fade-up"
               data-aos-delay="100"
-              onClick={() => window.open('/servicos', '_self')}
+              onClick={() => {
+                const servicosSection = document.getElementById('servicos-section');
+                if (servicosSection) {
+                  servicosSection.scrollIntoView({ behavior: 'smooth' });
+                }
+              }}
             >
                 {/* Imagem */}
                 <div className="h-48 overflow-hidden">
@@ -935,7 +940,12 @@ const Home = () => {
                 className="service-card bg-gradient-to-b from-white to-white/30 border border-white/20 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl hover:border-gray-300 hover:from-white hover:to-white/90 transition-all duration-300 cursor-pointer transform hover:scale-105"
               data-aos="fade-up"
               data-aos-delay="200"
-              onClick={() => window.open('/servicos', '_self')}
+              onClick={() => {
+                const servicosSection = document.getElementById('servicos-section');
+                if (servicosSection) {
+                  servicosSection.scrollIntoView({ behavior: 'smooth' });
+                }
+              }}
             >
                 {/* Imagem */}
                 <div className="h-48 overflow-hidden">
@@ -979,7 +989,12 @@ const Home = () => {
                 className="service-card bg-gradient-to-b from-white to-white/30 border border-white/20 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl hover:border-gray-300 hover:from-white hover:to-white/90 transition-all duration-300 cursor-pointer transform hover:scale-105"
               data-aos="fade-up"
               data-aos-delay="300"
-              onClick={() => window.open('/servicos', '_self')}
+              onClick={() => {
+                const servicosSection = document.getElementById('servicos-section');
+                if (servicosSection) {
+                  servicosSection.scrollIntoView({ behavior: 'smooth' });
+                }
+              }}
             >
                 {/* Imagem */}
                 <div className="h-48 overflow-hidden">
@@ -1076,7 +1091,7 @@ const Home = () => {
                   {/* Ícone */}
                   <div className="flex-shrink-0 relative">
                     <div 
-                      className="w-20 h-20 lg:w-32 lg:h-32 rounded-xl flex items-center justify-center"
+                      className="w-20 h-20 lg:w-32 lg:h-32 rounded-full flex items-center justify-center"
                        style={{
                          background: 'linear-gradient(135deg, rgba(122, 68, 120, 0.1) 0%, rgba(100, 160, 160, 0.3) 100%)',
                          border: '1px solid rgba(122, 68, 120, 0.2)'
@@ -1126,7 +1141,7 @@ const Home = () => {
                   {/* Ícone */}
                   <div className="flex-shrink-0 relative">
                     <div 
-                      className="w-20 h-20 lg:w-32 lg:h-32 rounded-xl flex items-center justify-center"
+                      className="w-20 h-20 lg:w-32 lg:h-32 rounded-full flex items-center justify-center"
                        style={{
                          background: 'linear-gradient(135deg, rgba(122, 68, 120, 0.1) 0%, rgba(100, 160, 160, 0.3) 100%)',
                          border: '1px solid rgba(122, 68, 120, 0.2)'
@@ -1179,7 +1194,7 @@ const Home = () => {
                   {/* Ícone */}
                   <div className="flex-shrink-0 relative">
                     <div 
-                      className="w-20 h-20 lg:w-32 lg:h-32 rounded-xl flex items-center justify-center"
+                      className="w-20 h-20 lg:w-32 lg:h-32 rounded-full flex items-center justify-center"
                        style={{
                          background: 'linear-gradient(135deg, rgba(122, 68, 120, 0.1) 0%, rgba(100, 160, 160, 0.3) 100%)',
                          border: '1px solid rgba(122, 68, 120, 0.2)'
@@ -1229,7 +1244,7 @@ const Home = () => {
                   {/* Ícone */}
                   <div className="flex-shrink-0 relative">
                     <div 
-                      className="w-20 h-20 lg:w-32 lg:h-32 rounded-xl flex items-center justify-center"
+                      className="w-20 h-20 lg:w-32 lg:h-32 rounded-full flex items-center justify-center"
                        style={{
                          background: 'linear-gradient(135deg, rgba(122, 68, 120, 0.1) 0%, rgba(100, 160, 160, 0.3) 100%)',
                          border: '1px solid rgba(122, 68, 120, 0.2)'
@@ -1602,7 +1617,7 @@ const Home = () => {
       </section>
 
       {/* Serviços Section */}
-      <section className="py-16 md:py-20 bg-gray-50">
+      <section id="servicos-section" className="py-16 md:py-20 bg-gray-50">
         <div className="container mx-auto px-4 md:px-6 lg:px-8 xl:px-12">
           <div className="max-w-7xl mx-auto">
             {/* Título e Descrição */}

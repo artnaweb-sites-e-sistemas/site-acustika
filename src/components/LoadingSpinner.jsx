@@ -1,17 +1,30 @@
 import React from 'react';
+import { CircleLoader } from 'react-spinners';
 
 const LoadingSpinner = ({ size = 'medium', text = 'Carregando...' }) => {
-  const sizeClasses = {
-    small: 'h-6 w-6',
-    medium: 'h-12 w-12',
-    large: 'h-16 w-16'
+  const sizeMap = {
+    small: 30,
+    medium: 50,
+    large: 70
   };
 
   return (
     <div className="flex flex-col items-center justify-center py-8">
-      <div className={`inline-block animate-spin rounded-full border-b-2 border-blue-600 ${sizeClasses[size]}`}></div>
+      {/* CircleLoader com cores da Acustika */}
+      <CircleLoader 
+        color="#7A4478" // acustika-purple
+        size={sizeMap[size]}
+        speedMultiplier={1}
+      />
+      
+      {/* Texto simples */}
       {text && (
-        <p className="mt-4 text-gray-600 text-sm">{text}</p>
+        <p 
+          className="mt-4 text-gray-600 text-sm"
+          style={{ fontFamily: 'Karla, sans-serif' }}
+        >
+          {text}
+        </p>
       )}
     </div>
   );

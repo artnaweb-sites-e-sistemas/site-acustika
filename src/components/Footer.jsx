@@ -1,8 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import logoPb from '../assets/images/logo-pb.png';
+import Modal from './Modal';
 
 const Footer = () => {
+  const [isPrivacyOpen, setIsPrivacyOpen] = useState(false);
+  const [isTermsOpen, setIsTermsOpen] = useState(false);
+  const [isCookiesOpen, setIsCookiesOpen] = useState(false);
+
   return (
     <footer className="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white relative overflow-hidden">
       {/* Background com gradiente da marca */}
@@ -63,7 +68,6 @@ const Footer = () => {
               <li><Link to="/sobre" className="text-gray-300 hover:text-[#659fa0] transition-colors block">Sobre Nós</Link></li>
               <li><Link to="/aparelhos" className="text-gray-300 hover:text-[#659fa0] transition-colors block">Aparelhos</Link></li>
               <li><Link to="/acessorios" className="text-gray-300 hover:text-[#659fa0] transition-colors block">Acessórios</Link></li>
-              <li><Link to="/servicos" className="text-gray-300 hover:text-[#659fa0] transition-colors block">Serviços</Link></li>
               <li><Link to="/blog" className="text-gray-300 hover:text-[#659fa0] transition-colors block">Blog</Link></li>
             </ul>
           </div>
@@ -120,18 +124,204 @@ const Footer = () => {
             © 2025 Acustika. Todos os direitos reservados. Desenvolvido com <span className="inline-block animate-heartbeat" style={{color: '#dc2626'}}>❤️</span> por <a href="https://artnaweb.com.br" target="_blank" rel="noopener noreferrer" className="text-[#659fa0] hover:text-white transition-colors hover:underline">ArtnaWEB</a>
           </p>
           <div className="flex space-x-8 mt-4 md:mt-0">
-            <a href="#" className="text-gray-300 hover:text-pink-400 text-sm transition-colors hover:underline">
+            <button 
+              onClick={() => setIsPrivacyOpen(true)}
+              className="text-gray-300 hover:text-pink-400 text-sm transition-colors hover:underline"
+            >
               Política de Privacidade
-            </a>
-            <a href="#" className="text-gray-300 hover:text-teal-400 text-sm transition-colors hover:underline">
+            </button>
+            <button 
+              onClick={() => setIsTermsOpen(true)}
+              className="text-gray-300 hover:text-teal-400 text-sm transition-colors hover:underline"
+            >
               Termos de Uso
-            </a>
-            <a href="#" className="text-gray-300 hover:text-pink-400 text-sm transition-colors hover:underline">
+            </button>
+            <button 
+              onClick={() => setIsCookiesOpen(true)}
+              className="text-gray-300 hover:text-pink-400 text-sm transition-colors hover:underline"
+            >
               Cookies
-            </a>
+            </button>
           </div>
         </div>
       </div>
+
+      {/* Modais */}
+      <Modal 
+        isOpen={isPrivacyOpen} 
+        onClose={() => setIsPrivacyOpen(false)} 
+        title="Política de Privacidade"
+      >
+        <div className="space-y-6">
+          <div>
+            <h3 className="text-lg font-semibold text-gray-900 mb-3">1. Informações que Coletamos</h3>
+            <p className="mb-4">
+              A Acustika coleta informações pessoais quando você utiliza nossos serviços, incluindo:
+            </p>
+            <ul className="list-disc list-inside space-y-2 ml-4">
+              <li>Nome completo e dados de contato</li>
+              <li>Informações sobre sua saúde auditiva</li>
+              <li>Dados de navegação em nosso site</li>
+              <li>Informações de pagamento (quando aplicável)</li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="text-lg font-semibold text-gray-900 mb-3">2. Como Utilizamos suas Informações</h3>
+            <p className="mb-4">
+              Utilizamos suas informações pessoais para:
+            </p>
+            <ul className="list-disc list-inside space-y-2 ml-4">
+              <li>Prestar serviços de saúde auditiva</li>
+              <li>Agendar consultas e acompanhamentos</li>
+              <li>Enviar informações sobre produtos e serviços</li>
+              <li>Melhorar nossa experiência do usuário</li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="text-lg font-semibold text-gray-900 mb-3">3. Compartilhamento de Informações</h3>
+            <p>
+              Não compartilhamos suas informações pessoais com terceiros, exceto quando necessário para prestação de serviços ou por exigência legal.
+            </p>
+          </div>
+
+          <div className="bg-gray-50 p-4 rounded-lg">
+            <p className="text-sm text-gray-600">
+              <strong>Última atualização:</strong> Janeiro de 2025<br/>
+              <strong>Contato:</strong> contato@acustika.com.br
+            </p>
+          </div>
+        </div>
+      </Modal>
+
+      <Modal 
+        isOpen={isTermsOpen} 
+        onClose={() => setIsTermsOpen(false)} 
+        title="Termos de Uso"
+      >
+        <div className="space-y-6">
+          <div>
+            <h3 className="text-lg font-semibold text-gray-900 mb-3">1. Aceitação dos Termos</h3>
+            <p>
+              Ao utilizar os serviços da Acustika, você concorda com estes termos de uso. Se não concordar com qualquer parte destes termos, não utilize nossos serviços.
+            </p>
+          </div>
+
+          <div>
+            <h3 className="text-lg font-semibold text-gray-900 mb-3">2. Serviços Oferecidos</h3>
+            <p className="mb-4">
+              A Acustika oferece:
+            </p>
+            <ul className="list-disc list-inside space-y-2 ml-4">
+              <li>Consultoria em saúde auditiva</li>
+              <li>Venda e manutenção de aparelhos auditivos</li>
+              <li>Acessórios para aparelhos auditivos</li>
+              <li>Serviços de avaliação e acompanhamento</li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="text-lg font-semibold text-gray-900 mb-3">3. Responsabilidades do Cliente</h3>
+            <p className="mb-4">
+              O cliente se compromete a:
+            </p>
+            <ul className="list-disc list-inside space-y-2 ml-4">
+              <li>Fornecer informações verdadeiras e atualizadas</li>
+              <li>Seguir as orientações dos profissionais</li>
+              <li>Realizar manutenções preventivas</li>
+              <li>Comunicar problemas ou dúvidas</li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="text-lg font-semibold text-gray-900 mb-3">4. Limitações de Responsabilidade</h3>
+            <p>
+              A Acustika não se responsabiliza por danos decorrentes do uso inadequado dos produtos ou descumprimento das orientações técnicas fornecidas.
+            </p>
+          </div>
+
+          <div>
+            <h3 className="text-lg font-semibold text-gray-900 mb-3">5. Modificações</h3>
+            <p>
+              Reservamo-nos o direito de modificar estes termos a qualquer momento. As alterações entrarão em vigor imediatamente após sua publicação.
+            </p>
+          </div>
+
+          <div className="bg-gray-50 p-4 rounded-lg">
+            <p className="text-sm text-gray-600">
+              <strong>Última atualização:</strong> Janeiro de 2025<br/>
+              <strong>Contato:</strong> contato@acustika.com.br
+            </p>
+          </div>
+        </div>
+      </Modal>
+
+      <Modal 
+        isOpen={isCookiesOpen} 
+        onClose={() => setIsCookiesOpen(false)} 
+        title="Política de Cookies"
+      >
+        <div className="space-y-6">
+          <div>
+            <h3 className="text-lg font-semibold text-gray-900 mb-3">O que são Cookies?</h3>
+            <p>
+              Cookies são pequenos arquivos de texto armazenados em seu dispositivo quando você visita nosso site. Eles nos ajudam a melhorar sua experiência de navegação e entender como você utiliza nossos serviços.
+            </p>
+          </div>
+
+          <div>
+            <h3 className="text-lg font-semibold text-gray-900 mb-3">Tipos de Cookies que Utilizamos</h3>
+            
+            <div className="space-y-4">
+              <div>
+                <h4 className="font-semibold text-gray-800 mb-2">Cookies Essenciais</h4>
+                <p className="text-sm text-gray-600">
+                  Necessários para o funcionamento básico do site, incluindo navegação e acesso a áreas seguras.
+                </p>
+              </div>
+
+              <div>
+                <h4 className="font-semibold text-gray-800 mb-2">Cookies de Performance</h4>
+                <p className="text-sm text-gray-600">
+                  Coletam informações sobre como você utiliza nosso site, ajudando-nos a melhorar sua experiência.
+                </p>
+              </div>
+
+              <div>
+                <h4 className="font-semibold text-gray-800 mb-2">Cookies de Funcionalidade</h4>
+                <p className="text-sm text-gray-600">
+                  Permitem que o site lembre suas preferências e forneça recursos aprimorados.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <h3 className="text-lg font-semibold text-gray-900 mb-3">Como Gerenciar Cookies</h3>
+            <p className="mb-4">
+              Você pode controlar e/ou excluir cookies conforme desejar. Você pode excluir todos os cookies que já estão no seu computador e configurar a maioria dos navegadores para impedir que sejam colocados.
+            </p>
+            <p className="text-sm text-gray-600">
+              <strong>Nota:</strong> Se você desabilitar cookies, algumas funcionalidades do site podem não funcionar corretamente.
+            </p>
+          </div>
+
+          <div>
+            <h3 className="text-lg font-semibold text-gray-900 mb-3">Cookies de Terceiros</h3>
+            <p>
+              Nosso site pode conter cookies de terceiros, como Google Analytics, para análise de tráfego e comportamento dos usuários. Esses cookies são regidos pelas políticas de privacidade dos respectivos terceiros.
+            </p>
+          </div>
+
+          <div className="bg-gray-50 p-4 rounded-lg">
+            <p className="text-sm text-gray-600">
+              <strong>Última atualização:</strong> Janeiro de 2025<br/>
+              <strong>Contato:</strong> contato@acustika.com.br
+            </p>
+          </div>
+        </div>
+      </Modal>
     </footer>
   );
 };
