@@ -324,7 +324,7 @@ const OticonZircon = () => {
                   </p>
                   <div className="mt-auto">
                     <Link
-                      to="/~acustikaauditiva/aparelho/argosy-vista-v"
+                      to="/aparelho/argosy-vista-v"
                       className="w-full px-6 py-3 text-white font-semibold rounded-xl shadow-lg hover:bg-gray-800 transition-all duration-300 block text-center"
                       style={{
                         backgroundColor: '#7e4078',
@@ -359,7 +359,7 @@ const OticonZircon = () => {
                   </p>
                   <div className="mt-auto">
                     <Link
-                      to="/~acustikaauditiva/aparelho/oticon-xceed"
+                      to="/aparelho/oticon-xceed"
                       className="w-full px-6 py-3 text-white font-semibold rounded-xl shadow-lg hover:bg-gray-800 transition-all duration-300 block text-center"
                       style={{
                         backgroundColor: '#7e4078',
@@ -394,7 +394,7 @@ const OticonZircon = () => {
                   </p>
                   <div className="mt-auto">
                     <Link
-                      to="/~acustikaauditiva/aparelho/rexton-m-core-r"
+                      to="/aparelho/rexton-m-core-r"
                       className="w-full px-6 py-3 text-white font-semibold rounded-xl shadow-lg hover:bg-gray-800 transition-all duration-300 block text-center"
                       style={{
                         backgroundColor: '#7e4078',
