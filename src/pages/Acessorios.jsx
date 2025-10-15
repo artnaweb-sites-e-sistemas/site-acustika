@@ -3,12 +3,18 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 
 // Imports das imagens dos acessórios
-import conectividadeImg from '../assets/images/accessories/conectividade.jpg';
-import desumidificadorImg from '../assets/images/accessories/desumidificador.jpg';
-import estojoImg from '../assets/images/accessories/protetor-auricular.jpg';
-import kitLimpezaImg from '../assets/images/accessories/kit-limpeza.jpg';
-import pilhasImg from '../assets/images/accessories/pilhas.jpg';
-import controleRemotoImg from '../assets/images/accessories/receptores.jpg';
+import conectividadeImg from '../assets/images/accessories/conectividade.webp';
+import desumidificadorImg from '../assets/images/accessories/desumidificador.webp';
+import moldeImg from '../assets/images/accessories/molde.webp';
+import kitLimpezaMoldeImg from '../assets/images/accessories/kit-limpeza-molde.webp';
+import bombinhaArImg from '../assets/images/accessories/bombinha-ar.webp';
+import testadorPilhasImg from '../assets/images/accessories/testador-pilhas.webp';
+import protetorAuricularImg from '../assets/images/accessories/protetor-auricular.webp';
+import desumidificadorEletricoImg from '../assets/images/accessories/desumidificador-eletrico.webp';
+import filtroImg from '../assets/images/accessories/filtro.webp';
+import receptoresImg from '../assets/images/accessories/receptores.webp';
+import pilhasImg from '../assets/images/accessories/pilhas.webp';
+import acessoriosHeroImage from '../assets/images/hero/acessorios-hero.png';
 
 const Acessorios = () => {
   useEffect(() => {
@@ -23,45 +29,80 @@ const Acessorios = () => {
   const acessorios = [
     {
       id: 1,
-      nome: "Pilhas para Aparelhos",
-      descricao: "Pilhas de longa duração para todos os tipos de aparelhos auditivos, garantindo funcionamento contínuo.",
-      imagem: pilhasImg,
-      categoria: "Energia"
+      nome: "Conectividade",
+      descricao: "Nossos aparelhos auditivos possuem diversos tipos de acessórios de conectividade, como por exemplo os acessórios wireless, que transmitem os sons da TV, de ligações do celular e de conversas diretamente no seu aparelho auditivo. Temos também a conectividade com smartphone, para controlar e ajustar seus aparelhos pelo próprio celular, ou ainda, o \"Localizador\", que te ajuda a encontrar o seu aparelho perdido. São muitas opções e cada aparelho auditivo possui a sua, verifique na aba \"Aparelhos Multimarcas\" ou entre em contato conosco para conhecer mais.",
+      imagem: conectividadeImg,
+      categoria: "Conectividade"
     },
     {
       id: 2,
-      nome: "Protetores Auriculares",
-      descricao: "Protetores resistentes e elegantes para proteger e transportar seus aparelhos com segurança.",
-      imagem: estojoImg,
-      categoria: "Proteção"
-    },
-    {
-      id: 3,
-      nome: "Kit de Limpeza",
-      descricao: "Kit completo com escovas, pincéis e produtos especiais para limpeza e manutenção dos aparelhos.",
-      imagem: kitLimpezaImg,
-      categoria: "Manutenção"
-    },
-    {
-      id: 4,
-      nome: "Desumidificadores",
-      descricao: "Desumidificadores elétricos para manter os aparelhos secos e funcionando perfeitamente.",
+      nome: "Desumidificador",
+      descricao: "São cristais de sílica que absorvem a umidade de dentro do aparelho auditivo. Ideal para conservação do seu aparelho auditivo.",
       imagem: desumidificadorImg,
       categoria: "Cuidados"
     },
     {
+      id: 3,
+      nome: "Molde",
+      descricao: "O molde deve ser confeccionado a partir da anatomia da orelha do paciente, contribuindo para eliminar o fenômeno da realimentação acústica (assobios).",
+      imagem: moldeImg,
+      categoria: "Personalização"
+    },
+    {
+      id: 4,
+      nome: "Kit de Limpeza para Molde",
+      descricao: "Tem a finalidade de higienizar corretamente os moldes auriculares, com ação antibactericida.",
+      imagem: kitLimpezaMoldeImg,
+      categoria: "Higiene"
+    },
+    {
       id: 5,
-      nome: "Receptores",
-      descricao: "Receptores para ajustar volume, programas e configurações dos aparelhos auditivos.",
-      imagem: controleRemotoImg,
-      categoria: "Conectividade"
+      nome: "Bombinha de Ar",
+      descricao: "Tem a finalidade de secar toda umidade existente dentro do tubinho do molde auricular, bem como auxiliar na limpeza e desobstrução do mesmo.",
+      imagem: bombinhaArImg,
+      categoria: "Manutenção"
     },
     {
       id: 6,
-      nome: "Acessórios de Conectividade",
-      descricao: "Acessórios para conectar seus aparelhos a smartphones, TVs e outros dispositivos.",
-      imagem: conectividadeImg,
+      nome: "Testador de Pilhas",
+      descricao: "Os testadores servem para checar se a bateria do seu aparelho auditivo ainda está ativa. Podem ser utilizados para testar baterias de zinco de qualquer tamanho.",
+      imagem: testadorPilhasImg,
+      categoria: "Energia"
+    },
+    {
+      id: 7,
+      nome: "Protetor Auricular (Tampão para Natação)",
+      descricao: "Os protetores servem para evitar a entrada de água no conduto auditivo, auxiliando na prevenção de otites.",
+      imagem: protetorAuricularImg,
+      categoria: "Proteção"
+    },
+    {
+      id: 8,
+      nome: "Desumidificador Elétrico",
+      descricao: "Maior eficiência no controle da umidade dos aparelhos auditivos; Agilidade e praticidade: basta pressionar o botão e em apenas 30 minutos elimina a umidade e desliga automaticamente; Função de secagem intensa para os casos de excesso de umidade, após atividades físicas, por exemplo; Reduz o acúmulo de germes em moldes e nos aparelhos auditivos através da Luz UV (ultra-violeta) que possui; 2 em 1: Desumidificador/secagem intensa e Anti-germe;",
+      imagem: desumidificadorEletricoImg,
+      categoria: "Cuidados Avançados"
+    },
+    {
+      id: 9,
+      nome: "Filtro",
+      descricao: "Filtro protetor de cera para diversas marcas e modelos de aparelhos auditivos.",
+      imagem: filtroImg,
+      categoria: "Proteção"
+    },
+    {
+      id: 10,
+      nome: "Receptores",
+      descricao: "Receptores para várias marcas de aparelhos auditivos.",
+      imagem: receptoresImg,
       categoria: "Conectividade"
+    },
+    {
+      id: 11,
+      nome: "Pilhas (Baterias)",
+      descricao: "Pilhas (Baterias) nos tamanhos 10, 13, 312 e 675 para todos as marcas de aparelhos auditivos.",
+      imagem: pilhasImg,
+      categoria: "Energia"
     }
   ];
 
@@ -223,8 +264,8 @@ const Acessorios = () => {
                   backgroundClip: 'text'
                 }}
               >
-                Acessórios para Aparelhos
-            </h1>
+            Acessórios para Aparelhos
+          </h1>
                
               {/* Subtítulo */}
             <p 
@@ -241,9 +282,9 @@ const Acessorios = () => {
                  }}
                >
                  Encontre todos os acessórios necessários para manter seus aparelhos auditivos funcionando perfeitamente e protegidos.
-            </p>
-          </div>
-            
+          </p>
+        </div>
+        
             {/* Coluna Direita: Imagem Principal */}
             <div 
               className="relative order-2 lg:order-last h-full flex items-end justify-center hidden lg:flex"
@@ -288,10 +329,10 @@ const Acessorios = () => {
                 {/* Imagem com fundo transparente - colada no bottom */}
                 <div className="relative z-10" style={{ marginBottom: '-15px' }}>
                   <img 
-                    src={pilhasImg} 
+                    src={acessoriosHeroImage} 
                     alt="Acessórios Acustika" 
                     className="object-contain"
-                    style={{ display: 'block', width: '600px', marginLeft: '140px', height: 'auto' }}
+                    style={{ display: 'block', width: '500px', height: 'auto' }}
                   />
                 </div>
                 </div>
@@ -328,9 +369,9 @@ const Acessorios = () => {
                 }}
               >
                 Produtos essenciais para manter seus aparelhos auditivos funcionando perfeitamente e protegidos.
-              </p>
-            </div>
-            
+          </p>
+        </div>
+        
             {/* Grid de Acessórios */}
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {acessorios.map((acessorio, index) => (
@@ -350,7 +391,7 @@ const Acessorios = () => {
                   </div>
                   
                   {/* Conteúdo do card */}
-                  <div className="p-6">
+              <div className="p-6">
                     {/* Categoria */}
                     <div className="mb-3">
                       <span 
@@ -367,30 +408,20 @@ const Acessorios = () => {
                       className="text-xl font-semibold text-gray-900 mb-3"
                       style={{ fontFamily: 'Karla, sans-serif' }}
                     >
-                      {acessorio.nome}
-                    </h3>
+                  {acessorio.nome}
+                </h3>
                     
                     {/* Descrição */}
                     <p 
-                      className="text-gray-600 text-sm leading-relaxed mb-4"
+                      className="text-gray-600 text-sm leading-relaxed"
                       style={{ fontFamily: 'Karla, sans-serif' }}
                     >
-                      {acessorio.descricao}
-                    </p>
-                    
-                    {/* Botão de ação */}
-                    <div className="flex justify-center">
-                      <button 
-                        className="w-full px-6 py-3 bg-gradient-to-r from-acustika-purple to-acustika-teal text-white rounded-xl font-semibold hover:from-acustika-purple/90 hover:to-acustika-teal/90 transition-all duration-300 transform hover:scale-105 shadow-lg"
-                        style={{ fontFamily: 'Karla, sans-serif' }}
-                      >
-                        Saiba Mais
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              ))}
+                  {acessorio.descricao}
+                </p>
+              </div>
             </div>
+          ))}
+        </div>
           </div>
         </div>
       </section>
@@ -412,11 +443,11 @@ const Acessorios = () => {
                         <i className="fab fa-whatsapp text-base absolute top-1/2 left-1/2 transition-all duration-500 opacity-0 scale-0 group-hover:opacity-100 group-hover:scale-100 whatsapp-icon-white" style={{transform: 'translate(-50%, -50%) rotate(-45deg)'}}></i>
                       </span>
                     </a>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
+        </div>
+        </div>
+      </div>
         </div>
       </section>
     </div>

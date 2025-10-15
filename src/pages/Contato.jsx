@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import heroMainImage from '../assets/images/hero/hero-main.png';
+import contatoHeroImage from '../assets/images/hero/contato-hero.png';
 import '../styles/liquid-glass-buttons.css';
 
 const Contato = () => {
@@ -276,10 +276,10 @@ const Contato = () => {
                 {/* Imagem com fundo transparente - colada no bottom */}
                 <div className="relative z-10" style={{ marginBottom: '-15px' }}>
                   <img 
-                    src={heroMainImage} 
+                    src={contatoHeroImage} 
                     alt="Contato Acustika Aparelhos Auditivos" 
-                    className="w-[200px] h-[200px] lg:w-[350px] lg:h-[350px] object-contain"
-                    style={{ display: 'block' }}
+                    className="object-contain"
+                    style={{ display: 'block', width: '500px', height: 'auto' }}
                   />
                 </div>
                 </div>
