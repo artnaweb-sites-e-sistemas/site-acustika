@@ -3,6 +3,18 @@ import heroMainImage from '../assets/images/hero/hero-main.png';
 import heroNewImage from '../assets/images/hero/hero-new.png';
 import historyImage from '../assets/images/hero/history-image.jpg';
 import experienceImage from '../assets/images/hero/experience-image.jpg';
+import fonoMalu from '../assets/images/malu.jpg';
+import equipeJuliana from '../assets/images/equipe-juliana-popescu.png.webp';
+import equipeRenato from '../assets/images/equipe-renato.png.webp';
+import equipeCarin from '../assets/images/equipe-carin.png.webp';
+import equipeJessica from '../assets/images/equipe-jessica.png.webp';
+import equipeDaiana from '../assets/images/equipe-daiana.png.webp';
+import equipeValeria from '../assets/images/equipe-valeria.png.webp';
+import equipeValdirene from '../assets/images/equipe-valdirene.png.webp';
+import equipeEliana from '../assets/images/equipe-eliana.png.webp';
+import equipeNatalia from '../assets/images/equipe-natalia.png.webp';
+import equipePaula from '../assets/images/equipe-paula.png.webp';
+import equipeJanaina from '../assets/images/equipe-janaina.png.webp';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
@@ -418,6 +430,148 @@ const Sobre = () => {
                   </div>
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Nossa Equipe Section */}
+      <section className="py-16 md:py-20 bg-white">
+        <div className="container mx-auto px-4 md:px-6 lg:px-8 xl:px-12">
+          <div className="max-w-7xl mx-auto">
+            {/* Título Principal */}
+            <div className="text-center mb-16" data-aos="fade-up">
+              <h2 
+                className="font-medium text-gray-900 text-3xl md:text-4xl lg:text-5xl mb-6"
+                style={{ 
+                  fontFamily: 'Noto Serif, serif',
+                  fontWeight: '500',
+                  fontSize: 'clamp(2rem, 4vw, 3rem)',
+                  lineHeight: '1.2',
+                  letterSpacing: '-0.02em'
+                }}
+              >
+                Nossa Equipe
+              </h2>
+              <p 
+                className="text-gray-600 max-w-3xl mx-auto"
+                style={{ 
+                  fontFamily: 'Karla, sans-serif',
+                  fontWeight: '400',
+                  fontSize: '18px',
+                  lineHeight: '1.6'
+                }}
+              >
+                Profissionais especializados e dedicados ao cuidado da sua saúde auditiva.
+              </p>
+            </div>
+            
+            {/* Grid da Equipe */}
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+              {[
+                {
+                  name: "Juliana Popescu",
+                  role: "Diretora Clínica",
+                  photo: equipeJuliana
+                },
+                {
+                  name: "Renato",
+                  role: "Diretor Executivo",
+                  photo: equipeRenato
+                },
+                {
+                  name: "Carin",
+                  role: "Fonoaudióloga",
+                  photo: equipeCarin
+                },
+                {
+                  name: "Jéssica",
+                  role: "Fonoaudióloga",
+                  photo: equipeJessica
+                },
+                {
+                  name: "Daiana",
+                  role: "Gerente",
+                  photo: equipeDaiana
+                },
+                {
+                  name: "Valeria",
+                  role: "Fonoaudióloga",
+                  photo: equipeValeria
+                },
+                {
+                  name: "Valdirene",
+                  role: "Assistente Comercial",
+                  photo: equipeValdirene
+                },
+                {
+                  name: "Eliana",
+                  role: "Assistente Comercial",
+                  photo: equipeEliana
+                },
+                {
+                  name: "Natalia",
+                  role: "Fonoaudióloga",
+                  photo: equipeNatalia
+                },
+                {
+                  name: "Paula",
+                  role: "Assistente Comercial",
+                  photo: equipePaula
+                },
+                {
+                  name: "Janaina",
+                  role: "Assistente Comercial",
+                  photo: equipeJanaina
+                },
+                {
+                  name: "Malu",
+                  role: "Fonoaudióloga",
+                  photo: fonoMalu
+                }
+              ].map((member, index) => (
+                <div 
+                  key={index}
+                  className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden group"
+                  data-aos="fade-up"
+                  data-aos-delay={index * 100}
+                >
+                  {/* Foto do membro */}
+                  <div className="aspect-square overflow-hidden bg-gray-50">
+                    <img 
+                      src={member.photo} 
+                      alt={`${member.name} - ${member.role}`}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                    />
+                  </div>
+                  
+                  {/* Informações */}
+                  <div className="p-6 text-center">
+                    <h3 
+                      className="font-semibold text-gray-900 mb-2"
+                      style={{ 
+                        fontFamily: 'Karla, sans-serif',
+                        fontWeight: '600',
+                        fontSize: '20px',
+                        lineHeight: '1.2'
+                      }}
+                    >
+                      {member.name}
+                    </h3>
+                    <p 
+                      className="text-gray-600"
+                      style={{ 
+                        fontFamily: 'Karla, sans-serif',
+                        fontWeight: '400',
+                        fontSize: '16px',
+                        lineHeight: '1.5'
+                      }}
+                    >
+                      {member.role}
+                    </p>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>

@@ -30,79 +30,100 @@ const Acessorios = () => {
     {
       id: 1,
       nome: "Conectividade",
-      descricao: "Nossos aparelhos auditivos possuem diversos tipos de acessórios de conectividade, como por exemplo os acessórios wireless, que transmitem os sons da TV, de ligações do celular e de conversas diretamente no seu aparelho auditivo. Temos também a conectividade com smartphone, para controlar e ajustar seus aparelhos pelo próprio celular, ou ainda, o \"Localizador\", que te ajuda a encontrar o seu aparelho perdido. São muitas opções e cada aparelho auditivo possui a sua, verifique na aba \"Aparelhos Multimarcas\" ou entre em contato conosco para conhecer mais.",
+      descricao: "Acessórios wireless para transmitir sons da TV, ligações e conversas. Conectividade com smartphone e localizador para encontrar aparelhos perdidos.",
       imagem: conectividadeImg,
       categoria: "Conectividade"
     },
     {
       id: 2,
       nome: "Desumidificador",
-      descricao: "São cristais de sílica que absorvem a umidade de dentro do aparelho auditivo. Ideal para conservação do seu aparelho auditivo.",
+      descricao: "Cristais de sílica que absorvem a umidade do aparelho auditivo. Essencial para conservação e manutenção adequada do equipamento.",
       imagem: desumidificadorImg,
       categoria: "Cuidados"
     },
     {
       id: 3,
       nome: "Molde",
-      descricao: "O molde deve ser confeccionado a partir da anatomia da orelha do paciente, contribuindo para eliminar o fenômeno da realimentação acústica (assobios).",
+      descricao: "Moldes personalizados confeccionados a partir da anatomia da orelha. Elimina realimentação acústica e garante melhor adaptação.",
       imagem: moldeImg,
       categoria: "Personalização"
     },
     {
       id: 4,
       nome: "Kit de Limpeza para Molde",
-      descricao: "Tem a finalidade de higienizar corretamente os moldes auriculares, com ação antibactericida.",
+      descricao: "Kit completo para higienização correta dos moldes auriculares com ação antibactericida. Mantém a higiene e durabilidade dos moldes.",
       imagem: kitLimpezaMoldeImg,
       categoria: "Higiene"
     },
     {
       id: 5,
       nome: "Bombinha de Ar",
-      descricao: "Tem a finalidade de secar toda umidade existente dentro do tubinho do molde auricular, bem como auxiliar na limpeza e desobstrução do mesmo.",
+      descricao: "Ferramenta para secar umidade dentro do tubo do molde auricular. Auxilia na limpeza e desobstrução, mantendo o aparelho em perfeito estado.",
       imagem: bombinhaArImg,
       categoria: "Manutenção"
     },
     {
       id: 6,
       nome: "Testador de Pilhas",
-      descricao: "Os testadores servem para checar se a bateria do seu aparelho auditivo ainda está ativa. Podem ser utilizados para testar baterias de zinco de qualquer tamanho.",
+      descricao: "Equipamento para verificar se a bateria do aparelho auditivo ainda está ativa. Compatível com baterias de zinco de todos os tamanhos.",
       imagem: testadorPilhasImg,
       categoria: "Energia"
     },
     {
       id: 7,
       nome: "Protetor Auricular (Tampão para Natação)",
-      descricao: "Os protetores servem para evitar a entrada de água no conduto auditivo, auxiliando na prevenção de otites.",
+      descricao: "Proteção contra entrada de água no conduto auditivo durante natação e outras atividades aquáticas. Previne otites e infecções.",
       imagem: protetorAuricularImg,
       categoria: "Proteção"
     },
     {
       id: 8,
       nome: "Desumidificador Elétrico",
-      descricao: "Maior eficiência no controle da umidade dos aparelhos auditivos; Agilidade e praticidade: basta pressionar o botão e em apenas 30 minutos elimina a umidade e desliga automaticamente; Função de secagem intensa para os casos de excesso de umidade, após atividades físicas, por exemplo; Reduz o acúmulo de germes em moldes e nos aparelhos auditivos através da Luz UV (ultra-violeta) que possui; 2 em 1: Desumidificador/secagem intensa e Anti-germe;",
+      descricao: "Elimina umidade em 30 minutos com desligamento automático. Inclui função de secagem intensa e luz UV anti-germes para higienização completa.",
       imagem: desumidificadorEletricoImg,
       categoria: "Cuidados Avançados"
     },
     {
       id: 9,
       nome: "Filtro",
-      descricao: "Filtro protetor de cera para diversas marcas e modelos de aparelhos auditivos.",
+      descricao: "Filtro protetor de cera compatível com diversas marcas e modelos de aparelhos auditivos. Protege contra acúmulo de cera e sujeira.",
       imagem: filtroImg,
       categoria: "Proteção"
     },
     {
       id: 10,
       nome: "Receptores",
-      descricao: "Receptores para várias marcas de aparelhos auditivos.",
+      descricao: "Receptores compatíveis com várias marcas de aparelhos auditivos. Garantem melhor qualidade de som e conectividade wireless.",
       imagem: receptoresImg,
       categoria: "Conectividade"
     },
     {
       id: 11,
       nome: "Pilhas (Baterias)",
-      descricao: "Pilhas (Baterias) nos tamanhos 10, 13, 312 e 675 para todos as marcas de aparelhos auditivos.",
+      descricao: "Pilhas nos tamanhos 10, 13, 312 e 675 para todas as marcas de aparelhos auditivos. Alta qualidade e durabilidade garantida.",
       imagem: pilhasImg,
       categoria: "Energia"
+    },
+    {
+      id: 12,
+      nome: "Carregador Power Bank",
+      descricao: "Carregador portátil para aparelhos recarregáveis. Ideal para viagens e uso diário, permitindo carregar seus aparelhos em qualquer lugar.",
+      imagem: testadorPilhasImg,
+      categoria: "Energia"
+    },
+    {
+      id: 13,
+      nome: "Carregador de Mesa",
+      descricao: "Carregador de mesa para aparelhos recarregáveis. Design elegante e compacto, perfeito para uso doméstico ou no escritório.",
+      imagem: testadorPilhasImg,
+      categoria: "Energia"
+    },
+    {
+      id: 14,
+      nome: "Jóia",
+      descricao: "Acessórios decorativos em formato de jóia para personalizar aparelhos auditivos. Combina funcionalidade com estilo e elegância.",
+      imagem: protetorAuricularImg,
+      categoria: "Personalização"
     }
   ];
 
@@ -344,7 +365,7 @@ const Acessorios = () => {
       {/* Catálogo de Acessórios Section */}
       <section className="py-16 md:py-20 bg-gray-50">
         <div className="container mx-auto px-4 md:px-6 lg:px-8 xl:px-12">
-          <div className="max-w-7xl mx-auto">
+          <div className="max-w-[1800px] mx-auto">
             {/* Título Principal */}
             <div className="text-center mb-16" data-aos="fade-up">
               <h2 
@@ -373,7 +394,7 @@ const Acessorios = () => {
         </div>
         
             {/* Grid de Acessórios */}
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8">
               {acessorios.map((acessorio, index) => (
                 <div 
                   key={acessorio.id}

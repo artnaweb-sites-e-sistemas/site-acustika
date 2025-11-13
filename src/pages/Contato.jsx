@@ -31,8 +31,8 @@ const Contato = () => {
       id: 1,
       title: "São Paulo SP - Ipiranga",
       address: "Av. Nazaré, 1139 – Loja 2 – Térreo Ed. Cardeal Hummes",
-      phone: "(11) 3895-3000",
-      cellphone: "(11) 99770-4014",
+      phone: "(11) 99770-4014",
+      cellphone: "(48) 99128-7927",
       mapsUrl: "https://www.google.com/maps/search/Av.+Nazaré,+1139+-+Ipiranga,+São+Paulo+-+SP"
     },
     {
@@ -40,7 +40,7 @@ const Contato = () => {
       title: "Florianópolis SC - Rio Tavares",
       address: "Multi Open Shopping – Rodovia Dr. Antônio Luiz Moura Gonzaga, 3339, Sala 115C",
       phone: "(48) 3247-9000",
-      cellphone: "(48) 99128-7927",
+      cellphone: "(48) 99129-4873",
       mapsUrl: "https://www.google.com/maps/search/Multi+Open+Shopping+Rodovia+Dr.+Antônio+Luiz+Moura+Gonzaga+3339+Florianópolis"
     },
     {
@@ -50,6 +50,14 @@ const Contato = () => {
       phone: "(48) 3247-9000",
       cellphone: "(48) 99128-7927",
       mapsUrl: "https://www.google.com/maps/search/Av.+Lédio+João+Martins,+301+-+Kobrasol+São+José+SC"
+    },
+    {
+      id: 4,
+      title: "Imbituba SC - Centro",
+      address: "Rua Nereu Ramos, 237 - Centro",
+      phone: "(48) 99128-7927",
+      cellphone: "(11) 99770-4014",
+      mapsUrl: "https://www.google.com/maps/search/Rua+Nereu+Ramos,+237+-+Centro+Imbituba+SC"
     }
   ];
 
@@ -429,8 +437,7 @@ const Contato = () => {
                   <div>
                         <h3 className="font-semibold text-gray-800 mb-1" style={{ fontFamily: 'Karla, sans-serif' }}>E-mail</h3>
                         <p className="text-gray-600" style={{ fontFamily: 'Karla, sans-serif' }}>
-                          contato@acustikaauditiva.com.br<br />
-                          suporte@acustikaauditiva.com.br
+                          acustikaauditiva@gmail.com
                     </p>
                   </div>
                 </div>
@@ -445,7 +452,7 @@ const Contato = () => {
                         <h3 className="font-semibold text-gray-800 mb-1" style={{ fontFamily: 'Karla, sans-serif' }}>Horário de Funcionamento</h3>
                         <p className="text-gray-600" style={{ fontFamily: 'Karla, sans-serif' }}>
                       Segunda a Sexta: 8h às 18h<br />
-                      Sábado: 8h às 12h<br />
+                      Sábado: Fechado<br />
                       Domingo: Fechado
                     </p>
                   </div>
@@ -482,9 +489,15 @@ const Contato = () => {
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                             </svg>
-                            <p className="text-gray-600 text-sm" style={{ fontFamily: 'Karla, sans-serif' }}>
+                            <a 
+                              href={location.mapsUrl} 
+                              target="_blank" 
+                              rel="noopener noreferrer"
+                              className="text-gray-600 text-sm hover:text-acustika-purple transition-colors duration-300 underline"
+                              style={{ fontFamily: 'Karla, sans-serif' }}
+                            >
                               {location.address}
-                            </p>
+                            </a>
                           </div>
                           <div className="flex items-center space-x-4">
                             <div className="flex items-center space-x-2">
@@ -506,27 +519,6 @@ const Contato = () => {
                   </div>
                 </div>
                 
-                {/* Call to Action */}
-                <div className="bg-gradient-to-r from-acustika-purple to-acustika-teal rounded-2xl p-8 text-white" data-aos="fade-up" data-aos-delay="400">
-                  <h3 
-                    className="text-xl font-semibold mb-3"
-                    style={{ fontFamily: 'Karla, sans-serif' }}
-                  >
-                Atendimento de Emergência
-              </h3>
-                  <p 
-                    className="mb-4 opacity-90"
-                    style={{ fontFamily: 'Karla, sans-serif' }}
-                  >
-                Para casos urgentes, temos um número de emergência disponível 24h.
-              </p>
-                  <p 
-                    className="text-2xl font-bold"
-                    style={{ fontFamily: 'Karla, sans-serif' }}
-                  >
-                (11) 99999-7777
-              </p>
-            </div>
           </div>
         </div>
       </div>

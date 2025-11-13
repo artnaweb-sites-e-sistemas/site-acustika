@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import aparelhosHeroImage from '../assets/images/hero/aparelhos-hero.png';
 // Imports das imagens dos aparelhos auditivos
@@ -11,73 +11,200 @@ import rextonRugged from '../assets/images/hearing-aids/rexton-rugged.jpg.webp';
 import rextonStellar from '../assets/images/hearing-aids/rexton-stellar-04.jpg.webp';
 import oticonZircon from '../assets/images/hearing-aids/oticon-zircon.jpg.webp';
 import oticonReal from '../assets/images/hearing-aids/oticon-own250x250.png.webp';
+import oticonIntent from '../assets/images/Oticon Intent.Png';
+import oticonCross from '../assets/images/206622_CROS_miniRITE_T_312_2.png';
+import argosyVistaVUP from '../assets/images/UH_Packshot_VistaV-UP-LeftHook_7850x7850px_050-6836-R8.png';
+import argosyVistaVR from '../assets/images/UH_Packshot_VistaV-RLeftLeftReceiverP7Pewter_RGB7850x7850.jpg';
+import argosyVistaV312 from '../assets/images/UH_Packshot_Advance72-312Left_LeftReceiverP7PewterActualSize-CMYK_050-6824-P7.png';
+import argosyVistaVM from '../assets/images/UH_Packshot_Stride-V-M_Left-Hook-7850x7850px_050-6864-R8.png';
+import argosyVistaVPR from '../assets/images/UH_Packshot_Advance72-PR_Left-Hook-7850x7850px_050-6830-P7.png';
+import rextonReachSlim from '../assets/images/6e811e_929d9e323c1f4c0db4131ffc67359be6mv2.png';
+import rextonReachLiIx from '../assets/images/filters_quality(40).png';
+// Imports das imagens do Play PX
+import playPx1 from '../assets/images/playpx/PRODUTO/Oticon_Play_PX_miniBTE_T_Right_C046CoolRed_LEDgreen_Hook_500pctSize_TIF.Png';
+import playPx2 from '../assets/images/playpx/PRODUTO/Oticon_Play_PX_miniBTE_T_Right_C047CoolBlue_LEDgreen_Hook_500pctSize_TIF.Png';
+import playPx3 from '../assets/images/playpx/PRODUTO/Oticon_Play_PX_miniBTE_T_Right_C048EmeraldGreen_LEDgreen_Hook_500pctSize_TIF.Png';
+import playPx4 from '../assets/images/playpx/PRODUTO/Oticon_Play_PX_miniBTE_T_Right_C057PowerPink_LEDgreen_Hook_500pctSize_TIF.Png';
+import playPx5 from '../assets/images/playpx/PRODUTO/Oticon_Play_PX_miniBTE_T_Right_C058Aquamarine_LEDgreen_Hook_500pctSize_TIF.Png';
+import playPx6 from '../assets/images/playpx/PRODUTO/Oticon_Play_PX_miniBTE_T_Right_C079HearPink_LEDgreen_Hook_500pctSize_TIF.Png';
+import playPx7 from '../assets/images/playpx/PRODUTO/Oticon_Play_PX_miniBTE_T_Right_C090ChromaBeige_LEDgreen_Hook_500pctSize_TIF.Png';
+import playPx8 from '../assets/images/playpx/PRODUTO/Oticon_Play_PX_miniBTE_T_Right_C093ChestnutBrown_LEDgreen_Hook_500pctSize_TIF.Png';
 import '../styles/liquid-glass-buttons.css';
 
 const Aparelhos = () => {
+  // Estado para controlar o carrossel do Play PX
+  const [playPxImageIndex, setPlayPxImageIndex] = useState(0);
+  
+  // Array com todas as imagens do Play PX
+  const playPxImages = [playPx1, playPx2, playPx3, playPx4, playPx5, playPx6, playPx7, playPx8];
+  
+  // Carrossel automático do Play PX
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setPlayPxImageIndex((prevIndex) => 
+        prevIndex === playPxImages.length - 1 ? 0 : prevIndex + 1
+      );
+    }, 2000); // Muda a cada 2 segundos
+    
+    return () => clearInterval(interval);
+  }, [playPxImages.length]);
+  
+  // Função para gerar slug a partir do nome do produto
+  const generateSlug = (nome) => {
+    return nome
+      .toLowerCase()
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '') // Remove acentos
+      .replace(/[àáâãäå]/g, 'a')
+      .replace(/[èéêë]/g, 'e')
+      .replace(/[ìíîï]/g, 'i')
+      .replace(/[òóôõö]/g, 'o')
+      .replace(/[ùúûü]/g, 'u')
+      .replace(/[ç]/g, 'c')
+      .replace(/[ñ]/g, 'n')
+      .replace(/['"]/g, '') // Remove aspas e apostrofes
+      .replace(/[^a-z0-9]+/g, '-') // Substitui caracteres não alfanuméricos por hífen
+      .replace(/^-+|-+$/g, ''); // Remove hífens do início e fim
+  };
+  
+  // Mapeamento de rotas específicas para produtos que têm páginas dedicadas
+  const routeMap = {
+    'oticon-intent': '/aparelho/oticon-intent',
+    'oticon-xceed': '/aparelho/oticon-xceed',
+    'oticon-own': '/aparelho/oticon-own',
+    'oticon-cross': '/aparelho/oticon-cross',
+    'oticon-play-px': '/aparelho/oticon-play-px',
+    'oticon-real': '/aparelho/oticon-real',
+    'oticon-zircon': '/aparelho/oticon-zircon',
+    'argosy-vista-v-up': '/aparelho/argosy-vista-v-up',
+    'argosy-vista-v-r': '/aparelho/argosy-vista-v-r',
+    'argosy-vista-v-312': '/aparelho/argosy-vista-v-312',
+    'argosy-vista-v-m': '/aparelho/argosy-vista-v-m',
+    'argosy-vista-v-pr': '/aparelho/argosy-vista-v-pr',
+    'argosy-vista-b-intra': '/aparelho/argosy-vista-b-intra',
+    'rexton-reach-slim': '/aparelho/rexton-reach-slim',
+    'rexton-reach-li-ix': '/aparelho/rexton-reach-li-ix',
+    'rexton-rugged-bli-a-prova-dagua': '/aparelho/rexton-rugged',
+    'rexton-cross-do-reach-li-ix': '/aparelho/rexton-cros',
+    'rexton-m-core-r': '/aparelho/rexton-m-core-r',
+    'rexton-m-core-ix': '/aparelho/rexton-m-core-ix'
+  };
+  
+  // Função para obter a rota do produto
+  const getProductRoute = (nome) => {
+    const slug = generateSlug(nome);
+    return routeMap[slug] || `/aparelho/${slug}`;
+  };
+  
   // Dados dos aparelhos auditivos
   const aparelhos = [
+    // Marca Oticon
     {
       id: 1,
-      nome: "Argosy Vista V",
-      descricao: "Aparelho auditivo discreto com tecnologia avançada de processamento de som e conectividade Bluetooth.",
-      imagem: argosyVistaV,
-      categoria: "Intra-Auricular"
+      nome: "Oticon Intent",
+      descricao: "Aparelho auditivo com tecnologia avançada e design moderno.",
+      imagem: oticonIntent,
+      categoria: "Oticon"
     },
     {
       id: 2,
       nome: "Oticon Xceed",
       descricao: "Solução potente para perdas auditivas severas com inteligência artificial e redução de ruído.",
       imagem: oticonXceed,
-      categoria: "Retro-Auricular"
+      categoria: "Oticon"
     },
     {
       id: 3,
-      nome: "Rexton M-Core R",
-      descricao: "Aparelho recarregável com bateria de longa duração e conectividade wireless para todos os dispositivos.",
-      imagem: rextonMCoreR,
-      categoria: "Recarregável"
-    },
-    {
-      id: 4,
-      nome: "Rexton M-Core iX",
-      descricao: "Pequeno no tamanho, mas gigante na tecnologia.",
-      imagem: mCoreIX,
-      categoria: "Intra-Auricular"
-    },
-    {
-      id: 5,
-      nome: "Oticon Real",
-      descricao: "Oticon Real é um modelo discreto e recarregável.",
-      imagem: oticonReal,
-      categoria: "Retro-Auricular"
-    },
-    {
-      id: 6,
-      nome: "Rexton Rugged",
-      descricao: "É o nosso aparelho auditivo mais resistente.",
-      imagem: rextonRugged,
-      categoria: "Resistente"
-    },
-    {
-      id: 7,
-      nome: "Oticon Zircon",
-      descricao: "Oferece um aparelho auditivo recarregável pequeno e discreto.",
-      imagem: oticonZircon,
-      categoria: "Retro-Auricular"
-    },
-    {
-      id: 8,
-      nome: "Rexton Cros",
-      descricao: "Receba a informação sonora de ambos os lados.",
-      imagem: rextonStellar,
-      categoria: "CROS"
-    },
-    {
-      id: 9,
       nome: "Oticon Own",
       descricao: "O aparelho auditivo que organiza os sons ao seu redor.",
       imagem: oticonOwn,
-      categoria: "Intra-Auricular"
+      categoria: "Oticon"
+    },
+    {
+      id: 4,
+      nome: "Oticon Cross",
+      descricao: "Solução CROS para perda auditiva unilateral.",
+      imagem: oticonCross,
+      categoria: "Oticon"
+    },
+    {
+      id: 5,
+      nome: "Oticon Play PX",
+      descricao: "Aparelho auditivo com conectividade e tecnologia de ponta.",
+      imagem: oticonXceed,
+      categoria: "Oticon"
+    },
+    // Marca Argosy
+    {
+      id: 6,
+      nome: "Argosy Vista V UP",
+      descricao: "Aparelho auditivo discreto com tecnologia avançada de processamento de som.",
+      imagem: argosyVistaVUP,
+      categoria: "Argosy"
+    },
+    {
+      id: 7,
+      nome: "Argosy Vista V R",
+      descricao: "Modelo recarregável com bateria de longa duração.",
+      imagem: argosyVistaVR,
+      categoria: "Argosy"
+    },
+    {
+      id: 8,
+      nome: "Argosy Vista V 312",
+      descricao: "Aparelho com pilha 312 e conectividade Bluetooth.",
+      imagem: argosyVistaV312,
+      categoria: "Argosy"
+    },
+    {
+      id: 9,
+      nome: "Argosy Vista V M",
+      descricao: "Modelo médio com excelente qualidade sonora.",
+      imagem: argosyVistaVM,
+      categoria: "Argosy"
+    },
+    {
+      id: 10,
+      nome: "Argosy Vista V PR",
+      descricao: "Aparelho auditivo com processamento de som avançado.",
+      imagem: argosyVistaVPR,
+      categoria: "Argosy"
+    },
+    {
+      id: 11,
+      nome: "Argosy Vista B Intra",
+      descricao: "Modelo intra-auricular discreto e confortável.",
+      imagem: argosyVistaV,
+      categoria: "Argosy"
+    },
+    // Marca Rexton
+    {
+      id: 12,
+      nome: "Rexton Reach Slim",
+      descricao: "Aparelho auditivo fino e discreto com tecnologia moderna.",
+      imagem: rextonReachSlim,
+      categoria: "Rexton"
+    },
+    {
+      id: 13,
+      nome: "Rexton Reach Li ix",
+      descricao: "Modelo com bateria de íon de lítio recarregável.",
+      imagem: rextonReachLiIx,
+      categoria: "Rexton"
+    },
+    {
+      id: 14,
+      nome: "Rexton Rugged Bli à prova d'água",
+      descricao: "Aparelho resistente à água, ideal para atividades ao ar livre.",
+      imagem: rextonRugged,
+      categoria: "Rexton"
+    },
+    {
+      id: 15,
+      nome: "Rexton Cross do Reach Li ix",
+      descricao: "Solução CROS com bateria recarregável de íon de lítio.",
+      imagem: rextonStellar,
+      categoria: "Rexton"
     }
   ];
 
@@ -357,12 +484,31 @@ const Aparelhos = () => {
                   data-aos-delay={index * 100}
                 >
                   {/* Imagem */}
-                  <div className="h-64 overflow-hidden bg-gray-50">
-                    <img 
-                      src={aparelho.imagem} 
-                      alt={aparelho.nome} 
-                      className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-300"
-                    />
+                  <div className="h-64 overflow-hidden bg-gray-50 relative">
+                    {aparelho.id === 5 ? (
+                      // Carrossel para Play PX
+                      <div className="w-full h-full flex items-center justify-center" style={{ paddingRight: '120px', paddingTop: '45px' }}>
+                        <img 
+                          src={playPxImages[playPxImageIndex]} 
+                          alt={`${aparelho.nome} - Cor ${playPxImageIndex + 1}`} 
+                          className="h-full w-auto object-contain transition-opacity duration-500"
+                          style={{
+                            imageRendering: 'auto',
+                            backfaceVisibility: 'hidden',
+                            transform: 'translateZ(0) scale(1.5)',
+                            opacity: 1,
+                            transformOrigin: 'center center'
+                          }}
+                        />
+                      </div>
+                    ) : (
+                      // Imagem estática para outros aparelhos
+                      <img 
+                        src={aparelho.imagem} 
+                        alt={aparelho.nome} 
+                        className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-300"
+                      />
+                    )}
               </div>
                   
                   {/* Conteúdo */}
@@ -410,7 +556,7 @@ const Aparelhos = () => {
                     <div className="pt-4">
                       <div className="bth bth-white-icon w-full">
                         <Link 
-                          to={`/aparelho/${aparelho.nome.toLowerCase().replace(/\s+/g, '-')}`}
+                          to={getProductRoute(aparelho.nome)}
                           className="elementor-button w-full text-center py-8"
                           style={{ paddingTop: '52px', paddingBottom: '52px' }}
                         >

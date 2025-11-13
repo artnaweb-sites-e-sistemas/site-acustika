@@ -1,0 +1,347 @@
+import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import rextonReachSlim from '../assets/images/6e811e_929d9e323c1f4c0db4131ffc67359be6mv2.png';
+import rextonReachLiIx from '../assets/images/filters_quality(40).png';
+import rextonRugged from '../assets/images/hearing-aids/rexton-rugged.jpg.webp';
+
+const RextonReachSlim = () => {
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      once: true,
+      offset: 100
+    });
+  }, []);
+
+  const aparelhos = [
+    {
+      id: 13,
+      nome: "Rexton Reach Li ix",
+      descricao: "Modelo com bateria de íon de lítio recarregável.",
+      imagem: rextonReachLiIx,
+      categoria: "Rexton"
+    },
+    {
+      id: 14,
+      nome: "Rexton Rugged Bli à prova d'água",
+      descricao: "Aparelho resistente à água, ideal para atividades ao ar livre.",
+      imagem: rextonRugged,
+      categoria: "Rexton"
+    }
+  ];
+
+  const generateSlug = (nome) => {
+    return nome.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/['"]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+  };
+
+  return (
+    <div className="-mt-20">
+      <section 
+        className="py-16 md:py-20 relative overflow-hidden"
+        style={{
+          background: `
+            radial-gradient(ellipse 85% 65% at 8% 8%, rgba(122, 68, 120, 0.15), transparent 60%),
+            radial-gradient(ellipse 75% 60% at 75% 35%, rgba(100, 160, 160, 0.20), transparent 62%),
+            radial-gradient(ellipse 70% 60% at 15% 80%, rgba(122, 68, 120, 0.12), transparent 62%),
+            radial-gradient(ellipse 70% 60% at 92% 92%, rgba(100, 160, 160, 0.18), transparent 62%),
+            linear-gradient(135deg, #f7f0f7 0%, #f0f7f7 50%, #e8f5f5 100%)
+          `,
+        }}
+      >
+        <div className="absolute inset-0 bg-white/30" style={{ zIndex: 2 }}></div>
+        
+        <div className="relative z-10 container mx-auto px-4 md:px-6 lg:px-8" style={{ paddingTop: '50px' }}>
+          <div className="text-center max-w-4xl mx-auto">
+            <div 
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 backdrop-blur-sm border border-gray-200/50 shadow-sm w-fit mx-auto mb-6"
+              data-aos="fade-up"
+            >
+              <div className="w-2 h-2 bg-gradient-to-r from-acustika-purple to-acustika-teal rounded-full animate-pulse"></div>
+              <span className="text-sm font-medium text-gray-600" style={{ fontFamily: 'Karla, sans-serif' }}>Design Fino</span>
+            </div>
+            
+            <h1 
+              className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-4"
+              data-aos="fade-up"
+              data-aos-delay="100"
+              style={{ 
+                fontFamily: 'Karla, sans-serif',
+                fontWeight: '700',
+                lineHeight: '1.1'
+              }}
+            >
+              Rexton Reach Slim
+            </h1>
+            
+            <p 
+              className="text-sm md:text-base text-gray-600 max-w-2xl mx-auto"
+              data-aos="fade-up"
+              data-aos-delay="200"
+              style={{ 
+                fontFamily: 'Karla, sans-serif',
+                fontWeight: '400',
+                lineHeight: '1.6'
+              }}
+            >
+              Aparelho auditivo fino e discreto com tecnologia moderna. Design elegante que combina discrição com performance superior.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16 md:py-20 bg-white">
+        <div className="container mx-auto px-4 md:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 
+              className="text-3xl md:text-4xl font-bold text-gray-900 mb-4"
+              style={{ fontFamily: 'Karla, sans-serif', fontWeight: '700' }}
+              data-aos="fade-up"
+            >
+              Principais Características
+            </h2>
+            <p 
+              className="text-lg text-gray-600 max-w-2xl mx-auto"
+              style={{ fontFamily: 'Karla, sans-serif', fontWeight: '400' }}
+              data-aos="fade-up"
+              data-aos-delay="100"
+            >
+              Tecnologias avançadas que tornam o Rexton Reach Slim uma escolha excepcional
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div 
+              className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
+              data-aos="fade-up"
+              data-aos-delay="100"
+            >
+              <div className="w-12 h-12 bg-gradient-to-r from-acustika-purple to-acustika-teal rounded-full flex items-center justify-center mb-4">
+                <i className="fas fa-eye-slash text-white text-lg"></i>
+              </div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-3" style={{ fontFamily: 'Karla, sans-serif' }}>
+                Design Fino
+              </h3>
+              <p className="text-gray-600" style={{ fontFamily: 'Karla, sans-serif' }}>
+                Design fino e discreto que se adapta perfeitamente ao seu estilo de vida.
+              </p>
+            </div>
+
+            <div 
+              className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
+              data-aos="fade-up"
+              data-aos-delay="200"
+            >
+              <div className="w-12 h-12 bg-gradient-to-r from-acustika-purple to-acustika-teal rounded-full flex items-center justify-center mb-4">
+                <i className="fas fa-microchip text-white text-lg"></i>
+              </div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-3" style={{ fontFamily: 'Karla, sans-serif' }}>
+                Tecnologia Moderna
+              </h3>
+              <p className="text-gray-600" style={{ fontFamily: 'Karla, sans-serif' }}>
+                Tecnologia moderna de processamento de som para uma experiência auditiva superior.
+              </p>
+            </div>
+
+            <div 
+              className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
+              data-aos="fade-up"
+              data-aos-delay="300"
+            >
+              <div className="w-12 h-12 bg-gradient-to-r from-acustika-purple to-acustika-teal rounded-full flex items-center justify-center mb-4">
+                <i className="fas fa-volume-up text-white text-lg"></i>
+              </div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-3" style={{ fontFamily: 'Karla, sans-serif' }}>
+                Qualidade Sonora
+              </h3>
+              <p className="text-gray-600" style={{ fontFamily: 'Karla, sans-serif' }}>
+                Excelente qualidade sonora com processamento avançado de sinais para uma experiência auditiva superior.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16 md:py-20 bg-gray-50">
+        <div className="container mx-auto px-4 md:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 
+              className="text-3xl md:text-4xl font-bold text-gray-900 mb-4"
+              style={{ fontFamily: 'Karla, sans-serif', fontWeight: '700' }}
+              data-aos="fade-up"
+            >
+              Especificações Técnicas
+            </h2>
+            <p 
+              className="text-lg text-gray-600 max-w-2xl mx-auto"
+              style={{ fontFamily: 'Karla, sans-serif', fontWeight: '400' }}
+              data-aos="fade-up"
+              data-aos-delay="100"
+            >
+              Detalhes técnicos que fazem a diferença na sua experiência auditiva
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            <div className="bg-white rounded-2xl p-8 shadow-lg" data-aos="fade-right">
+              <h3 className="text-2xl font-semibold text-gray-900 mb-6" style={{ fontFamily: 'Karla, sans-serif' }}>
+                Especificações
+              </h3>
+              <div className="space-y-4">
+                <div className="flex justify-between items-center py-3 border-b border-gray-200">
+                  <span className="text-gray-600" style={{ fontFamily: 'Karla, sans-serif' }}>Tipo</span>
+                  <span className="font-semibold text-gray-900" style={{ fontFamily: 'Karla, sans-serif' }}>RIC Slim</span>
+                </div>
+                <div className="flex justify-between items-center py-3 border-b border-gray-200">
+                  <span className="text-gray-600" style={{ fontFamily: 'Karla, sans-serif' }}>Conectividade</span>
+                  <span className="font-semibold text-gray-900" style={{ fontFamily: 'Karla, sans-serif' }}>Bluetooth</span>
+                </div>
+                <div className="flex justify-between items-center py-3 border-b border-gray-200">
+                  <span className="text-gray-600" style={{ fontFamily: 'Karla, sans-serif' }}>Design</span>
+                  <span className="font-semibold text-gray-900" style={{ fontFamily: 'Karla, sans-serif' }}>Fino e Discreto</span>
+                </div>
+                <div className="flex justify-between items-center py-3">
+                  <span className="text-gray-600" style={{ fontFamily: 'Karla, sans-serif' }}>Tecnologia</span>
+                  <span className="font-semibold text-gray-900" style={{ fontFamily: 'Karla, sans-serif' }}>Moderna</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-white rounded-2xl p-8 shadow-lg flex items-center justify-center" data-aos="fade-left">
+              <div className="text-center">
+                <img 
+                  src={rextonReachSlim} 
+                  alt="Rexton Reach Slim"
+                  className="w-full max-w-sm mx-auto mb-4"
+                />
+                <h4 className="text-xl font-semibold text-gray-900" style={{ fontFamily: 'Karla, sans-serif' }}>
+                  Rexton Reach Slim
+                </h4>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16 md:py-20 bg-gray-50">
+        <div className="container mx-auto px-4 md:px-6 lg:px-8">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-16" data-aos="fade-up">
+              <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-6" style={{ fontFamily: 'Karla, sans-serif', fontWeight: '700' }}>
+                Conheça outros aparelhos
+              </h2>
+              <p className="text-lg text-gray-600 max-w-3xl mx-auto" style={{ fontFamily: 'Karla, sans-serif' }}>
+                Descubra mais opções da nossa linha de aparelhos auditivos
+              </p>
+              <div className="w-24 h-1 bg-gradient-to-r from-acustika-purple to-acustika-teal mx-auto rounded-full mt-6"></div>
+            </div>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {aparelhos.slice(0, 2).map((outroAparelho, index) => (
+                <div 
+                  key={outroAparelho.id}
+                  className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 overflow-hidden group flex flex-col"
+                  data-aos="fade-up"
+                  data-aos-delay={index * 100}
+                >
+                  <div className="h-48 overflow-hidden bg-gray-50">
+                    <img 
+                      src={outroAparelho.imagem} 
+                      alt={outroAparelho.nome} 
+                      className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-300"
+                    />
+                  </div>
+                  
+                  <div className="p-6 flex flex-col flex-1">
+                    <div className="flex-1">
+                      <div className="flex items-center gap-2 mb-3">
+                        <div className="w-2 h-2 bg-gradient-to-r from-acustika-purple to-acustika-teal rounded-full"></div>
+                        <span className="text-sm font-medium text-gray-500" style={{ fontFamily: 'Karla, sans-serif' }}>
+                          {outroAparelho.categoria}
+                        </span>
+                      </div>
+                      
+                      <h3 className="font-semibold text-gray-900 text-lg mb-3" style={{ fontFamily: 'Karla, sans-serif', fontWeight: '600' }}>
+                        {outroAparelho.nome}
+                      </h3>
+                      
+                      <p className="text-gray-600 text-sm leading-relaxed" style={{ fontFamily: 'Karla, sans-serif', fontWeight: '400' }}>
+                        {outroAparelho.descricao}
+                      </p>
+                    </div>
+                    
+                    <div className="mt-4">
+                      <Link 
+                        to={`/aparelho/${generateSlug(outroAparelho.nome)}`}
+                        className="w-full px-4 py-2 bg-gradient-to-r from-acustika-purple to-acustika-teal text-white font-medium rounded-lg hover:from-acustika-purple/90 hover:to-acustika-teal/90 transition-all duration-300 text-center block"
+                        style={{ fontFamily: 'Karla, sans-serif' }}
+                      >
+                        Saiba Mais
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="text-center mt-12">
+              <Link 
+                to="/aparelhos"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-gray-100 text-gray-700 font-semibold rounded-xl hover:bg-gray-200 transition-all duration-300"
+                style={{ fontFamily: 'Karla, sans-serif' }}
+                data-aos="fade-up"
+                data-aos-delay="400"
+              >
+                <i className="fas fa-arrow-left"></i>
+                Ver Todos os Aparelhos
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section 
+        className="py-20 md:py-24 relative overflow-hidden"
+        style={{
+          background: `
+            radial-gradient(ellipse 85% 65% at 8% 8%, rgba(122, 68, 120, 0.15), transparent 60%),
+            radial-gradient(ellipse 75% 60% at 75% 35%, rgba(100, 160, 160, 0.20), transparent 62%),
+            radial-gradient(ellipse 70% 60% at 15% 80%, rgba(122, 68, 120, 0.12), transparent 62%),
+            radial-gradient(ellipse 70% 60% at 92% 92%, rgba(100, 160, 160, 0.18), transparent 62%),
+            linear-gradient(135deg, #f7f0f7 0%, #f0f7f7 50%, #e8f5f5 100%)
+          `,
+        }}
+      >
+        <div className="container mx-auto px-4 md:px-6 lg:px-8 xl:px-12 relative" style={{ zIndex: 10 }}>
+          <div 
+            className="rounded-3xl p-12 md:p-16 text-center text-white shadow-2xl backdrop-blur-sm relative moving-gradient"
+            data-aos="zoom-in"
+            style={{ border: '1px solid rgba(255, 255, 255, 0.2)', zIndex: 2 }}
+          >
+            <h2 className="text-4xl md:text-5xl font-bold mb-6" style={{ fontFamily: 'Noto Serif, serif', fontWeight: '500', fontSize: '48px', lineHeight: '1.2' }}>
+              Pronto para experimentar o Rexton Reach Slim?
+            </h2>
+            <p className="text-xl md:text-2xl mb-10 opacity-90 max-w-3xl mx-auto" style={{ fontFamily: 'Karla, sans-serif', fontWeight: '400', fontSize: '20px', lineHeight: '1.4' }}>
+              Agende um teste gratuito e descubra como este aparelho pode transformar sua experiência auditiva.
+            </p>
+            <div className="flex justify-center">
+              <div className="bth-white">
+                <a href="https://wa.me/5511999999999" target="_blank" rel="noopener noreferrer" className="elementor-button-white group">
+                  <span className="elementor-button-text">Agendar teste gratuito</span>
+                  <span className="elementor-button-icon group-hover:rotate-0 transition-all duration-500" style={{ transform: 'rotate(45deg)' }}>
+                    <i className="fas fa-calendar-alt text-base transition-all duration-500 group-hover:opacity-0 group-hover:scale-0"></i>
+                    <i className="fab fa-whatsapp text-base absolute top-1/2 left-1/2 transition-all duration-500 opacity-0 scale-0 group-hover:opacity-100 group-hover:scale-100" style={{ transform: 'translate(-50%, -50%) rotate(-45deg)' }}></i>
+                  </span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+};
+
+export default RextonReachSlim;
+

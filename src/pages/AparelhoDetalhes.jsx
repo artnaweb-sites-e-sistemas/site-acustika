@@ -10,80 +10,177 @@ import rextonRugged from '../assets/images/hearing-aids/rexton-rugged.jpg.webp';
 import rextonStellar from '../assets/images/hearing-aids/rexton-stellar-04.jpg.webp';
 import oticonZircon from '../assets/images/hearing-aids/oticon-zircon.jpg.webp';
 import oticonReal from '../assets/images/hearing-aids/oticon-own250x250.png.webp';
+import oticonIntent from '../assets/images/Oticon Intent.Png';
+import oticonCross from '../assets/images/206622_CROS_miniRITE_T_312_2.png';
+import argosyVistaVUP from '../assets/images/UH_Packshot_VistaV-UP-LeftHook_7850x7850px_050-6836-R8.png';
+import argosyVistaVR from '../assets/images/UH_Packshot_VistaV-RLeftLeftReceiverP7Pewter_RGB7850x7850.jpg';
+import argosyVistaV312 from '../assets/images/UH_Packshot_Advance72-312Left_LeftReceiverP7PewterActualSize-CMYK_050-6824-P7.png';
+import argosyVistaVM from '../assets/images/UH_Packshot_Stride-V-M_Left-Hook-7850x7850px_050-6864-R8.png';
+import argosyVistaVPR from '../assets/images/UH_Packshot_Advance72-PR_Left-Hook-7850x7850px_050-6830-P7.png';
+import rextonReachSlim from '../assets/images/6e811e_929d9e323c1f4c0db4131ffc67359be6mv2.png';
+import rextonReachLiIx from '../assets/images/filters_quality(40).png';
 
 const AparelhoDetalhes = () => {
   const { slug } = useParams();
+  
+  // Função para gerar slug a partir do nome do produto
+  const generateSlug = (nome) => {
+    return nome
+      .toLowerCase()
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .replace(/[àáâãäå]/g, 'a')
+      .replace(/[èéêë]/g, 'e')
+      .replace(/[ìíîï]/g, 'i')
+      .replace(/[òóôõö]/g, 'o')
+      .replace(/[ùúûü]/g, 'u')
+      .replace(/[ç]/g, 'c')
+      .replace(/[ñ]/g, 'n')
+      .replace(/['"]/g, '')
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/^-+|-+$/g, '');
+  };
   
   // Dados dos aparelhos (mesmo array da página Aparelhos)
   const aparelhos = [
     {
       id: 1,
-      nome: "Argosy Vista V",
-      descricao: "Aparelho auditivo discreto com tecnologia avançada de processamento de som e conectividade Bluetooth.",
-      imagem: argosyVistaV,
-      categoria: "Intra-Auricular"
+      nome: "Oticon Intent",
+      descricao: "Aparelho auditivo com tecnologia avançada e design moderno.",
+      imagem: oticonIntent,
+      categoria: "Oticon"
     },
     {
       id: 2,
       nome: "Oticon Xceed",
       descricao: "Solução potente para perdas auditivas severas com inteligência artificial e redução de ruído.",
       imagem: oticonXceed,
-      categoria: "Retro-Auricular"
+      categoria: "Oticon"
     },
     {
       id: 3,
-      nome: "Rexton M-Core R",
-      descricao: "Aparelho recarregável com bateria de longa duração e conectividade wireless para todos os dispositivos.",
-      imagem: rextonMCoreR,
-      categoria: "Recarregável"
-    },
-    {
-      id: 4,
-      nome: "Rexton M-Core iX",
-      descricao: "Pequeno no tamanho, mas gigante na tecnologia.",
-      imagem: mCoreIX,
-      categoria: "Intra-Auricular"
-    },
-    {
-      id: 5,
-      nome: "Oticon Real",
-      descricao: "Oticon Real é um modelo discreto e recarregável.",
-      imagem: oticonReal,
-      categoria: "Retro-Auricular"
-    },
-    {
-      id: 6,
-      nome: "Rexton Rugged",
-      descricao: "É o nosso aparelho auditivo mais resistente.",
-      imagem: rextonRugged,
-      categoria: "Resistente"
-    },
-    {
-      id: 7,
-      nome: "Oticon Zircon",
-      descricao: "Oferece um aparelho auditivo recarregável pequeno e discreto.",
-      imagem: oticonZircon,
-      categoria: "Retro-Auricular"
-    },
-    {
-      id: 8,
-      nome: "Rexton Cros",
-      descricao: "Receba a informação sonora de ambos os lados.",
-      imagem: rextonStellar,
-      categoria: "CROS"
-    },
-    {
-      id: 9,
       nome: "Oticon Own",
       descricao: "O aparelho auditivo que organiza os sons ao seu redor.",
       imagem: oticonOwn,
-      categoria: "Intra-Auricular"
+      categoria: "Oticon"
+    },
+    {
+      id: 4,
+      nome: "Oticon Cross",
+      descricao: "Solução CROS para perda auditiva unilateral.",
+      imagem: oticonCross,
+      categoria: "Oticon"
+    },
+    {
+      id: 5,
+      nome: "Oticon Play PX",
+      descricao: "Aparelho auditivo com conectividade e tecnologia de ponta.",
+      imagem: oticonXceed,
+      categoria: "Oticon"
+    },
+    {
+      id: 6,
+      nome: "Argosy Vista V UP",
+      descricao: "Aparelho auditivo discreto com tecnologia avançada de processamento de som.",
+      imagem: argosyVistaVUP,
+      categoria: "Argosy"
+    },
+    {
+      id: 7,
+      nome: "Argosy Vista V R",
+      descricao: "Modelo recarregável com bateria de longa duração.",
+      imagem: argosyVistaVR,
+      categoria: "Argosy"
+    },
+    {
+      id: 8,
+      nome: "Argosy Vista V 312",
+      descricao: "Aparelho com pilha 312 e conectividade Bluetooth.",
+      imagem: argosyVistaV312,
+      categoria: "Argosy"
+    },
+    {
+      id: 9,
+      nome: "Argosy Vista V M",
+      descricao: "Modelo médio com excelente qualidade sonora.",
+      imagem: argosyVistaVM,
+      categoria: "Argosy"
+    },
+    {
+      id: 10,
+      nome: "Argosy Vista V PR",
+      descricao: "Aparelho auditivo com processamento de som avançado.",
+      imagem: argosyVistaVPR,
+      categoria: "Argosy"
+    },
+    {
+      id: 11,
+      nome: "Argosy Vista B Intra",
+      descricao: "Modelo intra-auricular discreto e confortável.",
+      imagem: argosyVistaV,
+      categoria: "Argosy"
+    },
+    {
+      id: 12,
+      nome: "Rexton Reach Slim",
+      descricao: "Aparelho auditivo fino e discreto com tecnologia moderna.",
+      imagem: rextonReachSlim,
+      categoria: "Rexton"
+    },
+    {
+      id: 13,
+      nome: "Rexton Reach Li ix",
+      descricao: "Modelo com bateria de íon de lítio recarregável.",
+      imagem: rextonReachLiIx,
+      categoria: "Rexton"
+    },
+    {
+      id: 14,
+      nome: "Rexton Rugged Bli à prova d'água",
+      descricao: "Aparelho resistente à água, ideal para atividades ao ar livre.",
+      imagem: rextonRugged,
+      categoria: "Rexton"
+    },
+    {
+      id: 15,
+      nome: "Rexton Cross do Reach Li ix",
+      descricao: "Solução CROS com bateria recarregável de íon de lítio.",
+      imagem: rextonStellar,
+      categoria: "Rexton"
+    },
+    {
+      id: 16,
+      nome: "Rexton M-Core R",
+      descricao: "Aparelho recarregável com bateria de longa duração e conectividade wireless para todos os dispositivos.",
+      imagem: rextonMCoreR,
+      categoria: "Rexton"
+    },
+    {
+      id: 17,
+      nome: "Rexton M-Core iX",
+      descricao: "Pequeno no tamanho, mas gigante na tecnologia.",
+      imagem: mCoreIX,
+      categoria: "Rexton"
+    },
+    {
+      id: 18,
+      nome: "Oticon Real",
+      descricao: "Oticon Real é um modelo discreto e recarregável.",
+      imagem: oticonReal,
+      categoria: "Oticon"
+    },
+    {
+      id: 19,
+      nome: "Oticon Zircon",
+      descricao: "Oferece um aparelho auditivo recarregável pequeno e discreto.",
+      imagem: oticonZircon,
+      categoria: "Oticon"
     }
   ];
   
   // Encontrar o aparelho pelo slug
   const aparelho = aparelhos.find(a => 
-    a.nome.toLowerCase().replace(/\s+/g, '-') === slug
+    generateSlug(a.nome) === slug
   );
   
   if (!aparelho) {

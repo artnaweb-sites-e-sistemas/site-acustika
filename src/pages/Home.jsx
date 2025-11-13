@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import heroImage from '../assets/images/hero/hero-main.png';
 import heroMainImage from '../assets/images/hero/hero-main.png';
 import clinicMapImage from '../assets/images/clinic-map.jpg';
@@ -22,14 +23,21 @@ import hashtagOucabemVivamelhor from '../assets/images/hashtag.png';
 import faviconIcon from '../assets/images/favicon.png';
 import favicon2Icon from '../assets/images/favicon2.png';
 import testimonialImage from '../assets/images/testimonial.jpg';
+import srAntonioPhoto from '../assets/images/Captura de tela 2025-11-13 000031.png';
+import srCarlosPhoto from '../assets/images/Captura de tela 2025-11-13 000506.png';
+import srRicardoPhoto from '../assets/images/Captura de tela 2025-11-13 001039.png';
+import srRodolfoPhoto from '../assets/images/Captura de tela 2025-11-13 000729.png';
 // Imports das imagens das unidades
 import kobrasol1 from '../assets/images/units/kobrasol-1.jpg';
 import kobrasol2 from '../assets/images/units/kobrasol-2.jpg';
 import kobrasol3 from '../assets/images/units/kobrasol-3.jpg';
 import kobrasol4 from '../assets/images/units/kobrasol-4.jpg';
+import kobrasolFachada from '../assets/images/Fachada Kobrasol.JPG';
 import ipiranga1 from '../assets/images/units/ipiranga-1.jpg';
 import ipiranga2 from '../assets/images/units/ipiranga-2.jpg';
 import ipiranga3 from '../assets/images/units/ipiranga-3.jpg';
+import recepcaoIpiranga from '../assets/images/recepção ipiranga.jpg';
+import fachadaMulti from '../assets/images/fachada multi.png';
 // Imports das imagens dos aparelhos auditivos
 import argosyVistaV from '../assets/images/hearing-aids/argosy-vista-v.jpg';
 import oticonXceed from '../assets/images/hearing-aids/oticon-xceed.png';
@@ -49,10 +57,10 @@ const Home = () => {
       id: 1,
       title: "São Paulo SP - Ipiranga",
       address: "Av. Nazaré, 1139 – Loja 2 – Térreo Ed. Cardeal Hummes",
-      phone: "(11) 3895-3000",
-      cellphone: "(11) 99770-4014",
+      phone: "(11) 99770-4014",
+      cellphone: "(48) 99128-7927",
       mapsUrl: "https://www.google.com/maps/search/Av.+Nazaré,+1139+-+Ipiranga,+São+Paulo+-+SP",
-      images: [ipiranga1, ipiranga2, ipiranga3]
+      images: [ipiranga1, recepcaoIpiranga, ipiranga3]
     },
     {
       id: 2,
@@ -61,7 +69,7 @@ const Home = () => {
       phone: "(48) 3247-9000",
       cellphone: "(48) 99128-7927",
       mapsUrl: "https://www.google.com/maps/search/Multi+Open+Shopping+Rodovia+Dr.+Antônio+Luiz+Moura+Gonzaga+3339+Florianópolis",
-      images: [clinicMapImage] // Placeholder até ter as fotos
+      images: [fachadaMulti]
     },
     {
       id: 3,
@@ -70,7 +78,16 @@ const Home = () => {
       phone: "(48) 3247-9000",
       cellphone: "(48) 99128-7927",
       mapsUrl: "https://www.google.com/maps/search/Av.+Lédio+João+Martins,+301+-+Kobrasol+São+José+SC",
-      images: [kobrasol1, kobrasol2, kobrasol3, kobrasol4]
+      images: [kobrasolFachada, kobrasol2, kobrasol3, kobrasol4]
+    },
+    {
+      id: 4,
+      title: "Imbituba SC - Centro",
+      address: "Rua Nereu Ramos, 237 - Centro",
+      phone: "(48) 99128-7927",
+      cellphone: "(11) 99770-4014",
+      mapsUrl: "https://www.google.com/maps/search/Rua+Nereu+Ramos,+237+-+Centro+Imbituba+SC",
+      images: [clinicMapImage] // Placeholder até ter a foto da fachada
     }
   ];
 
@@ -112,24 +129,31 @@ const Home = () => {
   const testimonialCards = [
     {
       id: 2,
-      name: "Dona Rita",
+      name: "Sr. Antonio",
       role: "Paciente",
-      text: "Os aparelhos comprados na Acustika sempre foram muito bons, nunca tive nenhum problema com eles. O atendimento é ótimo, sempre gosto muito e fico até com saudades da fonoaudióloga.",
-      photo: testimonialImage
+      text: "Quando eu não usava o aparelho, nem imaginava o quanto minha audição estava comprometida. Depois que comecei, a diferença foi enorme... voltei a ter confiança, ouvir melhor, entender as palavras. Descobri a perda auditiva graças à minha filha, que insistiu para eu fazer o teste. Desde então, a Acústika virou parte da família. O atendimento é excelente, todos muito atenciosos. Hoje uso um modelo de última geração, com Bluetooth e som limpo, que faz toda diferença no dia a dia. Recomendo de coração: quem desconfia que tem perda auditiva, faça o teste. Ouvir bem muda a vida.",
+      photo: srAntonioPhoto
     },
     {
       id: 3,
-      name: "Marlon",
+      name: "Sr. Carlos",
       role: "Paciente",
-      text: "Tenho 38 anos e desde a infância convivi com a falta de audição do ouvido esquerdo, sempre com muita dificuldade para compreender as comunicações, principalmente porque participo de uma banda de música. Faz 6 meses que estou usando o aparelho da Acustika e a minha vida social e a autoestima melhoraram muito.",
-      photo: testimonialImage
+      text: "Antes do aparelho, minha vida era uma luta diária... sou cirurgião-dentista e o ruído constante dos equipamentos acabou afetando minha audição. No início, senti medo e vergonha, mas resolvi fazer o exame de audiometria. Descobri uma perda auditiva que foi evoluindo até o grau severo. Hoje, com o acompanhamento da Dra. Karen e o atendimento da Acústika, encontrei o aparelho ideal. Voltei a ouvir bem, a trabalhar com segurança e até a tocar teclado, algo que eu tinha deixado de lado. Ouvir de novo me conectou ao mundo... recomendo a todos que façam o teste, porque a audição é um presente que transforma a vida.",
+      photo: srCarlosPhoto
     },
     {
       id: 4,
-      name: "Dona Odete",
+      name: "Sr. Ricardo",
       role: "Paciente",
-      text: "Desde que comecei a usar os aparelhos da Acustika a minha vida mudou completamente. Eu participo das coisas, não me sinto mais solitária. Então eu agradeço bastante à Acustika pela forma de vida que está me proporcionando atualmente.",
-      photo: testimonialImage
+      text: "Antes de usar o aparelho, eu achava que entendia o que as pessoas diziam... mas na verdade entendia tudo errado. Minha esposa vivia brava comigo, dizia algo e eu fazia outra coisa, ou simplesmente não respondia. Um dia, por acaso, passando em frente à Acústika, resolvemos entrar e conheci a Juliana. Antes já tinha tentado outros aparelhos por conta própria, mas só aumentavam o som e o ruído junto. Com a Acústika foi diferente — ouvi sons que nunca tinha percebido antes. De zero a dez, dou nove... porque perfeição não existe, mas a diferença é enorme. Recomendo a todos: use aparelho, você vai se surpreender.",
+      photo: srRicardoPhoto
+    },
+    {
+      id: 5,
+      name: "Sr. Rodolfo",
+      role: "Paciente",
+      text: "Antes de conhecer a Acústika, minha vida era bem complicada... trabalhava em escritório, precisava falar com pessoas e atender telefone, mas já não conseguia entender direito. Meu irmão me incentivou a buscar ajuda, e foi aí que entrei na Acústika com minha esposa, Simone. Fui atendido pela doutora, fiz os testes e comecei a usar o aparelho. A diferença foi impressionante... voltei a ouvir, a conversar, a viver normalmente. Já uso há mais de 10 anos e, quando precisei trocar por um modelo mais potente, o atendimento continuou impecável. A adaptação foi rápida e natural. Hoje recomendo a Acústika pra todo mundo... ouvir bem é voltar a viver.",
+      photo: srRodolfoPhoto
     }
   ];
 
@@ -492,7 +516,7 @@ const Home = () => {
                     lineHeight: '1.4'
                   }}
                 >
-                  Estamos convenientemente localizados em unidades de fácil acesso com estacionamento amplo. Atendemos São Paulo, Florianópolis, São José e todas as cidades vizinhas.
+                  Estamos convenientemente localizados em unidades de fácil acesso com estacionamento. Atendemos São Paulo, Florianópolis, São José, Imbituba e todas as cidades vizinhas.
                 </p>
                 
                 <p 
@@ -504,7 +528,7 @@ const Home = () => {
                     lineHeight: '1.4'
                   }}
                 >
-                  <span className="font-semibold" style={{ color: '#7e4078' }}>Agende online agora</span> ou nos ligue no <span className="font-semibold" style={{ color: '#7e4078' }}>(11) 3895-3000</span>
+                  <span className="font-semibold" style={{ color: '#7e4078' }}>Agende online agora</span> ou nos ligue no <span className="font-semibold" style={{ color: '#7e4078' }}>(48) 99128-7927</span> ou <span className="font-semibold" style={{ color: '#7e4078' }}>(11) 99770-4014</span>
                 </p>
                </div>
             </div>
@@ -681,27 +705,30 @@ const Home = () => {
               
               <div className="flex animate-scroll">
                 {/* First set of logos */}
-                <div className="flex-shrink-0 mr-24 opacity-75 hover:opacity-100 transition-opacity duration-300">
+                <div className="flex-shrink-0 mr-24 transition-opacity duration-300">
                   <img 
                     src={partnerLogos} 
                     alt="Parceiros e marcas da Acustika" 
                     className="h-16 md:h-20 w-auto"
+                    style={{ filter: 'none' }}
                   />
             </div>
                 {/* Second set for seamless loop */}
-                <div className="flex-shrink-0 mr-24 opacity-75 hover:opacity-100 transition-opacity duration-300">
+                <div className="flex-shrink-0 mr-24 transition-opacity duration-300">
                   <img 
                     src={partnerLogos} 
                     alt="Parceiros e marcas da Acustika" 
                     className="h-16 md:h-20 w-auto"
+                    style={{ filter: 'none' }}
                   />
           </div>
                 {/* Third set for seamless loop */}
-                <div className="flex-shrink-0 mr-24 opacity-75 hover:opacity-100 transition-opacity duration-300">
+                <div className="flex-shrink-0 mr-24 transition-opacity duration-300">
                   <img 
                     src={partnerLogos} 
                     alt="Parceiros e marcas da Acustika" 
                     className="h-16 md:h-20 w-auto"
+                    style={{ filter: 'none' }}
                   />
         </div>
                    </div>
@@ -880,7 +907,7 @@ const Home = () => {
                     lineHeight: '1.4'
                   }}
                 >
-                  Na Acustika, você encontra aparelhos auditivos modernos, discretos e confortáveis. Oferecemos desde modelos quase invisíveis até soluções recarregáveis de última geração, sempre com adaptação personalizada e acompanhamento contínuo.
+                  Na Acustika, você encontra aparelhos auditivos modernos, discretos e confortáveis. Oferecemos desde modelos quase invisíveis até soluções recarregáveis de última geração, sempre com adaptação personalizada e acompanhamento vitalício.
                 </p>
               </div>
           </div>
@@ -1037,12 +1064,12 @@ const Home = () => {
             {/* Botão CTA */}
                    <div className="text-center">
               <div className="bth bth-white-icon inline-block" data-aos="fade-up" data-aos-delay="400">
-                <a href="/aparelhos" className="elementor-button">
+                <Link to="/aparelhos" className="elementor-button">
                   <span className="elementor-button-text">Ver todos os aparelhos</span>
                   <span className="elementor-button-icon">
                     <i className="fas fa-arrow-right"></i>
                   </span>
-                </a>
+                </Link>
               </div>
             </div>
           </div>
@@ -1230,62 +1257,11 @@ const Home = () => {
                         lineHeight: '1.4'
                       }}
                     >
-                      Excelemos em excelência auditiva — desfrute de uma visita segura e confortável.
+                      Excelemos em Excelência Auditiva — desfrute de uma visita segura e confortável.
                     </p>
                   </div>
           </div>
           
-                {/* Card 4 - Idiomas */}
-                <div 
-                  className="flex flex-col lg:flex-row gap-6 items-center lg:items-start text-center lg:text-left"
-              data-aos="fade-up"
-              data-aos-delay="400"
-            >
-                  {/* Ícone */}
-                  <div className="flex-shrink-0 relative">
-                    <div 
-                      className="w-20 h-20 lg:w-32 lg:h-32 rounded-full flex items-center justify-center"
-                       style={{
-                         background: 'linear-gradient(135deg, rgba(122, 68, 120, 0.1) 0%, rgba(100, 160, 160, 0.3) 100%)',
-                         border: '1px solid rgba(122, 68, 120, 0.2)'
-                       }}
-                    >
-                       <svg className="w-12 h-12 lg:w-16 lg:h-16 text-acustika-purple" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M12.87 15.07l-2.54-2.51.03-.03c1.74-1.94 2.98-4.17 3.71-6.53H17V4h-7V2H8v2H1v1.99h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z"/>
-                      </svg>
-                    </div>
-                     {/* Badge de check */}
-                     <div className="absolute -top-2 -right-2 w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-sm border border-gray-200">
-                       <i className="fas fa-check text-acustika-purple"></i>
-                  </div>
-                    </div>
-                    
-                  {/* Conteúdo */}
-                  <div className="flex-1 space-y-4">
-                    <h3 
-                      className="font-semibold text-gray-900 text-xl"
-                      style={{ 
-                        fontFamily: 'Karla, sans-serif',
-                        fontWeight: '600',
-                        fontSize: '24px',
-                        lineHeight: '1.2'
-                      }}
-                    >
-                      Múltiplos idiomas falados
-                    </h3>
-                    <p 
-                      className="text-gray-600 leading-relaxed"
-                      style={{ 
-                        fontFamily: 'Karla, sans-serif',
-                        fontWeight: '400',
-                        fontSize: '18px',
-                        lineHeight: '1.4'
-                      }}
-                    >
-                      Somos capazes de nos comunicar fluentemente com pacientes que falam português, inglês, espanhol e italiano.
-                    </p>
-                  </div>
-                </div>
               </div>
             </div>
           </div>
@@ -1367,12 +1343,12 @@ const Home = () => {
                   {/* Botão */}
                   <div className="pt-4">
                     <div className="bth bth-white-icon">
-                      <a href="/acessorios" className="elementor-button">
+                      <Link to="/acessorios" className="elementor-button">
                         <span className="elementor-button-text">Comprar Acessórios</span>
                   <span className="elementor-button-icon">
                     <i className="fas fa-arrow-right"></i>
                   </span>
-                      </a>
+                      </Link>
                       </div>
                       </div>
                     </div>
@@ -1442,7 +1418,7 @@ const Home = () => {
                       lineHeight: '1.4'
                     }}
                   >
-                    A Acustika é referência em saúde auditiva no Brasil. Nossa missão é devolver a clareza dos sons e a qualidade de vida aos nossos pacientes. Com mais de duas décadas de experiência, oferecemos atendimento próximo, personalizado e soluções auditivas das melhores marcas do mercado. Estamos presentes em São Paulo, Florianópolis, São José e cidades vizinhas, sempre com fácil acesso e estrutura acolhedora.
+                    A Acustika é referência em saúde auditiva no Brasil. Nossa missão é devolver a clareza dos sons e a qualidade de vida aos nossos pacientes. Com mais de duas décadas de experiência, oferecemos atendimento próximo, personalizado e soluções auditivas das melhores marcas do mundo. Estamos presentes em São Paulo, Florianópolis, São José, Imbituba e cidades vizinhas, sempre com fácil acesso e estrutura acolhedora.
                   </p>
                   
                   {/* Lista de Benefícios */}
@@ -1463,7 +1439,7 @@ const Home = () => {
                           lineHeight: '1.4'
                         }}
                       >
-                        Preços Transparentes
+                        Preços que cabem no seu bolso
                       </p>
                 </div>
                     
@@ -1483,7 +1459,7 @@ const Home = () => {
                           lineHeight: '1.4'
                         }}
                       >
-                        Garantia Incomparável
+                        Pagamento facilitado em até 60x * sujeito a análise de crédito
                       </p>
                     </div>
                     
@@ -2163,7 +2139,7 @@ const Home = () => {
                 lineHeight: '1.4'
               }}
             >
-              Agende sua consulta gratuita ou fale com um de nossos especialistas. Estamos em São Paulo, Florianópolis e São José, sempre prontos para receber você.
+              Agende sua consulta gratuita ou fale com um de nossos especialistas. Estamos em São Paulo, Florianópolis, São José e Imbituba, sempre prontos para receber você.
             </p>
             <div className="flex justify-center">
               <div className="bth-white">
