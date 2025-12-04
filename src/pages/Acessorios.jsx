@@ -14,6 +14,8 @@ import desumidificadorEletricoImg from '../assets/images/accessories/desumidific
 import filtroImg from '../assets/images/accessories/filtro.webp';
 import receptoresImg from '../assets/images/accessories/receptores.webp';
 import pilhasImg from '../assets/images/accessories/pilhas.webp';
+import powerBankImg from '../assets/images/Carregador powerbank.Png';
+import joiaImg from '../assets/images/acessório para aparelho - jóia.jpeg';
 import acessoriosHeroImage from '../assets/images/hero/acessorios-hero.png';
 
 const Acessorios = () => {
@@ -108,7 +110,7 @@ const Acessorios = () => {
       id: 12,
       nome: "Carregador Power Bank",
       descricao: "Carregador portátil para aparelhos recarregáveis. Ideal para viagens e uso diário, permitindo carregar seus aparelhos em qualquer lugar.",
-      imagem: testadorPilhasImg,
+      imagem: powerBankImg,
       categoria: "Energia"
     },
     {
@@ -122,7 +124,7 @@ const Acessorios = () => {
       id: 14,
       nome: "Jóia",
       descricao: "Acessórios decorativos em formato de jóia para personalizar aparelhos auditivos. Combina funcionalidade com estilo e elegância.",
-      imagem: protetorAuricularImg,
+      imagem: joiaImg,
       categoria: "Personalização"
     }
   ];

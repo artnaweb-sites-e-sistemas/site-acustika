@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import heroMainImage from '../assets/images/hero/hero-main.png';
-import heroNewImage from '../assets/images/hero/hero-new.png';
-import historyImage from '../assets/images/hero/history-image.jpg';
-import experienceImage from '../assets/images/hero/experience-image.jpg';
+import sobreAcustikaImage from '../assets/images/Sobre a Acustika.jpg';
+import historyImage from '../assets/images/Nossa História.jpg';
+import experienceImage from '../assets/images/Experiência e Especialização.jpg';
 import fonoMalu from '../assets/images/malu.jpg';
 import equipeJuliana from '../assets/images/equipe-juliana-popescu.png.webp';
 import equipeRenato from '../assets/images/equipe-renato.png.webp';
@@ -309,7 +309,7 @@ const Sobre = () => {
                 {/* Imagem com fundo transparente - colada no bottom */}
                 <div className="relative z-10" style={{ marginBottom: '-15px' }}>
                   <img 
-                    src={heroNewImage} 
+                    src={sobreAcustikaImage} 
                     alt="Equipe Acustika" 
                     className="object-contain"
                     style={{ display: 'block', width: '500px', height: 'auto' }}
@@ -356,9 +356,7 @@ const Sobre = () => {
                     letterSpacing: '0.01em'
                   }}
                 >
-              A Acustika é uma empresa especializada em soluções auditivas, dedicada a melhorar 
-              a qualidade de vida das pessoas através de tecnologia avançada e atendimento 
-                  personalizado. Há mais de 20 anos cuidando da sua saúde auditiva.
+              Fundada no bairro do Ipiranga (SP) e crescendo com carinho, levando suas unidades também para Santa Catarina. Nosso maior propósito é cuidar de pessoas, oferecendo soluções auditivas que realmente transformam vidas.
                 </p>
                 
                 {/* Features Grid */}
@@ -462,7 +460,7 @@ const Sobre = () => {
                   lineHeight: '1.6'
                 }}
               >
-                Profissionais especializados e dedicados ao cuidado da sua saúde auditiva.
+                Profissionais especializados e dedicados ao cuidado da sua saúde auditiva. Acreditamos que cada paciente carrega uma história única e é por isso que nosso atendimento é feito com carinho e excelência. Aqui, você é recebido com acolhimento, respeito e a dedicação de uma equipe que trabalha com o coração.
               </p>
             </div>
             
@@ -769,7 +767,7 @@ const Sobre = () => {
                           className="text-4xl font-bold text-gray-900"
                           style={{ fontFamily: 'Karla, sans-serif' }}
                         >
-                          <Counter end={1000} duration={2500} suffix="+" />
+                          <Counter end={20000} duration={2500} suffix="+" />
                         </span>
                       </div>
                       <p 

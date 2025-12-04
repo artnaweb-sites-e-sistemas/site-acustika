@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import heroImage from '../assets/images/hero/hero-main.png';
-import heroMainImage from '../assets/images/hero/hero-main.png';
+import heroImage from '../assets/images/hero/hero-main-new_optimized.png';
+import heroMainImage from '../assets/images/hero/hero-main-new_optimized.png';
+import socialConnectionImage from '../assets/images/hero/social-connection_optimized.jpg';
 import clinicMapImage from '../assets/images/clinic-map.jpg';
 import partnerLogos from '../assets/images/partners.webp';
 import testimonialPhoto from '../assets/images/testimonial-photo.jpg';
@@ -9,6 +10,7 @@ import serviceGeneral from '../assets/images/service-general.jpg';
 import serviceRestorative from '../assets/images/service-restorative.jpg';
 import serviceCosmetic from '../assets/images/service-cosmetic.jpg';
 import kidsFriendlyBg from '../assets/images/fotobg5_optimized.jpg';
+import acessoriosEssenciaisBg from '../assets/images/HOME-acessórios-essenciais.Png';
 import dentistryDoneRightBg from '../assets/images/dentistry-bg.jpg';
 import dentistryDoneRightMain from '../assets/images/dentistry-main.jpg';
 import dentistryDoneRightFloating from '../assets/images/dentistry-floating.png';
@@ -27,21 +29,23 @@ import srAntonioPhoto from '../assets/images/Captura de tela 2025-11-13 000031.p
 import srCarlosPhoto from '../assets/images/Captura de tela 2025-11-13 000506.png';
 import srRicardoPhoto from '../assets/images/Captura de tela 2025-11-13 001039.png';
 import srRodolfoPhoto from '../assets/images/Captura de tela 2025-11-13 000729.png';
+import donaOdetePhoto from '../assets/images/Captura de tela 2025-12-03 204931.png';
 // Imports das imagens das unidades
 import kobrasol1 from '../assets/images/units/kobrasol-1.jpg';
 import kobrasol2 from '../assets/images/units/kobrasol-2.jpg';
 import kobrasol3 from '../assets/images/units/kobrasol-3.jpg';
-import kobrasol4 from '../assets/images/units/kobrasol-4.jpg';
 import kobrasolFachada from '../assets/images/Fachada Kobrasol.JPG';
 import ipiranga1 from '../assets/images/units/ipiranga-1.jpg';
 import ipiranga2 from '../assets/images/units/ipiranga-2.jpg';
 import ipiranga3 from '../assets/images/units/ipiranga-3.jpg';
 import recepcaoIpiranga from '../assets/images/recepção ipiranga.jpg';
 import fachadaMulti from '../assets/images/fachada multi.png';
+import recepcaoRioTavares from '../assets/images/FOTO recepção Rio Tavares.jpeg';
+import fachadaImbituba from '../assets/images/FOTO - FACHADA IMBITUBA.jpeg';
 // Imports das imagens dos aparelhos auditivos
 import argosyVistaV from '../assets/images/hearing-aids/argosy-vista-v.jpg';
 import oticonXceed from '../assets/images/hearing-aids/oticon-xceed.png';
-import rextonMCoreR from '../assets/images/hearing-aids/rexton-m-core-r.jpg';
+import rextonRugged from '../assets/images/hearing-aids/rexton-rugged.jpg.webp';
 import '../styles/liquid-glass-buttons.css';
 
 const Home = () => {
@@ -69,7 +73,7 @@ const Home = () => {
       phone: "(48) 3247-9000",
       cellphone: "(48) 99128-7927",
       mapsUrl: "https://www.google.com/maps/search/Multi+Open+Shopping+Rodovia+Dr.+Antônio+Luiz+Moura+Gonzaga+3339+Florianópolis",
-      images: [fachadaMulti]
+      images: [fachadaMulti, recepcaoRioTavares]
     },
     {
       id: 3,
@@ -78,7 +82,7 @@ const Home = () => {
       phone: "(48) 3247-9000",
       cellphone: "(48) 99128-7927",
       mapsUrl: "https://www.google.com/maps/search/Av.+Lédio+João+Martins,+301+-+Kobrasol+São+José+SC",
-      images: [kobrasolFachada, kobrasol2, kobrasol3, kobrasol4]
+      images: [kobrasolFachada, kobrasol2, kobrasol3]
     },
     {
       id: 4,
@@ -87,7 +91,16 @@ const Home = () => {
       phone: "(48) 99128-7927",
       cellphone: "(11) 99770-4014",
       mapsUrl: "https://www.google.com/maps/search/Rua+Nereu+Ramos,+237+-+Centro+Imbituba+SC",
-      images: [clinicMapImage] // Placeholder até ter a foto da fachada
+      images: [fachadaImbituba]
+    },
+    {
+      id: 5,
+      title: "Florianópolis SC - Campeche",
+      address: "Em breve mais uma unidade na ilha",
+      phone: "(48) 99128-7927",
+      cellphone: "(48) 99128-7927",
+      mapsUrl: "https://www.google.com/maps/search/Campeche+Florianópolis+SC",
+      images: [clinicMapImage] // Placeholder até ter a foto da unidade
     }
   ];
 
@@ -131,29 +144,36 @@ const Home = () => {
       id: 2,
       name: "Sr. Antonio",
       role: "Paciente",
-      text: "Quando eu não usava o aparelho, nem imaginava o quanto minha audição estava comprometida. Depois que comecei, a diferença foi enorme... voltei a ter confiança, ouvir melhor, entender as palavras. Descobri a perda auditiva graças à minha filha, que insistiu para eu fazer o teste. Desde então, a Acústika virou parte da família. O atendimento é excelente, todos muito atenciosos. Hoje uso um modelo de última geração, com Bluetooth e som limpo, que faz toda diferença no dia a dia. Recomendo de coração: quem desconfia que tem perda auditiva, faça o teste. Ouvir bem muda a vida.",
+      text: "Quando eu não usava o aparelho, nem imaginava o quanto minha audição estava comprometida. Depois que comecei, a diferença foi enorme... voltei a ter confiança, ouvir melhor, entender as palavras. Descobri a perda auditiva graças à minha filha, que insistiu para eu fazer o teste. Desde então, a Acustika virou parte da família. O atendimento é excelente, todos muito atenciosos. Hoje uso um modelo de última geração, com Bluetooth e som limpo, que faz toda diferença no dia a dia. Recomendo de coração: quem desconfia que tem perda auditiva, faça o teste. Ouvir bem muda a vida.",
       photo: srAntonioPhoto
     },
     {
       id: 3,
       name: "Sr. Carlos",
       role: "Paciente",
-      text: "Antes do aparelho, minha vida era uma luta diária... sou cirurgião-dentista e o ruído constante dos equipamentos acabou afetando minha audição. No início, senti medo e vergonha, mas resolvi fazer o exame de audiometria. Descobri uma perda auditiva que foi evoluindo até o grau severo. Hoje, com o acompanhamento da Dra. Karen e o atendimento da Acústika, encontrei o aparelho ideal. Voltei a ouvir bem, a trabalhar com segurança e até a tocar teclado, algo que eu tinha deixado de lado. Ouvir de novo me conectou ao mundo... recomendo a todos que façam o teste, porque a audição é um presente que transforma a vida.",
+      text: "Antes do aparelho, minha vida era uma luta diária... sou cirurgião-dentista e o ruído constante dos equipamentos acabou afetando minha audição. No início, senti medo e vergonha, mas resolvi fazer o exame de audiometria. Descobri uma perda auditiva que foi evoluindo até o grau severo. Hoje, com o acompanhamento da Dra. Carin e o atendimento da Acustika, encontrei o aparelho ideal. Voltei a ouvir bem, a trabalhar com segurança e até a tocar teclado, algo que eu tinha deixado de lado. Ouvir de novo me conectou ao mundo... recomendo a todos que façam o teste, porque a audição é um presente que transforma a vida.",
       photo: srCarlosPhoto
     },
     {
       id: 4,
       name: "Sr. Ricardo",
       role: "Paciente",
-      text: "Antes de usar o aparelho, eu achava que entendia o que as pessoas diziam... mas na verdade entendia tudo errado. Minha esposa vivia brava comigo, dizia algo e eu fazia outra coisa, ou simplesmente não respondia. Um dia, por acaso, passando em frente à Acústika, resolvemos entrar e conheci a Juliana. Antes já tinha tentado outros aparelhos por conta própria, mas só aumentavam o som e o ruído junto. Com a Acústika foi diferente — ouvi sons que nunca tinha percebido antes. De zero a dez, dou nove... porque perfeição não existe, mas a diferença é enorme. Recomendo a todos: use aparelho, você vai se surpreender.",
+      text: "Antes de usar o aparelho, eu achava que entendia o que as pessoas diziam... mas na verdade entendia tudo errado. Minha esposa vivia brava comigo, dizia algo e eu fazia outra coisa, ou simplesmente não respondia. Um dia, por acaso, passando em frente à Acustika, resolvemos entrar e conheci a Juliana. Antes já tinha tentado outros aparelhos por conta própria, mas só aumentavam o som e o ruído junto. Com a Acustika foi diferente — ouvi sons que nunca tinha percebido antes. De zero a dez, dou nove... porque perfeição não existe, mas a diferença é enorme. Recomendo a todos: use aparelho, você vai se surpreender.",
       photo: srRicardoPhoto
     },
     {
       id: 5,
       name: "Sr. Rodolfo",
       role: "Paciente",
-      text: "Antes de conhecer a Acústika, minha vida era bem complicada... trabalhava em escritório, precisava falar com pessoas e atender telefone, mas já não conseguia entender direito. Meu irmão me incentivou a buscar ajuda, e foi aí que entrei na Acústika com minha esposa, Simone. Fui atendido pela doutora, fiz os testes e comecei a usar o aparelho. A diferença foi impressionante... voltei a ouvir, a conversar, a viver normalmente. Já uso há mais de 10 anos e, quando precisei trocar por um modelo mais potente, o atendimento continuou impecável. A adaptação foi rápida e natural. Hoje recomendo a Acústika pra todo mundo... ouvir bem é voltar a viver.",
+      text: "Antes de conhecer a Acustika, minha vida era bem complicada... trabalhava em escritório, precisava falar com pessoas e atender telefone, mas já não conseguia entender direito. Meu irmão me incentivou a buscar ajuda, e foi aí que entrei na Acustika com minha esposa, Simone. Fui atendido pela doutora, fiz os testes e comecei a usar o aparelho. A diferença foi impressionante... voltei a ouvir, a conversar, a viver normalmente. Já uso há mais de 10 anos e, quando precisei trocar por um modelo mais potente, o atendimento continuou impecável. A adaptação foi rápida e natural. Hoje recomendo a Acustika pra todo mundo... ouvir bem é voltar a viver.",
       photo: srRodolfoPhoto
+    },
+    {
+      id: 6,
+      name: "Dona Odete",
+      role: "Paciente",
+      text: "Minha vida era difícil... eu me sentia isolada, principalmente em lugares com muitas pessoas. Quando percebi que não ouvia quase nada, procurei ajuda da minha neta, que é fonoaudióloga. Ela fez a audiometria e indicou o aparelho certo pra mim. Desde então, sou atendida pela equipe da Acustika, que é maravilhosa — atenciosa, carinhosa e sempre disposta a ajudar. No começo a adaptação foi um pouco difícil, mas logo me acostumei. Já troquei de modelo algumas vezes e todos funcionaram muito bem. Hoje dou nota 10, ou melhor, 1000! Recomendo a todos: procurem um fonoaudiólogo e conheçam a Acustika... ouvir bem muda tudo.",
+      photo: donaOdetePhoto
     }
   ];
 
@@ -469,6 +489,67 @@ const Home = () => {
         </div>
       </section>
 
+      {/* Social Connection Section */}
+      <section className="relative py-16 md:py-24 bg-white overflow-hidden">
+        <div className="container mx-auto px-4 md:px-6 lg:px-8 xl:px-12">
+          <div className="max-w-7xl mx-auto">
+            <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+              {/* Image Section */}
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl transform transition-all duration-500 hover:scale-105">
+                <img 
+                  src={socialConnectionImage} 
+                  alt="Pessoas se conectando e conversando com aparelhos auditivos" 
+                  className="w-full h-auto object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-purple-900/20 to-transparent"></div>
+              </div>
+
+              {/* Content Section */}
+              <div className="space-y-6">
+                <h2 
+                  className="font-medium text-gray-900 text-3xl md:text-4xl lg:text-5xl leading-tight"
+                  style={{ 
+                    fontFamily: 'Noto Serif, serif',
+                    fontWeight: '500',
+                    lineHeight: '1.2'
+                  }}
+                >
+                  Reconecte-se com o mundo ao seu redor
+                </h2>
+                
+                <p className="text-lg md:text-xl text-gray-600 leading-relaxed">
+                  Nossos aparelhos auditivos não apenas melhoram sua audição, mas também 
+                  restauram sua capacidade de participar plenamente de conversas, eventos 
+                  sociais e momentos especiais com pessoas queridas.
+                </p>
+
+                <p className="text-lg md:text-xl text-gray-600 leading-relaxed">
+                  Com tecnologia de ponta, você pode desfrutar de uma experiência auditiva 
+                  natural e confortável, permitindo que você se concentre no que realmente 
+                  importa: as conexões humanas.
+                </p>
+
+                <div className="pt-4">
+                  <div className="bth">
+                    <Link to="/contato" className="elementor-button group">
+                      <span className="elementor-button-text">Agende sua consulta</span>
+                      <span className="elementor-button-icon group-hover:rotate-0 transition-all duration-500" style={{ transform: 'rotate(45deg)' }}>
+                        <img 
+                          src={faviconIcon} 
+                          alt="Acustika" 
+                          className="w-4 h-4 transition-all duration-500 group-hover:opacity-0 group-hover:scale-0" 
+                        />
+                        <i className="fas fa-arrow-right text-base absolute top-1/2 left-1/2 transition-all duration-500 opacity-0 scale-0 group-hover:opacity-100 group-hover:scale-100" style={{ transform: 'translate(-50%, -50%) rotate(-45deg)' }}></i>
+                      </span>
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* About Us Section - Figma Design */}
       <section className="py-16 md:py-20 bg-gray-50">
         <div className="container mx-auto px-4 md:px-6 lg:px-8 xl:px-12">
@@ -560,11 +641,11 @@ const Home = () => {
               {/* Card Container */}
               <div className="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden h-full transition-all duration-500 ease-in-out">
                 {/* Map Image */}
-                <div className="relative h-64 bg-gray-100 overflow-hidden">
+                <div className="relative h-64 bg-gray-100 overflow-hidden flex items-center justify-center">
                   <img 
                     src={locations[currentCardIndex].images[currentImageIndex]} 
                     alt={`Localização da clínica ${locations[currentCardIndex].title}`} 
-                    className="w-full h-full object-cover transition-opacity duration-500"
+                    className="w-full h-full object-contain transition-opacity duration-500"
                     style={{
                       imageRendering: 'auto',
                       backfaceVisibility: 'hidden',
@@ -1024,12 +1105,16 @@ const Home = () => {
               }}
             >
                 {/* Imagem */}
-                <div className="h-48 overflow-hidden">
+                <div className="h-48 overflow-hidden relative">
                   <img 
-                    src={rextonMCoreR} 
-                    alt="Rexton M-Core R" 
+                    src={rextonRugged} 
+                    alt="Rexton Rugged" 
                     className="w-full h-full object-contain bg-gray-50"
                   />
+                  {/* Ícone de água à prova d'água */}
+                  <div className="absolute top-2 right-2 bg-blue-500/90 backdrop-blur-sm rounded-full p-2 shadow-lg">
+                    <i className="fas fa-tint text-white text-lg"></i>
+                  </div>
             </div>
             
                 {/* Conteúdo */}
@@ -1043,7 +1128,7 @@ const Home = () => {
                       lineHeight: '1.2'
                     }}
                   >
-                    Rexton M-Core R
+                    Rexton Rugged
                   </h3>
                   <p 
                     className="text-gray-600 leading-relaxed"
@@ -1054,8 +1139,8 @@ const Home = () => {
                       lineHeight: '1.4'
                     }}
                   >
-                    Aparelho recarregável<br/>
-                    durável, prático e fácil de usar
+                    À prova d'água<br/>
+                    Aparelho resistente à água e quedas, ideal para atividades ao ar livre.
                   </p>
               </div>
               </div>
@@ -1257,7 +1342,57 @@ const Home = () => {
                         lineHeight: '1.4'
                       }}
                     >
-                      Excelemos em Excelência Auditiva — desfrute de uma visita segura e confortável.
+                      Valorizamos a excelência em cada atendimento, oferecendo uma visita acolhedora, segura e confortável.
+                    </p>
+                  </div>
+          </div>
+          
+                {/* Card 4 - Pagamento Facilitado */}
+            <div 
+                  className="flex flex-col lg:flex-row gap-6 items-center lg:items-start text-center lg:text-left"
+              data-aos="fade-up"
+              data-aos-delay="400"
+            >
+                  {/* Ícone */}
+                  <div className="flex-shrink-0 relative">
+                    <div 
+                      className="w-20 h-20 lg:w-32 lg:h-32 rounded-full flex items-center justify-center"
+                       style={{
+                         background: 'linear-gradient(135deg, rgba(122, 68, 120, 0.1) 0%, rgba(100, 160, 160, 0.3) 100%)',
+                         border: '1px solid rgba(122, 68, 120, 0.2)'
+                       }}
+                    >
+                       <i className="fas fa-credit-card text-acustika-purple text-4xl lg:text-6xl"></i>
+                </div>
+                     {/* Badge de check */}
+                     <div className="absolute -top-2 -right-2 w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-sm border border-gray-200">
+                       <i className="fas fa-check text-acustika-purple"></i>
+              </div>
+                </div>
+                  
+                  {/* Conteúdo */}
+                  <div className="flex-1 space-y-4">
+                    <h3 
+                      className="font-semibold text-gray-900 text-xl"
+                      style={{ 
+                        fontFamily: 'Karla, sans-serif',
+                        fontWeight: '600',
+                        fontSize: '24px',
+                        lineHeight: '1.2'
+                      }}
+                    >
+                      Pagamento Facilitado
+                    </h3>
+                    <p 
+                      className="text-gray-600 leading-relaxed"
+                      style={{ 
+                        fontFamily: 'Karla, sans-serif',
+                        fontWeight: '400',
+                        fontSize: '18px',
+                        lineHeight: '1.4'
+                      }}
+                    >
+                      No cartão de crédito em 21x ou em até 60x mediante análise de crédito.
                     </p>
                   </div>
           </div>
@@ -1273,7 +1408,7 @@ const Home = () => {
       <section 
         className="relative py-0 w-full"
         style={{
-          backgroundImage: `url(${kidsFriendlyBg})`,
+          backgroundImage: `url(${acessoriosEssenciaisBg})`,
           backgroundSize: '100% auto',
           backgroundPosition: 'center center',
           backgroundRepeat: 'no-repeat',

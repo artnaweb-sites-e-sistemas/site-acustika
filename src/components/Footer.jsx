@@ -69,6 +69,7 @@ const Footer = () => {
               <li><Link to="/aparelhos" className="text-white/90 hover:text-white transition-colors block">Aparelhos</Link></li>
               <li><Link to="/acessorios" className="text-white/90 hover:text-white transition-colors block">Acessórios</Link></li>
               <li><Link to="/blog" className="text-white/90 hover:text-white transition-colors block">Blog</Link></li>
+              <li><Link to="/contato" className="text-white/90 hover:text-white transition-colors block">Contato</Link></li>
             </ul>
           </div>
 
@@ -79,7 +80,7 @@ const Footer = () => {
               <li><span className="text-white/90 block">Avaliação Auditiva</span></li>
               <li><span className="text-white/90 block">Ajuste de Aparelhos</span></li>
               <li><span className="text-white/90 block">Manutenção</span></li>
-              <li><span className="text-white/90 block">Reparo</span></li>
+              <li><span className="text-white/90 block">Exames</span></li>
               <li><span className="text-white/90 block">Consultoria</span></li>
               <li><span className="text-white/90 block">Acompanhamento</span></li>
             </ul>

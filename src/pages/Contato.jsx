@@ -31,8 +31,8 @@ const Contato = () => {
       id: 1,
       title: "São Paulo SP - Ipiranga",
       address: "Av. Nazaré, 1139 – Loja 2 – Térreo Ed. Cardeal Hummes",
-      phone: "(11) 99770-4014",
-      cellphone: "(48) 99128-7927",
+      phone: "(11) 3895-3000",
+      cellphone: "(11) 99770-4014",
       mapsUrl: "https://www.google.com/maps/search/Av.+Nazaré,+1139+-+Ipiranga,+São+Paulo+-+SP"
     },
     {

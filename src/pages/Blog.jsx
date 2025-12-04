@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useWordPressPosts } from '../hooks/useWordPressPosts';
 import { formatDate, stripHtml, fetchPostBySlug } from '../services/wordpressApi';
 import LoadingSpinner from '../components/LoadingSpinner';
-import heroMainImage from '../assets/images/hero/hero-main.png';
+import blogHeroImage from '../assets/images/primeira imagem da ABA BLOG.JPEG';
 import '../styles/liquid-glass-buttons.css';
 
 const Blog = () => {
@@ -245,7 +245,7 @@ const Blog = () => {
                 {/* Imagem com fundo transparente - colada no bottom */}
                 <div className="relative z-10" style={{ marginBottom: '-15px' }}>
                   <img 
-                    src={heroMainImage} 
+                    src={blogHeroImage} 
                     alt="Blog Acustika Aparelhos Auditivos" 
                     className="w-[200px] h-[200px] lg:w-[350px] lg:h-[350px] object-contain"
                     style={{ display: 'block' }}
