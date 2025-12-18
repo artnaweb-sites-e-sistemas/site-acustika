@@ -143,7 +143,7 @@ const AparelhoDetalhes = () => {
     },
     {
       id: 15,
-      nome: "Rexton Cross do Reach Li ix",
+      nome: "Rexton Cross",
       descricao: "Solução CROS com bateria recarregável de íon de lítio.",
       imagem: rextonStellar,
       categoria: "Rexton"

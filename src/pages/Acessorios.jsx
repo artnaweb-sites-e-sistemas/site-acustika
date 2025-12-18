@@ -15,8 +15,9 @@ import filtroImg from '../assets/images/accessories/filtro.webp';
 import receptoresImg from '../assets/images/accessories/receptores.webp';
 import pilhasImg from '../assets/images/accessories/pilhas.webp';
 import powerBankImg from '../assets/images/Carregador powerbank.Png';
+import carregadorMesaImg from '../assets/images/accessories/carregador-mesa_optimized.png';
 import joiaImg from '../assets/images/acessório para aparelho - jóia.jpeg';
-import acessoriosHeroImage from '../assets/images/hero/acessorios-hero.png';
+import acessoriosHeroImage from '../assets/images/hero/acessorios-hero-new_optimized.jpg';
 
 const Acessorios = () => {
   useEffect(() => {
@@ -117,7 +118,7 @@ const Acessorios = () => {
       id: 13,
       nome: "Carregador de Mesa",
       descricao: "Carregador de mesa para aparelhos recarregáveis. Design elegante e compacto, perfeito para uso doméstico ou no escritório.",
-      imagem: testadorPilhasImg,
+      imagem: carregadorMesaImg,
       categoria: "Energia"
     },
     {

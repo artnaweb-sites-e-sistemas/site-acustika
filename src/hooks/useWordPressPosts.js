@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import { fetchPosts, fetchCategories, fetchPostsByCategory } from '../services/wordpressApi';
+import { localPosts } from '../data/localPosts';
 
 export const useWordPressPosts = (categoryId = null, page = 1, perPage = 10) => {
   const [posts, setPosts] = useState([]);
@@ -32,10 +33,20 @@ export const useWordPressPosts = (categoryId = null, page = 1, perPage = 10) => 
         postsData = await fetchPosts(pageNum, perPage);
       }
 
-      if (append) {
-        setPosts(prevPosts => [...prevPosts, ...postsData]);
+      // Mesclar posts locais com posts do WordPress e ordenar por data
+      let allPosts;
+      if (pageNum === 1) {
+        allPosts = [...localPosts, ...postsData];
+        // Ordenar por data (mais recente primeiro)
+        allPosts.sort((a, b) => new Date(b.date) - new Date(a.date));
       } else {
-        setPosts(postsData);
+        allPosts = postsData;
+      }
+      
+      if (append) {
+        setPosts(prevPosts => [...prevPosts, ...allPosts]);
+      } else {
+        setPosts(allPosts);
       }
 
       // Verificar se há mais posts

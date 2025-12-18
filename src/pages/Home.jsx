@@ -190,7 +190,7 @@ const Home = () => {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section - Background Animado Inspirado */}
-      <section className="relative overflow-hidden" style={{ height: '600px' }}>
+      <section className="relative overflow-hidden min-h-screen flex items-center py-12 md:py-16 lg:py-20">
         {/* Background com gradiente moderno inspirado no 21st.dev */}
         <div 
           className="absolute inset-0"
@@ -313,11 +313,11 @@ const Home = () => {
         {/* Overlay sutil para profundidade */}
         <div className="absolute inset-0 bg-gradient-to-t from-white/10 via-transparent to-white/5" style={{ zIndex: 3 }}></div>
                
-        <div className="relative container mx-auto px-4 md:px-6 lg:px-8 xl:px-12 pt-8 pb-0 h-full" style={{ zIndex: 10 }}>
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center h-full">
+        <div className="relative container mx-auto px-4 md:px-6 lg:px-8 xl:px-12 py-8 w-full" style={{ zIndex: 10 }}>
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             
             {/* Coluna Esquerda: Conteúdo */}
-            <div className="text-center lg:text-left space-y-6 flex flex-col justify-center h-full order-1 lg:order-first">
+            <div className="text-center lg:text-left space-y-6 flex flex-col justify-center order-1 lg:order-first py-4">
               {/* Badge moderno */}
               <div 
                 className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 backdrop-blur-sm border border-gray-200/50 shadow-sm w-fit mx-auto lg:mx-0"
@@ -436,7 +436,7 @@ const Home = () => {
               
             {/* Coluna Direita: Imagem Principal */}
             <div 
-              className="relative order-2 lg:order-last h-full flex items-end justify-center hidden lg:flex"
+              className="relative order-2 lg:order-last flex items-center justify-center hidden lg:flex py-4"
               data-aos="fade-left"
               data-aos-delay="400"
             >
@@ -524,7 +524,7 @@ const Home = () => {
                 </p>
 
                 <p className="text-lg md:text-xl text-gray-600 leading-relaxed">
-                  Com tecnologia de ponta, você pode desfrutar de uma experiência auditiva 
+                  Com alta tecnologia, você pode desfrutar de uma experiência auditiva 
                   natural e confortável, permitindo que você se concentre no que realmente 
                   importa: as conexões humanas.
                 </p>
@@ -641,30 +641,86 @@ const Home = () => {
               {/* Card Container */}
               <div className="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden h-full transition-all duration-500 ease-in-out">
                 {/* Map Image */}
-                <div className="relative h-64 bg-gray-100 overflow-hidden flex items-center justify-center">
-                  <img 
-                    src={locations[currentCardIndex].images[currentImageIndex]} 
-                    alt={`Localização da clínica ${locations[currentCardIndex].title}`} 
-                    className="w-full h-full object-contain transition-opacity duration-500"
-                    style={{
-                      imageRendering: 'auto',
-                      backfaceVisibility: 'hidden',
-                      transform: 'translateZ(0)'
-                    }}
-                  />
-                  
-                  {/* Indicadores de imagem */}
-                  {locations[currentCardIndex].images.length > 1 && (
-                    <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 flex space-x-1">
-                      {locations[currentCardIndex].images.map((_, index) => (
-                        <div
-                          key={index}
-                          className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                            index === currentImageIndex ? 'bg-white' : 'bg-white/50'
-                          }`}
+                <div className="relative h-64 overflow-hidden flex items-center justify-center"
+                  style={{
+                    background: locations[currentCardIndex].id === 5 
+                      ? 'linear-gradient(135deg, #f7f0f7 0%, #f0f7f7 50%, #e8f5f5 100%)'
+                      : 'transparent'
+                  }}
+                >
+                  {locations[currentCardIndex].id === 5 ? (
+                    // Componente especial para unidade Campeche
+                    <div className="flex flex-col items-center justify-center w-full h-full p-8 space-y-6">
+                      {/* Logo */}
+                      <div className="flex items-center justify-center">
+                        <img 
+                          src={faviconIcon} 
+                          alt="Acustika Logo" 
+                          className="w-24 h-24 md:w-32 md:h-32 object-contain"
                         />
-                      ))}
+                      </div>
+                      
+                      {/* Mensagem */}
+                      <div className="text-center space-y-2">
+                        <h3 
+                          className="text-2xl md:text-3xl font-semibold"
+                          style={{ 
+                            fontFamily: 'Noto Serif, serif',
+                            color: '#7e4078',
+                            fontWeight: '600'
+                          }}
+                        >
+                          Em Breve no Campeche
+                        </h3>
+                        <p 
+                          className="text-base md:text-lg text-gray-600"
+                          style={{ fontFamily: 'Karla, sans-serif' }}
+                        >
+                          Em breve mais uma unidade na ilha
+                        </p>
+                      </div>
+                      
+                      {/* Decoração com cores da Acustika */}
+                      <div 
+                        className="absolute top-4 right-4 w-16 h-16 rounded-full blur-xl"
+                        style={{
+                          background: 'linear-gradient(135deg, rgba(122, 68, 120, 0.2) 0%, rgba(100, 160, 160, 0.2) 100%)'
+                        }}
+                      ></div>
+                      <div 
+                        className="absolute bottom-4 left-4 w-20 h-20 rounded-full blur-xl"
+                        style={{
+                          background: 'linear-gradient(135deg, rgba(100, 160, 160, 0.15) 0%, rgba(122, 68, 120, 0.15) 100%)'
+                        }}
+                      ></div>
                     </div>
+                  ) : (
+                    <>
+                      <img 
+                        src={locations[currentCardIndex].images[currentImageIndex]} 
+                        alt={`Localização da clínica ${locations[currentCardIndex].title}`} 
+                        className="w-full h-full object-contain transition-opacity duration-500 bg-gray-100"
+                        style={{
+                          imageRendering: 'auto',
+                          backfaceVisibility: 'hidden',
+                          transform: 'translateZ(0)'
+                        }}
+                      />
+                      
+                      {/* Indicadores de imagem */}
+                      {locations[currentCardIndex].images.length > 1 && (
+                        <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 flex space-x-1">
+                          {locations[currentCardIndex].images.map((_, index) => (
+                            <div
+                              key={index}
+                              className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                                index === currentImageIndex ? 'bg-white' : 'bg-white/50'
+                              }`}
+                            />
+                          ))}
+                        </div>
+                      )}
+                    </>
                   )}
                 </div>
                  

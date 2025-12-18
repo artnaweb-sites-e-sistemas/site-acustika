@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import aparelhosHeroImage from '../assets/images/hero/aparelhos-hero.png';
+import aparelhosHeroImage from '../assets/images/hero/aparelhos-hero-new_optimized.png';
 // Imports das imagens dos aparelhos auditivos
 import argosyVistaV from '../assets/images/hearing-aids/argosyvista-V.png';
 import oticonXceed from '../assets/images/hearing-aids/aparelhos-auditivos-oticon-xceed.png.webp';
@@ -201,7 +201,7 @@ const Aparelhos = () => {
     },
     {
       id: 15,
-      nome: "Rexton Cross do Reach Li ix",
+      nome: "Rexton Cross",
       descricao: "Solução CROS com bateria recarregável de íon de lítio.",
       imagem: rextonStellar,
       categoria: "Rexton"

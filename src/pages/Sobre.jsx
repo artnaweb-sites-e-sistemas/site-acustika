@@ -260,7 +260,7 @@ const Sobre = () => {
                   opacity: '0.8'
                  }}
                >
-                 Há mais de 20 anos cuidando da sua saúde auditiva com tecnologia de ponta e atendimento humanizado.
+                 Há duas décadas ajudando você a reencontrar os sons que tocam o coração, com um atendimento carinhoso e as soluções auditivas mais modernas do mundo.
                </p>
               
                </div>

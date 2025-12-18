@@ -55,8 +55,8 @@ const Contato = () => {
       id: 4,
       title: "Imbituba SC - Centro",
       address: "Rua Nereu Ramos, 237 - Centro",
-      phone: "(48) 99128-7927",
-      cellphone: "(11) 99770-4014",
+      phone: "(48) 3247-9000",
+      cellphone: "(48) 99128-7927",
       mapsUrl: "https://www.google.com/maps/search/Rua+Nereu+Ramos,+237+-+Centro+Imbituba+SC"
     }
   ];
