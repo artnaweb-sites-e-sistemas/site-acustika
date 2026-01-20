@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link, Navigate } from 'react-router-dom';
-import { fetchPostBySlug, formatDate, stripHtml, getCacheStats } from '../services/wordpressApi';
-import { getLocalPostBySlug, isLocalPost } from '../data/localPosts';
+import { formatDate, stripHtml } from '../services/wordpressApi';
+import { getLocalPostBySlug } from '../data/localPosts';
 import LoadingSpinner from '../components/LoadingSpinner';
 import '../styles/liquid-glass-buttons.css';
 
@@ -41,19 +41,16 @@ const BlogPost = () => {
       setError(null);
 
       try {
-        // Verificar se é um post local primeiro
-        if (isLocalPost(slug)) {
-          const localPost = getLocalPostBySlug(slug);
-          if (localPost) {
-            setPost(localPost);
-            setLoading(false);
-            return;
-          }
-        }
+        // Simular um pequeno delay para melhorar UX
+        await new Promise(resolve => setTimeout(resolve, 300));
         
-        // Se não for local, buscar no WordPress
-        const postData = await fetchPostBySlug(slug);
-        setPost(postData);
+        // Buscar post local
+        const localPost = getLocalPostBySlug(slug);
+        if (localPost) {
+          setPost(localPost);
+        } else {
+          setError('Post não encontrado');
+        }
       } catch (err) {
         setError(err.message);
         console.error('Erro ao carregar post:', err);

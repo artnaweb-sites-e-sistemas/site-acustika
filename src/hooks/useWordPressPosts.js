@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
-import { fetchPosts, fetchCategories, fetchPostsByCategory } from '../services/wordpressApi';
 import { localPosts } from '../data/localPosts';
 
+// Hook para gerenciar posts locais (sem WordPress)
 export const useWordPressPosts = (categoryId = null, page = 1, perPage = 10) => {
   const [posts, setPosts] = useState([]);
   const [categories, setCategories] = useState([]);
@@ -11,6 +11,9 @@ export const useWordPressPosts = (categoryId = null, page = 1, perPage = 10) => 
   const [loadingMore, setLoadingMore] = useState(false);
 
   const loadData = useCallback(async (pageNum = 1, append = false) => {
+    // Simular um pequeno delay para melhorar UX
+    await new Promise(resolve => setTimeout(resolve, 300));
+
     if (pageNum === 1) {
       setLoading(true);
     } else {
@@ -19,38 +22,43 @@ export const useWordPressPosts = (categoryId = null, page = 1, perPage = 10) => 
     setError(null);
 
     try {
-      // Carregar categorias apenas na primeira vez
+      // Extrair categorias únicas dos posts locais
       if (pageNum === 1 && categories.length === 0) {
-        const categoriesData = await fetchCategories();
-        setCategories(categoriesData);
+        const categoryMap = new Map();
+        localPosts.forEach(post => {
+          post.categories.forEach(cat => {
+            if (!categoryMap.has(cat.id)) {
+              categoryMap.set(cat.id, cat);
+            }
+          });
+        });
+        setCategories(Array.from(categoryMap.values()));
       }
 
-      // Carregar posts
-      let postsData;
+      // Filtrar posts por categoria se especificada
+      let filteredPosts = localPosts;
       if (categoryId) {
-        postsData = await fetchPostsByCategory(categoryId, pageNum, perPage);
-      } else {
-        postsData = await fetchPosts(pageNum, perPage);
+        filteredPosts = localPosts.filter(post => 
+          post.categories.some(cat => cat.id === categoryId || cat.slug === categoryId)
+        );
       }
 
-      // Mesclar posts locais com posts do WordPress e ordenar por data
-      let allPosts;
-      if (pageNum === 1) {
-        allPosts = [...localPosts, ...postsData];
-        // Ordenar por data (mais recente primeiro)
-        allPosts.sort((a, b) => new Date(b.date) - new Date(a.date));
-      } else {
-        allPosts = postsData;
-      }
-      
+      // Ordenar por data (mais recente primeiro)
+      filteredPosts = [...filteredPosts].sort((a, b) => new Date(b.date) - new Date(a.date));
+
+      // Paginação
+      const startIndex = (pageNum - 1) * perPage;
+      const endIndex = startIndex + perPage;
+      const paginatedPosts = filteredPosts.slice(startIndex, endIndex);
+
       if (append) {
-        setPosts(prevPosts => [...prevPosts, ...allPosts]);
+        setPosts(prevPosts => [...prevPosts, ...paginatedPosts]);
       } else {
-        setPosts(allPosts);
+        setPosts(paginatedPosts);
       }
 
       // Verificar se há mais posts
-      setHasMore(postsData.length === perPage);
+      setHasMore(endIndex < filteredPosts.length);
 
     } catch (err) {
       setError(err.message);

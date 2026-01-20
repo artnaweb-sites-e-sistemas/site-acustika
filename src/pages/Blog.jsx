@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useWordPressPosts } from '../hooks/useWordPressPosts';
-import { formatDate, stripHtml, fetchPostBySlug } from '../services/wordpressApi';
+import { formatDate, stripHtml } from '../services/wordpressApi';
 import LoadingSpinner from '../components/LoadingSpinner';
 import blogHeroImage from '../assets/images/primeira imagem da ABA BLOG.JPEG';
 import '../styles/liquid-glass-buttons.css';
@@ -12,14 +12,6 @@ const Blog = () => {
 
   const loadMorePosts = () => {
     setCurrentPage(prev => prev + 1);
-  };
-
-  // Função para preload do post quando o usuário passa o mouse sobre o link
-  const handleMouseEnter = (slug) => {
-    // Preload silencioso do post
-    fetchPostBySlug(slug).catch(() => {
-      // Ignorar erros de preload
-    });
   };
 
   return (
@@ -351,7 +343,6 @@ const Blog = () => {
                         <div className="pt-4">
                       <Link 
                         to={`/blog/${post.slug}`}
-                        onMouseEnter={() => handleMouseEnter(post.slug)}
                             className="w-full px-6 py-3 bg-gradient-to-r from-acustika-purple to-acustika-teal text-white rounded-xl font-semibold hover:from-acustika-purple/90 hover:to-acustika-teal/90 transition-all duration-300 transform hover:scale-105 shadow-lg text-center block"
                             style={{ fontFamily: 'Karla, sans-serif' }}
                       >
