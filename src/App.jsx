@@ -32,7 +32,7 @@ import BlogPost from './pages/BlogPost';
 
 function App() {
   return (
-    <Router basename="/~acustikaauditiva">
+    <Router basename="/">
       <ScrollToTop />
       <MainLayout>
         <Routes>
