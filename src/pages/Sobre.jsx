@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import heroMainImage from '../assets/images/hero/hero-main.png';
-import sobreAcustikaImage from '../assets/images/718c9a0b-4458-4a5e-9cd0-b7395f8a649f.jpg';
 import historyImage from '../assets/images/Nossa História.jpg';
 import experienceImage from '../assets/images/Experiência e Especialização.jpg';
 import ponteHercilioImage from '../assets/images/Flor ponte hercilio.jpg';
@@ -311,7 +310,7 @@ const Sobre = () => {
                 {/* Imagem com fundo transparente - colada no bottom */}
                 <div className="relative z-10" style={{ marginBottom: '-15px' }}>
                   <img 
-                    src={sobreAcustikaImage} 
+                    src={historyImage} 
                     alt="Equipe Acustika" 
                     className="object-contain"
                     style={{ display: 'block', width: '500px', height: 'auto' }}
@@ -411,46 +410,55 @@ const Sobre = () => {
                     </div>
                   </div>
                 </div>
+                
+                {/* Fotos da Ponte e Museu abaixo de Missão e Visão */}
+                <div className="grid md:grid-cols-2 gap-6 mt-8" data-aos="fade-up" data-aos-delay="300">
+                  {/* Ponte Hercílio Luz */}
+                  <div className="relative bg-white rounded-2xl p-6 shadow-xl border border-gray-100">
+                    <img 
+                      src={ponteHercilioImage} 
+                      alt="Ponte Hercílio Luz - Florianópolis" 
+                      className="w-full h-auto object-contain rounded-lg mb-4"
+                    />
+                    <p 
+                      className="text-center text-gray-700 font-medium"
+                      style={{ fontFamily: 'Karla, sans-serif', fontSize: '16px' }}
+                    >
+                      Ponte Hercílio Luz - Florianópolis
+                    </p>
+                  </div>
+                  
+                  {/* Museu do Ipiranga */}
+                  <div className="relative bg-white rounded-2xl p-6 shadow-xl border border-gray-100">
+                    <img 
+                      src={museuIpirangaImage} 
+                      alt="Museu do Ipiranga - São Paulo" 
+                      className="w-full h-auto object-contain rounded-lg mb-4"
+                    />
+                    <p 
+                      className="text-center text-gray-700 font-medium"
+                      style={{ fontFamily: 'Karla, sans-serif', fontSize: '16px' }}
+                    >
+                      Museu do Ipiranga - São Paulo
+                    </p>
+                  </div>
+                </div>
               </div>
               
-              {/* Images Section - Duas imagens lado a lado */}
+              {/* Images Section - Imagem única */}
               <div className="relative" data-aos="fade-left" data-aos-delay="300">
                 <div className="relative">
                   {/* Background decorative elements */}
                   <div className="absolute -top-4 -right-4 w-24 h-24 bg-gradient-to-br from-acustika-purple/20 to-acustika-teal/20 rounded-full blur-xl"></div>
                   <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-gradient-to-br from-acustika-teal/15 to-acustika-purple/15 rounded-full blur-xl"></div>
                   
-                  {/* Grid com duas imagens lado a lado */}
-                  <div className="grid md:grid-cols-2 gap-6">
-                    {/* Ponte Hercílio Luz */}
-                    <div className="relative bg-white rounded-2xl p-6 shadow-xl border border-gray-100">
-                      <img 
-                        src={ponteHercilioImage} 
-                        alt="Ponte Hercílio Luz - Florianópolis" 
-                        className="w-full h-auto object-contain rounded-lg mb-4"
-                      />
-                      <p 
-                        className="text-center text-gray-700 font-medium"
-                        style={{ fontFamily: 'Karla, sans-serif', fontSize: '16px' }}
-                      >
-                        Ponte Hercílio Luz - Florianópolis
-                      </p>
-                    </div>
-                    
-                    {/* Museu do Ipiranga */}
-                    <div className="relative bg-white rounded-2xl p-6 shadow-xl border border-gray-100">
-                      <img 
-                        src={museuIpirangaImage} 
-                        alt="Museu do Ipiranga - São Paulo" 
-                        className="w-full h-auto object-contain rounded-lg mb-4"
-                      />
-                      <p 
-                        className="text-center text-gray-700 font-medium"
-                        style={{ fontFamily: 'Karla, sans-serif', fontSize: '16px' }}
-                      >
-                        Museu do Ipiranga - São Paulo
-                      </p>
-                    </div>
+                  {/* Imagem única */}
+                  <div className="relative bg-white rounded-2xl p-6 shadow-xl border border-gray-100">
+                    <img 
+                      src={historyImage} 
+                      alt="Nossa História - Acustika" 
+                      className="w-full h-auto object-contain rounded-lg"
+                    />
                   </div>
                 </div>
               </div>
