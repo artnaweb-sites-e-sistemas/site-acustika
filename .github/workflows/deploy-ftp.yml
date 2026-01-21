@@ -26,26 +26,6 @@ jobs:
       run: npm run build
       env:
         VITE_BASE_URL: ${{ secrets.VITE_BASE_URL || '/~acustikaauditiva/' }}
-    
-    - name: Create SMTP config file
-      env:
-        SMTP_HOST: ${{ secrets.SMTP_HOST }}
-        SMTP_PORT: ${{ secrets.SMTP_PORT }}
-        SMTP_USER: ${{ secrets.SMTP_USER }}
-        SMTP_PASS: ${{ secrets.SMTP_PASS }}
-        EMAIL_TO: ${{ secrets.EMAIL_TO }}
-        EMAIL_FROM: ${{ secrets.EMAIL_FROM }}
-      run: |
-        echo "<?php" > ./dist/api/config.php
-        echo "return [" >> ./dist/api/config.php
-        echo "    'SMTP_HOST' => '${SMTP_HOST}'," >> ./dist/api/config.php
-        echo "    'SMTP_PORT' => ${SMTP_PORT}," >> ./dist/api/config.php
-        echo "    'SMTP_USER' => '${SMTP_USER}'," >> ./dist/api/config.php
-        echo "    'SMTP_PASS' => '${SMTP_PASS}'," >> ./dist/api/config.php
-        echo "    'EMAIL_TO' => '${EMAIL_TO}'," >> ./dist/api/config.php
-        echo "    'EMAIL_FROM' => '${EMAIL_FROM}'" >> ./dist/api/config.php
-        echo "];" >> ./dist/api/config.php
-        echo "Config file created successfully"
       
     - name: Deploy to FTP
       uses: SamKirkland/FTP-Deploy-Action@v4.3.4

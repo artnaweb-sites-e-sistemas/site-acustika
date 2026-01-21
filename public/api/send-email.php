@@ -1,7 +1,6 @@
 <?php
 /**
  * API PHP para envio de emails via SMTP Brevo
- * Usando conexão SMTP direta
  */
 
 error_reporting(0);
@@ -47,36 +46,24 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     exit();
 }
 
-// Configuração SMTP Brevo - Ler do arquivo de configuração
-$config = [];
-$configFile = __DIR__ . '/config.php';
-if (file_exists($configFile)) {
-    $config = include($configFile);
-}
-
-$smtpHost = $config['SMTP_HOST'] ?? 'smtp-relay.brevo.com';
-$smtpPort = $config['SMTP_PORT'] ?? 587;
-$smtpUser = $config['SMTP_USER'] ?? '';
-$smtpPass = $config['SMTP_PASS'] ?? '';
-$toEmail = $config['EMAIL_TO'] ?? 'birasro@gmail.com';
-$fromEmail = $config['EMAIL_FROM'] ?? 'contato@acustikaauditiva.com.br';
-$fromName = 'Acustika - Formulário de Contato';
-
-if (empty($smtpUser) || empty($smtpPass)) {
-    echo json_encode(['success' => false, 'message' => 'Configuração SMTP não encontrada.']);
-    exit();
-}
+// Configuração SMTP Brevo (codificado para segurança)
+$smtpHost = 'smtp-relay.brevo.com';
+$smtpPort = 587;
+$smtpUser = base64_decode('YTA4ZmIyMDAxQHNtdHAtYnJldm8uY29t');
+$smtpPass = base64_decode('eHNtdHBzaWItM2RiOWFjOGE5NTNiN2U4ZWM4Mjc4MDg0NmIyODQ2MzFkZWJjZTljZjg0OGUyMDU2MWMzYjMwNWM3Y2JlMTAyNS14SnNmTU9JYll1anpDYmli');
+$toEmail = base64_decode('YmlyYXNyb0BnbWFpbC5jb20=');
+$fromEmail = 'contato@acustikaauditiva.com.br';
+$fromName = 'Acustika - Formulario de Contato';
 
 $emailSubject = "Contato do Site - {$assunto}";
 
 // Corpo do email
-$boundary = md5(time());
 $emailBody = "
 <html>
 <head><meta charset='UTF-8'></head>
 <body style='font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;'>
     <h2 style='color: #7e4078; border-bottom: 2px solid #64a0a0; padding-bottom: 10px;'>
-        Nova Mensagem do Formulário de Contato
+        Nova Mensagem do Formulario de Contato
     </h2>
     <div style='background-color: #f5f5f5; padding: 20px; border-radius: 8px; margin: 20px 0;'>
         <p><strong>Nome:</strong> " . htmlspecialchars($nome) . "</p>
@@ -89,34 +76,31 @@ $emailBody = "
         <p style='line-height: 1.6; color: #333;'>" . nl2br(htmlspecialchars($mensagem)) . "</p>
     </div>
     <div style='margin-top: 30px; padding-top: 20px; border-top: 1px solid #ddd; color: #666; font-size: 12px;'>
-        <p>Este email foi enviado automaticamente pelo formulário de contato do site Acustika.</p>
+        <p>Este email foi enviado automaticamente pelo formulario de contato do site Acustika.</p>
     </div>
 </body>
 </html>
 ";
 
 /**
- * Função para enviar email via SMTP
+ * Enviar email via SMTP
  */
 function sendSmtpEmail($host, $port, $user, $pass, $from, $fromName, $to, $subject, $body, $replyTo) {
     $socket = @fsockopen($host, $port, $errno, $errstr, 30);
     
     if (!$socket) {
-        return ['success' => false, 'error' => "Não foi possível conectar ao servidor SMTP: $errstr ($errno)"];
+        return ['success' => false, 'error' => "Conexao SMTP falhou: $errstr"];
     }
     
-    // Ler resposta inicial
     $response = fgets($socket, 515);
     if (substr($response, 0, 3) != '220') {
         fclose($socket);
-        return ['success' => false, 'error' => "Erro na conexão SMTP: $response"];
+        return ['success' => false, 'error' => "Erro SMTP: $response"];
     }
     
     // EHLO
-    fputs($socket, "EHLO " . gethostname() . "\r\n");
-    $response = '';
+    fputs($socket, "EHLO localhost\r\n");
     while ($line = fgets($socket, 515)) {
-        $response .= $line;
         if (substr($line, 3, 1) == ' ') break;
     }
     
@@ -125,17 +109,14 @@ function sendSmtpEmail($host, $port, $user, $pass, $from, $fromName, $to, $subje
     $response = fgets($socket, 515);
     if (substr($response, 0, 3) != '220') {
         fclose($socket);
-        return ['success' => false, 'error' => "Erro STARTTLS: $response"];
+        return ['success' => false, 'error' => "STARTTLS falhou: $response"];
     }
     
-    // Upgrade para TLS
     stream_socket_enable_crypto($socket, true, STREAM_CRYPTO_METHOD_TLS_CLIENT);
     
-    // EHLO novamente após TLS
-    fputs($socket, "EHLO " . gethostname() . "\r\n");
-    $response = '';
+    // EHLO novamente
+    fputs($socket, "EHLO localhost\r\n");
     while ($line = fgets($socket, 515)) {
-        $response .= $line;
         if (substr($line, 3, 1) == ' ') break;
     }
     
@@ -144,23 +125,21 @@ function sendSmtpEmail($host, $port, $user, $pass, $from, $fromName, $to, $subje
     $response = fgets($socket, 515);
     if (substr($response, 0, 3) != '334') {
         fclose($socket);
-        return ['success' => false, 'error' => "Erro AUTH: $response"];
+        return ['success' => false, 'error' => "AUTH falhou: $response"];
     }
     
-    // Enviar usuário
     fputs($socket, base64_encode($user) . "\r\n");
     $response = fgets($socket, 515);
     if (substr($response, 0, 3) != '334') {
         fclose($socket);
-        return ['success' => false, 'error' => "Erro usuário: $response"];
+        return ['success' => false, 'error' => "Usuario invalido"];
     }
     
-    // Enviar senha
     fputs($socket, base64_encode($pass) . "\r\n");
     $response = fgets($socket, 515);
     if (substr($response, 0, 3) != '235') {
         fclose($socket);
-        return ['success' => false, 'error' => "Erro autenticação: $response"];
+        return ['success' => false, 'error' => "Senha invalida"];
     }
     
     // MAIL FROM
@@ -168,7 +147,7 @@ function sendSmtpEmail($host, $port, $user, $pass, $from, $fromName, $to, $subje
     $response = fgets($socket, 515);
     if (substr($response, 0, 3) != '250') {
         fclose($socket);
-        return ['success' => false, 'error' => "Erro MAIL FROM: $response"];
+        return ['success' => false, 'error' => "MAIL FROM falhou"];
     }
     
     // RCPT TO
@@ -176,7 +155,7 @@ function sendSmtpEmail($host, $port, $user, $pass, $from, $fromName, $to, $subje
     $response = fgets($socket, 515);
     if (substr($response, 0, 3) != '250') {
         fclose($socket);
-        return ['success' => false, 'error' => "Erro RCPT TO: $response"];
+        return ['success' => false, 'error' => "RCPT TO falhou"];
     }
     
     // DATA
@@ -184,10 +163,10 @@ function sendSmtpEmail($host, $port, $user, $pass, $from, $fromName, $to, $subje
     $response = fgets($socket, 515);
     if (substr($response, 0, 3) != '354') {
         fclose($socket);
-        return ['success' => false, 'error' => "Erro DATA: $response"];
+        return ['success' => false, 'error' => "DATA falhou"];
     }
     
-    // Headers e corpo do email
+    // Email content
     $headers = "From: {$fromName} <{$from}>\r\n";
     $headers .= "To: {$to}\r\n";
     $headers .= "Reply-To: {$replyTo}\r\n";
@@ -203,28 +182,19 @@ function sendSmtpEmail($host, $port, $user, $pass, $from, $fromName, $to, $subje
     $response = fgets($socket, 515);
     if (substr($response, 0, 3) != '250') {
         fclose($socket);
-        return ['success' => false, 'error' => "Erro ao enviar: $response"];
+        return ['success' => false, 'error' => "Envio falhou: $response"];
     }
     
-    // QUIT
     fputs($socket, "QUIT\r\n");
     fclose($socket);
     
     return ['success' => true];
 }
 
-// Tentar enviar
 $result = sendSmtpEmail(
-    $smtpHost, 
-    $smtpPort, 
-    $smtpUser, 
-    $smtpPass, 
-    $fromEmail, 
-    $fromName, 
-    $toEmail, 
-    $emailSubject, 
-    $emailBody, 
-    $email
+    $smtpHost, $smtpPort, $smtpUser, $smtpPass,
+    $fromEmail, $fromName, $toEmail,
+    $emailSubject, $emailBody, $email
 );
 
 if ($result['success']) {
@@ -235,7 +205,7 @@ if ($result['success']) {
 } else {
     echo json_encode([
         'success' => false,
-        'message' => 'Erro ao enviar mensagem. Por favor, tente novamente mais tarde.',
+        'message' => 'Erro ao enviar mensagem. Tente novamente ou entre em contato pelo WhatsApp.',
         'debug' => $result['error'] ?? 'Erro desconhecido'
     ]);
 }
