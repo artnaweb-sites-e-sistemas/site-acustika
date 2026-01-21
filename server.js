@@ -65,7 +65,7 @@ app.post('/api/send-email', async (req, res) => {
     console.log('\n--- Configurando email ---');
     const mailOptions = {
       from: 'contato@acustikaauditiva.com.br',
-      to: 'acustikaauditiva@gmail.com',
+      to: 'birasro@gmail.com',
       replyTo: email,
       subject: `Contato do Site - ${assunto}`,
       html: `
@@ -113,7 +113,7 @@ Este email foi enviado automaticamente pelo formulário de contato do site Acust
     console.log(`SMTP Port: 465`);
     console.log(`SMTP User: contato@acustikaauditiva.com.br`);
     console.log(`From: ${mailOptions.from}`);
-    console.log(`To: ${mailOptions.to}`);
+    console.log(`To: birasro@gmail.com`);
     console.log(`Subject: ${mailOptions.subject}`);
     
     const startTime = Date.now();

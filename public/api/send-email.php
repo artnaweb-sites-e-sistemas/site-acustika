@@ -69,7 +69,7 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 }
 
 // Configuração
-$toEmail = 'acustikaauditiva@gmail.com';
+$toEmail = 'birasro@gmail.com';
 $fromEmail = 'contato@acustikaauditiva.com.br';
 $emailSubject = "Contato do Site - {$assunto}";
 
