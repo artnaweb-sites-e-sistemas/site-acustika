@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import heroMainImage from '../assets/images/hero/hero-main.png';
 import historyImage from '../assets/images/Nossa História.jpg';
-import sobreAcustikaImage from '../assets/images/718c9a0b-4458-4a5e-9cd0-b7395f8a649f.jpg';
 import experienceImage from '../assets/images/Experiência e Especialização.jpg';
 import ponteHercilioImage from '../assets/images/Flor ponte hercilio.jpg';
 import museuIpirangaImage from '../assets/images/Museo Ipiranga-- SÃO PAULO (7).png';
@@ -420,16 +419,7 @@ const Sobre = () => {
                   <div className="absolute -top-4 -right-4 w-24 h-24 bg-gradient-to-br from-acustika-purple/20 to-acustika-teal/20 rounded-full blur-xl"></div>
                   <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-gradient-to-br from-acustika-teal/15 to-acustika-purple/15 rounded-full blur-xl"></div>
                   
-                  {/* Imagem única */}
-                  <div className="relative bg-white rounded-2xl p-6 shadow-xl border border-gray-100 mb-6">
-                    <img 
-                      src={sobreAcustikaImage} 
-                      alt="Nossa História - Acustika" 
-                      className="w-full h-auto object-contain rounded-lg"
-                    />
-                  </div>
-                  
-                  {/* Fotos da Ponte e Museu abaixo da imagem principal */}
+                  {/* Fotos da Ponte e Museu */}
                   <div className="grid md:grid-cols-2 gap-6" data-aos="fade-up" data-aos-delay="400">
                     {/* Ponte Hercílio Luz */}
                     <div className="relative bg-white rounded-2xl p-6 shadow-xl border border-gray-100">
