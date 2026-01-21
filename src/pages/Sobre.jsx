@@ -411,39 +411,6 @@ const Sobre = () => {
                     </div>
                   </div>
                 </div>
-                
-                {/* Fotos da Ponte e Museu abaixo de Missão e Visão */}
-                <div className="grid md:grid-cols-2 gap-6 mt-8" data-aos="fade-up" data-aos-delay="300">
-                  {/* Ponte Hercílio Luz */}
-                  <div className="relative bg-white rounded-2xl p-6 shadow-xl border border-gray-100">
-                    <img 
-                      src={ponteHercilioImage} 
-                      alt="Ponte Hercílio Luz - Florianópolis" 
-                      className="w-full h-auto object-contain rounded-lg mb-4"
-                    />
-                    <p 
-                      className="text-center text-gray-700 font-medium"
-                      style={{ fontFamily: 'Karla, sans-serif', fontSize: '16px' }}
-                    >
-                      Ponte Hercílio Luz - Florianópolis
-                    </p>
-                  </div>
-                  
-                  {/* Museu do Ipiranga */}
-                  <div className="relative bg-white rounded-2xl p-6 shadow-xl border border-gray-100">
-                    <img 
-                      src={museuIpirangaImage} 
-                      alt="Museu do Ipiranga - São Paulo" 
-                      className="w-full h-auto object-contain rounded-lg mb-4"
-                    />
-                    <p 
-                      className="text-center text-gray-700 font-medium"
-                      style={{ fontFamily: 'Karla, sans-serif', fontSize: '16px' }}
-                    >
-                      Museu do Ipiranga - São Paulo
-                    </p>
-                  </div>
-                </div>
               </div>
               
               {/* Images Section - Imagem única */}
@@ -454,12 +421,45 @@ const Sobre = () => {
                   <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-gradient-to-br from-acustika-teal/15 to-acustika-purple/15 rounded-full blur-xl"></div>
                   
                   {/* Imagem única */}
-                  <div className="relative bg-white rounded-2xl p-6 shadow-xl border border-gray-100">
+                  <div className="relative bg-white rounded-2xl p-6 shadow-xl border border-gray-100 mb-6">
                     <img 
                       src={sobreAcustikaImage} 
                       alt="Nossa História - Acustika" 
                       className="w-full h-auto object-contain rounded-lg"
                     />
+                  </div>
+                  
+                  {/* Fotos da Ponte e Museu abaixo da imagem principal */}
+                  <div className="grid md:grid-cols-2 gap-6" data-aos="fade-up" data-aos-delay="400">
+                    {/* Ponte Hercílio Luz */}
+                    <div className="relative bg-white rounded-2xl p-6 shadow-xl border border-gray-100">
+                      <img 
+                        src={ponteHercilioImage} 
+                        alt="Ponte Hercílio Luz - Florianópolis" 
+                        className="w-full h-auto object-contain rounded-lg mb-4"
+                      />
+                      <p 
+                        className="text-center text-gray-700 font-medium"
+                        style={{ fontFamily: 'Karla, sans-serif', fontSize: '16px' }}
+                      >
+                        Ponte Hercílio Luz - Florianópolis
+                      </p>
+                    </div>
+                    
+                    {/* Museu do Ipiranga */}
+                    <div className="relative bg-white rounded-2xl p-6 shadow-xl border border-gray-100">
+                      <img 
+                        src={museuIpirangaImage} 
+                        alt="Museu do Ipiranga - São Paulo" 
+                        className="w-full h-auto object-contain rounded-lg mb-4"
+                      />
+                      <p 
+                        className="text-center text-gray-700 font-medium"
+                        style={{ fontFamily: 'Karla, sans-serif', fontSize: '16px' }}
+                      >
+                        Museu do Ipiranga - São Paulo
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
