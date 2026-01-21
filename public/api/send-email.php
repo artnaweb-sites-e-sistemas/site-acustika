@@ -51,7 +51,7 @@ $smtpHost = 'smtp-relay.brevo.com';
 $smtpPort = 587;
 $smtpUser = base64_decode('YTA4ZmIyMDAxQHNtdHAtYnJldm8uY29t');
 $smtpPass = base64_decode('eHNtdHBzaWItM2RiOWFjOGE5NTNiN2U4ZWM4Mjc4MDg0NmIyODQ2MzFkZWJjZTljZjg0OGUyMDU2MWMzYjMwNWM3Y2JlMTAyNS14SnNmTU9JYll1anpDYmli');
-$toEmail = base64_decode('YmlyYXNyb0BnbWFpbC5jb20=');
+$toEmail = base64_decode('YWN1c3Rpa2FhdWRpdGl2YUBnbWFpbC5jb20=');
 $fromEmail = 'contato@acustikaauditiva.com.br';
 $fromName = 'Acustika - Formulario de Contato';
 
