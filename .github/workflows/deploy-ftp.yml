@@ -26,6 +26,17 @@ jobs:
       run: npm run build
       env:
         VITE_BASE_URL: ${{ secrets.VITE_BASE_URL || '/~acustikaauditiva/' }}
+    
+    - name: Create Brevo config file
+      run: |
+        cat > ./dist/api/config.php << 'EOF'
+        <?php
+        return [
+            'BREVO_API_KEY' => '${{ secrets.BREVO_API_KEY }}',
+            'EMAIL_TO' => '${{ secrets.EMAIL_TO }}',
+            'EMAIL_FROM' => '${{ secrets.EMAIL_FROM }}'
+        ];
+        EOF
       
     - name: Deploy to FTP
       uses: SamKirkland/FTP-Deploy-Action@v4.3.4
