@@ -27,14 +27,41 @@ const Contato = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const timestamp = new Date().toISOString();
+    
+    console.log('\n========== ENVIO DE FORMULÁRIO ==========');
+    console.log(`[${timestamp}] Iniciando envio do formulário`);
+    console.log('Dados do formulário:', JSON.stringify(formData, null, 2));
+    
     setIsSubmitting(true);
     setSubmitStatus({ type: '', message: '' });
 
     try {
-      // URL do backend - ajuste conforme necessário
-      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:3001';
+      // Detectar qual endpoint usar
+      // Em produção (hospedagem compartilhada), usar PHP
+      // Em desenvolvimento, usar Node.js
+      const isProduction = window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1';
       
-      const response = await fetch(`${apiUrl}/api/send-email`, {
+      let apiUrl, endpoint;
+      if (isProduction) {
+        // Em produção, usar endpoint PHP
+        apiUrl = import.meta.env.VITE_API_URL || window.location.origin;
+        endpoint = `${apiUrl}/api/send-email.php`;
+      } else {
+        // Em desenvolvimento, usar Node.js
+        apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:3001';
+        endpoint = `${apiUrl}/api/send-email`;
+      }
+      
+      console.log(`\n--- Configuração da requisição ---`);
+      console.log(`Ambiente: ${isProduction ? 'PRODUÇÃO' : 'DESENVOLVIMENTO'}`);
+      console.log(`API URL: ${apiUrl}`);
+      console.log(`Endpoint: ${endpoint}`);
+      
+      const startTime = Date.now();
+      console.log('Enviando requisição...');
+      
+      const response = await fetch(endpoint, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -42,9 +69,22 @@ const Contato = () => {
         body: JSON.stringify(formData),
       });
 
+      const duration = Date.now() - startTime;
+      console.log(`\n--- Resposta recebida ---`);
+      console.log(`Status: ${response.status} ${response.statusText}`);
+      console.log(`Tempo de resposta: ${duration}ms`);
+      console.log(`Headers:`, Object.fromEntries(response.headers.entries()));
+
       const data = await response.json();
+      console.log('Dados da resposta:', JSON.stringify(data, null, 2));
 
       if (data.success) {
+        console.log('\n✅ FORMULÁRIO ENVIADO COM SUCESSO!');
+        if (data.messageId) {
+          console.log(`Message ID: ${data.messageId}`);
+        }
+        console.log('==========================================\n');
+        
         setSubmitStatus({ 
           type: 'success', 
           message: data.message || 'Mensagem enviada com sucesso! Entraremos em contato em breve.' 
@@ -58,13 +98,22 @@ const Contato = () => {
           mensagem: ''
         });
       } else {
+        console.log('\n❌ ERRO NA RESPOSTA DO SERVIDOR');
+        console.log(`Mensagem: ${data.message}`);
+        console.log('==========================================\n');
+        
         setSubmitStatus({ 
           type: 'error', 
           message: data.message || 'Erro ao enviar mensagem. Por favor, tente novamente.' 
         });
       }
     } catch (error) {
-      console.error('Erro ao enviar formulário:', error);
+      console.error('\n❌ ERRO AO ENVIAR FORMULÁRIO:');
+      console.error('Tipo:', error.constructor.name);
+      console.error('Mensagem:', error.message);
+      console.error('Stack:', error.stack);
+      console.error('==========================================\n');
+      
       setSubmitStatus({ 
         type: 'error', 
         message: 'Erro ao enviar mensagem. Verifique sua conexão e tente novamente.' 

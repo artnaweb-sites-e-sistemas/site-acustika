@@ -34,18 +34,35 @@ transporter.verify((error, success) => {
 
 // Rota para enviar email
 app.post('/api/send-email', async (req, res) => {
+  const timestamp = new Date().toISOString();
+  console.log('\n========== NOVA REQUISIÇÃO DE EMAIL ==========');
+  console.log(`[${timestamp}] Recebida requisição POST /api/send-email`);
+  console.log('Headers:', JSON.stringify(req.headers, null, 2));
+  console.log('Body recebido:', JSON.stringify(req.body, null, 2));
+  
   try {
     const { nome, email, telefone, assunto, mensagem } = req.body;
 
+    console.log('\n--- Validação dos dados ---');
+    console.log(`Nome: ${nome || '(vazio)'}`);
+    console.log(`Email: ${email || '(vazio)'}`);
+    console.log(`Telefone: ${telefone || '(não informado)'}`);
+    console.log(`Assunto: ${assunto || '(vazio)'}`);
+    console.log(`Mensagem: ${mensagem ? mensagem.substring(0, 50) + '...' : '(vazio)'}`);
+
     // Validação básica
     if (!nome || !email || !assunto || !mensagem) {
+      console.log('❌ VALIDAÇÃO FALHOU: Campos obrigatórios não preenchidos');
       return res.status(400).json({ 
         success: false, 
         message: 'Por favor, preencha todos os campos obrigatórios.' 
       });
     }
+    
+    console.log('✅ Validação passou');
 
     // Configuração do email
+    console.log('\n--- Configurando email ---');
     const mailOptions = {
       from: 'contato@acustikaauditiva.com.br',
       to: 'acustikaauditiva@gmail.com',
@@ -91,20 +108,47 @@ Este email foi enviado automaticamente pelo formulário de contato do site Acust
     };
 
     // Enviar email
-    const info = await transporter.sendMail(mailOptions);
+    console.log('\n--- Tentando enviar email via SMTP ---');
+    console.log(`SMTP Host: mail.acustikaauditiva.com.br`);
+    console.log(`SMTP Port: 465`);
+    console.log(`SMTP User: contato@acustikaauditiva.com.br`);
+    console.log(`From: ${mailOptions.from}`);
+    console.log(`To: ${mailOptions.to}`);
+    console.log(`Subject: ${mailOptions.subject}`);
     
-    console.log('Email enviado com sucesso:', info.messageId);
+    const startTime = Date.now();
+    const info = await transporter.sendMail(mailOptions);
+    const duration = Date.now() - startTime;
+    
+    console.log('\n✅ EMAIL ENVIADO COM SUCESSO!');
+    console.log(`Message ID: ${info.messageId}`);
+    console.log(`Response: ${info.response}`);
+    console.log(`Tempo de envio: ${duration}ms`);
+    console.log('==========================================\n');
     
     res.json({ 
       success: true, 
-      message: 'Mensagem enviada com sucesso! Entraremos em contato em breve.' 
+      message: 'Mensagem enviada com sucesso! Entraremos em contato em breve.',
+      messageId: info.messageId,
+      timestamp: timestamp
     });
     
   } catch (error) {
-    console.error('Erro ao enviar email:', error);
+    console.error('\n❌ ERRO AO ENVIAR EMAIL:');
+    console.error('Tipo do erro:', error.constructor.name);
+    console.error('Mensagem:', error.message);
+    console.error('Stack:', error.stack);
+    console.error('Código:', error.code);
+    console.error('Comando:', error.command);
+    if (error.response) {
+      console.error('Response:', error.response);
+    }
+    console.error('==========================================\n');
+    
     res.status(500).json({ 
       success: false, 
-      message: 'Erro ao enviar mensagem. Por favor, tente novamente mais tarde.' 
+      message: 'Erro ao enviar mensagem. Por favor, tente novamente mais tarde.',
+      error: process.env.NODE_ENV === 'development' ? error.message : undefined
     });
   }
 });
