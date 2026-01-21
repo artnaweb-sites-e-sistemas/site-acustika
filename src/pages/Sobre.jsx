@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import heroMainImage from '../assets/images/hero/hero-main.png';
-import sobreAcustikaImage from '../assets/images/Sobre a Acustika.jpg';
+import sobreAcustikaImage from '../assets/images/718c9a0b-4458-4a5e-9cd0-b7395f8a649f.jpg';
 import historyImage from '../assets/images/Nossa História.jpg';
 import experienceImage from '../assets/images/Experiência e Especialização.jpg';
+import ponteHercilioImage from '../assets/images/Flor ponte hercilio.jpg';
+import museuIpirangaImage from '../assets/images/Museo Ipiranga-- SÃO PAULO (7).png';
 import fonoMalu from '../assets/images/malu.jpg';
 import equipeJuliana from '../assets/images/equipe-juliana-popescu.png.webp';
 import equipeRenato from '../assets/images/equipe-renato.png.webp';
@@ -411,20 +413,44 @@ const Sobre = () => {
                 </div>
               </div>
               
-              {/* Image Section */}
+              {/* Images Section - Duas imagens lado a lado */}
               <div className="relative" data-aos="fade-left" data-aos-delay="300">
                 <div className="relative">
                   {/* Background decorative elements */}
                   <div className="absolute -top-4 -right-4 w-24 h-24 bg-gradient-to-br from-acustika-purple/20 to-acustika-teal/20 rounded-full blur-xl"></div>
                   <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-gradient-to-br from-acustika-teal/15 to-acustika-purple/15 rounded-full blur-xl"></div>
                   
-                  {/* Main image container */}
-                  <div className="relative bg-white rounded-2xl p-8 shadow-xl border border-gray-100">
-                    <img 
-                      src={historyImage} 
-                      alt="Equipe Acustika" 
-                      className="w-full h-auto object-contain"
-                    />
+                  {/* Grid com duas imagens lado a lado */}
+                  <div className="grid md:grid-cols-2 gap-6">
+                    {/* Ponte Hercílio Luz */}
+                    <div className="relative bg-white rounded-2xl p-6 shadow-xl border border-gray-100">
+                      <img 
+                        src={ponteHercilioImage} 
+                        alt="Ponte Hercílio Luz - Florianópolis" 
+                        className="w-full h-auto object-contain rounded-lg mb-4"
+                      />
+                      <p 
+                        className="text-center text-gray-700 font-medium"
+                        style={{ fontFamily: 'Karla, sans-serif', fontSize: '16px' }}
+                      >
+                        Ponte Hercílio Luz - Florianópolis
+                      </p>
+                    </div>
+                    
+                    {/* Museu do Ipiranga */}
+                    <div className="relative bg-white rounded-2xl p-6 shadow-xl border border-gray-100">
+                      <img 
+                        src={museuIpirangaImage} 
+                        alt="Museu do Ipiranga - São Paulo" 
+                        className="w-full h-auto object-contain rounded-lg mb-4"
+                      />
+                      <p 
+                        className="text-center text-gray-700 font-medium"
+                        style={{ fontFamily: 'Karla, sans-serif', fontSize: '16px' }}
+                      >
+                        Museu do Ipiranga - São Paulo
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>

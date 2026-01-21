@@ -11,18 +11,67 @@ const Contato = () => {
     mensagem: ''
   });
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState({ type: '', message: '' });
+
   const handleChange = (e) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
     });
+    // Limpar mensagem de status ao editar
+    if (submitStatus.message) {
+      setSubmitStatus({ type: '', message: '' });
+    }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Aqui você pode adicionar a lógica para enviar o formulário
-    console.log('Formulário enviado:', formData);
-    alert('Mensagem enviada com sucesso! Entraremos em contato em breve.');
+    setIsSubmitting(true);
+    setSubmitStatus({ type: '', message: '' });
+
+    try {
+      // URL do backend - ajuste conforme necessário
+      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:3001';
+      
+      const response = await fetch(`${apiUrl}/api/send-email`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        setSubmitStatus({ 
+          type: 'success', 
+          message: data.message || 'Mensagem enviada com sucesso! Entraremos em contato em breve.' 
+        });
+        // Limpar formulário
+        setFormData({
+          nome: '',
+          email: '',
+          telefone: '',
+          assunto: '',
+          mensagem: ''
+        });
+      } else {
+        setSubmitStatus({ 
+          type: 'error', 
+          message: data.message || 'Erro ao enviar mensagem. Por favor, tente novamente.' 
+        });
+      }
+    } catch (error) {
+      console.error('Erro ao enviar formulário:', error);
+      setSubmitStatus({ 
+        type: 'error', 
+        message: 'Erro ao enviar mensagem. Verifique sua conexão e tente novamente.' 
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   // Dados das unidades (consistentes com a Home)
@@ -400,12 +449,45 @@ const Contato = () => {
                 />
               </div>
               
+              {/* Mensagem de status */}
+              {submitStatus.message && (
+                <div 
+                  className={`p-4 rounded-lg ${
+                    submitStatus.type === 'success' 
+                      ? 'bg-green-50 border border-green-200 text-green-800' 
+                      : 'bg-red-50 border border-red-200 text-red-800'
+                  }`}
+                  style={{ fontFamily: 'Karla, sans-serif' }}
+                >
+                  <div className="flex items-center gap-2">
+                    {submitStatus.type === 'success' ? (
+                      <i className="fas fa-check-circle"></i>
+                    ) : (
+                      <i className="fas fa-exclamation-circle"></i>
+                    )}
+                    <span>{submitStatus.message}</span>
+                  </div>
+                </div>
+              )}
+              
               <button
                 type="submit"
-                    className="w-full bg-gradient-to-r from-acustika-purple to-acustika-teal text-white py-3 rounded-lg hover:from-acustika-purple/90 hover:to-acustika-teal/90 transition-all duration-300 font-semibold transform hover:scale-105"
-                    style={{ fontFamily: 'Karla, sans-serif' }}
+                disabled={isSubmitting}
+                className={`w-full bg-gradient-to-r from-acustika-purple to-acustika-teal text-white py-3 rounded-lg transition-all duration-300 font-semibold transform ${
+                  isSubmitting 
+                    ? 'opacity-50 cursor-not-allowed' 
+                    : 'hover:from-acustika-purple/90 hover:to-acustika-teal/90 hover:scale-105'
+                }`}
+                style={{ fontFamily: 'Karla, sans-serif' }}
               >
-                Enviar Mensagem
+                {isSubmitting ? (
+                  <span className="flex items-center justify-center gap-2">
+                    <i className="fas fa-spinner fa-spin"></i>
+                    Enviando...
+                  </span>
+                ) : (
+                  'Enviar Mensagem'
+                )}
               </button>
             </form>
           </div>
