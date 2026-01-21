@@ -125,3 +125,6 @@ temp/
 
 # Local development
 .local
+
+# Config files with secrets
+public/api/config.php

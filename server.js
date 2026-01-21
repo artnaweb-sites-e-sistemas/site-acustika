@@ -12,14 +12,17 @@ const PORT = process.env.PORT || 3001;
 app.use(cors());
 app.use(express.json());
 
-// Configuração do transporter SMTP
+// Configuração do transporter SMTP - Brevo
 const transporter = nodemailer.createTransport({
-  host: 'mail.acustikaauditiva.com.br',
-  port: 465,
-  secure: true, // true para porta 465, false para outras portas
+  host: process.env.BREVO_SMTP_HOST || 'smtp-relay.brevo.com',
+  port: parseInt(process.env.BREVO_SMTP_PORT || '587', 10),
+  secure: false, // false para porta 587 (TLS)
   auth: {
-    user: 'contato@acustikaauditiva.com.br',
-    pass: 'Bira1402@'
+    user: process.env.BREVO_SMTP_USER || '',
+    pass: process.env.BREVO_SMTP_PASS || ''
+  },
+  tls: {
+    rejectUnauthorized: false
   }
 });
 
@@ -64,8 +67,8 @@ app.post('/api/send-email', async (req, res) => {
     // Configuração do email
     console.log('\n--- Configurando email ---');
     const mailOptions = {
-      from: 'contato@acustikaauditiva.com.br',
-      to: 'birasro@gmail.com',
+      from: process.env.EMAIL_FROM || 'contato@acustikaauditiva.com.br',
+      to: process.env.EMAIL_TO || 'birasro@gmail.com',
       replyTo: email,
       subject: `Contato do Site - ${assunto}`,
       html: `
@@ -108,12 +111,12 @@ Este email foi enviado automaticamente pelo formulário de contato do site Acust
     };
 
     // Enviar email
-    console.log('\n--- Tentando enviar email via SMTP ---');
-    console.log(`SMTP Host: mail.acustikaauditiva.com.br`);
-    console.log(`SMTP Port: 465`);
-    console.log(`SMTP User: contato@acustikaauditiva.com.br`);
+    console.log('\n--- Tentando enviar email via SMTP Brevo ---');
+    console.log(`SMTP Host: ${process.env.BREVO_SMTP_HOST || 'smtp-relay.brevo.com'}`);
+    console.log(`SMTP Port: ${process.env.BREVO_SMTP_PORT || '587'}`);
+    console.log(`SMTP User: ${process.env.BREVO_SMTP_USER || '(não configurado)'}`);
     console.log(`From: ${mailOptions.from}`);
-    console.log(`To: birasro@gmail.com`);
+    console.log(`To: ${mailOptions.to}`);
     console.log(`Subject: ${mailOptions.subject}`);
     
     const startTime = Date.now();

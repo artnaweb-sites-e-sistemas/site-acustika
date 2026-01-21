@@ -1,6 +1,6 @@
 <?php
 /**
- * API PHP para envio de emails
+ * API PHP para envio de emails via Brevo (Sendinblue)
  * Compatível com hospedagem compartilhada
  */
 
@@ -68,13 +68,24 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     exit();
 }
 
-// Configuração
-$toEmail = 'birasro@gmail.com';
-$fromEmail = 'contato@acustikaauditiva.com.br';
+// Configuração Brevo - Ler de variáveis de ambiente ou arquivo de configuração
+// Em produção, configure essas variáveis no painel da hospedagem ou crie um arquivo config.php
+$brevoApiKey = getenv('BREVO_API_KEY') ?: (file_exists(__DIR__ . '/config.php') ? include(__DIR__ . '/config.php')['BREVO_API_KEY'] : '');
+$toEmail = getenv('EMAIL_TO') ?: (file_exists(__DIR__ . '/config.php') ? include(__DIR__ . '/config.php')['EMAIL_TO'] : 'birasro@gmail.com');
+$fromEmail = getenv('EMAIL_FROM') ?: (file_exists(__DIR__ . '/config.php') ? include(__DIR__ . '/config.php')['EMAIL_FROM'] : 'contato@acustikaauditiva.com.br');
+$fromName = 'Acustika - Formulário de Contato';
 $emailSubject = "Contato do Site - {$assunto}";
 
+if (empty($brevoApiKey)) {
+    echo json_encode([
+        'success' => false,
+        'message' => 'Configuração SMTP não encontrada. Entre em contato com o administrador.'
+    ]);
+    exit();
+}
+
 // Preparar corpo do email HTML
-$emailBody = "
+$emailBodyHtml = "
 <!DOCTYPE html>
 <html>
 <head>
@@ -104,37 +115,79 @@ $emailBody = "
 </html>
 ";
 
-// Headers do email
-$headers = "MIME-Version: 1.0\r\n";
-$headers .= "Content-Type: text/html; charset=UTF-8\r\n";
-$headers .= "From: {$fromEmail}\r\n";
-$headers .= "Reply-To: {$email}\r\n";
-$headers .= "X-Mailer: PHP/" . phpversion() . "\r\n";
+$emailBodyText = "
+Nova Mensagem do Formulário de Contato
 
-// Tentar enviar email
-$mailSent = @mail($toEmail, $emailSubject, $emailBody, $headers);
+Nome: {$nome}
+E-mail: {$email}
+" . ($telefone ? "Telefone: {$telefone}\n" : "") . "
+Assunto: {$assunto}
 
-if ($mailSent) {
+Mensagem:
+{$mensagem}
+
+---
+Este email foi enviado automaticamente pelo formulário de contato do site Acustika.
+";
+
+// Preparar dados para API do Brevo
+$brevoData = [
+    'sender' => [
+        'name' => $fromName,
+        'email' => $fromEmail
+    ],
+    'to' => [
+        [
+            'email' => $toEmail,
+            'name' => 'Acustika'
+        ]
+    ],
+    'replyTo' => [
+        'email' => $email,
+        'name' => $nome
+    ],
+    'subject' => $emailSubject,
+    'htmlContent' => $emailBodyHtml,
+    'textContent' => $emailBodyText
+];
+
+// Enviar via API do Brevo usando cURL
+$ch = curl_init();
+curl_setopt($ch, CURLOPT_URL, 'https://api.brevo.com/v3/smtp/email');
+curl_setopt($ch, CURLOPT_POST, true);
+curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($brevoData));
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch, CURLOPT_HTTPHEADER, [
+    'Accept: application/json',
+    'Content-Type: application/json',
+    'api-key: ' . $brevoApiKey
+]);
+
+$response = curl_exec($ch);
+$httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+$curlError = curl_error($ch);
+curl_close($ch);
+
+if ($httpCode === 201) {
+    // Sucesso
+    $responseData = json_decode($response, true);
     echo json_encode([
         'success' => true,
-        'message' => 'Mensagem enviada com sucesso! Entraremos em contato em breve.'
+        'message' => 'Mensagem enviada com sucesso! Entraremos em contato em breve.',
+        'messageId' => $responseData['messageId'] ?? null
     ]);
 } else {
-    // Tentar método alternativo com menos headers
-    $simpleHeaders = "From: {$fromEmail}\r\nReply-To: {$email}";
-    $simpleBody = "Nome: {$nome}\nEmail: {$email}\nTelefone: {$telefone}\nAssunto: {$assunto}\n\nMensagem:\n{$mensagem}";
+    // Erro
+    $errorData = json_decode($response, true);
+    $errorMessage = $errorData['message'] ?? 'Erro ao enviar mensagem. Por favor, tente novamente mais tarde.';
     
-    $mailSent2 = @mail($toEmail, $emailSubject, $simpleBody, $simpleHeaders);
-    
-    if ($mailSent2) {
-        echo json_encode([
-            'success' => true,
-            'message' => 'Mensagem enviada com sucesso! Entraremos em contato em breve.'
-        ]);
-    } else {
-        echo json_encode([
-            'success' => false,
-            'message' => 'Erro ao enviar mensagem. Por favor, entre em contato pelo WhatsApp ou telefone.'
-        ]);
+    if ($curlError) {
+        $errorMessage .= ' Erro cURL: ' . $curlError;
     }
+    
+    echo json_encode([
+        'success' => false,
+        'message' => $errorMessage,
+        'httpCode' => $httpCode
+    ]);
 }

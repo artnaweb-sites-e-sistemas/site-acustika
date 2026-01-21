@@ -1,0 +1,16 @@
+<?php
+/**
+ * Arquivo de configuração do Brevo
+ * 
+ * INSTRUÇÕES:
+ * 1. Copie este arquivo para config.php
+ * 2. Preencha com suas credenciais do Brevo
+ * 3. NUNCA commite o arquivo config.php no Git
+ */
+
+return [
+    'BREVO_API_KEY' => 'sua-api-key-aqui',
+    'EMAIL_TO' => 'seu-email@exemplo.com',
+    'EMAIL_FROM' => 'contato@acustikaauditiva.com.br'
+];
+
