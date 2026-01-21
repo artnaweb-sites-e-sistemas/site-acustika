@@ -1,6 +1,6 @@
 <?php
 /**
- * Arquivo de configuração do Brevo
+ * Arquivo de configuração SMTP Brevo
  * 
  * INSTRUÇÕES:
  * 1. Copie este arquivo para config.php
@@ -9,8 +9,10 @@
  */
 
 return [
-    'BREVO_API_KEY' => 'sua-api-key-aqui',
+    'SMTP_HOST' => 'smtp-relay.brevo.com',
+    'SMTP_PORT' => 587,
+    'SMTP_USER' => 'seu-usuario@smtp-brevo.com',
+    'SMTP_PASS' => 'sua-chave-smtp-aqui',
     'EMAIL_TO' => 'seu-email@exemplo.com',
     'EMAIL_FROM' => 'contato@acustikaauditiva.com.br'
 ];
-
