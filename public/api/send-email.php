@@ -68,18 +68,24 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     exit();
 }
 
-// Configuração Brevo - Ler de variáveis de ambiente ou arquivo de configuração
-// Em produção, configure essas variáveis no painel da hospedagem ou crie um arquivo config.php
-$brevoApiKey = getenv('BREVO_API_KEY') ?: (file_exists(__DIR__ . '/config.php') ? include(__DIR__ . '/config.php')['BREVO_API_KEY'] : '');
-$toEmail = getenv('EMAIL_TO') ?: (file_exists(__DIR__ . '/config.php') ? include(__DIR__ . '/config.php')['EMAIL_TO'] : 'birasro@gmail.com');
-$fromEmail = getenv('EMAIL_FROM') ?: (file_exists(__DIR__ . '/config.php') ? include(__DIR__ . '/config.php')['EMAIL_FROM'] : 'contato@acustikaauditiva.com.br');
+// Configuração Brevo - Ler do arquivo de configuração
+$config = [];
+$configFile = __DIR__ . '/config.php';
+if (file_exists($configFile)) {
+    $config = include($configFile);
+}
+
+$brevoApiKey = $config['BREVO_API_KEY'] ?? '';
+$toEmail = $config['EMAIL_TO'] ?? 'birasro@gmail.com';
+$fromEmail = $config['EMAIL_FROM'] ?? 'contato@acustikaauditiva.com.br';
 $fromName = 'Acustika - Formulário de Contato';
 $emailSubject = "Contato do Site - {$assunto}";
 
 if (empty($brevoApiKey)) {
     echo json_encode([
         'success' => false,
-        'message' => 'Configuração SMTP não encontrada. Entre em contato com o administrador.'
+        'message' => 'Configuração SMTP não encontrada. Entre em contato com o administrador.',
+        'debug' => 'Config file: ' . ($config ? 'loaded' : 'not found')
     ]);
     exit();
 }
