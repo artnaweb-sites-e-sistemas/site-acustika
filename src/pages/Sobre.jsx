@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import heroMainImage from '../assets/images/hero/hero-main.png';
 import historyImage from '../assets/images/Nossa História.jpg';
+import sobreAcustikaImage from '../assets/images/718c9a0b-4458-4a5e-9cd0-b7395f8a649f.jpg';
 import experienceImage from '../assets/images/Experiência e Especialização.jpg';
 import ponteHercilioImage from '../assets/images/Flor ponte hercilio.jpg';
 import museuIpirangaImage from '../assets/images/Museo Ipiranga-- SÃO PAULO (7).png';
@@ -455,7 +456,7 @@ const Sobre = () => {
                   {/* Imagem única */}
                   <div className="relative bg-white rounded-2xl p-6 shadow-xl border border-gray-100">
                     <img 
-                      src={historyImage} 
+                      src={sobreAcustikaImage} 
                       alt="Nossa História - Acustika" 
                       className="w-full h-auto object-contain rounded-lg"
                     />
