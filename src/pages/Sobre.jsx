@@ -420,7 +420,7 @@ const Sobre = () => {
                   <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-gradient-to-br from-acustika-teal/15 to-acustika-purple/15 rounded-full blur-xl"></div>
                   
                   {/* Fotos da Ponte e Museu */}
-                  <div className="grid md:grid-cols-2 gap-6" data-aos="fade-up" data-aos-delay="400">
+                  <div className="grid grid-cols-1 gap-6" data-aos="fade-up" data-aos-delay="400">
                     {/* Ponte Hercílio Luz */}
                     <div className="relative bg-white rounded-2xl p-6 shadow-xl border border-gray-100">
                       <img 
