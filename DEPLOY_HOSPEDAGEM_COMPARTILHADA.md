@@ -163,3 +163,4 @@ Se tiver problemas, verifique:
 2. Arquivo `api/email-debug.log`
 3. Logs de erro do PHP no servidor
 
+
