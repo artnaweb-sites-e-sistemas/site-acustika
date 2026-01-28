@@ -140,7 +140,7 @@ const Blog = () => {
         {/* Overlay sutil para profundidade */}
         <div className="absolute inset-0 bg-gradient-to-t from-white/10 via-transparent to-white/5" style={{ zIndex: 3 }}></div>
 
-        <div className="relative container mx-auto px-4 md:px-6 lg:px-8 xl:px-12 pt-24 lg:pt-8 pb-12 lg:pb-0 h-full" style={{ zIndex: 10 }}>
+        <div className="relative container mx-auto px-4 md:px-6 lg:px-8 xl:px-12 pt-24 lg:pt-8 pb-0 lg:pb-0 h-full" style={{ zIndex: 10 }}>
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center h-full">
 
             {/* Coluna Esquerda: Conteúdo */}
@@ -239,7 +239,7 @@ const Blog = () => {
                   <img
                     src={blogHeroImage}
                     alt="Blog Acustika Aparelhos Auditivos"
-                    className="w-[200px] h-[200px] lg:w-[350px] lg:h-[350px] object-contain"
+                    className="w-[280px] h-[280px] lg:w-[350px] lg:h-[350px] object-contain"
                     style={{ display: 'block' }}
                   />
                 </div>

@@ -201,7 +201,7 @@ const Home = () => {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section - Background Animado Inspirado */}
-      <section className="relative overflow-hidden min-h-screen flex items-center pt-24 pb-12 md:py-16 lg:py-20">
+      <section className="relative overflow-hidden min-h-screen flex items-center pt-24 pb-0 md:pt-16 md:pb-0 lg:pt-20 lg:pb-0">
         {/* Background com gradiente moderno inspirado no 21st.dev */}
         <div
           className="absolute inset-0"

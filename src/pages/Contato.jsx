@@ -285,7 +285,7 @@ const Contato = () => {
         {/* Overlay sutil para profundidade */}
         <div className="absolute inset-0 bg-gradient-to-t from-white/10 via-transparent to-white/5" style={{ zIndex: 3 }}></div>
 
-        <div className="relative container mx-auto px-4 md:px-6 lg:px-8 xl:px-12 pt-24 lg:pt-8 pb-12 lg:pb-0 h-full" style={{ zIndex: 10 }}>
+        <div className="relative container mx-auto px-4 md:px-6 lg:px-8 xl:px-12 pt-24 lg:pt-8 pb-0 lg:pb-0 h-full" style={{ zIndex: 10 }}>
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center h-full">
 
             {/* Coluna Esquerda: Conteúdo */}
@@ -502,8 +502,8 @@ const Contato = () => {
                   {submitStatus.message && (
                     <div
                       className={`p-4 rounded-lg ${submitStatus.type === 'success'
-                          ? 'bg-green-50 border border-green-200 text-green-800'
-                          : 'bg-red-50 border border-red-200 text-red-800'
+                        ? 'bg-green-50 border border-green-200 text-green-800'
+                        : 'bg-red-50 border border-red-200 text-red-800'
                         }`}
                       style={{ fontFamily: 'Karla, sans-serif' }}
                     >
@@ -522,8 +522,8 @@ const Contato = () => {
                     type="submit"
                     disabled={isSubmitting}
                     className={`w-full bg-gradient-to-r from-acustika-purple to-acustika-teal text-white py-3 rounded-lg transition-all duration-300 font-semibold transform ${isSubmitting
-                        ? 'opacity-50 cursor-not-allowed'
-                        : 'hover:from-acustika-purple/90 hover:to-acustika-teal/90 hover:scale-105'
+                      ? 'opacity-50 cursor-not-allowed'
+                      : 'hover:from-acustika-purple/90 hover:to-acustika-teal/90 hover:scale-105'
                       }`}
                     style={{ fontFamily: 'Karla, sans-serif' }}
                   >
