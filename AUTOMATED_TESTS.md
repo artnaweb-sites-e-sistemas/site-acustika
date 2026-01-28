@@ -16,7 +16,7 @@ npm run build && ls -la dist/assets/
 
 ### **2. Teste de Build**
 ```bash
-# Build de produção
+# Build de produção5415454254
 npm run build
 
 # Verificar se build foi criado

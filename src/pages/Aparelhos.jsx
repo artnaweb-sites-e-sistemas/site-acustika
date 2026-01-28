@@ -34,21 +34,21 @@ import '../styles/liquid-glass-buttons.css';
 const Aparelhos = () => {
   // Estado para controlar o carrossel do Play PX
   const [playPxImageIndex, setPlayPxImageIndex] = useState(0);
-  
+
   // Array com todas as imagens do Play PX
   const playPxImages = [playPx1, playPx2, playPx3, playPx4, playPx5, playPx6, playPx7, playPx8];
-  
+
   // Carrossel automático do Play PX
   useEffect(() => {
     const interval = setInterval(() => {
-      setPlayPxImageIndex((prevIndex) => 
+      setPlayPxImageIndex((prevIndex) =>
         prevIndex === playPxImages.length - 1 ? 0 : prevIndex + 1
       );
     }, 2000); // Muda a cada 2 segundos
-    
+
     return () => clearInterval(interval);
   }, [playPxImages.length]);
-  
+
   // Função para gerar slug a partir do nome do produto
   const generateSlug = (nome) => {
     return nome
@@ -66,7 +66,7 @@ const Aparelhos = () => {
       .replace(/[^a-z0-9]+/g, '-') // Substitui caracteres não alfanuméricos por hífen
       .replace(/^-+|-+$/g, ''); // Remove hífens do início e fim
   };
-  
+
   // Mapeamento de rotas específicas para produtos que têm páginas dedicadas
   const routeMap = {
     'oticon-intent': '/aparelho/oticon-intent',
@@ -89,13 +89,13 @@ const Aparelhos = () => {
     'rexton-m-core-r': '/aparelho/rexton-m-core-r',
     'rexton-m-core-ix': '/aparelho/rexton-m-core-ix'
   };
-  
+
   // Função para obter a rota do produto
   const getProductRoute = (nome) => {
     const slug = generateSlug(nome);
     return routeMap[slug] || `/aparelho/${slug}`;
   };
-  
+
   // Dados dos aparelhos auditivos
   const aparelhos = [
     // Marca Oticon
@@ -211,9 +211,9 @@ const Aparelhos = () => {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section - Background Animado Inspirado */}
-      <section className="relative overflow-hidden" style={{ height: '400px' }}>
+      <section className="relative overflow-hidden min-h-[400px] lg:h-[400px] flex items-center">
         {/* Background com gradiente moderno inspirado no 21st.dev */}
-        <div 
+        <div
           className="absolute inset-0"
           style={{
             background: `
@@ -225,9 +225,9 @@ const Aparelhos = () => {
             `,
           }}
         />
-        
+
         {/* Canvas para partículas animadas */}
-        <canvas 
+        <canvas
           className="absolute inset-0 w-full h-full opacity-50"
           style={{ zIndex: 1 }}
           ref={(canvas) => {
@@ -238,14 +238,14 @@ const Aparelhos = () => {
                   canvas.width = canvas.offsetWidth;
                   canvas.height = canvas.offsetHeight;
                 };
-                
+
                 resizeCanvas();
                 window.addEventListener('resize', resizeCanvas);
-                
+
                 // Configurações das partículas
                 const particles = [];
                 const particleCount = 100; // Menos partículas para hero menor
-                
+
                 // Criar partículas
                 for (let i = 0; i < particleCount; i++) {
                   particles.push({
@@ -259,11 +259,11 @@ const Aparelhos = () => {
                     maxLife: 100 + Math.random() * 50
                   });
                 }
-                
+
                 // Função de animação
                 const animate = () => {
                   ctx.clearRect(0, 0, canvas.width, canvas.height);
-                  
+
                   particles.forEach(particle => {
                     // Atualizar vida da partícula
                     particle.life += 0.5;
@@ -272,22 +272,22 @@ const Aparelhos = () => {
                       particle.x = Math.random() * canvas.width;
                       particle.y = Math.random() * canvas.height;
                     }
-                    
+
                     // Calcular opacidade baseada na vida
                     const lifeRatio = particle.life / particle.maxLife;
                     const opacity = Math.sin(lifeRatio * Math.PI) * particle.opacity;
-                    
+
                     // Movimento suave com influência do tempo
                     const time = Date.now() * 0.0001;
                     particle.x += particle.speedX + Math.sin(time + particle.y * 0.01) * 0.1;
                     particle.y += particle.speedY + Math.cos(time + particle.x * 0.01) * 0.1;
-                    
+
                     // Wrap around edges
                     if (particle.x < 0) particle.x = canvas.width;
                     if (particle.x > canvas.width) particle.x = 0;
                     if (particle.y < 0) particle.y = canvas.height;
                     if (particle.y > canvas.height) particle.y = 0;
-                    
+
                     // Desenhar partícula com cores que combinam com o gradiente da Acustika
                     const colors = [
                       `rgba(122, 68, 120, ${opacity})`, // Roxo Acustika
@@ -300,19 +300,19 @@ const Aparelhos = () => {
                     ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
                     ctx.fill();
                   });
-                  
+
                   requestAnimationFrame(animate);
                 };
-                
+
                 animate();
               }
             }
           }}
         />
-        
+
         {/* Padrão geométrico sutil */}
         <div className="absolute inset-0 opacity-20" style={{ zIndex: 2 }}>
-          <div 
+          <div
             className="absolute inset-0"
             style={{
               backgroundImage: `
@@ -322,39 +322,39 @@ const Aparelhos = () => {
             }}
           />
         </div>
-        
+
         {/* Elementos decorativos com cores harmoniosas da Acustika */}
         <div className="absolute top-20 right-20 w-40 h-40 bg-gradient-to-br from-acustika-purple/35 to-acustika-teal/35 rounded-full blur-3xl animate-pulse" style={{ zIndex: 2 }}></div>
         <div className="absolute bottom-20 left-20 w-48 h-48 bg-gradient-to-br from-acustika-teal/30 to-acustika-purple/30 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s', zIndex: 2 }}></div>
         <div className="absolute top-1/2 right-1/3 w-32 h-32 bg-gradient-to-br from-acustika-purple/35 to-acustika-teal/35 rounded-full blur-2xl animate-pulse" style={{ animationDelay: '2s', zIndex: 2 }}></div>
-        
+
         {/* Radial accent com cores harmoniosas da Acustika */}
         <div className="absolute left-1/2 top-[calc(100%-90px)] h-[300px] w-[400px] md:h-[400px] md:w-[600px] -translate-x-1/2 rounded-full bg-gradient-to-r from-acustika-purple/15 via-acustika-teal/15 to-acustika-purple/15 blur-3xl animate-pulse" style={{ animationDelay: '3s', zIndex: 2 }}></div>
-        
+
         {/* Overlay sutil para profundidade */}
         <div className="absolute inset-0 bg-gradient-to-t from-white/10 via-transparent to-white/5" style={{ zIndex: 3 }}></div>
-               
-        <div className="relative container mx-auto px-4 md:px-6 lg:px-8 xl:px-12 pt-8 pb-0 h-full" style={{ zIndex: 10 }}>
+
+        <div className="relative container mx-auto px-4 md:px-6 lg:px-8 xl:px-12 pt-24 lg:pt-8 pb-12 lg:pb-0 h-full" style={{ zIndex: 10 }}>
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center h-full">
-            
+
             {/* Coluna Esquerda: Conteúdo */}
             <div className="text-center lg:text-left space-y-6 flex flex-col justify-center h-full order-1 lg:order-first">
               {/* Badge moderno */}
-              <div 
+              <div
                 className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 backdrop-blur-sm border border-gray-200/50 shadow-sm w-fit mx-auto lg:mx-0"
-              data-aos="fade-up"
-              data-aos-delay="100"
-            >
-                  <div className="w-2 h-2 bg-gradient-to-r from-acustika-purple to-acustika-teal rounded-full animate-pulse"></div>
+                data-aos="fade-up"
+                data-aos-delay="100"
+              >
+                <div className="w-2 h-2 bg-gradient-to-r from-acustika-purple to-acustika-teal rounded-full animate-pulse"></div>
                 <span className="text-sm font-medium text-gray-600" style={{ fontFamily: 'Karla, sans-serif' }}>Tecnologia de ponta</span>
-            </div>
-            
+              </div>
+
               {/* Headline Principal com gradiente */}
-               <h1 
+              <h1
                 className="font-semibold text-gray-900 text-3xl md:text-4xl lg:text-5xl xl:text-6xl leading-tight"
-              data-aos="fade-up"
-                 data-aos-delay="200"
-                 style={{ 
+                data-aos="fade-up"
+                data-aos-delay="200"
+                style={{
                   fontFamily: 'Noto Serif, serif',
                   fontWeight: '500',
                   fontSize: 'clamp(2rem, 4vw, 3.5rem)',
@@ -367,29 +367,29 @@ const Aparelhos = () => {
                 }}
               >
                 Aparelhos Auditivos
-            </h1>
-               
+              </h1>
+
               {/* Subtítulo */}
-            <p 
+              <p
                 className="text-gray-600 text-lg md:text-xl max-w-2xl mx-auto lg:mx-0 leading-relaxed"
-              data-aos="fade-up"
-              data-aos-delay="200"
-                 style={{ 
+                data-aos="fade-up"
+                data-aos-delay="200"
+                style={{
                   fontFamily: 'Karla, sans-serif',
                   fontWeight: '400',
                   fontSize: '18px',
                   lineHeight: '1.4',
                   letterSpacing: '0.01em',
                   opacity: '0.8'
-                 }}
-               >
-                 Descubra nossa linha completa de aparelhos auditivos com tecnologia de ponta e design moderno para atender suas necessidades específicas.
-            </p>
-          </div>
-            
+                }}
+              >
+                Descubra nossa linha completa de aparelhos auditivos com tecnologia de ponta e design moderno para atender suas necessidades específicas.
+              </p>
+            </div>
+
             {/* Coluna Direita: Imagem Principal */}
-            <div 
-              className="relative order-2 lg:order-last h-full flex items-end justify-center hidden lg:flex"
+            <div
+              className="relative order-2 lg:order-last h-full flex items-end justify-center pt-8 lg:pt-0"
               data-aos="fade-left"
               data-aos-delay="300"
             >
@@ -398,16 +398,16 @@ const Aparelhos = () => {
                 <div className="absolute inset-0 flex items-end justify-center">
                   <div className="relative">
                     {/* Círculo principal com gradiente */}
-                    <div 
+                    <div
                       className="w-[200px] h-[200px] lg:w-[350px] lg:h-[350px] rounded-full opacity-25"
                       style={{
                         background: 'linear-gradient(135deg, rgba(122, 68, 120, 0.4) 0%, rgba(100, 160, 160, 0.4) 50%, rgba(122, 68, 120, 0.4) 100%)',
                         animation: 'float 4s ease-in-out infinite, glow 3s ease-in-out infinite alternate'
                       }}
                     />
-                    
+
                     {/* Círculo secundário com movimento */}
-                    <div 
+                    <div
                       className="absolute top-1/2 left-1/2 w-[150px] h-[150px] lg:w-[250px] lg:h-[250px] rounded-full opacity-20"
                       style={{
                         background: 'radial-gradient(circle, rgba(100, 160, 160, 0.5) 0%, transparent 70%)',
@@ -415,9 +415,9 @@ const Aparelhos = () => {
                         animation: 'rotate 6s linear infinite, breathe 2s ease-in-out infinite'
                       }}
                     />
-                    
+
                     {/* Círculo terciário com pulso */}
-                    <div 
+                    <div
                       className="absolute top-1/2 left-1/2 w-[100px] h-[100px] lg:w-[200px] lg:h-[200px] rounded-full opacity-15"
                       style={{
                         background: 'conic-gradient(from 0deg, rgba(122, 68, 120, 0.4), rgba(100, 160, 160, 0.4), rgba(122, 68, 120, 0.4))',
@@ -427,31 +427,31 @@ const Aparelhos = () => {
                     />
                   </div>
                 </div>
-                
+
                 {/* Imagem com fundo transparente - colada no bottom */}
                 <div className="relative z-10" style={{ marginBottom: '-15px' }}>
-                  <img 
-                    src={aparelhosHeroImage} 
-                    alt="Aparelhos Auditivos Acustika" 
+                  <img
+                    src={aparelhosHeroImage}
+                    alt="Aparelhos Auditivos Acustika"
                     className="object-contain"
                     style={{ display: 'block', width: '600px', marginLeft: '140px', height: 'auto' }}
                   />
                 </div>
-                </div>
               </div>
+            </div>
           </div>
         </div>
       </section>
-      
+
       {/* Catálogo de Aparelhos Section */}
       <section className="py-16 md:py-20 bg-gray-50">
         <div className="container mx-auto px-4 md:px-6 lg:px-8 xl:px-12">
           <div className="max-w-7xl mx-auto">
             {/* Título Principal */}
             <div className="text-center mb-16" data-aos="fade-up">
-              <h2 
+              <h2
                 className="font-medium text-gray-900 text-3xl md:text-4xl lg:text-5xl mb-6"
-                style={{ 
+                style={{
                   fontFamily: 'Noto Serif, serif',
                   fontWeight: '500',
                   fontSize: 'clamp(2rem, 4vw, 3rem)',
@@ -460,10 +460,10 @@ const Aparelhos = () => {
                 }}
               >
                 Nossos Aparelhos
-            </h2>
-            <p 
+              </h2>
+              <p
                 className="text-gray-600 max-w-3xl mx-auto"
-                style={{ 
+                style={{
                   fontFamily: 'Karla, sans-serif',
                   fontWeight: '400',
                   fontSize: '18px',
@@ -471,16 +471,16 @@ const Aparelhos = () => {
                 }}
               >
                 Tecnologia de ponta, design moderno e qualidade garantida para atender suas necessidades auditivas específicas.
-            </p>
-          </div>
-          
+              </p>
+            </div>
+
             {/* Grid de Aparelhos */}
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {aparelhos.map((aparelho, index) => (
-            <div 
+                <div
                   key={aparelho.id}
                   className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 overflow-hidden group flex flex-col"
-              data-aos="fade-up"
+                  data-aos="fade-up"
                   data-aos-delay={index * 100}
                 >
                   {/* Imagem */}
@@ -488,9 +488,9 @@ const Aparelhos = () => {
                     {aparelho.id === 5 ? (
                       // Carrossel para Play PX
                       <div className="w-full h-full flex items-center justify-center" style={{ paddingRight: '120px', paddingTop: '45px' }}>
-                        <img 
-                          src={playPxImages[playPxImageIndex]} 
-                          alt={`${aparelho.nome} - Cor ${playPxImageIndex + 1}`} 
+                        <img
+                          src={playPxImages[playPxImageIndex]}
+                          alt={`${aparelho.nome} - Cor ${playPxImageIndex + 1}`}
                           className="h-full w-auto object-contain transition-opacity duration-500"
                           style={{
                             imageRendering: 'auto',
@@ -503,32 +503,32 @@ const Aparelhos = () => {
                       </div>
                     ) : (
                       // Imagem estática para outros aparelhos
-                      <img 
-                        src={aparelho.imagem} 
-                        alt={aparelho.nome} 
+                      <img
+                        src={aparelho.imagem}
+                        alt={aparelho.nome}
                         className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-300"
                       />
                     )}
-              </div>
-                  
+                  </div>
+
                   {/* Conteúdo */}
                   <div className="p-6 flex flex-col flex-1">
                     <div className="flex-1 space-y-4">
                       {/* Categoria */}
                       <div className="flex items-center gap-2">
                         <div className="w-2 h-2 bg-gradient-to-r from-acustika-purple to-acustika-teal rounded-full"></div>
-                        <span 
+                        <span
                           className="text-sm font-medium text-gray-500"
                           style={{ fontFamily: 'Karla, sans-serif' }}
                         >
                           {aparelho.categoria}
                         </span>
-            </div>
-            
+                      </div>
+
                       {/* Nome */}
-                      <h3 
+                      <h3
                         className="font-semibold text-gray-900 text-xl"
-                        style={{ 
+                        style={{
                           fontFamily: 'Karla, sans-serif',
                           fontWeight: '600',
                           fontSize: '24px',
@@ -537,11 +537,11 @@ const Aparelhos = () => {
                       >
                         {aparelho.nome}
                       </h3>
-                      
+
                       {/* Descrição */}
-                      <p 
+                      <p
                         className="text-gray-600 leading-relaxed"
-                        style={{ 
+                        style={{
                           fontFamily: 'Karla, sans-serif',
                           fontWeight: '400',
                           fontSize: '16px',
@@ -550,31 +550,31 @@ const Aparelhos = () => {
                       >
                         {aparelho.descricao}
                       </p>
-            </div>
-            
+                    </div>
+
                     {/* Botão Saiba Mais - sempre no footer */}
                     <div className="pt-4">
                       <div className="bth bth-white-icon w-full">
-                        <Link 
+                        <Link
                           to={getProductRoute(aparelho.nome)}
                           className="elementor-button w-full text-center py-8"
                           style={{ paddingTop: '52px', paddingBottom: '52px' }}
                         >
                           <span className="elementor-button-text">Saiba Mais</span>
                         </Link>
-              </div>
-            </div>
-          </div>
-        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               ))}
             </div>
-            
+
             {/* Seção de Informação Adicional */}
             <div className="mt-16 bg-white rounded-2xl p-8 shadow-lg border border-gray-100" data-aos="fade-up" data-aos-delay="500">
               <div className="text-center max-w-4xl mx-auto">
-                <h3 
+                <h3
                   className="text-2xl font-bold text-gray-900 mb-4"
-                  style={{ 
+                  style={{
                     fontFamily: 'Karla, sans-serif',
                     fontWeight: '700',
                     fontSize: '28px',
@@ -583,10 +583,10 @@ const Aparelhos = () => {
                 >
                   Temos outros modelos de aparelhos que não constam no site.
                 </h3>
-                
-                <p 
+
+                <p
                   className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto"
-                  style={{ 
+                  style={{
                     fontFamily: 'Karla, sans-serif',
                     fontWeight: '400',
                     fontSize: '18px',
@@ -595,12 +595,12 @@ const Aparelhos = () => {
                 >
                   Entre em contato conosco para mais informações pelo WhatsApp.
                 </p>
-                
+
                 <div className="flex justify-center">
                   <div className="bth">
-                    <a 
-                      href="https://wa.me/5511999999999" 
-                      target="_blank" 
+                    <a
+                      href="https://wa.me/5511999999999"
+                      target="_blank"
                       rel="noopener noreferrer"
                       className="elementor-button group"
                     >

@@ -17,9 +17,9 @@ const Blog = () => {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section - Background Animado Inspirado */}
-      <section className="relative overflow-hidden" style={{ height: '400px' }}>
+      <section className="relative overflow-hidden min-h-[400px] lg:h-[400px] flex items-center">
         {/* Background com gradiente moderno inspirado no 21st.dev */}
-        <div 
+        <div
           className="absolute inset-0"
           style={{
             background: `
@@ -31,9 +31,9 @@ const Blog = () => {
             `,
           }}
         />
-        
+
         {/* Canvas para partículas animadas */}
-        <canvas 
+        <canvas
           className="absolute inset-0 w-full h-full opacity-50"
           style={{ zIndex: 1 }}
           ref={(canvas) => {
@@ -44,14 +44,14 @@ const Blog = () => {
                   canvas.width = canvas.offsetWidth;
                   canvas.height = canvas.offsetHeight;
                 };
-                
+
                 resizeCanvas();
                 window.addEventListener('resize', resizeCanvas);
-                
+
                 // Configurações das partículas
                 const particles = [];
                 const particleCount = 100; // Menos partículas para hero menor
-                
+
                 // Criar partículas
                 for (let i = 0; i < particleCount; i++) {
                   particles.push({
@@ -65,11 +65,11 @@ const Blog = () => {
                     maxLife: 100 + Math.random() * 50
                   });
                 }
-                
+
                 // Função de animação
                 const animate = () => {
                   ctx.clearRect(0, 0, canvas.width, canvas.height);
-                  
+
                   particles.forEach(particle => {
                     // Atualizar vida da partícula
                     particle.life += 0.5;
@@ -78,22 +78,22 @@ const Blog = () => {
                       particle.x = Math.random() * canvas.width;
                       particle.y = Math.random() * canvas.height;
                     }
-                    
+
                     // Calcular opacidade baseada na vida
                     const lifeRatio = particle.life / particle.maxLife;
                     const opacity = Math.sin(lifeRatio * Math.PI) * particle.opacity;
-                    
+
                     // Movimento suave com influência do tempo
                     const time = Date.now() * 0.0001;
                     particle.x += particle.speedX + Math.sin(time + particle.y * 0.01) * 0.1;
                     particle.y += particle.speedY + Math.cos(time + particle.x * 0.01) * 0.1;
-                    
+
                     // Wrap around edges
                     if (particle.x < 0) particle.x = canvas.width;
                     if (particle.x > canvas.width) particle.x = 0;
                     if (particle.y < 0) particle.y = canvas.height;
                     if (particle.y > canvas.height) particle.y = 0;
-                    
+
                     // Desenhar partícula com cores que combinam com o gradiente da Acustika
                     const colors = [
                       `rgba(122, 68, 120, ${opacity})`, // Roxo Acustika
@@ -106,19 +106,19 @@ const Blog = () => {
                     ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
                     ctx.fill();
                   });
-                  
+
                   requestAnimationFrame(animate);
                 };
-                
+
                 animate();
               }
             }
           }}
         />
-        
+
         {/* Padrão geométrico sutil */}
         <div className="absolute inset-0 opacity-20" style={{ zIndex: 2 }}>
-          <div 
+          <div
             className="absolute inset-0"
             style={{
               backgroundImage: `
@@ -128,39 +128,39 @@ const Blog = () => {
             }}
           />
         </div>
-        
+
         {/* Elementos decorativos com cores harmoniosas da Acustika */}
         <div className="absolute top-20 right-20 w-40 h-40 bg-gradient-to-br from-acustika-purple/35 to-acustika-teal/35 rounded-full blur-3xl animate-pulse" style={{ zIndex: 2 }}></div>
         <div className="absolute bottom-20 left-20 w-48 h-48 bg-gradient-to-br from-acustika-teal/30 to-acustika-purple/30 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s', zIndex: 2 }}></div>
         <div className="absolute top-1/2 right-1/3 w-32 h-32 bg-gradient-to-br from-acustika-purple/35 to-acustika-teal/35 rounded-full blur-2xl animate-pulse" style={{ animationDelay: '2s', zIndex: 2 }}></div>
-        
+
         {/* Radial accent com cores harmoniosas da Acustika */}
         <div className="absolute left-1/2 top-[calc(100%-90px)] h-[300px] w-[400px] md:h-[400px] md:w-[600px] -translate-x-1/2 rounded-full bg-gradient-to-r from-acustika-purple/15 via-acustika-teal/15 to-acustika-purple/15 blur-3xl animate-pulse" style={{ animationDelay: '3s', zIndex: 2 }}></div>
-        
+
         {/* Overlay sutil para profundidade */}
         <div className="absolute inset-0 bg-gradient-to-t from-white/10 via-transparent to-white/5" style={{ zIndex: 3 }}></div>
-               
-        <div className="relative container mx-auto px-4 md:px-6 lg:px-8 xl:px-12 pt-8 pb-0 h-full" style={{ zIndex: 10 }}>
+
+        <div className="relative container mx-auto px-4 md:px-6 lg:px-8 xl:px-12 pt-24 lg:pt-8 pb-12 lg:pb-0 h-full" style={{ zIndex: 10 }}>
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center h-full">
-            
+
             {/* Coluna Esquerda: Conteúdo */}
             <div className="text-center lg:text-left space-y-6 flex flex-col justify-center h-full order-1 lg:order-first">
               {/* Badge moderno */}
-              <div 
+              <div
                 className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 backdrop-blur-sm border border-gray-200/50 shadow-sm w-fit mx-auto lg:mx-0"
-              data-aos="fade-up"
-              data-aos-delay="100"
-            >
-                  <div className="w-2 h-2 bg-gradient-to-r from-acustika-purple to-acustika-teal rounded-full animate-pulse"></div>
+                data-aos="fade-up"
+                data-aos-delay="100"
+              >
+                <div className="w-2 h-2 bg-gradient-to-r from-acustika-purple to-acustika-teal rounded-full animate-pulse"></div>
                 <span className="text-sm font-medium text-gray-600" style={{ fontFamily: 'Karla, sans-serif' }}>Conhecimento e saúde</span>
-            </div>
-            
+              </div>
+
               {/* Headline Principal com gradiente */}
-               <h1 
+              <h1
                 className="font-semibold text-gray-900 text-3xl md:text-4xl lg:text-5xl xl:text-6xl leading-tight"
-              data-aos="fade-up"
-                 data-aos-delay="200"
-                 style={{ 
+                data-aos="fade-up"
+                data-aos-delay="200"
+                style={{
                   fontFamily: 'Noto Serif, serif',
                   fontWeight: '500',
                   fontSize: 'clamp(2rem, 4vw, 3.5rem)',
@@ -173,29 +173,29 @@ const Blog = () => {
                 }}
               >
                 Blog Acustika
-            </h1>
-               
+              </h1>
+
               {/* Subtítulo */}
-            <p 
+              <p
                 className="text-gray-600 text-lg md:text-xl max-w-2xl mx-auto lg:mx-0 leading-relaxed"
-              data-aos="fade-up"
-              data-aos-delay="200"
-                 style={{ 
+                data-aos="fade-up"
+                data-aos-delay="200"
+                style={{
                   fontFamily: 'Karla, sans-serif',
                   fontWeight: '400',
                   fontSize: '18px',
                   lineHeight: '1.4',
                   letterSpacing: '0.01em',
                   opacity: '0.8'
-                 }}
-               >
-                 Fique por dentro das últimas novidades, dicas e informações sobre saúde auditiva, tecnologia e cuidados com aparelhos auditivos.
-            </p>
-          </div>
-            
+                }}
+              >
+                Fique por dentro das últimas novidades, dicas e informações sobre saúde auditiva, tecnologia e cuidados com aparelhos auditivos.
+              </p>
+            </div>
+
             {/* Coluna Direita: Imagem Principal */}
-            <div 
-              className="relative order-2 lg:order-last h-full flex items-end justify-center hidden lg:flex"
+            <div
+              className="relative order-2 lg:order-last h-full flex items-end justify-center pt-8 lg:pt-0"
               data-aos="fade-left"
               data-aos-delay="300"
             >
@@ -204,16 +204,16 @@ const Blog = () => {
                 <div className="absolute inset-0 flex items-end justify-center">
                   <div className="relative">
                     {/* Círculo principal com gradiente */}
-                    <div 
+                    <div
                       className="w-[200px] h-[200px] lg:w-[350px] lg:h-[350px] rounded-full opacity-25"
                       style={{
                         background: 'linear-gradient(135deg, rgba(122, 68, 120, 0.4) 0%, rgba(100, 160, 160, 0.4) 50%, rgba(122, 68, 120, 0.4) 100%)',
                         animation: 'float 4s ease-in-out infinite, glow 3s ease-in-out infinite alternate'
                       }}
                     />
-                    
+
                     {/* Círculo secundário com movimento */}
-                    <div 
+                    <div
                       className="absolute top-1/2 left-1/2 w-[150px] h-[150px] lg:w-[250px] lg:h-[250px] rounded-full opacity-20"
                       style={{
                         background: 'radial-gradient(circle, rgba(100, 160, 160, 0.5) 0%, transparent 70%)',
@@ -221,9 +221,9 @@ const Blog = () => {
                         animation: 'rotate 6s linear infinite, breathe 2s ease-in-out infinite'
                       }}
                     />
-                    
+
                     {/* Círculo terciário com pulso */}
-                    <div 
+                    <div
                       className="absolute top-1/2 left-1/2 w-[100px] h-[100px] lg:w-[200px] lg:h-[200px] rounded-full opacity-15"
                       style={{
                         background: 'conic-gradient(from 0deg, rgba(122, 68, 120, 0.4), rgba(100, 160, 160, 0.4), rgba(122, 68, 120, 0.4))',
@@ -233,155 +233,155 @@ const Blog = () => {
                     />
                   </div>
                 </div>
-                
+
                 {/* Imagem com fundo transparente - colada no bottom */}
                 <div className="relative z-10" style={{ marginBottom: '-15px' }}>
-                  <img 
-                    src={blogHeroImage} 
-                    alt="Blog Acustika Aparelhos Auditivos" 
+                  <img
+                    src={blogHeroImage}
+                    alt="Blog Acustika Aparelhos Auditivos"
                     className="w-[200px] h-[200px] lg:w-[350px] lg:h-[350px] object-contain"
                     style={{ display: 'block' }}
                   />
                 </div>
-                </div>
               </div>
+            </div>
           </div>
         </div>
       </section>
-      
+
       {/* Posts Grid */}
       <section className="py-16 md:py-20 bg-white">
         <div className="container mx-auto px-4 md:px-6 lg:px-8 xl:px-12">
           <div className="max-w-7xl mx-auto">
-          {loading && posts.length === 0 ? (
-            <LoadingSpinner size="large" text="Carregando posts..." />
-          ) : error ? (
-            <div className="text-center py-20">
-              <div className="text-red-500 text-6xl mb-4">⚠️</div>
-                <h3 
+            {loading && posts.length === 0 ? (
+              <LoadingSpinner size="large" text="Carregando posts..." />
+            ) : error ? (
+              <div className="text-center py-20">
+                <div className="text-red-500 text-6xl mb-4">⚠️</div>
+                <h3
                   className="text-xl font-semibold text-gray-800 mb-2"
                   style={{ fontFamily: 'Karla, sans-serif' }}
                 >
                   Erro ao carregar posts
                 </h3>
-                <p 
+                <p
                   className="text-gray-600"
                   style={{ fontFamily: 'Karla, sans-serif' }}
                 >
                   {error}
                 </p>
-            </div>
-          ) : (
-            <>
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {posts.map((post, index) => (
-                  <article 
-                    key={post.id} 
+              </div>
+            ) : (
+              <>
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                  {posts.map((post, index) => (
+                    <article
+                      key={post.id}
                       className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 overflow-hidden group flex flex-col"
-                    data-aos="fade-up"
-                    data-aos-delay={index * 100}
-                  >
-                    {post.featuredImage && (
+                      data-aos="fade-up"
+                      data-aos-delay={index * 100}
+                    >
+                      {post.featuredImage && (
                         <div className="aspect-video overflow-hidden bg-gray-50">
-                        <img 
-                          src={post.featuredImage} 
-                          alt={post.title}
-                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                        />
-                      </div>
-                    )}
+                          <img
+                            src={post.featuredImage}
+                            alt={post.title}
+                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                          />
+                        </div>
+                      )}
                       <div className="p-6 flex flex-col flex-1">
                         <div className="flex-1 space-y-4">
                           {/* Categorias */}
                           <div className="flex flex-wrap gap-2">
-                        {post.categories.map((category) => (
-                          <span 
-                            key={category.id}
+                            {post.categories.map((category) => (
+                              <span
+                                key={category.id}
                                 className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-medium bg-gradient-to-r from-acustika-purple/10 to-acustika-teal/10 text-acustika-purple border border-acustika-purple/20"
                                 style={{ fontFamily: 'Karla, sans-serif' }}
-                          >
+                              >
                                 <div className="w-1.5 h-1.5 bg-gradient-to-r from-acustika-purple to-acustika-teal rounded-full"></div>
-                            {category.name}
-                          </span>
-                        ))}
-                      </div>
-                          
+                                {category.name}
+                              </span>
+                            ))}
+                          </div>
+
                           {/* Título */}
-                          <h2 
+                          <h2
                             className="text-xl font-semibold text-gray-900 line-clamp-2 group-hover:text-acustika-purple transition-colors"
-                            style={{ 
+                            style={{
                               fontFamily: 'Karla, sans-serif',
                               fontWeight: '600',
                               fontSize: '20px',
                               lineHeight: '1.3'
                             }}
                           >
-                        {post.title}
-                      </h2>
-                          
+                            {post.title}
+                          </h2>
+
                           {/* Resumo */}
-                          <p 
+                          <p
                             className="text-gray-600 text-sm line-clamp-3 leading-relaxed"
-                            style={{ 
+                            style={{
                               fontFamily: 'Karla, sans-serif',
                               fontWeight: '400',
                               fontSize: '14px',
                               lineHeight: '1.5'
                             }}
                           >
-                        {stripHtml(post.excerpt)}
-                      </p>
-                          
+                            {stripHtml(post.excerpt)}
+                          </p>
+
                           {/* Meta informações */}
                           <div className="flex justify-between items-center text-xs text-gray-500 pt-2 border-t border-gray-100">
                             <span style={{ fontFamily: 'Karla, sans-serif' }}>{formatDate(post.date)}</span>
                             <span style={{ fontFamily: 'Karla, sans-serif' }}>Por {post.author}</span>
                           </div>
-                      </div>
-                        
+                        </div>
+
                         {/* Botão Ler Mais */}
                         <div className="pt-4">
-                      <Link 
-                        to={`/blog/${post.slug}`}
+                          <Link
+                            to={`/blog/${post.slug}`}
                             className="w-full px-6 py-3 bg-gradient-to-r from-acustika-purple to-acustika-teal text-white rounded-xl font-semibold hover:from-acustika-purple/90 hover:to-acustika-teal/90 transition-all duration-300 transform hover:scale-105 shadow-lg text-center block"
                             style={{ fontFamily: 'Karla, sans-serif' }}
-                      >
-                        Ler Mais
-                      </Link>
+                          >
+                            Ler Mais
+                          </Link>
                         </div>
-                    </div>
-                  </article>
-                ))}
-              </div>
-              
-              {/* Load More Button */}
-              {hasMore && (
+                      </div>
+                    </article>
+                  ))}
+                </div>
+
+                {/* Load More Button */}
+                {hasMore && (
                   <div className="text-center mt-16" data-aos="fade-up">
-                  <button 
-                    onClick={loadMorePosts}
-                    disabled={loadingMore}
+                    <button
+                      onClick={loadMorePosts}
+                      disabled={loadingMore}
                       className="px-8 py-4 border-2 border-acustika-purple text-acustika-purple rounded-xl font-semibold hover:bg-acustika-purple hover:text-white transition-all duration-300 transform hover:scale-105"
                       style={{ fontFamily: 'Karla, sans-serif' }}
-                  >
-                    {loadingMore ? 'Carregando...' : 'Carregar Mais Posts'}
-                  </button>
-                </div>
-              )}
-            </>
-          )}
+                    >
+                      {loadingMore ? 'Carregando...' : 'Carregar Mais Posts'}
+                    </button>
+                  </div>
+                )}
+              </>
+            )}
           </div>
         </div>
       </section>
-      
+
       {/* Card de Contato */}
       <section className="py-16 md:py-20 bg-gray-50">
         <div className="container mx-auto px-4 md:px-6 lg:px-8 xl:px-12">
           <div className="max-w-7xl mx-auto">
             <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100" data-aos="fade-up" data-aos-delay="500">
               <div className="text-center max-w-4xl mx-auto">
-                <h3 
+                <h3
                   className="text-2xl font-bold text-gray-900 mb-4"
-                  style={{ 
+                  style={{
                     fontFamily: 'Karla, sans-serif',
                     fontWeight: '700',
                     fontSize: '28px',
@@ -389,11 +389,11 @@ const Blog = () => {
                   }}
                 >
                   Precisa de ajuda com saúde auditiva?
-            </h3>
-                
-                <p 
+                </h3>
+
+                <p
                   className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto"
-                  style={{ 
+                  style={{
                     fontFamily: 'Karla, sans-serif',
                     fontWeight: '400',
                     fontSize: '18px',
@@ -402,12 +402,12 @@ const Blog = () => {
                 >
                   Nossa equipe especializada está pronta para ajudar você com dúvidas sobre saúde auditiva e orientações sobre aparelhos auditivos.
                 </p>
-                
+
                 <div className="flex justify-center">
                   <div className="bth">
-                    <a 
-                      href="https://wa.me/5511999999999" 
-                      target="_blank" 
+                    <a
+                      href="https://wa.me/5511999999999"
+                      target="_blank"
                       rel="noopener noreferrer"
                       className="elementor-button group"
                     >

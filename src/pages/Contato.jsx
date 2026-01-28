@@ -28,11 +28,11 @@ const Contato = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const timestamp = new Date().toISOString();
-    
+
     console.log('\n========== ENVIO DE FORMULÁRIO ==========');
     console.log(`[${timestamp}] Iniciando envio do formulário`);
     console.log('Dados do formulário:', JSON.stringify(formData, null, 2));
-    
+
     setIsSubmitting(true);
     setSubmitStatus({ type: '', message: '' });
 
@@ -41,7 +41,7 @@ const Contato = () => {
       // Em produção (hospedagem compartilhada), usar PHP
       // Em desenvolvimento, usar Node.js
       const isProduction = window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1';
-      
+
       let apiUrl, endpoint;
       if (isProduction) {
         // Em produção, usar endpoint PHP
@@ -52,15 +52,15 @@ const Contato = () => {
         apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:3001';
         endpoint = `${apiUrl}/api/send-email`;
       }
-      
+
       console.log(`\n--- Configuração da requisição ---`);
       console.log(`Ambiente: ${isProduction ? 'PRODUÇÃO' : 'DESENVOLVIMENTO'}`);
       console.log(`API URL: ${apiUrl}`);
       console.log(`Endpoint: ${endpoint}`);
-      
+
       const startTime = Date.now();
       console.log('Enviando requisição...');
-      
+
       const response = await fetch(endpoint, {
         method: 'POST',
         headers: {
@@ -84,10 +84,10 @@ const Contato = () => {
           console.log(`Message ID: ${data.messageId}`);
         }
         console.log('==========================================\n');
-        
-        setSubmitStatus({ 
-          type: 'success', 
-          message: data.message || 'Mensagem enviada com sucesso! Entraremos em contato em breve.' 
+
+        setSubmitStatus({
+          type: 'success',
+          message: data.message || 'Mensagem enviada com sucesso! Entraremos em contato em breve.'
         });
         // Limpar formulário
         setFormData({
@@ -101,10 +101,10 @@ const Contato = () => {
         console.log('\n❌ ERRO NA RESPOSTA DO SERVIDOR');
         console.log(`Mensagem: ${data.message}`);
         console.log('==========================================\n');
-        
-        setSubmitStatus({ 
-          type: 'error', 
-          message: data.message || 'Erro ao enviar mensagem. Por favor, tente novamente.' 
+
+        setSubmitStatus({
+          type: 'error',
+          message: data.message || 'Erro ao enviar mensagem. Por favor, tente novamente.'
         });
       }
     } catch (error) {
@@ -113,10 +113,10 @@ const Contato = () => {
       console.error('Mensagem:', error.message);
       console.error('Stack:', error.stack);
       console.error('==========================================\n');
-      
-      setSubmitStatus({ 
-        type: 'error', 
-        message: 'Erro ao enviar mensagem. Verifique sua conexão e tente novamente.' 
+
+      setSubmitStatus({
+        type: 'error',
+        message: 'Erro ao enviar mensagem. Verifique sua conexão e tente novamente.'
       });
     } finally {
       setIsSubmitting(false);
@@ -162,9 +162,9 @@ const Contato = () => {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section - Background Animado Inspirado */}
-      <section className="relative overflow-hidden" style={{ height: '400px' }}>
+      <section className="relative overflow-hidden min-h-[400px] lg:h-[400px] flex items-center">
         {/* Background com gradiente moderno inspirado no 21st.dev */}
-        <div 
+        <div
           className="absolute inset-0"
           style={{
             background: `
@@ -176,9 +176,9 @@ const Contato = () => {
             `,
           }}
         />
-        
+
         {/* Canvas para partículas animadas */}
-        <canvas 
+        <canvas
           className="absolute inset-0 w-full h-full opacity-50"
           style={{ zIndex: 1 }}
           ref={(canvas) => {
@@ -189,14 +189,14 @@ const Contato = () => {
                   canvas.width = canvas.offsetWidth;
                   canvas.height = canvas.offsetHeight;
                 };
-                
+
                 resizeCanvas();
                 window.addEventListener('resize', resizeCanvas);
-                
+
                 // Configurações das partículas
                 const particles = [];
                 const particleCount = 100; // Menos partículas para hero menor
-                
+
                 // Criar partículas
                 for (let i = 0; i < particleCount; i++) {
                   particles.push({
@@ -210,11 +210,11 @@ const Contato = () => {
                     maxLife: 100 + Math.random() * 50
                   });
                 }
-                
+
                 // Função de animação
                 const animate = () => {
                   ctx.clearRect(0, 0, canvas.width, canvas.height);
-                  
+
                   particles.forEach(particle => {
                     // Atualizar vida da partícula
                     particle.life += 0.5;
@@ -223,22 +223,22 @@ const Contato = () => {
                       particle.x = Math.random() * canvas.width;
                       particle.y = Math.random() * canvas.height;
                     }
-                    
+
                     // Calcular opacidade baseada na vida
                     const lifeRatio = particle.life / particle.maxLife;
                     const opacity = Math.sin(lifeRatio * Math.PI) * particle.opacity;
-                    
+
                     // Movimento suave com influência do tempo
                     const time = Date.now() * 0.0001;
                     particle.x += particle.speedX + Math.sin(time + particle.y * 0.01) * 0.1;
                     particle.y += particle.speedY + Math.cos(time + particle.x * 0.01) * 0.1;
-                    
+
                     // Wrap around edges
                     if (particle.x < 0) particle.x = canvas.width;
                     if (particle.x > canvas.width) particle.x = 0;
                     if (particle.y < 0) particle.y = canvas.height;
                     if (particle.y > canvas.height) particle.y = 0;
-                    
+
                     // Desenhar partícula com cores que combinam com o gradiente da Acustika
                     const colors = [
                       `rgba(122, 68, 120, ${opacity})`, // Roxo Acustika
@@ -251,19 +251,19 @@ const Contato = () => {
                     ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
                     ctx.fill();
                   });
-                  
+
                   requestAnimationFrame(animate);
                 };
-                
+
                 animate();
               }
             }
           }}
         />
-        
+
         {/* Padrão geométrico sutil */}
         <div className="absolute inset-0 opacity-20" style={{ zIndex: 2 }}>
-          <div 
+          <div
             className="absolute inset-0"
             style={{
               backgroundImage: `
@@ -273,39 +273,39 @@ const Contato = () => {
             }}
           />
         </div>
-        
+
         {/* Elementos decorativos com cores harmoniosas da Acustika */}
         <div className="absolute top-20 right-20 w-40 h-40 bg-gradient-to-br from-acustika-purple/35 to-acustika-teal/35 rounded-full blur-3xl animate-pulse" style={{ zIndex: 2 }}></div>
         <div className="absolute bottom-20 left-20 w-48 h-48 bg-gradient-to-br from-acustika-teal/30 to-acustika-purple/30 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s', zIndex: 2 }}></div>
         <div className="absolute top-1/2 right-1/3 w-32 h-32 bg-gradient-to-br from-acustika-purple/35 to-acustika-teal/35 rounded-full blur-2xl animate-pulse" style={{ animationDelay: '2s', zIndex: 2 }}></div>
-        
+
         {/* Radial accent com cores harmoniosas da Acustika */}
         <div className="absolute left-1/2 top-[calc(100%-90px)] h-[300px] w-[400px] md:h-[400px] md:w-[600px] -translate-x-1/2 rounded-full bg-gradient-to-r from-acustika-purple/15 via-acustika-teal/15 to-acustika-purple/15 blur-3xl animate-pulse" style={{ animationDelay: '3s', zIndex: 2 }}></div>
-        
+
         {/* Overlay sutil para profundidade */}
         <div className="absolute inset-0 bg-gradient-to-t from-white/10 via-transparent to-white/5" style={{ zIndex: 3 }}></div>
-               
-        <div className="relative container mx-auto px-4 md:px-6 lg:px-8 xl:px-12 pt-8 pb-0 h-full" style={{ zIndex: 10 }}>
+
+        <div className="relative container mx-auto px-4 md:px-6 lg:px-8 xl:px-12 pt-24 lg:pt-8 pb-12 lg:pb-0 h-full" style={{ zIndex: 10 }}>
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center h-full">
-            
+
             {/* Coluna Esquerda: Conteúdo */}
             <div className="text-center lg:text-left space-y-6 flex flex-col justify-center h-full order-1 lg:order-first">
               {/* Badge moderno */}
-              <div 
+              <div
                 className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 backdrop-blur-sm border border-gray-200/50 shadow-sm w-fit mx-auto lg:mx-0"
-              data-aos="fade-up"
-              data-aos-delay="100"
-            >
-                  <div className="w-2 h-2 bg-gradient-to-r from-acustika-purple to-acustika-teal rounded-full animate-pulse"></div>
+                data-aos="fade-up"
+                data-aos-delay="100"
+              >
+                <div className="w-2 h-2 bg-gradient-to-r from-acustika-purple to-acustika-teal rounded-full animate-pulse"></div>
                 <span className="text-sm font-medium text-gray-600" style={{ fontFamily: 'Karla, sans-serif' }}>Estamos aqui para ajudar</span>
-            </div>
-            
+              </div>
+
               {/* Headline Principal com gradiente */}
-               <h1 
+              <h1
                 className="font-semibold text-gray-900 text-3xl md:text-4xl lg:text-5xl xl:text-6xl leading-tight"
-              data-aos="fade-up"
-                 data-aos-delay="200"
-                 style={{ 
+                data-aos="fade-up"
+                data-aos-delay="200"
+                style={{
                   fontFamily: 'Noto Serif, serif',
                   fontWeight: '500',
                   fontSize: 'clamp(2rem, 4vw, 3.5rem)',
@@ -317,30 +317,30 @@ const Contato = () => {
                   backgroundClip: 'text'
                 }}
               >
-            Entre em Contato
-          </h1>
-               
+                Entre em Contato
+              </h1>
+
               {/* Subtítulo */}
-            <p 
+              <p
                 className="text-gray-600 text-lg md:text-xl max-w-2xl mx-auto lg:mx-0 leading-relaxed"
-              data-aos="fade-up"
-              data-aos-delay="200"
-                 style={{ 
+                data-aos="fade-up"
+                data-aos-delay="200"
+                style={{
                   fontFamily: 'Karla, sans-serif',
                   fontWeight: '400',
                   fontSize: '18px',
                   lineHeight: '1.4',
                   letterSpacing: '0.01em',
                   opacity: '0.8'
-                 }}
-               >
-                 Estamos aqui para ajudar! Entre em contato conosco para tirar suas dúvidas, agendar uma consulta ou solicitar informações sobre nossos produtos e serviços.
-          </p>
-        </div>
-        
+                }}
+              >
+                Estamos aqui para ajudar! Entre em contato conosco para tirar suas dúvidas, agendar uma consulta ou solicitar informações sobre nossos produtos e serviços.
+              </p>
+            </div>
+
             {/* Coluna Direita: Imagem Principal */}
-            <div 
-              className="relative order-2 lg:order-last h-full flex items-end justify-center hidden lg:flex"
+            <div
+              className="relative order-2 lg:order-last h-full flex items-end justify-center pt-8 lg:pt-0"
               data-aos="fade-left"
               data-aos-delay="300"
             >
@@ -349,16 +349,16 @@ const Contato = () => {
                 <div className="absolute inset-0 flex items-end justify-center">
                   <div className="relative">
                     {/* Círculo principal com gradiente */}
-                    <div 
+                    <div
                       className="w-[200px] h-[200px] lg:w-[350px] lg:h-[350px] rounded-full opacity-25"
                       style={{
                         background: 'linear-gradient(135deg, rgba(122, 68, 120, 0.4) 0%, rgba(100, 160, 160, 0.4) 50%, rgba(122, 68, 120, 0.4) 100%)',
                         animation: 'float 4s ease-in-out infinite, glow 3s ease-in-out infinite alternate'
                       }}
                     />
-                    
+
                     {/* Círculo secundário com movimento */}
-                    <div 
+                    <div
                       className="absolute top-1/2 left-1/2 w-[150px] h-[150px] lg:w-[250px] lg:h-[250px] rounded-full opacity-20"
                       style={{
                         background: 'radial-gradient(circle, rgba(100, 160, 160, 0.5) 0%, transparent 70%)',
@@ -366,9 +366,9 @@ const Contato = () => {
                         animation: 'rotate 6s linear infinite, breathe 2s ease-in-out infinite'
                       }}
                     />
-                    
+
                     {/* Círculo terciário com pulso */}
-                    <div 
+                    <div
                       className="absolute top-1/2 left-1/2 w-[100px] h-[100px] lg:w-[200px] lg:h-[200px] rounded-full opacity-15"
                       style={{
                         background: 'conic-gradient(from 0deg, rgba(122, 68, 120, 0.4), rgba(100, 160, 160, 0.4), rgba(122, 68, 120, 0.4))',
@@ -378,224 +378,222 @@ const Contato = () => {
                     />
                   </div>
                 </div>
-                
+
                 {/* Imagem com fundo transparente - colada no bottom */}
                 <div className="relative z-10" style={{ marginBottom: '-15px' }}>
-                  <img 
-                    src={contatoHeroImage} 
-                    alt="Contato Acustika Aparelhos Auditivos" 
+                  <img
+                    src={contatoHeroImage}
+                    alt="Contato Acustika Aparelhos Auditivos"
                     className="object-contain"
                     style={{ display: 'block', width: '500px', height: 'auto' }}
                   />
                 </div>
-                </div>
               </div>
+            </div>
           </div>
         </div>
       </section>
-      
+
       {/* Seção de Contato */}
       <section className="py-16 md:py-20 bg-gray-50">
         <div className="container mx-auto px-4 md:px-6 lg:px-8 xl:px-12">
           <div className="max-w-7xl mx-auto">
-        <div className="grid lg:grid-cols-2 gap-12">
-              
-          {/* Formulário de Contato */}
+            <div className="grid lg:grid-cols-2 gap-12">
+
+              {/* Formulário de Contato */}
               <div className="bg-white rounded-2xl shadow-lg p-8" data-aos="fade-up">
-                <h2 
+                <h2
                   className="text-2xl font-semibold text-gray-900 mb-6"
-                  style={{ 
+                  style={{
                     fontFamily: 'Karla, sans-serif',
                     fontWeight: '600',
                     fontSize: '28px',
                     lineHeight: '1.2'
                   }}
                 >
-              Envie sua Mensagem
-            </h2>
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div>
+                  Envie sua Mensagem
+                </h2>
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  <div>
                     <label htmlFor="nome" className="block text-sm font-medium text-gray-700 mb-2" style={{ fontFamily: 'Karla, sans-serif' }}>
-                  Nome Completo *
-                </label>
-                <input
-                  type="text"
-                  id="nome"
-                  name="nome"
-                  required
-                  value={formData.nome}
-                  onChange={handleChange}
+                      Nome Completo *
+                    </label>
+                    <input
+                      type="text"
+                      id="nome"
+                      name="nome"
+                      required
+                      value={formData.nome}
+                      onChange={handleChange}
                       className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-acustika-purple focus:border-transparent transition-all duration-300"
-                  placeholder="Seu nome completo"
-                />
-              </div>
-              
-              <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2" style={{ fontFamily: 'Karla, sans-serif' }}>
-                  E-mail *
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  required
-                  value={formData.email}
-                  onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-acustika-purple focus:border-transparent transition-all duration-300"
-                  placeholder="seu@email.com"
-                />
-              </div>
-              
-              <div>
-                    <label htmlFor="telefone" className="block text-sm font-medium text-gray-700 mb-2" style={{ fontFamily: 'Karla, sans-serif' }}>
-                  Telefone
-                </label>
-                <input
-                  type="tel"
-                  id="telefone"
-                  name="telefone"
-                  value={formData.telefone}
-                  onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-acustika-purple focus:border-transparent transition-all duration-300"
-                  placeholder="(11) 99999-9999"
-                />
-              </div>
-              
-              <div>
-                    <label htmlFor="assunto" className="block text-sm font-medium text-gray-700 mb-2" style={{ fontFamily: 'Karla, sans-serif' }}>
-                  Assunto *
-                </label>
-                <select
-                  id="assunto"
-                  name="assunto"
-                  required
-                  value={formData.assunto}
-                  onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-acustika-purple focus:border-transparent transition-all duration-300"
-                >
-                  <option value="">Selecione um assunto</option>
-                  <option value="consulta">Agendar Consulta</option>
-                  <option value="produtos">Informações sobre Produtos</option>
-                      <option value="acessorios">Informações sobre Acessórios</option>
-                  <option value="suporte">Suporte Técnico</option>
-                  <option value="outros">Outros</option>
-                </select>
-              </div>
-              
-              <div>
-                    <label htmlFor="mensagem" className="block text-sm font-medium text-gray-700 mb-2" style={{ fontFamily: 'Karla, sans-serif' }}>
-                  Mensagem *
-                </label>
-                <textarea
-                  id="mensagem"
-                  name="mensagem"
-                  required
-                  rows={5}
-                  value={formData.mensagem}
-                  onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-acustika-purple focus:border-transparent transition-all duration-300"
-                  placeholder="Descreva sua dúvida ou solicitação..."
-                />
-              </div>
-              
-              {/* Mensagem de status */}
-              {submitStatus.message && (
-                <div 
-                  className={`p-4 rounded-lg ${
-                    submitStatus.type === 'success' 
-                      ? 'bg-green-50 border border-green-200 text-green-800' 
-                      : 'bg-red-50 border border-red-200 text-red-800'
-                  }`}
-                  style={{ fontFamily: 'Karla, sans-serif' }}
-                >
-                  <div className="flex items-center gap-2">
-                    {submitStatus.type === 'success' ? (
-                      <i className="fas fa-check-circle"></i>
-                    ) : (
-                      <i className="fas fa-exclamation-circle"></i>
-                    )}
-                    <span>{submitStatus.message}</span>
+                      placeholder="Seu nome completo"
+                    />
                   </div>
-                </div>
-              )}
-              
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className={`w-full bg-gradient-to-r from-acustika-purple to-acustika-teal text-white py-3 rounded-lg transition-all duration-300 font-semibold transform ${
-                  isSubmitting 
-                    ? 'opacity-50 cursor-not-allowed' 
-                    : 'hover:from-acustika-purple/90 hover:to-acustika-teal/90 hover:scale-105'
-                }`}
-                style={{ fontFamily: 'Karla, sans-serif' }}
-              >
-                {isSubmitting ? (
-                  <span className="flex items-center justify-center gap-2">
-                    <i className="fas fa-spinner fa-spin"></i>
-                    Enviando...
-                  </span>
-                ) : (
-                  'Enviar Mensagem'
-                )}
-              </button>
-            </form>
-          </div>
-          
-          {/* Informações de Contato */}
-          <div className="space-y-8">
-                
+
+                  <div>
+                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2" style={{ fontFamily: 'Karla, sans-serif' }}>
+                      E-mail *
+                    </label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      required
+                      value={formData.email}
+                      onChange={handleChange}
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-acustika-purple focus:border-transparent transition-all duration-300"
+                      placeholder="seu@email.com"
+                    />
+                  </div>
+
+                  <div>
+                    <label htmlFor="telefone" className="block text-sm font-medium text-gray-700 mb-2" style={{ fontFamily: 'Karla, sans-serif' }}>
+                      Telefone
+                    </label>
+                    <input
+                      type="tel"
+                      id="telefone"
+                      name="telefone"
+                      value={formData.telefone}
+                      onChange={handleChange}
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-acustika-purple focus:border-transparent transition-all duration-300"
+                      placeholder="(11) 99999-9999"
+                    />
+                  </div>
+
+                  <div>
+                    <label htmlFor="assunto" className="block text-sm font-medium text-gray-700 mb-2" style={{ fontFamily: 'Karla, sans-serif' }}>
+                      Assunto *
+                    </label>
+                    <select
+                      id="assunto"
+                      name="assunto"
+                      required
+                      value={formData.assunto}
+                      onChange={handleChange}
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-acustika-purple focus:border-transparent transition-all duration-300"
+                    >
+                      <option value="">Selecione um assunto</option>
+                      <option value="consulta">Agendar Consulta</option>
+                      <option value="produtos">Informações sobre Produtos</option>
+                      <option value="acessorios">Informações sobre Acessórios</option>
+                      <option value="suporte">Suporte Técnico</option>
+                      <option value="outros">Outros</option>
+                    </select>
+                  </div>
+
+                  <div>
+                    <label htmlFor="mensagem" className="block text-sm font-medium text-gray-700 mb-2" style={{ fontFamily: 'Karla, sans-serif' }}>
+                      Mensagem *
+                    </label>
+                    <textarea
+                      id="mensagem"
+                      name="mensagem"
+                      required
+                      rows={5}
+                      value={formData.mensagem}
+                      onChange={handleChange}
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-acustika-purple focus:border-transparent transition-all duration-300"
+                      placeholder="Descreva sua dúvida ou solicitação..."
+                    />
+                  </div>
+
+                  {/* Mensagem de status */}
+                  {submitStatus.message && (
+                    <div
+                      className={`p-4 rounded-lg ${submitStatus.type === 'success'
+                          ? 'bg-green-50 border border-green-200 text-green-800'
+                          : 'bg-red-50 border border-red-200 text-red-800'
+                        }`}
+                      style={{ fontFamily: 'Karla, sans-serif' }}
+                    >
+                      <div className="flex items-center gap-2">
+                        {submitStatus.type === 'success' ? (
+                          <i className="fas fa-check-circle"></i>
+                        ) : (
+                          <i className="fas fa-exclamation-circle"></i>
+                        )}
+                        <span>{submitStatus.message}</span>
+                      </div>
+                    </div>
+                  )}
+
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className={`w-full bg-gradient-to-r from-acustika-purple to-acustika-teal text-white py-3 rounded-lg transition-all duration-300 font-semibold transform ${isSubmitting
+                        ? 'opacity-50 cursor-not-allowed'
+                        : 'hover:from-acustika-purple/90 hover:to-acustika-teal/90 hover:scale-105'
+                      }`}
+                    style={{ fontFamily: 'Karla, sans-serif' }}
+                  >
+                    {isSubmitting ? (
+                      <span className="flex items-center justify-center gap-2">
+                        <i className="fas fa-spinner fa-spin"></i>
+                        Enviando...
+                      </span>
+                    ) : (
+                      'Enviar Mensagem'
+                    )}
+                  </button>
+                </form>
+              </div>
+
+              {/* Informações de Contato */}
+              <div className="space-y-8">
+
                 {/* Informações Gerais */}
                 <div className="bg-white rounded-2xl shadow-lg p-8" data-aos="fade-up" data-aos-delay="200">
-                  <h2 
+                  <h2
                     className="text-2xl font-semibold text-gray-900 mb-6"
-                    style={{ 
+                    style={{
                       fontFamily: 'Karla, sans-serif',
                       fontWeight: '600',
                       fontSize: '28px',
                       lineHeight: '1.2'
                     }}
                   >
-                Informações de Contato
-              </h2>
-              
-              <div className="space-y-6">
-                <div className="flex items-start space-x-4">
+                    Informações de Contato
+                  </h2>
+
+                  <div className="space-y-6">
+                    <div className="flex items-start space-x-4">
                       <div className="w-12 h-12 bg-gradient-to-br from-acustika-purple/20 to-acustika-teal/20 rounded-lg flex items-center justify-center">
                         <svg className="w-6 h-6 text-acustika-purple" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                    </svg>
-                  </div>
-                  <div>
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                        </svg>
+                      </div>
+                      <div>
                         <h3 className="font-semibold text-gray-800 mb-1" style={{ fontFamily: 'Karla, sans-serif' }}>E-mail</h3>
                         <p className="text-gray-600" style={{ fontFamily: 'Karla, sans-serif' }}>
                           acustikaauditiva@gmail.com
-                    </p>
-                  </div>
-                </div>
-                
-                <div className="flex items-start space-x-4">
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="flex items-start space-x-4">
                       <div className="w-12 h-12 bg-gradient-to-br from-acustika-purple/20 to-acustika-teal/20 rounded-lg flex items-center justify-center">
                         <svg className="w-6 h-6 text-acustika-purple" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                  </div>
-                  <div>
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                      </div>
+                      <div>
                         <h3 className="font-semibold text-gray-800 mb-1" style={{ fontFamily: 'Karla, sans-serif' }}>Horário de Funcionamento</h3>
                         <p className="text-gray-600" style={{ fontFamily: 'Karla, sans-serif' }}>
-                      Segunda a Sexta: 8h às 18h<br />
-                      Sábado: Fechado<br />
-                      Domingo: Fechado
-                    </p>
+                          Segunda a Sexta: 8h às 18h<br />
+                          Sábado: Fechado<br />
+                          Domingo: Fechado
+                        </p>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </div>
-            
+
                 {/* Nossas Unidades */}
                 <div className="bg-white rounded-2xl shadow-lg p-8" data-aos="fade-up" data-aos-delay="300">
-                  <h2 
+                  <h2
                     className="text-2xl font-semibold text-gray-900 mb-6"
-                    style={{ 
+                    style={{
                       fontFamily: 'Karla, sans-serif',
                       fontWeight: '600',
                       fontSize: '28px',
@@ -604,11 +602,11 @@ const Contato = () => {
                   >
                     Nossas Unidades
                   </h2>
-                  
+
                   <div className="space-y-6">
                     {locations.map((location, index) => (
                       <div key={location.id} className="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow duration-300">
-                        <h3 
+                        <h3
                           className="font-semibold text-gray-800 mb-2"
                           style={{ fontFamily: 'Karla, sans-serif' }}
                         >
@@ -620,9 +618,9 @@ const Contato = () => {
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                             </svg>
-                            <a 
-                              href={location.mapsUrl} 
-                              target="_blank" 
+                            <a
+                              href={location.mapsUrl}
+                              target="_blank"
                               rel="noopener noreferrer"
                               className="text-gray-600 text-sm hover:text-acustika-purple transition-colors duration-300 underline"
                               style={{ fontFamily: 'Karla, sans-serif' }}
@@ -639,7 +637,7 @@ const Contato = () => {
                             </div>
                             <div className="flex items-center space-x-2">
                               <svg className="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
+                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488" />
                               </svg>
                               <span className="text-gray-600 text-sm" style={{ fontFamily: 'Karla, sans-serif' }}>{location.cellphone}</span>
                             </div>
@@ -649,10 +647,10 @@ const Contato = () => {
                     ))}
                   </div>
                 </div>
-                
+
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
         </div>
       </section>
     </div>
