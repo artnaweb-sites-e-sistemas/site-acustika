@@ -406,7 +406,7 @@ const Blog = () => {
                 <div className="flex justify-center">
                   <div className="bth">
                     <a
-                      href="https://wa.me/5511999999999"
+                      href="https://wa.me/554891287927"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="elementor-button group"

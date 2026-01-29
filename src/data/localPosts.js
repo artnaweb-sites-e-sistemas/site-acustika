@@ -84,7 +84,7 @@ export const localPosts = [
             Agende uma consulta gratuita e descubra se o Oticon Own é a solução ideal para você.
           </p>
           <a 
-            href="https://wa.me/5548991287927" 
+            href="https://wa.me/554891287927" 
             target="_blank" 
             rel="noopener noreferrer"
             style="display: inline-block; background: white; color: #7e4078; padding: 0.75rem 2rem; border-radius: 0.375rem; text-decoration: none; font-weight: 600; transition: transform 0.2s;"

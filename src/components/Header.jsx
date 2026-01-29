@@ -86,7 +86,7 @@ const Header = () => {
           {/* CTA Button - Estilo Acustika */}
           <div className="hidden lg:flex items-center" data-aos="fade-left">
             <div className={`bth transition-all duration-300 ${isScrolled ? 'scale-90' : 'scale-100'}`}>
-              <a href="https://wa.me/5548991287927" target="_blank" rel="noopener noreferrer" className="elementor-button group">
+              <a href="https://wa.me/554891287927" target="_blank" rel="noopener noreferrer" className="elementor-button group">
                 <span className="elementor-button-text">Agendar Consulta</span>
                 <span className="elementor-button-icon group-hover:rotate-0 transition-all duration-500" style={{ transform: 'rotate(45deg)' }}>
                   <img 
@@ -166,7 +166,7 @@ const Header = () => {
               ))}
               <div className="pt-4" data-aos="fade-up" data-aos-delay={navigation.length * 100}>
                 <div className={`bth transition-all duration-300 ${isScrolled ? 'scale-90' : 'scale-100'}`}>
-                  <a href="https://wa.me/5548991287927" target="_blank" rel="noopener noreferrer" className="elementor-button group">
+                  <a href="https://wa.me/554891287927" target="_blank" rel="noopener noreferrer" className="elementor-button group">
                     <span className="elementor-button-text">Agendar Consulta</span>
                     <span className="elementor-button-icon group-hover:rotate-0 transition-all duration-500" style={{ transform: 'rotate(45deg)' }}>
                       <img 

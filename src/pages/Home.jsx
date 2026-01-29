@@ -430,7 +430,7 @@ const Home = () => {
                 data-aos-delay="500"
               >
                 <div className="bth">
-                  <a href="https://wa.me/5548991287927" target="_blank" rel="noopener noreferrer" className="elementor-button group">
+                  <a href="https://wa.me/554891287927" target="_blank" rel="noopener noreferrer" className="elementor-button group">
                     <span className="elementor-button-text">Agende sua consulta gratuita</span>
                     <span className="elementor-button-icon group-hover:rotate-0 transition-all duration-500" style={{ transform: 'rotate(45deg)' }}>
                       <img
@@ -2346,7 +2346,7 @@ const Home = () => {
               </p>
               <div className="flex justify-center">
                 <div className="bth-white">
-                  <a href="https://wa.me/5548991287927" target="_blank" rel="noopener noreferrer" className="elementor-button-white">
+                  <a href="https://wa.me/554891287927" target="_blank" rel="noopener noreferrer" className="elementor-button-white">
                     <span className="elementor-button-text">Agendar consulta gratuita</span>
                     <span className="elementor-button-icon group-hover:rotate-0 transition-all duration-500" style={{ transform: 'rotate(45deg)' }}>
                       <img

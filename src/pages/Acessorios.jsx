@@ -460,7 +460,7 @@ const Acessorios = () => {
                 <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto" style={{ fontFamily: 'Karla, sans-serif', fontWeight: '400', fontSize: '18px', lineHeight: '1.6' }}>Nossa equipe de especialistas está pronta para ajudar você com dúvidas sobre acessórios e orientações sobre manutenção dos aparelhos auditivos.</p>
                 <div className="flex justify-center">
                   <div className="bth">
-                    <a href="https://wa.me/5511999999999" target="_blank" rel="noopener noreferrer" className="elementor-button group">
+                    <a href="https://wa.me/554891287927" target="_blank" rel="noopener noreferrer" className="elementor-button group">
                       <span className="elementor-button-text">Fale Conosco</span>
                       <span className="elementor-button-icon group-hover:rotate-0 transition-all duration-500" style={{ transform: 'rotate(45deg)' }}>
                         <i className="fas fa-calendar-alt text-base transition-all duration-500 group-hover:opacity-0 group-hover:scale-0"></i>

@@ -28,7 +28,7 @@ const FloatingButtons = () => {
   const sendWhatsAppMessage = () => {
     if (chatMessage.trim()) {
       const encodedMessage = encodeURIComponent(chatMessage.trim());
-      const whatsappUrl = `https://wa.me/5548991287927?text=${encodedMessage}`;
+      const whatsappUrl = `https://wa.me/554891287927?text=${encodedMessage}`;
       window.open(whatsappUrl, '_blank');
       closeWhatsAppChat();
     }

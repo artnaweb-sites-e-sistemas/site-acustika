@@ -49,7 +49,7 @@ const Footer = () => {
               </a>
               
               {/* WhatsApp */}
-              <a href="https://wa.me/5548991287927" target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center hover:bg-green-500 transition-all duration-300 transform hover:scale-110">
+              <a href="https://wa.me/554891287927" target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center hover:bg-green-500 transition-all duration-300 transform hover:scale-110">
                 <i className="fab fa-whatsapp text-white text-lg"></i>
               </a>
               
