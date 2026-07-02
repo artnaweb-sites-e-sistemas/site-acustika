@@ -1,11 +1,11 @@
-import React, { useEffect } from 'react';
+﻿import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import argosyVistaVPR from '../assets/images/UH_Packshot_Advance72-PR_Left-Hook-7850x7850px_050-6830-P7.png';
-import argosyVistaVUP from '../assets/images/UH_Packshot_VistaV-UP-LeftHook_7850x7850px_050-6836-R8.png';
-import argosyVistaVR from '../assets/images/UH_Packshot_VistaV-RLeftLeftReceiverP7Pewter_RGB7850x7850.jpg';
-import argosyVistaV312 from '../assets/images/UH_Packshot_Advance72-312Left_LeftReceiverP7PewterActualSize-CMYK_050-6824-P7.png';
+import argosyVistaVPR from '../assets/images/UH_Packshot_Advance72-PR_optimized.webp';
+import argosyVistaVUP from '../assets/images/UH_Packshot_VistaV-UP_optimized.webp';
+import argosyVistaVR from '../assets/images/UH_Packshot_VistaV-R_optimized.webp';
+import argosyVistaV312 from '../assets/images/UH_Packshot_Advance72-312_optimized.webp';
 
 const ArgosyVistaVPR = () => {
   useEffect(() => {

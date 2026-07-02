@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+﻿import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
@@ -10,7 +10,7 @@ import playPx5 from '../assets/images/playpx/PRODUTO/Oticon_Play_PX_miniBTE_T_Ri
 import playPx6 from '../assets/images/playpx/PRODUTO/Oticon_Play_PX_miniBTE_T_Right_C079HearPink_LEDgreen_Hook_500pctSize_TIF.Png';
 import playPx7 from '../assets/images/playpx/PRODUTO/Oticon_Play_PX_miniBTE_T_Right_C090ChromaBeige_LEDgreen_Hook_500pctSize_TIF.Png';
 import playPx8 from '../assets/images/playpx/PRODUTO/Oticon_Play_PX_miniBTE_T_Right_C093ChestnutBrown_LEDgreen_Hook_500pctSize_TIF.Png';
-import oticonIntent from "../assets/images/Oticon Intent.Png";
+import oticonIntent from "../assets/images/Oticon Intent_optimized.webp";
 import oticonXceed from "../assets/images/hearing-aids/aparelhos-auditivos-oticon-xceed.png.webp";
 import oticonOwn from "../assets/images/hearing-aids/oticon-own250x250.jpg.webp";
 

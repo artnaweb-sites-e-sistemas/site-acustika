@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
+﻿import React, { useEffect, useState } from 'react';
 import heroMainImage from '../assets/images/hero/hero-main.png';
-import historyImage from '../assets/images/Nossa História.jpg';
-import experienceImage from '../assets/images/Experiência e Especialização.jpg';
-import ponteHercilioImage from '../assets/images/Flor ponte hercilio.jpg';
-import museuIpirangaImage from '../assets/images/Museo Ipiranga-- SÃO PAULO (7).png';
+import historyImage from '../assets/images/Nossa História_optimized.jpg';
+import experienceImage from '../assets/images/Experiência e Especialização_optimized.jpg';
+import ponteHercilioImage from '../assets/images/Flor ponte hercilio_optimized.jpg';
+import museuIpirangaImage from '../assets/images/Museo Ipiranga-- SÃO PAULO (7)_optimized.webp';
 import fonoMalu from '../assets/images/malu.jpg';
 import equipeJuliana from '../assets/images/equipe-juliana-popescu.png.webp';
 import equipeRenato from '../assets/images/equipe-renato.png.webp';

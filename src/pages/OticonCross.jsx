@@ -1,9 +1,9 @@
-import React, { useEffect } from 'react';
+﻿import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import oticonCross from "../assets/images/206622_CROS_miniRITE_T_312_2.png";
-import oticonIntent from "../assets/images/Oticon Intent.Png";
+import oticonCross from "../assets/images/206622_CROS_miniRITE_T_312_2_optimized.webp";
+import oticonIntent from "../assets/images/Oticon Intent_optimized.webp";
 import oticonXceed from "../assets/images/hearing-aids/aparelhos-auditivos-oticon-xceed.png.webp";
 import oticonOwn from "../assets/images/hearing-aids/oticon-own250x250.jpg.webp";
 

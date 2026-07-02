@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+﻿import React, { useEffect } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
@@ -14,7 +14,7 @@ import desumidificadorEletricoImg from '../assets/images/accessories/desumidific
 import filtroImg from '../assets/images/accessories/filtro.webp';
 import receptoresImg from '../assets/images/accessories/receptores.webp';
 import pilhasImg from '../assets/images/accessories/pilhas.webp';
-import powerBankImg from '../assets/images/Carregador powerbank.Png';
+import powerBankImg from '../assets/images/Carregador powerbank_optimized.webp';
 import carregadorMesaImg from '../assets/images/accessories/carregador-mesa_optimized.png';
 import joiaImg from '../assets/images/acessório para aparelho - jóia.jpeg';
 import acessoriosHeroImage from '../assets/images/hero/acessorios-hero-new_optimized.jpg';

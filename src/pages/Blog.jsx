@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useWordPressPosts } from '../hooks/useWordPressPosts';
 import { formatDate, stripHtml } from '../services/wordpressApi';
 import LoadingSpinner from '../components/LoadingSpinner';
-import blogHeroImage from '../assets/images/primeira imagem da ABA BLOG.JPEG';
+import blogHeroImage from '../assets/images/primeira imagem da ABA BLOG_optimized.webp';
 import '../styles/liquid-glass-buttons.css';
 
 const Blog = () => {

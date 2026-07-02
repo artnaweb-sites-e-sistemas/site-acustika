@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import aparelhosHeroImage from '../assets/images/hero/aparelhos-hero-new_optimized.png';
 // Imports das imagens dos aparelhos auditivos
@@ -11,13 +11,13 @@ import rextonRugged from '../assets/images/hearing-aids/rexton-rugged.jpg.webp';
 import rextonStellar from '../assets/images/hearing-aids/rexton-stellar-04.jpg.webp';
 import oticonZircon from '../assets/images/hearing-aids/oticon-zircon.jpg.webp';
 import oticonReal from '../assets/images/hearing-aids/oticon-own250x250.png.webp';
-import oticonIntent from '../assets/images/Oticon Intent.Png';
-import oticonCross from '../assets/images/206622_CROS_miniRITE_T_312_2.png';
-import argosyVistaVUP from '../assets/images/UH_Packshot_VistaV-UP-LeftHook_7850x7850px_050-6836-R8.png';
-import argosyVistaVR from '../assets/images/UH_Packshot_VistaV-RLeftLeftReceiverP7Pewter_RGB7850x7850.jpg';
-import argosyVistaV312 from '../assets/images/UH_Packshot_Advance72-312Left_LeftReceiverP7PewterActualSize-CMYK_050-6824-P7.png';
-import argosyVistaVM from '../assets/images/UH_Packshot_Stride-V-M_Left-Hook-7850x7850px_050-6864-R8.png';
-import argosyVistaVPR from '../assets/images/UH_Packshot_Advance72-PR_Left-Hook-7850x7850px_050-6830-P7.png';
+import oticonIntent from '../assets/images/Oticon Intent_optimized.webp';
+import oticonCross from '../assets/images/206622_CROS_miniRITE_T_312_2_optimized.webp';
+import argosyVistaVUP from '../assets/images/UH_Packshot_VistaV-UP_optimized.webp';
+import argosyVistaVR from '../assets/images/UH_Packshot_VistaV-R_optimized.webp';
+import argosyVistaV312 from '../assets/images/UH_Packshot_Advance72-312_optimized.webp';
+import argosyVistaVM from '../assets/images/UH_Packshot_Stride-V-M_optimized.webp';
+import argosyVistaVPR from '../assets/images/UH_Packshot_Advance72-PR_optimized.webp';
 import rextonReachSlim from '../assets/images/6e811e_929d9e323c1f4c0db4131ffc67359be6mv2.png';
 import rextonReachLiIx from '../assets/images/filters_quality(40).png';
 // Imports das imagens do Play PX
