@@ -11,7 +11,7 @@ import equipeCarin from '../assets/images/equipe-carin.png.webp';
 import equipeJessica from '../assets/images/equipe-jessica.png.webp';
 import equipeValeria from '../assets/images/equipe-valeria.png.webp';
 import equipeValdirene from '../assets/images/equipe-valdirene.png.webp';
-import equipeNatalia from '../assets/images/equipe-natalia.png.webp';
+import equipeEliana from '../assets/images/equipe-eliana.png.webp';
 import equipePaula from '../assets/images/equipe-paula.png.webp';
 import equipeJanaina from '../assets/images/equipe-janaina.png.webp';
 import AOS from 'aos';
@@ -521,9 +521,9 @@ const Sobre = () => {
                   photo: equipeValdirene
                 },
                 {
-                  name: "Natalia",
-                  role: "Fonoaudióloga",
-                  photo: equipeNatalia
+                  name: "Eliana",
+                  role: "Assistente Comercial",
+                  photo: equipeEliana
                 },
                 {
                   name: "Paula",
