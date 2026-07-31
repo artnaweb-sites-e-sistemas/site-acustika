@@ -9,10 +9,8 @@ import equipeJuliana from '../assets/images/equipe-juliana-popescu.png.webp';
 import equipeRenato from '../assets/images/equipe-renato.png.webp';
 import equipeCarin from '../assets/images/equipe-carin.png.webp';
 import equipeJessica from '../assets/images/equipe-jessica.png.webp';
-import equipeDaiana from '../assets/images/equipe-daiana.png.webp';
 import equipeValeria from '../assets/images/equipe-valeria.png.webp';
 import equipeValdirene from '../assets/images/equipe-valdirene.png.webp';
-import equipeEliana from '../assets/images/equipe-eliana.png.webp';
 import equipeNatalia from '../assets/images/equipe-natalia.png.webp';
 import equipePaula from '../assets/images/equipe-paula.png.webp';
 import equipeJanaina from '../assets/images/equipe-janaina.png.webp';
@@ -513,11 +511,6 @@ const Sobre = () => {
                   photo: equipeJessica
                 },
                 {
-                  name: "Daiana",
-                  role: "Gerente",
-                  photo: equipeDaiana
-                },
-                {
                   name: "Valeria",
                   role: "Fonoaudióloga",
                   photo: equipeValeria
@@ -526,11 +519,6 @@ const Sobre = () => {
                   name: "Valdirene",
                   role: "Assistente Comercial",
                   photo: equipeValdirene
-                },
-                {
-                  name: "Eliana",
-                  role: "Assistente Comercial",
-                  photo: equipeEliana
                 },
                 {
                   name: "Natalia",
